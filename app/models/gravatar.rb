@@ -1,16 +1,17 @@
 require 'digest/md5'
 
 class Gravatar
-  def self.for_email(email)
-    Gravatar.new(email)
+  def self.for_email(email, size=147)
+    Gravatar.new(email,size)
   end
   
   def to_html
-    "<img src=\"http://www.gravatar.com/avatar/#{@hash}?s=147&d=identicon\" alt=\"Profile picture\" />" 
+    "<img src=\"http://www.gravatar.com/avatar/#{@hash}?s=#{@size}&d=identicon\" alt=\"Profile picture\" />"
   end
 
-  def initialize(email)
+  def initialize(email,size)
     @hash = Digest::MD5.hexdigest(email.downcase)
+    @size = size
   end
 
   def ==(other)

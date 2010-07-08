@@ -30,11 +30,13 @@
       </label>
     </p>
 
-    <p>
-      <label for="location">LOCATION (e.g. London, UK)<br/>
-        <%= f.text_field :location, :class => 'box' %>
-      </label>
-    </p>
+    <div id="select_gravatar">
+      <%= raw(@person.small_profile_picture.to_html) %>
+      <p>
+        Change your avatar at <a href="http://www.gravatar.com" target="_blank">gravatar.com</a><br />
+        We're using <%= @person.email %>
+      </p>
+    </div>
 
     <p>
       <label for="phone_number">PHONE NUMBER (e.g. +44 7757 809234)<br/>
