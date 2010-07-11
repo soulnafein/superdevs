@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100626211410) do
+ActiveRecord::Schema.define(:version => 20100711075557) do
 
   create_table "people", :force => true do |t|
     t.string   "full_name"
@@ -28,6 +28,10 @@ ActiveRecord::Schema.define(:version => 20100626211410) do
     t.string   "email"
     t.string   "phone_number"
     t.string   "blog_feed"
+    t.string   "username"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token"
   end
 
 end

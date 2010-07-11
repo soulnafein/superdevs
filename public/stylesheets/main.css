@@ -73,6 +73,11 @@ p {
   padding:0;
 }
 
+p.intro {
+  font-size:16px;
+  width: 600px;
+}
+
 label {
   margin: 5px 0 0 2px;
   font-weight: bold;
@@ -245,37 +250,17 @@ a:hover {
   margin-bottom: 40px;
 }
 
-/*.............................................................Table................... */
-
-td {
-  padding: 12px;
-  text-align: left;
-}
-
-.gray td {
-  background-color: #f7f7f7;
-}
-
-.table_main {
-  border-top: 1px solid #bab9b9;
-  border-right: 1px solid #bab9b9;
-  border-left: 1px solid #bab9b9;
-}
-
-.table_main .delete {
-  background: url(images/x2.gif) center left no-repeat;
-  padding-left: 12px;
-}
-
-tr td {
-  border-bottom: 1px solid #bab9b9;
-}
-
 /*..........................................General......................................*/
 .highlighter {
   background-color: #ffff66;
   padding:2px;
   line-height: 24px;
+}
+
+div.errorExplanation {
+  padding:10px;
+  border:1px solid red;
+  background-color:#FF9999;
 }
 
 div#select_gravatar

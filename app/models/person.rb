@@ -1,4 +1,6 @@
 class Person < ActiveRecord::Base
+  acts_as_authentic
+  
   def profile_picture
     Gravatar.for_email(self.email)
   end

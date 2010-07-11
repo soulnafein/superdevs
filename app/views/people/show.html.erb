@@ -73,12 +73,14 @@
       </ul>
     </div>
   <% end %>
-  <div id="blog">
-    <h4>Blog entries</h4>
-    <dl style="float:left;">
-    </dl>
-    <div style="clear:both"></div>
-  </div>
+  <% if not @person.blog_feed.empty? %>
+    <div id="blog">
+      <h4>Blog entries</h4>
+      <dl style="float:left;">
+      </dl>
+      <div style="clear:both"></div>
+    </div>
+  <% end %>
   <div style="clear:both"></div>
 </div>
 

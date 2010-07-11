@@ -11,8 +11,21 @@ class PeopleController < ApplicationController
     load_person
     @person.update_attributes!(params[:person])
     redirect_to(@person, :notice => 'Person was successfully updated.')
-  rescue RecordNotSaved
+  rescue ActiveRecord::RecordInvalid
     render :action => :edit
+  end
+
+  def new
+    @person = Person.new
+  end
+
+  def create
+    @person = Person.new(params[:person])
+    @person.save!
+    confirmation = url_for(:controller => :pages, :action => :invitation_requested)
+    redirect_to confirmation, :status => 303
+  rescue ActiveRecord::RecordInvalid
+    render :action => 'new'
   end
 
   private
