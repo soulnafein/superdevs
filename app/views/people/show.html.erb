@@ -12,12 +12,12 @@
     <h2><%= @person.full_name %></h2>
 
     <h3><%= @person.tagline %></h3>
-    <% if not @person.company.empty? %>
+    <% if not @person.company.to_s.empty? %>
       <p>
         I work for: <span class="highlighter"><%= @person.company %></span>
       </p>
     <% end %>
-    <% if not @person.location.empty? %>
+    <% if not @person.location.to_s.empty? %>
       <p>
         I'm based in: <span class="highlighter"><%= @person.location %></span>
       </p>
@@ -25,14 +25,14 @@
   </div>
   <div id="contacts">
     <ul id="online_presence">
-      <% if not @person.twitter_username.empty? %>
+      <% if not @person.twitter_username.to_s.empty? %>
         <li>
           <a href="http://www.twitter.com/<%= @person.twitter_username %>">
             <img src="/images/twitter.png"/>
           </a>
         </li>
       <% end %>
-      <% if not @person.linkedin_profile.empty? %>
+      <% if not @person.linkedin_profile.to_s.empty? %>
         <li>
           <a href="<%= @person.linkedin_profile %>">
             <img src="/images/linkedin.png"/>
@@ -45,7 +45,7 @@
       <li>website: <%= link_to @person.website, @person.website %></li>
       <li>phone: <%= @person.phone_number %></li>
     </ul>
-    <% if not @person.interests.empty? %>
+    <% if not @person.interests.to_s.empty? %>
       <ul id="interests">
         <h5>Interests</h5>
         <% @person.interests.split(",").each do |interest| %>
@@ -57,7 +57,7 @@
   <div style="clear:both"></div>
 </div>
 <div class="line"></div>
-<% if not @person.bio.empty? %>
+<% if not @person.bio.to_s.empty? %>
   <div class="in" id="bio">
     <h4>Personal profile</h4>
 
@@ -66,14 +66,14 @@
   <div class="line"></div>
 <% end %>
 <div class="in" style="margin-top:0;">
-  <% if not @person.twitter_username.empty? %>
+  <% if not @person.twitter_username.to_s.empty? %>
     <div id="tweets">
       <h4>Latest tweets</h4>
       <ul>
       </ul>
     </div>
   <% end %>
-  <% if not @person.blog_feed.empty? %>
+  <% if not @person.blog_feed.to_s.empty? %>
     <div id="blog">
       <h4>Blog entries</h4>
       <dl style="float:left;">

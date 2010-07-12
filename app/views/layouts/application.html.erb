@@ -14,7 +14,16 @@
 <div id="wrapper">
 
   <h1 id="logo">SuperDevs</h1>
-  <p class="txt_right">Logged in as <strong>David Santoro</strong>  <span class="v_line"> | </span> <a href="#"> Logout</a></p>
+  <p class="txt_right">
+    <% if current_user %>
+        Logged in as <strong><%= current_user.username %></strong>
+        <%= link_to "Edit profile", edit_person_path(current_user) %> <span class="v_line">|</span>
+        <%= link_to "Logout", logout_path %>
+      <% else %>
+        <%= link_to "Register", new_person_path %> <span class="v_line">|</span>
+        <%= link_to "Log in", login_path %>
+      <% end %>
+  </p>
 
   <!-- Navigation -->
 

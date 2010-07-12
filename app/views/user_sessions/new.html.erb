@@ -1,0 +1,24 @@
+<div class="in">
+  <h2>Login</h2>  
+</div>
+
+<div class="line"></div>
+
+<div class="in forms">
+  <% form_for @user_session do |form| %>
+    <%= form.error_messages %>
+    <p>
+      <%= form.label :username, "Username" %><br/>
+      <%= form.text_field :username, :class => 'box' %>
+    </p>
+
+    <p>
+      <%= form.label :password, "Password" %><br/>
+      <%= form.password_field :password, :class => 'box' %>
+    </p>
+
+    <p>
+      <%= form.submit "Submit", :class => 'com_btn' %>
+    </p>
+  <% end %>
+</div>

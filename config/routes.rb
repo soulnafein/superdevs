@@ -1,4 +1,9 @@
 Superdevs::Application.routes.draw do |map|
+
+  map.login 'login', :controller => 'user_sessions', :action => 'new'
+  map.logout 'logout', :controller => 'user_sessions', :action => 'destroy' 
+  resources :user_sessions
+
   get "home/index"
   get "pages/invitation_requested"
 
