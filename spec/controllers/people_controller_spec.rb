@@ -3,29 +3,41 @@ require 'spec_helper'
 describe PeopleController do
   describe "GET 'show'" do
     it "should load the person from the database" do
-      Person.stub(:find).with(42).and_return(mock_person)
+      Person.stub(:find_active).with(42).and_return(mock_person)
 
       get :show, :id => 42
 
       response.should be_success
       assigns(:person).should == mock_person
     end
+
+    it "should send back a 404 when give an invalid id" do
+      get :show, :id => 666
+
+      response.status.should == 404
+    end
   end
 
   describe "GET 'edit'" do
     it "should load the person from the database" do
-      Person.stub(:find).with(42).and_return(mock_person)
+      Person.stub(:find_active).with(42).and_return(mock_person)
 
       get :edit, :id => 42
 
       response.should be_success
       assigns(:person).should == mock_person
     end
+
+    it "should send back a 404 when give an invalid id" do
+      get :edit, :id => 666
+
+      response.status.should == 404
+    end
   end
 
   describe "PUT 'update'" do
     it "should update person" do
-      Person.stub(:find).with(1).and_return(mock_person)
+      Person.stub(:find_active).with(1).and_return(mock_person)
       valid_info = {:id => 1, :person => {"username" => "soulnafein", "email" => "soulnafe@gmail.com", "password" => "test", "password_confirmation" => 'test'}}
       mock_person.should_receive(:update_attributes!).with(valid_info[:person])
 
@@ -35,7 +47,7 @@ describe PeopleController do
     end
 
     it "should go back to form in case of errors" do
-      Person.stub(:find).with(1).and_return(mock_person_with_errors)
+      Person.stub(:find_active).with(1).and_return(mock_person_with_errors)
       mock_person.should_receive(:update_attributes!).and_raise(ActiveRecord::RecordInvalid.new(mock_person_with_errors))
       invalid_info = {:id => 1, :person => {"username" => "soulnafein", "email" => "soulnafe@gmail.com.", "password" => "test", "password_confirmation" => 'testsss'}}
 

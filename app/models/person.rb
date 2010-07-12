@@ -28,4 +28,11 @@ class Person < ActiveRecord::Base
   def small_profile_picture
     Gravatar.for_email(self.email, 32)
   end
+
+  def self.find_active(id)
+    Person.where(:active => 1, :id => id).first || (raise PersonNotFound)
+  end
+end
+
+class PersonNotFound < Exception
 end

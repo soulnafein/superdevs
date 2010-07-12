@@ -30,6 +30,8 @@ class PeopleController < ApplicationController
 
   private
   def load_person
-    @person = Person.find(params[:id])
+    @person = Person.find_active(params[:id])
+  rescue PersonNotFound
+    render_404
   end
 end
