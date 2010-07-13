@@ -8,7 +8,7 @@
 
 <!-- Personal Information -->
 <div class="in forms">
-  <% form_for(@person) do |f| %>
+  <%= form_for(@user) do |f| %>
     <%= f.error_messages %>
     <h3 class="highlighter">Personal information</h3>
 
@@ -31,10 +31,10 @@
     </p>
 
     <div id="select_gravatar">
-      <%= raw(@person.small_profile_picture.to_html) %>
+      <%= raw(@user.small_profile_picture.to_html) %>
       <p>
         Change your avatar at <a href="http://www.gravatar.com" target="_blank">gravatar.com</a><br />
-        We're using <%= @person.email %>
+        We're using <%= @user.email %>
       </p>
     </div>
 

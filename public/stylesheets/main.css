@@ -263,6 +263,13 @@ div.errorExplanation {
   background-color:#FF9999;
 }
 
+div.success {
+  padding:10px;
+  border:1px solid green;
+  background-color:#99FF99;
+  text-align:center;
+}
+
 div#select_gravatar
 {
 

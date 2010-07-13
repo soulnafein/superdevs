@@ -1,0 +1,22 @@
+<div class="in">
+  <h1>Change My Password</h1>
+</div>
+
+<div class="line"></div>
+
+<div class="in forms">
+  <%= form_for @user, :url => password_reset_path, :method => :put do |f| %>
+    <%= f.error_messages %>
+    <p>
+    <%= f.label :password %><br/>
+    <%= f.password_field :password, :class => "box" %>
+      </p>
+    <p>
+    <%= f.label :password_confirmation %><br/>
+    <%= f.password_field :password_confirmation, :class => "box" %>
+      </p>
+    <p>
+    <%= f.submit "Update my password and log me in", :class => "com_btn" %>
+    </p>
+  <% end %>
+</div> 

@@ -1,54 +1,54 @@
 <script type="text/javascript" language="javascript">
   $(document).ready(function() {
-    $("#tweets").twitter_feed("<%= @person.twitter_username %>");
-    $("#blog").blog_feed("<%= @person.blog_feed %>");
+    $("#tweets").twitter_feed("<%= @user.twitter_username %>");
+    $("#blog").blog_feed("<%= @user.blog_feed %>");
   })
 </script>
 <div class="in">
   <div id="profile">
     <div id="profile_picture">
-      <%= raw(@person.profile_picture.to_html) %>
+      <%= raw(@user.profile_picture.to_html) %>
     </div>
-    <h2><%= @person.full_name %></h2>
+    <h2><%= @user.full_name %></h2>
 
-    <h3><%= @person.tagline %></h3>
-    <% if not @person.company.to_s.empty? %>
+    <h3><%= @user.tagline %></h3>
+    <% if not @user.company.to_s.empty? %>
       <p>
-        I work for: <span class="highlighter"><%= @person.company %></span>
+        I work for: <span class="highlighter"><%= @user.company %></span>
       </p>
     <% end %>
-    <% if not @person.location.to_s.empty? %>
+    <% if not @user.location.to_s.empty? %>
       <p>
-        I'm based in: <span class="highlighter"><%= @person.location %></span>
+        I'm based in: <span class="highlighter"><%= @user.location %></span>
       </p>
     <% end %>
   </div>
   <div id="contacts">
     <ul id="online_presence">
-      <% if not @person.twitter_username.to_s.empty? %>
+      <% if not @user.twitter_username.to_s.empty? %>
         <li>
-          <a href="http://www.twitter.com/<%= @person.twitter_username %>">
+          <a href="http://www.twitter.com/<%= @user.twitter_username %>">
             <img src="/images/twitter.png"/>
           </a>
         </li>
       <% end %>
-      <% if not @person.linkedin_profile.to_s.empty? %>
+      <% if not @user.linkedin_profile.to_s.empty? %>
         <li>
-          <a href="<%= @person.linkedin_profile %>">
+          <a href="<%= @user.linkedin_profile %>">
             <img src="/images/linkedin.png"/>
           </a>
         </li>
       <% end %>
     </ul>
     <ul>
-      <li>email: <%= link_to @person.email, @person.email %></li>
-      <li>website: <%= link_to @person.website, @person.website %></li>
-      <li>phone: <%= @person.phone_number %></li>
+      <li>email: <%= link_to @user.email, @user.email %></li>
+      <li>website: <%= link_to @user.website, @user.website %></li>
+      <li>phone: <%= @user.phone_number %></li>
     </ul>
-    <% if not @person.interests.to_s.empty? %>
+    <% if not @user.interests.to_s.empty? %>
       <ul id="interests">
         <h5>Interests</h5>
-        <% @person.interests.split(",").each do |interest| %>
+        <% @user.interests.split(",").each do |interest| %>
           <li class="highlighter"><%= interest.strip %></li>
         <% end %>
       </ul>
@@ -57,23 +57,23 @@
   <div style="clear:both"></div>
 </div>
 <div class="line"></div>
-<% if not @person.bio.to_s.empty? %>
+<% if not @user.bio.to_s.empty? %>
   <div class="in" id="bio">
     <h4>Personal profile</h4>
 
-    <p><%= @person.bio %></p>
+    <p><%= @user.bio %></p>
   </div>
   <div class="line"></div>
 <% end %>
 <div class="in" style="margin-top:0;">
-  <% if not @person.twitter_username.to_s.empty? %>
+  <% if not @user.twitter_username.to_s.empty? %>
     <div id="tweets">
       <h4>Latest tweets</h4>
       <ul>
       </ul>
     </div>
   <% end %>
-  <% if not @person.blog_feed.to_s.empty? %>
+  <% if not @user.blog_feed.to_s.empty? %>
     <div id="blog">
       <h4>Blog entries</h4>
       <dl style="float:left;">

@@ -1,4 +1,4 @@
-class Person < ActiveRecord::Base
+class User < ActiveRecord::Base
   acts_as_authentic
 
   attr_accessible :full_name,
@@ -20,7 +20,7 @@ class Person < ActiveRecord::Base
                   :password_confirmation
 
   attr_readonly :username, :email, :password, :password_confirmation
-  
+
   def profile_picture
     Gravatar.for_email(self.email)
   end
@@ -30,9 +30,36 @@ class Person < ActiveRecord::Base
   end
 
   def self.find_active(id)
-    Person.where(:active => 1, :id => id).first || (raise PersonNotFound)
+    user = User.find(id) || (raise UserNotFound)
+    raise UserNotFound unless user.active?
+    user
+  end
+
+  def self.find_by_username_or_email(username_or_email)
+    User.where(:email => username_or_email).first ||
+    User.where(:username => username_or_email).first
+  end
+
+  def activate!
+    self.active = true
+    save
+  end
+
+  def deliver_activation_instructions!
+    reset_perishable_token!
+    Notifier.deliver_activation_instructions(self)
+  end
+
+  def deliver_welcome!
+    reset_perishable_token!
+    Notifier.deliver_welcome(self)
+  end
+
+  def deliver_password_reset_instructions!
+    reset_perishable_token!
+    Notifier.deliver_password_reset_instructions(self)
   end
 end
 
-class PersonNotFound < Exception
+class UserNotFound < Exception
 end
