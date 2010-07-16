@@ -34,8 +34,6 @@ class UsersController < ApplicationController
 
   private
   def load_user
-    logger.warn("**************************************")
-    logger.warn("The current_user is #{current_user.id}")
     @user = User.find_active(params[:id])
   rescue UserNotFound
     render_404
