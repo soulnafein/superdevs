@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:edit, :update]
 
+  def index
+    @users = User.all_active_users  
+  end
+
   def show
     load_user
   end

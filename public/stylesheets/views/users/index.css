@@ -1,0 +1,48 @@
+#users_list {
+    text-align:left;   
+}
+
+#users_list h2 {
+    font-family: Lucida Grande, Arial, sans-serif;
+    font-size: 32px;
+    text-align:center;
+    font-style:normal;
+}
+
+#users_list h3 {
+    font-family: Lucida Grande, Arial, sans-serif;
+    font-size: 24px;
+}
+
+#users_list h3 a {
+    font-size: 18px;
+}
+
+#users_list h4 {
+    font-family: Georgia, serif;
+    font-size: 21px;
+}
+
+#profile_picture_medium {
+    float:left;
+    border: 1px solid #bab9b9;
+    padding: 7px;
+    margin-right: 10px;
+    background-color: white;
+}
+
+#users_list ul {
+    margin:0;
+    padding:0;
+}
+
+#users_list li {
+    clear:both;
+    margin-bottom: 10px;
+    list-style-type:none;
+    padding: 10px;
+}
+
+#users_list li.odd {
+    background-color:#ebebeb;
+}

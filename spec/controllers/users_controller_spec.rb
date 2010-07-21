@@ -97,6 +97,19 @@ describe UsersController do
     end
   end
 
+  describe "GET 'index'" do
+    it "should provide a list of all the active developers" do
+      active_users = [mock_user, mock_user]
+      User.should_receive(:all_active_users).and_return(active_users)
+
+      get :index
+
+      response.should be_success
+      response.should render_template(:index)
+      assigns[:users].should == active_users
+    end
+  end
+
 
   def mock_session
     session = mock_model(UserSession).as_null_object

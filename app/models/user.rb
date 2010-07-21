@@ -29,10 +29,18 @@ class User < ActiveRecord::Base
     Gravatar.for_email(self.email, 32)
   end
 
+  def medium_profile_picture
+    Gravatar.for_email(self.email, 50)
+  end
+
   def self.find_active(id)
     user = User.where(:id => id).first || (raise UserNotFound)
     raise UserNotFound unless user.active?
     user
+  end
+
+  def self.all_active_users
+    User.where(:active => 1)
   end
 
   def self.find_by_username_or_email(username_or_email)
