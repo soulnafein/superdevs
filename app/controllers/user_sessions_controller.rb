@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     @user_session.save!
-    redirect_to root_url, :notice => "Successfully logged in"
+    redirect_to user_path(@user_session.record), :notice => "Successfully logged in"
   rescue Authlogic::Session::Existence::SessionInvalidError
     render :action => :new
   end
@@ -17,6 +17,6 @@ class UserSessionsController < ApplicationController
   def destroy
     @user_session = UserSession.find
     @user_session.destroy
-    redirect_to root_url, :notice => "Successfully logged out"
+    redirect_to login_url, :notice => "Successfully logged out"
   end
 end

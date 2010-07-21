@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
   <%= csrf_meta_tag %>
   <title>SuperDevs</title>
-  <%= stylesheet_link_tag "main" %>
+  <%= stylesheet_link_tag "application", "views/users/edit", "views/users/show" %>
   <%= javascript_include_tag "lib/jquery-1.4.2.min", "lib/jquery.jgfeed-min", "twitter.js",
                              "blog_feed.js" %>
 </head>
@@ -14,13 +14,13 @@
 <div id="wrapper">
 
   <h1 id="logo">SuperDevs</h1>
-  <p class="txt_right">
+  <p id="authentication_status">
     <% if current_user %>
         Logged in as <strong><%= current_user.username %></strong>
         <%= link_to "Edit profile", edit_user_path(current_user) %> <span class="v_line">|</span>
         <%= link_to "Logout", logout_path %>
       <% else %>
-        <%= link_to "Register", new_user_path %> <span class="v_line">|</span>
+        <%= link_to "Register", register_path %> <span class="v_line">|</span>
         <%= link_to "Log in", login_path %>
       <% end %>
   </p>
@@ -32,14 +32,6 @@
       <li><a href="#">HOME</a></li>
       <li><a href="#" class="active">PEOPLE</a></li>
     </ul>
-
-    <div id="searchform">
-      <form method="get" action="">
-        <input type="text" value="find something good..." class="search_box" name="search" onclick="this.value='';"  />
-        <input type="submit" class="search_btn" value="SEARCH" />
-      </form>
-    </div>
-
   </div>
 
   <div class="clear"></div>
@@ -55,7 +47,7 @@
   </div>
 
 
-  <p class="footer"><a href="#">ADVANCED  SEARCH</a> <span class="v_line"> |</span> <a href="#">LOGOUT</a></p>
+  <p id="footer"><a href="#">ADVANCED  SEARCH</a> <span class="v_line"> |</span> <a href="#">LOGOUT</a></p>
 
 
 </div>

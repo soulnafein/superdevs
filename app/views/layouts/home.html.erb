@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+  <%= csrf_meta_tag %>
+  <title>SuperDevs</title>
+  <%= stylesheet_link_tag "application", "home" %>
+</head>
+
+<body>
+
+<div id="home_wrapper">
+  <div id="first_layer">
+    <h1 id="logo">SuperDevs</h1>
+
+    <p id="authentication_status">
+      <% if current_user %>
+          Logged in as <strong><%= current_user.username %></strong>
+          <%= link_to "Edit profile", edit_user_path(current_user) %> <span class="v_line">|</span>
+          <%= link_to "Logout", logout_path %>
+      <% else %>
+          <%= link_to "Register", register_path %> <span class="v_line">|</span>
+          <%= link_to "Log in", login_path %>
+      <% end %>
+    </p>
+  </div>
+
+  <% if flash[:notice] %>
+      <div class="in success">
+        <%= flash[:notice] %>
+      </div>
+  <% end %>
+  <%= yield %>
+
+
+  <p id="footer"><a href="#">ADVANCED SEARCH</a> <span class="v_line"> |</span> <a href="#">LOGOUT</a></p>
+
+
+</div>
+</body>
+</html>
+

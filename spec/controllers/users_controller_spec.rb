@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe UsersController do
+
   describe "GET 'show'" do
     it "should load the user from the database" do
       User.stub(:find_active).with(42).and_return(mock_user)
@@ -19,6 +20,10 @@ describe UsersController do
   end
 
   describe "GET 'edit'" do
+    before :each do
+      UserSession.stub(:find).and_return(mock_session)
+    end
+
     it "should load the user from the database" do
       User.stub(:find_active).with(42).and_return(mock_user)
 
@@ -36,6 +41,10 @@ describe UsersController do
   end
 
   describe "PUT 'update'" do
+    before :each do
+      UserSession.stub(:find).and_return(mock_session)
+    end
+
     it "should update user" do
       User.stub(:find_active).with(1).and_return(mock_user)
       valid_info = {:id => 1, :user => {"username" => "soulnafein", "email" => "soulnafe@gmail.com", "password" => "test", "password_confirmation" => 'test'}}
@@ -88,6 +97,12 @@ describe UsersController do
     end
   end
 
+
+  def mock_session
+    session = mock_model(UserSession).as_null_object
+    session.stub(:record).and_return(mock_user)
+    @mock_session ||= session
+  end
 
   def mock_user(stubs={})
     @mock_user ||= mock_model(User, stubs).as_null_object

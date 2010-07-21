@@ -44,7 +44,7 @@
       var dayOfMonth = date.getDate();
       var month = months_names[date.getMonth()+1];
       var year = date.getFullYear();
-      return "<dt>"+dayOfMonth+" <strong>"+month+"</strong> "+year+"</dt>"
+      return "<dt>"+dayOfMonth+"<br /> <strong>"+month+"</strong> "+year+"</dt>"
     }
   }
 })(jQuery);

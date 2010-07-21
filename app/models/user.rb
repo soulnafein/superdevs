@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_active(id)
-    user = User.find(id) || (raise UserNotFound)
+    user = User.where(:id => id).first || (raise UserNotFound)
     raise UserNotFound unless user.active?
     user
   end

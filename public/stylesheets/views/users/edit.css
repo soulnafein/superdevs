@@ -1,0 +1,12 @@
+div#select_gravatar img
+{
+  float:left;
+  border: 1px solid #bab9b9;
+  padding: 2px;
+}
+
+div#select_gravatar p
+{
+  line-height:16px;
+  padding-left: 45px;
+}
