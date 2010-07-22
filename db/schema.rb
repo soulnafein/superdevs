@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100722103839) do
+ActiveRecord::Schema.define(:version => 20100722132100) do
 
   create_table "users", :force => true do |t|
     t.string   "full_name"
@@ -34,7 +34,9 @@ ActiveRecord::Schema.define(:version => 20100722103839) do
     t.string   "persistence_token"
     t.boolean  "active"
     t.string   "perishable_token"
-    t.boolean  "agreed_tc_and_pp",  :default => false
+    t.boolean  "agreed_tc_and_pp",   :default => false
+    t.string   "bitbucket_account"
+    t.string   "delicious_username"
   end
 
 end

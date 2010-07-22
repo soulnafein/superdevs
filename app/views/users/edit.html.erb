@@ -14,19 +14,19 @@
 
     <p>
       <label for="full_name">YOUR NAME (e.g. Martin Fowler)<br/>
-        <%= f.text_field :full_name, :class => 'box' %>
+        <%= f.text_field :full_name %>
       </label>
     </p>
 
     <p>
       <label for="tagline">YOUR TAGLINE (e.g. Web evangelist)<br/>
-        <%= f.text_field :tagline, :class => 'box' %>
+        <%= f.text_field :tagline %>
       </label>
     </p>
 
     <p>
       <label for="bio">ABOUT YOU (Few words on your career, interests and passions)<br/>
-        <%= f.text_area :bio, :class => 'box', :rows => 5, :cols => 30 %>
+        <%= f.text_area :bio, :rows => 5, :cols => 30 %>
       </label>
     </p>
 
@@ -40,13 +40,13 @@
 
     <p>
       <label for="location">LOCATION (e.g. London, United Kingdom)<br/>
-        <%= f.text_field :location, :class => 'box' %>
+        <%= f.text_field :location %>
       </label>
     </p>
 
     <p>
       <label for="phone_number">PHONE NUMBER (e.g. +44 7757 809234)<br/>
-        <%= f.text_field :phone_number, :class => 'box' %>
+        <%= f.text_field :phone_number %>
       </label>
     </p>
 
@@ -54,19 +54,19 @@
 
     <p>
       <label for="company">CURRENT COMPANY (e.g. ThoughtWorks)<br/>
-        <%= f.text_field :company, :class => 'box' %>
+        <%= f.text_field :company %>
       </label>
     </p>
 
     <p>
       <label for="job_title">JOB TITLE (e.g. Ruby Developer)<br/>
-        <%= f.text_field :job_title, :class => 'box' %>
+        <%= f.text_field :job_title %>
       </label>
     </p>
 
     <p>
       <label for="interests">INTERESTS (e.g. C#, Ruby, TDD, Agile)<br/>
-        <%= f.text_field :interests, :class => 'box' %>
+        <%= f.text_field :interests %>
       </label>
     </p>
 
@@ -74,42 +74,54 @@
 
     <p>
       <label for="website">YOUR WEBSITE (e.g. http://www.martinfowler.com)<br/>
-        <%= f.text_field :website, :class => 'box' %>
+        <%= f.text_field :website %>
       </label>
     </p>
 
     <p>
       <label for="blog_feed">BLOG FEED<br/>
-        <%= f.text_field :blog_feed, :class => 'box' %>
+        <%= f.text_field :blog_feed %>
       </label>
     </p>
 
     <p>
-      <label for="twitter_username">TWITTER ACCOUNT (e.g. soulnafein)<br/>
-        <%= f.text_field :twitter_username, :class => 'box' %>
+      <label for="twitter_username">TWITTER USERNAME (e.g. soulnafein)<br/>
+        <%= f.text_field :twitter_username %>
       </label>
     </p>
 
     <p>
       <label for="linkedin_profile">LINKEDIN PROFILE (e.g. http://uk.linkedin.com/in/davidsantoro)<br/>
-        <%= f.text_field :linkedin_profile, :class => 'box' %>
+        <%= f.text_field :linkedin_profile %>
       </label>
     </p>
 
     <p>
-      <label for="github_account">GITHUB ACCOUNT (e.g. soulnafein)<br/>
-        <%= f.text_field :github_account, :class => 'box' %>
+      <label for="delicious_username">DELICIOUS USERNAME (e.g. soulnafein)<br/>
+        <%= f.text_field :delicious_username %>
+      </label>
+    </p>
+
+    <p>
+      <label for="github_account">GITHUB USERNAME (e.g. soulnafein)<br/>
+        <%= f.text_field :github_account %>
+      </label>
+    </p>
+
+    <p>
+      <label for="bitbucket_account">BITBUCKET USERNAME (e.g. soulnafein)<br/>
+        <%= f.text_field :bitbucket_account %>
       </label>
     </p>
 
     <p>
       <label for="email">EMAIL (e.g. soulnafein@superdevs.com)
-        <%= f.text_field :email, :class => 'box' %>
+        <%= f.text_field :email %>
       </label>
     </p>
 
     <p>
-      <%= f.submit "Update Profile", :class => 'com_btn' %>
+      <%= f.submit "Update Profile" %>
     </p>
   <% end %>
 </div>

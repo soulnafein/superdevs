@@ -1,13 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
   <%= csrf_meta_tag %>
   <title>SuperDevs</title>
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
   <%= stylesheet_link_tag "application", "views/users/edit", "views/users/show", "views/users/index" %>
   <%= javascript_include_tag "lib/jquery-1.4.2.min", "lib/jquery.jgfeed-min", "twitter.js",
                              "blog_feed.js" %>
+  <%= render :partial => "shared/google_analytics" %>
 </head>
 
 <body>
@@ -15,22 +16,14 @@
 <div id="wrapper">
 
   <h1 id="logo">SuperDevs</h1>
-  <p id="authentication_status">
-    <% if current_user %>
-        Logged in as <strong><%= current_user.username %></strong>
-        <%= link_to "Edit profile", edit_user_path(current_user) %> <span class="v_line">|</span>
-        <%= link_to "Logout", logout_path %>
-      <% else %>
-        <%= link_to "Register", register_path %> <span class="v_line">|</span>
-        <%= link_to "Log in", login_path %>
-      <% end %>
-  </p>
+
+  <%= render :partial => "shared/authentication_status" %>
 
   <!-- Navigation -->
 
   <div id="navigation">
     <ul>
-      <li><a href="/">HOME</a></li>
+      <li><a href="<%= root_url %>">HOME</a></li>
       <li><a href="<%= users_path %>" class="active">PEOPLE</a></li>
     </ul>
   </div>
@@ -40,18 +33,17 @@
 
   <div id="content">
     <% if flash[:notice] %>
-      <div class="in success">
-        <%= flash[:notice] %>
-      </div>
+        <div class="in success">
+          <%= flash[:notice] %>
+        </div>
     <% end %>
     <%= yield %>
   </div>
 
-
-  <p id="footer"><a href="#">CONTACT US</a> <span class="v_line"> |</span> <%= link_to "LOGOUT", logout_url %></p>
-
+  <%= render :partial => "shared/footer" %>
 
 </div>
+<%= render :partial => "shared/user_feedback" %>
 </body>
 </html>
 

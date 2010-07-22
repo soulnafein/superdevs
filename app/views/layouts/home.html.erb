@@ -5,6 +5,7 @@
   <%= csrf_meta_tag %>
   <title>SuperDevs</title>
   <%= stylesheet_link_tag "application", "home" %>
+  <%= render :partial => "shared/google_analytics" %>
 </head>
 
 <body>
@@ -12,31 +13,15 @@
 <div id="home_wrapper">
   <div id="first_layer">
     <h1 id="logo">SuperDevs</h1>
-
-    <p id="authentication_status">
-      <% if current_user %>
-          Logged in as <strong><%= current_user.username %></strong>
-          <%= link_to "Edit profile", edit_user_path(current_user) %> <span class="v_line">|</span>
-          <%= link_to "Logout", logout_path %>
-      <% else %>
-          <%= link_to "Register", register_path %> <span class="v_line">|</span>
-          <%= link_to "Log in", login_path %>
-      <% end %>
-    </p>
+    <%= render :partial => "shared/authentication_status" %>
   </div>
 
-  <% if flash[:notice] %>
-      <div class="in success">
-        <%= flash[:notice] %>
-      </div>
-  <% end %>
   <%= yield %>
 
-
-  <p id="footer"><a href="#">CONTACT US</a> <span class="v_line"> |</span> <%= link_to "LOGOUT", logout_url %></p>
-
+  <%= render :partial => "shared/footer" %>
 
 </div>
+<%= render :partial => "shared/user_feedback" %>
 </body>
 </html>
 

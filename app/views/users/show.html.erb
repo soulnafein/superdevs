@@ -27,15 +27,36 @@
     <ul id="online_presence">
       <% if not @user.twitter_username.to_s.empty? %>
         <li>
-          <a href="http://www.twitter.com/<%= @user.twitter_username %>">
-            <img src="/images/twitter.png"/>
+          <a target="_blank" href="http://www.twitter.com/<%= @user.twitter_username %>">
+            <img title="Twitter Account" alt="Twitter Account" src="/images/twitter.png"/>
           </a>
         </li>
       <% end %>
       <% if not @user.linkedin_profile.to_s.empty? %>
         <li>
-          <a href="<%= @user.linkedin_profile %>">
-            <img src="/images/linkedin.png"/>
+          <a target="_blank" href="<%= @user.linkedin_profile %>">
+            <img title="Linkedin Account" alt="Linkedin Account" src="/images/linkedin.png"/>
+          </a>
+        </li>
+      <% end %>
+      <% if not @user.delicious_username.to_s.empty? %>
+        <li>
+          <a target="_blank" href="http://www.delicious.com/<%= @user.delicious_username %>">
+            <img style="width:16px;" title="Delicious Account" alt="Delicious Account" src="/images/delicious.png"/>
+          </a>
+        </li>
+      <% end %>
+      <% if not @user.github_account.to_s.empty? %>
+        <li>
+          <a target="_blank" href="http://www.github.com/<%= @user.github_account %>">
+            <img style="width:16px;" title="Github Account" alt="Github Account" src="/images/github.gif"/>
+          </a>
+        </li>
+      <% end %>
+      <% if not @user.bitbucket_account.to_s.empty? %>
+        <li>
+          <a target="_blank" href="http://www.bitbucket.org/<%= @user.github_account %>">
+            <img style="width:16px;" title="Bitbucket Account" alt="Bitbucket Account" src="/images/bitbucket.gif"/>
           </a>
         </li>
       <% end %>
