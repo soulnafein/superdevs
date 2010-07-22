@@ -21,6 +21,15 @@ class User < ActiveRecord::Base
 
   attr_readonly :username, :email, :password, :password_confirmation
 
+  validates_presence_of :full_name
+  validate :must_accept_terms_and_conditions_and_privacy_policy
+
+  def must_accept_terms_and_conditions_and_privacy_policy
+    if not self.agreed_tc_and_pp
+      errors.add_to_base("You must agree to our Terms and Conditions and Privacy Policy")
+    end
+  end
+
   def profile_picture
     Gravatar.for_email(self.email)
   end
@@ -40,7 +49,7 @@ class User < ActiveRecord::Base
   end
 
   def self.all_active_users
-    User.where(:active => 1)
+    User.where("active <> 0")
   end
 
   def self.find_by_username_or_email(username_or_email)

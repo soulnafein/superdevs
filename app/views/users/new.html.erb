@@ -1,6 +1,7 @@
 <!-- Intro -->
 <div class="in forms">
-  <h3 class="highlighter">Signup for our private alpha release</h3>  
+  <h3 class="highlighter">Signup for our private alpha release</h3>
+
   <p class="intro">
     Superdevs combines your various profile and information from the web
     and it makes easy to get in touch with other developers with similar interests.
@@ -10,29 +11,40 @@
 <!-- Personal Information -->
 <div class="in forms">
   <%= form_for(@user) do |f| %>
-    <%= f.error_messages %>
-    <p>
-      <label for="full_name">YOUR UNIQUE USERNAME (e.g. kentb)</label><br/>
-      <%= f.text_field :username, :class => 'box' %>
-    </p>
+      <%= f.error_messages %>
+      <p>
+        <label for="username">YOUR UNIQUE USERNAME (e.g. kentb)</label><br/>
+        <%= f.text_field :username %>
+      </p>
 
-    <p>
-      <label for="email">EMAIL (e.g. kentbeck@gmail.com)</label><br/>
-      <%= f.text_field :email, :class => 'box' %>
-    </p>
+      <p>
+        <label for="full_name">YOUR FULL NAME (e.g. John Brown)</label><br/>
+        <%= f.text_field :full_name %>
+      </p>
 
-    <p>
-      <label for="password">PASSWORD</label><br/>
-      <%= f.password_field :password, :class => 'box' %>
-    </p>
+      <p>
+        <label for="email">EMAIL (e.g. kentbeck@gmail.com)</label><br/>
+        <%= f.text_field :email %>
+      </p>
 
-    <p>
-      <label for="email">PASSWORD CONFIRMATION</label><br/>
-      <%= f.password_field :password_confirmation, :class => 'box' %>
-    </p>
+      <p>
+        <label for="password">PASSWORD</label><br/>
+        <%= f.password_field :password %>
+      </p>
 
-    <p>
-      <%= f.submit "Request invite", :class => 'com_btn' %>
-    </p>
+      <p>
+        <label for="email">PASSWORD CONFIRMATION</label><br/>
+        <%= f.password_field :password_confirmation %>
+      </p>
+
+      <p>
+        In order to proceed you need to agree to our <%= link_to "Terms and Conditions", terms_and_conditions_url %>
+        and <%= link_to "Privacy Policy", privacy_policy_url %><br/>
+        <%= check_box_tag :agreed_tc_and_pp? %><label for="agreed_tc_and_pp">I agree</label>
+      </p>
+
+      <p>
+        <%= f.submit "Request invite" %>
+      </p>
   <% end %>
 </div>

@@ -4,6 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
   <%= csrf_meta_tag %>
   <title>SuperDevs</title>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
   <%= stylesheet_link_tag "application", "views/users/edit", "views/users/show", "views/users/index" %>
   <%= javascript_include_tag "lib/jquery-1.4.2.min", "lib/jquery.jgfeed-min", "twitter.js",
                              "blog_feed.js" %>
@@ -47,7 +48,7 @@
   </div>
 
 
-  <p id="footer"><a href="#">CONTACT US</a> <span class="v_line"> |</span> <a href="#">LOGOUT</a></p>
+  <p id="footer"><a href="#">CONTACT US</a> <span class="v_line"> |</span> <%= link_to "LOGOUT", logout_url %></p>
 
 
 </div>
