@@ -10,6 +10,7 @@ Superdevs::Application.routes.draw do |map|
   map.invitation_requested 'invitation_requested', :controller => 'pages', :action => 'invitation_requested'
   map.privacy_policy 'privacy_policy', :controller => 'pages', :action => 'privacy_policy'
   map.terms_and_conditions 'terms_and_conditions', :controller => 'pages', :action => 'terms_and_conditions'
+  map.contact_us 'contact_us', :controller => 'pages', :action => 'contact_us'
 
   get "home/index"
   get "pages/invitation_requested"

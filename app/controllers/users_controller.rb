@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
   private
   def load_user
-    @user = User.find_active(params[:id])
+    @user = User.find_active_by_username(params[:id])
   rescue UserNotFound
     render_404
   end

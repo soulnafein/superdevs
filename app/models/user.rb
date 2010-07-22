@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   acts_as_authentic
+  has_friendly_id :username
 
   attr_accessible :full_name,
                   :tagline,
@@ -44,8 +45,8 @@ class User < ActiveRecord::Base
     Gravatar.for_email(self.email, 50)
   end
 
-  def self.find_active(id)
-    user = User.where(:id => id).first || (raise UserNotFound)
+  def self.find_active_by_username(username)
+    user = User.where(:username => username).first || (raise UserNotFound)
     raise UserNotFound unless user.active?
     user
   end
