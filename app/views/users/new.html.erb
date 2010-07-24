@@ -40,7 +40,7 @@
       <p>
         In order to proceed you need to agree to our <%= link_to "Terms and Conditions", terms_and_conditions_url %>
         and <%= link_to "Privacy Policy", privacy_policy_url %><br/>
-        <%= check_box_tag :agreed_tc_and_pp %><label for="agreed_tc_and_pp">I agree</label>
+        <%= f.check_box :agreed_tc_and_pp %><label for="agreed_tc_and_pp">I agree</label>
       </p>
 
       <p>

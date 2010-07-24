@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  acts_as_authentic
+  acts_as_authentic do |config|
+    config.validates_format_of_login_field_options :with => /^([A-Z]|\d|[_])+$/i, :message => "should use only letters, numbers and underscore"
+  end
+  
   has_friendly_id :username
 
   attr_accessible :full_name,
@@ -20,7 +23,8 @@ class User < ActiveRecord::Base
                   :email,
                   :username,
                   :password,
-                  :password_confirmation
+                  :password_confirmation,
+                  :agreed_tc_and_pp
 
   attr_readonly :username, :email, :password, :password_confirmation
 
@@ -28,8 +32,8 @@ class User < ActiveRecord::Base
   validate :must_accept_terms_and_conditions_and_privacy_policy
 
   def must_accept_terms_and_conditions_and_privacy_policy
-    if not self.agreed_tc_and_pp
-      errors.add_to_base("You must agree to our Terms and Conditions and Privacy Policy")
+    if not self.agreed_tc_and_pp?
+      errors[:base] << "You must agree to our Terms and Conditions and Privacy Policy"
     end
   end
 
