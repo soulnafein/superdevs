@@ -1,7 +1,12 @@
 <script type="text/javascript" language="javascript">
   $(document).ready(function() {
-    $("#tweets").twitter_feed("<%= @user.twitter_username %>");
     $("#blog").blog_feed("<%= @user.blog_feed %>");
+    $("#tweets").tweet({
+        username: "<%= @user.twitter_username %>",
+        join_text: "auto",
+        avatar_size: 32,
+        count: 5
+    });
   })
 </script>
 <div class="in">
@@ -93,8 +98,6 @@
   <% if not @user.twitter_username.to_s.empty? %>
     <div id="tweets">
       <h4>Latest tweets</h4>
-      <ul>
-      </ul>
     </div>
   <% end %>
   <% if not @user.blog_feed.to_s.empty? %>

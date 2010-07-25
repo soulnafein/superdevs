@@ -102,6 +102,12 @@ div#tweets li
 {
   padding:10px 0;
   border-bottom:1px dashed #bab9b9;
+  line-height:18px;
+}
+
+div#tweets li img {
+    float: left;
+    margin-right: 5px;
 }
 
 /*...............Blog..............................*/
