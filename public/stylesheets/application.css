@@ -121,7 +121,7 @@ a:hover {
   float: left;
   background: url(/images/logo.png) no-repeat top left;
   line-height:120px;
-  text-indent:-1000px;
+  text-indent:-100000px;
   width:300px;
   margin:0;
 }
