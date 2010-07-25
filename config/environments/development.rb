@@ -22,5 +22,4 @@ Superdevs::Application.configure do
           :location => '/usr/sbin/sendmail'
   }
 
-  config.action_mailer.default_url_options = {:host => "superdevs.com"}
 end
