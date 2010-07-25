@@ -1,7 +1,7 @@
 (function($) {
 //
   $.fn.twitter_feed = function(username) {
-    var feed_url = 'http://api.twitter.com/statuses/user_timeline.atom?id='+username;
+    var feed_url = 'http://api.twitter.com/statuses/user_timeline.atom?screen_name='+username;
 
     var list = "";
 
