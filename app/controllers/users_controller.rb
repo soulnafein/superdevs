@@ -28,9 +28,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    if @user.full_name = "throw"
-      raise Exception("Experiment")
-    end
     @user.save!
     @user.deliver_activation_instructions!
     confirmation = url_for(:controller => :pages, :action => :invitation_requested)
