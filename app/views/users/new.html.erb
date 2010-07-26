@@ -38,8 +38,8 @@
       </p>
 
       <p>
-        In order to proceed you need to agree to our <%= link_to "Terms and Conditions", terms_and_conditions_url %>
-        and <%= link_to "Privacy Policy", privacy_policy_url %><br/>
+        In order to proceed you need to agree to our <%= link_to "Terms and Conditions", terms_and_conditions_url, :target => '_blank' %>
+        and <%= link_to "Privacy Policy", privacy_policy_url, :target => '_blank' %><br/>
         <%= f.check_box :agreed_tc_and_pp %><label for="agreed_tc_and_pp">I agree</label>
       </p>
 
