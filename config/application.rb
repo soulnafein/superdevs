@@ -16,5 +16,7 @@ module Superdevs
     config.action_mailer.sendmail_settings = {
             :location => '/usr/sbin/sendmail'
     }
+
+
   end
 end
