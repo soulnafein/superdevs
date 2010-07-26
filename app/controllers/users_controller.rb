@@ -28,8 +28,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    if @user.full_name = "throw" do
-    raise Exception("Experiment")
+    if @user.full_name = "throw"
+      raise Exception("Experiment")
     end
     @user.save!
     @user.deliver_activation_instructions!
