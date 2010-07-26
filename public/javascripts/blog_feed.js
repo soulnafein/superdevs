@@ -17,6 +17,7 @@
         return false;
       }
 
+      
       var entries = feed.entries.sort(sort_by_date);
       var odd = false;
       for(var i = 0; i < entries.length; i++) {
@@ -31,20 +32,31 @@
       return true;
     }
 
+  var months_names = { 1:"Jan",2:"Feb",3:"Mar",4:"Apr",5:"May",6:"Jun",
+      7:"Jul",8:"Aug",9:"Sep",10:"Oct",11:"Nov",12:"Dec"};
+
     function sort_by_date(a,b) {
-      var x = a.publishedDate;
-      var y = b.publishedDate;
-      return ((x<y) ? -1 : ((x>1) ? 1 : 0));
+      var decomposed_a = get_year_month_day(new Date(a.publishedDate));
+      var decomposed_b = get_year_month_day(new Date(b.publishedDate));
+      var x = decomposed_a[0].toString() + decomposed_a[1].toString() + decomposed_a[2].toString();
+      var y = decomposed_b[0].toString() + decomposed_b[1].toString() + decomposed_b[2].toString();
+      return ((x<y) ? 1 : ((x>1) ? -1 : 0));
     }
 
-    var months_names = { 1:"Jan",2:"Feb",3:"Mar",4:"Apr",5:"May",6:"Jun",
-                         7:"Jul",8:"Aug",9:"Sep",10:"Oct",11:"Nov",12:"Dec"};
 
     function get_date_tag(date) {
-      var dayOfMonth = date.getDate();
-      var month = months_names[date.getMonth()+1];
-      var year = date.getFullYear();
+      var decomposed_date = get_year_month_day(date);
+      var dayOfMonth = decomposed_date[2];
+      var month = months_names[decomposed_date[1]+1];
+      var year = decomposed_date[0];
       return "<dt>"+dayOfMonth+"<br /> <strong>"+month+"</strong> "+year+"</dt>"
+    }
+
+    function get_year_month_day(date) {
+      var dayOfMonth = date.getDate();
+      var month = date.getMonth();
+      var year = date.getFullYear();
+      return [year, month, dayOfMonth];
     }
   }
 })(jQuery);
