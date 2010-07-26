@@ -29,13 +29,17 @@ class User < ActiveRecord::Base
   attr_readonly :username, :email, :password, :password_confirmation
 
   validates_presence_of :full_name
-  validate :must_accept_terms_and_conditions_and_privacy_policy
 
+  validate :must_accept_terms_and_conditions_and_privacy_policy
   def must_accept_terms_and_conditions_and_privacy_policy
     if not self.agreed_tc_and_pp?
       errors[:base] << "You must agree to our Terms and Conditions and Privacy Policy"
     end
   end
+
+  validates :website, :valid_url => true
+  validates :blog_feed, :valid_url => true
+  validates :linkedin_profile, :valid_url => true
 
   def profile_picture
     Gravatar.for_email(self.email)
