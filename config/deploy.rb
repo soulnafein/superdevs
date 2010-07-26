@@ -29,7 +29,7 @@ namespace :deploy do
 
   desc "run 'bundle install' to install Bundler's packaged gems for the current deploy"
   task :bundle_install, :roles => :app do
-    run "cd #{release_path} && bundle install"
+    run "cd #{release_path} && sudo -i bundle install"
   end
 end
 
