@@ -131,6 +131,8 @@ a:hover {
     height:120px;
     width:300px;
     opacity:0;
+    -moz-opacity: .5;
+    filter: alpha(opacity=0);
     position:absolute;
     display:block;
 }
