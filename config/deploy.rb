@@ -24,7 +24,7 @@ after "deploy:update_code", "deploy:bundle_install"
 namespace :deploy do
   desc "installs Bundler if it is not already installed"
   task :install_bundler, :roles => :app do
-    sudo "sh -c 'if [ -z `which bundle` ]; then echo Installing Bundler; gem install bundler; fi'"
+    sudo "sh -c 'if [ -z `which bundle` ]; then echo Installing Bundler; sudo gem install bundler; fi'"
   end
 
   desc "run 'bundle install' to install Bundler's packaged gems for the current deploy"
