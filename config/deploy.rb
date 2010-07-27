@@ -1,7 +1,7 @@
 set :application, "superdevs"
 set :user, "dsantoro"
 default_run_options[:pty] = true
-
+set :use_sudo, true
 set :repository,  "git@github.com:soulnafein/superdevs.git"
 set :scm, :git
 set :scm_username, "soulnafein@gmail.com"

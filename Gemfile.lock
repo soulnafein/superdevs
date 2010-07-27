@@ -1,5 +1,5 @@
 --- 
-hash: 21f97fa5ca48f6fc21c73b101e1a7d8e50aac39f
+hash: aff965c1f23c7301114ac3bfc0e3529021a1368a
 sources: 
 - Git: 
     git: git://github.com/rails/exception_notification
@@ -64,6 +64,10 @@ specs:
 - exception_notification: 
     version: 1.0.0
     source: 0
+- uuidtools: 
+    version: 2.1.1
+- feedtools: 
+    version: 0.2.29
 - friendly_id: 
     version: 3.0.5
 - mysql: 
@@ -127,3 +131,7 @@ dependencies:
     version: = 2.0.0.beta.16
     group: 
     - :test
+  feedtools: 
+    version: ">= 0"
+    group: 
+    - :default
