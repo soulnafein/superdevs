@@ -135,6 +135,7 @@ a:hover {
     filter: alpha(opacity=0);
     position:absolute;
     display:block;
+    text-align:left;
 }
 
 #authentication_status {

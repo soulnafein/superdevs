@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
   attr_accessible :full_name,
                   :tagline,
                   :bio,
-                  :location,
                   :company,
                   :job_title,
                   :website,
@@ -24,7 +23,9 @@ class User < ActiveRecord::Base
                   :username,
                   :password,
                   :password_confirmation,
-                  :agreed_tc_and_pp
+                  :agreed_tc_and_pp,
+                  :city,
+                  :country
 
   attr_readonly :username, :email, :password, :password_confirmation
 
@@ -40,6 +41,12 @@ class User < ActiveRecord::Base
   validates :website, :valid_url => true
   validates :blog_feed, :valid_url => true
   validates :linkedin_profile, :valid_url => true
+
+
+  def location
+    city_and_country = [self.city.to_s, self.country.to_s].reject {|x| x.empty?}
+    city_and_country.join(", ")
+  end
 
   def profile_picture
     Gravatar.for_email(self.email)

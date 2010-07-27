@@ -93,4 +93,24 @@ describe User do
       user.errors[:blog_feed].should be_empty
     end
   end
+
+  context "When requesting the location" do
+    it "should show a combination of City and Country" do
+      user = User.new(:country => 'United Kingdom', :city => 'Hitchin')
+
+      user.location.should == "Hitchin, United Kingdom"
+    end
+
+    it "should not show separator when only the city is provided" do
+      user = User.new(:country => '', :city => 'Hitchin')
+
+      user.location.should == "Hitchin"
+    end
+
+    it "should not show separator when only the country is provided" do
+      user = User.new(:country => 'United Kingdom', :city => '')
+
+      user.location.should == "United Kingdom"
+    end
+  end
 end

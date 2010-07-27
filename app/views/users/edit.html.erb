@@ -39,8 +39,14 @@
     </div>
 
     <p>
-      <label for="location">LOCATION (e.g. London, United Kingdom)<br/>
-        <%= f.text_field :location %>
+      <label for="country">COUNTRY<br/>
+        <%= country_select :user, :country, {:include_blank => true} %>
+      </label>
+    </p>
+
+    <p>
+      <label for="location">CITY (e.g. San Francisco)<br/>
+        <%= f.text_field :city %>
       </label>
     </p>
 

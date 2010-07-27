@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100722132100) do
+ActiveRecord::Schema.define(:version => 20100727095041) do
 
   create_table "users", :force => true do |t|
     t.string   "full_name"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(:version => 20100722132100) do
     t.boolean  "agreed_tc_and_pp",   :default => false
     t.string   "bitbucket_account"
     t.string   "delicious_username"
+    t.string   "country"
+    t.string   "city"
   end
 
 end
