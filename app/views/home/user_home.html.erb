@@ -1,0 +1,21 @@
+<% current_tab("home") %>
+<div class="in">
+  <% unless @events.empty? %>
+      <div class="information">
+        <h4>Hello there!</h4>
+        <p>We picked up the best upcoming talks, dojos, conferences and other events in <strong><%= current_user.country %></strong>.
+        <br />Soon we will filter them based on your interests.</p>
+      </div>
+  <% end %>
+  <h2>Welcome back, <%= current_user.full_name %>!</h2>
+
+  <% if current_user.country.to_s.empty? %>
+    <h3>I cannot suggest events for you because you did not select a country in your profile.</h3>
+    <p>Please <%= link_to "choose a country", edit_user_url(current_user) %></p>
+  <% elsif @events.empty? %>
+    <h3>There aren't planned events in <%= current_user.country %> at the moment</h3>
+    <p>Would you like us to add an event in your country? <%= link_to "Just let us know", contact_us_url %>.</p>
+  <% else %>
+      <%= render :partial => "events" %>
+  <% end %>
+</div>

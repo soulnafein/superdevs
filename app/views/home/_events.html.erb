@@ -1,0 +1,20 @@
+<div id="events">
+  <h3>Upcoming talks, meetup and other events</h3>
+  <dl style="float: left;">
+    <% @events.each do |event| %>
+        <dt><%= event.date.day %>
+          <br> <strong><%= Date::ABBR_MONTHNAMES[event.date.month] %></strong> <%= event.date.year %></dt>
+        <dd>
+          <ul>
+            <li class="<%= cycle('even', 'odd') %>"><a href="<%= event.link %>" target="_blank">
+              <h5><%= event.title %></h5></a>
+              <h6><%= event.city.capitalize %></h6>
+
+              <p>
+                <%= event.description %></p></li>
+          </ul>
+        </dd>
+    <% end %>
+  </dl>
+  <div style="clear: both;"></div>
+</div>

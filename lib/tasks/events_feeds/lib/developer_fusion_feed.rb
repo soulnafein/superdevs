@@ -14,8 +14,8 @@ class DeveloperFusionFeed
 
   private
   def parse_title_date_city_country_from_title(title)
-    date_city_country = Regexp.new(/^(.*) - ([^\s]+ [^\s]+ [^\s]+) in \(([^,]+), ([^)]+)\)$/)
-    matches = date_city_country.match(title)
+    title_date_city_country = Regexp.new(/^(.*) - ([^\s]+ [^\s]+ [^\s]+) in \(([^,]+), ([^)]+)\)$/)
+    matches = title_date_city_country.match(title)
     matches.to_a[1..-1]
   end
 

@@ -5,7 +5,7 @@
   <%= csrf_meta_tag %>
   <title><%= yield(:title) || "SuperDevs" %></title>
   <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAHj3-AxzLoN6nByzD95Qs9RSOljxHAIcaB6bpmeLQ3ja_Urx1LhQUqo1n97ZB_-dbUmm8nc93jgOCBw"></script>
-  <%= stylesheet_link_tag "application", "views/users/edit", "views/users/show", "views/users/index" %>
+  <%= stylesheet_link_tag "application", "views/home/user_home", "views/users/edit", "views/users/show", "views/users/index" %>
   <%= javascript_include_tag "lib/jquery-1.4.2.min", "lib/jquery.jgfeed-min", "lib/jquery.tweet.js",
                              "blog_feed.js" %>
   <%= render :partial => "shared/google_analytics" %>
@@ -23,8 +23,8 @@
 
   <div id="navigation">
     <ul>
-      <li><a href="<%= root_url %>">HOME</a></li>
-      <li><a href="<%= users_path %>" class="active">PEOPLE</a></li>
+      <li><a href="<%= root_url %>" <%= yield(:current_tab) == "home" ? "class='active'" : '' %>>HOME</a></li>
+      <li><a href="<%= users_path %>" <%= yield(:current_tab) != "home" ? "class='active'" : '' %>>PEOPLE</a></li>
     </ul>
   </div>
 
