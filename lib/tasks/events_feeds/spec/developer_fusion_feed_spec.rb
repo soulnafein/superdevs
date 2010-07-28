@@ -5,11 +5,14 @@ describe DeveloperFusionFeed do
     RSS::Parser.stub!(:parse).
             with(URI.parse("http://www.developerfusion.com/community/events/europe/gb/format/atom/")).
             and_return(mock_feed)
+    RSS::Parser.stub!(:parse).
+            with(URI.parse("http://www.developerfusion.com/community/events/north-america/us/format/atom/")).
+            and_return(mock_feed)
     @events = DeveloperFusionFeed.new.get_events
   end
 
-  it "should creates events for each item in the feed" do
-    @events.size.should == 2
+  it "should creates events for each item in the feeds" do
+    @events.size.should == 4
   end
 
   it "should parse country from title" do
@@ -64,6 +67,7 @@ describe DeveloperFusionFeed do
       mock_title = mock(:title)
       mock_title.stub!(:content => item[:title])
       mock_item.stub!(:title => mock_title)
+      mock_item.stub!(:to_ary => nil)
       mock_summary = mock(:summary)
       mock_summary.stub!(:content => item[:summary])
       mock_item.stub!(:summary => mock_summary)
