@@ -12,10 +12,10 @@ class Event < ActiveRecord::Base
   end
 
   def self.get_events_for_user_city(user)
-    get_events_for_user_country(user).where("upper(city) = ?", user.city.upcase)
+    get_events_for_user_country(user).where("upper(city) = ?", user.city.to_s.upcase)
   end
 
   def self.get_events_for_user_country(user)
-    Event.where("upper(country) = ? and date > ?", user.country.upcase, Time.now).order("date ASC")
+    Event.where("upper(country) = ? and date > ?", user.country.to_s.upcase, Time.now).order("date ASC")
   end
 end
