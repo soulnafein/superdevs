@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.get_events_for_user(user)
-    Event.where(:country => user.country).order('date ASC')
+    events = Event.where("country = ? and date > ?", user.country, Time.now).order("date ASC")
+    events.where("city = 'London'")
   end
 end

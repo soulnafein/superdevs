@@ -10,7 +10,8 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
 #require everything in lib
 #Dir["#{File.dirname(__FILE__)}/../lib/**/*.rb"].each {|f| require f}
-require File.expand_path(File.dirname(__FILE__)+"/../lib/developer_fusion_feed") 
+require File.expand_path(File.dirname(__FILE__)+"/../lib/developer_fusion_feed")
+require File.expand_path(File.dirname(__FILE__)+"/../lib/meetup_feed")
 
 Rspec.configure do |config|
   config.mock_with :rspec

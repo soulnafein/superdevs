@@ -3,7 +3,6 @@ require 'spec_helper'
 describe DeveloperFusionFeed do
   before :each do
     RSS::Parser.stub!(:parse).
-            with(URI.parse("http://www.developerfusion.com/community/events/europe/gb/format/atom/")).
             and_return(mock_feed)
     RSS::Parser.stub!(:parse).
             with(URI.parse("http://www.developerfusion.com/community/events/north-america/us/format/atom/")).
