@@ -6,7 +6,16 @@ class Event < ActiveRecord::Base
   end
 
   def self.get_events_for_user(user)
-    events = Event.where("country = ? and date > ?", user.country, Time.now).order("date ASC")
-    events.where("city = 'London'")
+    events = get_events_for_user_city(user)
+    events = get_events_for_user_country(user) if events.empty?
+    events
+  end
+
+  def self.get_events_for_user_city(user)
+    get_events_for_user_country(user).where("upper(city) = ?", user.city.upcase)
+  end
+
+  def self.get_events_for_user_country(user)
+    Event.where("upper(country) = ? and date > ?", user.country.upcase, Time.now).order("date ASC")
   end
 end

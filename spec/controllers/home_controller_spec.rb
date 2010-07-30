@@ -15,7 +15,7 @@ describe HomeController do
     end
 
     it "should show a personalised home page" do
-      Event.stub!(:get_events_for_user).and_return([])
+      Event.stub!(:get_events_for_user_city).and_return([Event.new])
       
       get 'index'
 
@@ -23,14 +23,33 @@ describe HomeController do
       response.should render_template("user_home")
     end
 
-    it "should load a set of personalised events" do
-      expected_events = [Event.new]
-      Event.stub!(:get_events_for_user).with(mock_user).and_return(expected_events)
+    context "When showing events" do
+      it "should provide events for the user city" do
+        expected_events = [Event.new]
+        Event.stub!(:get_events_for_user_city).with(mock_user).and_return(expected_events)
 
-      get 'index'
+        get 'index'
 
-      assigns[:events].should_not be_nil
-      assigns[:events].should == expected_events
+        assigns[:user_events].should_not be_nil
+        assigns[:user_events].events.should == expected_events
+        assigns[:user_events].location.should == "London, United Kingdom"
+      end
+
+      it "should get events from the all country if there are not events for the user's city" do
+        expected_events = [Event.new]
+        Event.stub!(:get_events_for_user_city).with(mock_user).and_return([])
+        Event.stub!(:get_events_for_user_country).with(mock_user).and_return(expected_events)
+
+        get 'index'
+
+        assigns[:user_events].should_not be_nil
+        assigns[:user_events].events.should == expected_events
+        assigns[:user_events].location.should == "United Kingdom"
+      end
+
+      it "should notify the page that events for the all country has been loaded" do
+        
+      end
     end
 
     private
@@ -41,7 +60,9 @@ describe HomeController do
     end
 
     def mock_user(stubs={})
-      @mock_user ||= mock_model(User, stubs).as_null_object
+      user = User.new(:username => 'dsantoro', :full_name => 'David Santoro',
+                      :country => 'United Kingdom', :city => 'London')
+      @mock_user ||= user
     end
   end
 end
