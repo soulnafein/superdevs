@@ -1,21 +1,46 @@
 <% current_tab("home") %>
 <div class="in">
-  <% unless @user_events.empty? %>
-      <div class="information">
-        <h4>Hello there!</h4>
-        <p>We picked up the best upcoming talks, dojos, conferences and other events in <strong><%= @user_events.location %></strong>.
-        <br />Soon we will filter them based on your interests.</p>
-      </div>
-  <% end %>
-  <h2>Welcome back, <%= current_user.full_name %>!</h2>
+  <div id="left_column">
+    <h2>Welcome back, <%= current_user.full_name %>!</h2>
 
-  <% if current_user.country.to_s.empty? %>
-    <h3>I cannot suggest events for you because you did not select a country in your profile.</h3>
-    <p>Please <%= link_to "choose a country", edit_user_url(current_user) %></p>
-  <% elsif @user_events.empty? %>
-    <h3>There aren't planned events in <%= current_user.country %> at the moment</h3>
-    <p>Would you like us to add an event to our list? <%= link_to "Just let us know", contact_us_url %>.</p>
-  <% else %>
-      <%= render :partial => "events" %>
-  <% end %>
+    <% if current_user.country.to_s.empty? %>
+        <h3>I cannot suggest events for you because you did not select a country in your profile.</h3>
+
+        <p>Please <%= link_to "choose a country", edit_user_url(current_user) %></p>
+    <% elsif @user_events.empty? %>
+        <h3>There aren't planned events in <%= current_user.country %> at the moment</h3>
+
+        <p>Would you like us to add an event to our list? <%= link_to "Just let us know", contact_us_url %>.</p>
+    <% else %>
+        <%= render :partial => "events" %>
+    <% end %>
+  </div>
+  <div id="right_column">
+    <% unless @user_events.empty? %>
+        <div class="information">
+          <h4>Hello there!</h4>
+
+          <p>We picked up the best upcoming talks, dojos, conferences and other events in
+            <strong><%= @user_events.location %></strong>.
+            <br/>Soon we will filter them based on your interests.</p>
+        </div>
+    <% end %>
+    <% unless current_user.following.empty? %>
+        <div id="following" class="relationships">
+          <h3>Following</h3>
+          <% current_user.following.each do |u| %>
+              <a href="<%= user_path(u) %>" title="<%= u.full_name %>"><%= raw(u.small_profile_picture.to_html) %></a>
+          <% end %>
+        </div>
+    <% end %>
+    <% unless current_user.followers.empty? %>
+        <div id="followers" class="relationships">
+          <h3>Followers</h3>
+          <% current_user.followers.each do |u| %>
+              <a href="<%= user_path(u) %>" title="<%= u.full_name %>"><%= raw(u.small_profile_picture.to_html) %></a>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
+  <div style="clear:both;"></div>
 </div>

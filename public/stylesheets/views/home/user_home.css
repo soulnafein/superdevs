@@ -1,3 +1,13 @@
+div#left_column {
+    width:580px;
+    float:left;
+}
+
+div#right_column {
+    float:left;
+    width:250px;
+}
+
 div#events {
 }
 
@@ -67,7 +77,6 @@ div#events li.odd {
 
 div.information {
     background-color:#464646;
-    float:right;
     width: 250px;
     padding: 10px;
     color:white;
@@ -87,3 +96,11 @@ div.information p {
 div.information strong {
     color:#F7941D;
 }
+
+div.relationships {
+    margin: 10px 0;
+}
+div.relationships h3 {
+    display:block;
+}
+

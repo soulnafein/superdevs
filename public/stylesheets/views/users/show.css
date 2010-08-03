@@ -46,6 +46,10 @@ div#contacts
   float:right;
 }
 
+div#contacts form {
+    text-align:center;
+}
+
 div#contacts h5 {
   font-size:14px;
   margin:2px 0;

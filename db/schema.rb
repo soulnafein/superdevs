@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100802111059) do
+ActiveRecord::Schema.define(:version => 20100803145838) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(:version => 20100802111059) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "date"
+  end
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "rpx_identifiers", :force => true do |t|

@@ -43,7 +43,6 @@ class User < ActiveRecord::Base
   validates :blog_feed, :valid_url => true
   validates :linkedin_profile, :valid_url => true
 
-
   def location
     city_and_country = [self.city.to_s, self.country.to_s].reject {|x| x.empty?}
     city_and_country.join(", ")
@@ -98,6 +97,24 @@ class User < ActiveRecord::Base
   def deliver_password_reset_instructions!
     reset_perishable_token!
     Notifier.deliver_password_reset_instructions(self)
+  end
+
+  def start_following(user)
+    Relationship.create(:follower_id => self.id, :followed_id => user.id)  
+  end
+
+  def followers
+    followers = Relationship.where(:followed_id => self.id).map { |r| r.follower_id }
+    User.all_active_users.find_all { |u| followers.include?(u.id) }
+  end
+
+  def following
+    followed = Relationship.where(:follower_id => self.id).map { |r| r.followed_id }
+    User.all_active_users.find_all { |u| followed.include?(u.id) } 
+  end
+
+  def following?(user)
+    self.followers.include?(user) or user == self 
   end
 end
 

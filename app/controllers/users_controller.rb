@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:edit, :edit_mandatory_details, :complete_registration, :update]
+  before_filter :require_user, :only => [:edit, :follow, :edit_mandatory_details, :complete_registration, :update]
 
   def index
     @users = User.all_active_users
@@ -58,6 +58,14 @@ class UsersController < ApplicationController
     else
       render :action => 'edit'
     end
+  end
+
+  #TODO: naughty! not tested
+  def follow
+    load_user
+    follower = current_user
+    follower.start_following(@user)
+    redirect_to user_url(@user), :notice => "You are now following #{@user.full_name}"
   end
 
   private
