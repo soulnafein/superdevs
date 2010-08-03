@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     current_user.email = params[:user][:email]
     current_user.username = params[:user][:username]
     current_user.full_name = params[:user][:full_name]
+    current_user.agreed_tc_and_pp = params[:user][:agreed_tc_and_pp]
     current_user.save!
     redirect_to(current_user, :notice => 'Registration complete.')
   rescue ActiveRecord::RecordInvalid
