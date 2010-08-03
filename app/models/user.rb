@@ -99,8 +99,13 @@ class User < ActiveRecord::Base
     Notifier.deliver_password_reset_instructions(self)
   end
 
+  def deliver_new_follower_notification!(follower)
+    Notifier.deliver_new_follower_notification(self, follower)
+  end
+
   def start_following(user)
-    Relationship.create(:follower_id => self.id, :followed_id => user.id)  
+    Relationship.create(:follower_id => self.id, :followed_id => user.id)
+    user.deliver_new_follower_notification!(self)
   end
 
   def followers
@@ -114,7 +119,7 @@ class User < ActiveRecord::Base
   end
 
   def following?(user)
-    self.following.include?(user) or user == self 
+    self.following.include?(user) or user == self
   end
 end
 
