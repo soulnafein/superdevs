@@ -113,4 +113,20 @@ describe User do
       user.location.should == "United Kingdom"
     end
   end
+
+  context "When asking whether the registration process is complete" do
+    it "should be completed when it's a valid model" do
+      user = User.new(:username => 'Whatever', :full_name => 'Something',
+                      :password => 'xyz123', :password_confirmation => 'xyz123',
+                      :email => 'soulnafein@gmail.com', :agreed_tc_and_pp => true)
+
+      user.registration_complete?.should be_true
+    end
+
+    it "should not be completed when it's an invalid model" do
+      user = User.new(:username => 'whatever')
+
+      user.registration_complete?.should be_false
+    end
+  end
 end

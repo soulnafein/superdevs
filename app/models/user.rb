@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
   acts_as_authentic do |config|
     config.validates_format_of_login_field_options :with => /^([A-Z]|\d|[_])+$/i, :message => "should use only letters, numbers and underscore"
+    config.account_merge_enabled true
+    config.account_mapping_mode :internal
   end
-  
+
+
   has_friendly_id :username
 
   attr_accessible :full_name,
@@ -26,8 +29,6 @@ class User < ActiveRecord::Base
                   :agreed_tc_and_pp,
                   :city,
                   :country
-
-  attr_readonly :username, :email, :password, :password_confirmation
 
   validates_presence_of :full_name
 
@@ -61,18 +62,22 @@ class User < ActiveRecord::Base
   end
 
   def self.find_active_by_username(username)
-    user = User.where(:username => username).first || (raise UserNotFound)
+    user = User.where(:username => username).find {|u| u.registration_complete? } || (raise UserNotFound)
     raise UserNotFound unless user.active?
     user
   end
 
   def self.all_active_users
-    User.where("active <> 0")
+    User.where("active <> 0").find_all { |u| u.registration_complete? }
   end
 
   def self.find_by_username_or_email(username_or_email)
     User.where(:email => username_or_email).first ||
     User.where(:username => username_or_email).first
+  end
+
+  def registration_complete?
+    self.valid?
   end
 
   def activate!

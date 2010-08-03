@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100727163557) do
+ActiveRecord::Schema.define(:version => 20100802111059) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(:version => 20100727163557) do
     t.datetime "updated_at"
     t.datetime "date"
   end
+
+  create_table "rpx_identifiers", :force => true do |t|
+    t.string   "identifier",    :null => false
+    t.string   "provider_name"
+    t.integer  "user_id",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rpx_identifiers", ["identifier"], :name => "index_rpx_identifiers_on_identifier", :unique => true
+  add_index "rpx_identifiers", ["user_id"], :name => "index_rpx_identifiers_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "full_name"

@@ -1,6 +1,6 @@
 <!-- Intro -->
 <div class="in forms">
-  <h3 class="highlighter">Signup for our private alpha release</h3>
+  <h3 class="highlighter">Join us using an existing account</h3>
 
   <p class="intro">
     Superdevs combines your various profile and information from the web
@@ -10,41 +10,9 @@
 </div>
 <!-- Personal Information -->
 <div class="in forms">
-  <%= form_for(@user) do |f| %>
-      <%= f.error_messages %>
-      <p>
-        <label for="username">YOUR UNIQUE USERNAME (e.g. kentb)</label><br/>
-        <%= f.text_field :username %>
-      </p>
-
-      <p>
-        <label for="full_name">YOUR FULL NAME (e.g. John Brown)</label><br/>
-        <%= f.text_field :full_name %>
-      </p>
-
-      <p>
-        <label for="email">EMAIL (e.g. kentbeck@gmail.com)</label><br/>
-        <%= f.text_field :email %>
-      </p>
-
-      <p>
-        <label for="password">PASSWORD</label><br/>
-        <%= f.password_field :password %>
-      </p>
-
-      <p>
-        <label for="email">PASSWORD CONFIRMATION</label><br/>
-        <%= f.password_field :password_confirmation %>
-      </p>
-
-      <p>
-        In order to proceed you need to agree to our <%= link_to "Terms and Conditions", terms_and_conditions_url, :target => '_blank' %>
-        and <%= link_to "Privacy Policy", privacy_policy_url, :target => '_blank' %><br/>
-        <%= f.check_box :agreed_tc_and_pp %><label for="agreed_tc_and_pp">I agree</label>
-      </p>
-
-      <p>
-        <%= f.submit "Request invite" %>
-      </p>
-  <% end %>
+  <p>
+    We are sure you are glad we got rid of old clunky registration forms.
+    Please use one of the accounts below or register a new OpenID one.
+  </p>
+  <iframe src="http://superdevs.rpxnow.com/openid/embed?token_url=<%= user_sessions_url %>" scrolling="no" frameBorder="no" allowtransparency="true" style="width:400px;height:240px"></iframe>
 </div>
