@@ -114,7 +114,7 @@ class User < ActiveRecord::Base
   end
 
   def following?(user)
-    self.followers.include?(user) or user == self 
+    self.following.include?(user) or user == self 
   end
 end
 
