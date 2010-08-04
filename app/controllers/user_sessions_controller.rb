@@ -20,7 +20,7 @@ class UserSessionsController < ApplicationController
         redirect_to root_url, :notice => "Successfully logged in"
       else
         flash[:notice] = "Welcome back! Please complete required registration details before continuing.."
-        redirect_to edit_mandatory_details
+        redirect_to edit_mandatory_details_url
       end
     end
   #rescue Authlogic::Session::Existence::SessionInvalidError
