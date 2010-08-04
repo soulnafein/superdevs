@@ -40,30 +40,6 @@ describe UsersController do
     end
   end
 
-  describe "PUT 'complete_registration'" do
-    before :each do
-      UserSession.stub(:find).and_return(mock_session)
-    end
-
-    it "should update current user" do
-      valid_info = {:user => {"username" => "soulnafein", "email" => "soulnafe@gmail.com", "password" => "test", "password_confirmation" => 'test'}}
-      mock_user.should_receive(:update_attributes!).with(valid_info[:user])
-
-      put 'complete_registration', valid_info
-
-      response.should redirect_to user_url(mock_user)
-    end
-
-    it "should go back to form in case of errors" do
-      mock_user.should_receive(:update_attributes!).and_raise(ActiveRecord::RecordInvalid.new(mock_user_with_errors))
-      invalid_info = {:user => {"username" => "soulnafein", "email" => "soulnafe@gmail.com.", "password" => "test", "password_confirmation" => 'testsss'}}
-
-      put 'complete_registration', invalid_info
-
-      response.should render_template(:edit_mandatory_details)
-    end
-  end
-
   describe "PUT 'update'" do
     before :each do
       UserSession.stub(:find).and_return(mock_session)
