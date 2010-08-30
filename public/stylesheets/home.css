@@ -1,100 +1,106 @@
 body {
-    margin: 0;
+  margin: 0;
 }
 
 #first_layer {
-    margin: 0 auto;
-    width: 900px;
+  margin: 0 auto;
+  width: 900px;
 }
 
 #footer_layer {
-    margin: 0 auto;
-    width: 900px;
+  margin: 0 auto;
+  width: 900px;
 }
 
 #second_layer {
-    margin: 0 auto;
-    width: 900px;
-    background: url(/images/superdev.png) top right no-repeat;
-    height: 372px;
-    clear: both;
+  margin: 0 auto;
+  width: 900px;
+  background: url(/images/superdev.png) top right no-repeat;
+  height: 372px;
+  clear: both;
 }
 
 #third_layer {
-    border-top: 20px solid #30a4b1;
-    border-bottom: 20px solid #30a4b1;
-    padding: 10px 0;
-    background-color: #464646;
-    color: white;
+  border-top: 20px solid #30a4b1;
+  border-bottom: 20px solid #30a4b1;
+  padding: 10px 0;
+  background-color: #464646;
+  color: white;
 }
 
 #key_points {
-    margin: 0 auto;
-    width: 900px;
+  margin: 0 auto;
+  width: 900px;
 }
 
 #key_points div {
-    width: 290px;
-    text-align: left;
-    padding: 5px;
-    line-height: 21px;
+  width: 290px;
+  text-align: left;
+  padding: 5px;
+  line-height: 21px;
+}
+
+p {
+  font-size:16px;
 }
 
 #introduction {
-    text-align: left;
-    width: 550px;
-    line-height: 36px;
-    padding-top: 1px;
+  text-align: left;
+  width: 550px;
+  line-height: 40px;
+  padding-top: 40px;
 }
 
 h2 {
-    font-family: Lucida Grande, Arial, sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 36px;
+  font-family: Lucida Grande, Arial, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
 }
 
 h3 {
-    font-family: Lucida Grande, Arial, sans-serif;
-    font-size: 24px;
-    color: #666666;
+  font-family: Lucida Grande, Arial, sans-serif;
+  font-size: 24px;
+  color: #666666;
 }
 
 h4 {
-    margin-top: 0;
-    text-align: center;
+  margin: 0;
+  text-align: center;
+  color: white;
+  font-size:24px;
+  line-height:40px;
 }
 
-
 #introduction_links {
-    font-size: 24px;
-    line-height: 24px;
-    margin:60px 0 0 60px;
+  font-size: 24px;
+  line-height: 24px;
+  margin: 60px 0 0 60px;
 }
 
 #introduction_links a {
-    text-align: center;
-    color: white;
-    vertical-align:middle;
-    font-weight:bold;
-    height: 50px;
-    padding: 10px;
+  text-align: center;
+  color: white;
+  vertical-align: middle;
+  font-weight: bold;
+  height: 50px;
+  padding: 10px;
 }
 
 #introduction_links a:hover {
-    text-decoration:underline;
+  text-decoration: underline;
 }
 
 #join_us_link {
-    text-align: center;
-    margin: 40px auto 0;
-    width: 150px;
-    background-color: #f7941d;
+  text-align: center;
+  margin: 40px auto 0;
+  width: 150px;
+  background-color: #f7941d;
 }
 
 #see_users {
-    text-align: center;
-    margin: 40px auto 0;
-    width: 150px;
-    background-color: #30a4b1;
+  text-align: center;
+  margin: 40px auto 0;
+  width: 150px;
+  background-color: #30a4b1;
 }

@@ -1,7 +1,7 @@
 require 'digest/md5'
 
 class Gravatar
-  def self.for_email(email, size=147)
+  def self.for_email(email, size=160)
     Gravatar.new(email,size)
   end
   
