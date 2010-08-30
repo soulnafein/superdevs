@@ -2,6 +2,7 @@
 
 div#profile {
   float: left;
+  width:630px;
 }
 
 div#profile_picture {
