@@ -33,9 +33,9 @@ namespace :deploy do
 end
 
 set :default_environment, {
-  'PATH' => "/usr/local/rvm/gems/ruby-1.9.2-rc2/bin:/usr/local/rvm/gems/ruby-1.9.2-rc2@global/bin:/usr/local/rvm/rubies/ruby-1.9.2-rc2/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games",
-  'RUBY_VERSION' => 'ruby 1.9.2-rc2',
-  'GEM_HOME'     => '/usr/local/rvm/gems/ruby-1.9.2-rc2',
-  'GEM_PATH'     => '/usr/local/rvm/gems/ruby-1.9.2-rc2:/usr/local/rvm/gems/ruby-1.9.2-rc2@global',
-  'BUNDLE_PATH'  => '/usr/local/rvm/gems/ruby-1.9.2-rc2'  # If you are using bundler.
+  'PATH' => "/usr/local/rvm/gems/ruby-1.9.2-p0/bin:/usr/local/rvm/gems/ruby-1.9.2-p0@global/bin:/usr/local/rvm/rubies/ruby-1.9.2-p0/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games",
+  'RUBY_VERSION' => 'ruby 1.9.2-p0',
+  'GEM_HOME'     => '/usr/local/rvm/gems/ruby-1.9.2-p0',
+  'GEM_PATH'     => '/usr/local/rvm/gems/ruby-1.9.2-p0:/usr/local/rvm/gems/ruby-1.9.2-p0@global',
+  'BUNDLE_PATH'  => '/usr/local/rvm/gems/ruby-1.9.2-p0'  # If you are using bundler.
 }
