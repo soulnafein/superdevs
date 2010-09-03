@@ -59,6 +59,7 @@ GEM
     friendly_id (3.0.5)
       activerecord (>= 2.2)
       activesupport (>= 2.2)
+    haml (3.0.18)
     i18n (0.4.1)
     json_pure (1.4.6)
     mail (2.2.5)
@@ -122,6 +123,7 @@ DEPENDENCIES
   feedtools
   flutie
   friendly_id (= 3.0.5)
+  haml
   mysql (= 2.8.1)
   rails (= 3.0.0)
   rpx_now

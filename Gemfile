@@ -9,6 +9,7 @@ gem "exception_notification", :git => "git://github.com/rails/exception_notifica
 gem "rpx_now"
 gem "authlogic_rpx"
 gem "flutie"
+gem "haml"
 
 group :test do
   gem 'rspec', '2.0.0.beta.16'
