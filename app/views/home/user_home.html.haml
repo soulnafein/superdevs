@@ -2,9 +2,8 @@
 .in
   #left_column
     %h2
-      Welcome back,
-      = current_user.full_name
-      !
+      Welcome back
+      = current_user.full_name + "!"
 
     - if current_user.country.to_s.empty?
       %h3 I cannot suggest events for you because you did not select a country in your profile.

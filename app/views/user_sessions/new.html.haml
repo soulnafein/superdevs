@@ -1,0 +1,32 @@
+.in
+  %h2 Login
+.line
+.in.forms
+  %iframe{:src=>"http://superdevs.rpxnow.com/openid/embed?token_url=#{user_sessions_url}",
+          :scrolling=>"no", :frameBorder=>"no", :allowtransparency=>"true", :style=>"width:400px;height:240px"}
+
+  %p
+    Or for
+    %span.highlighter existing users
+    use the traditional login form
+
+  = form_for @user_session do |form|
+    = form.error_messages
+    %p
+      = form.label :username, "Username or Email"
+      %br
+      = form.text_field :username
+
+    %p
+      = form.label :password, "Password"
+      %br
+      = form.password_field :password
+
+    %p
+      = link_to "Forgot your password?", new_password_reset_path
+
+    %p
+      = form.submit "Submit"
+
+  Do you need any help? Please
+  = link_to "contact us", contact_us_url
