@@ -1,0 +1,22 @@
+!!!
+%html{:xmlns=>"http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{'http-equiv'=>"Content-Type", :content=>"text/html; charset=ISO-8859-1"}
+    = csrf_meta_tag
+    %title SuperDevs
+    = stylesheet_link_tag :flutie, "application", "home"
+    = render :partial => "shared/google_analytics"
+
+  %body
+    #home_wrapper
+      #first_layer
+        %h1#logo
+          = link_to 'SuperDevs', root_url
+        = render :partial => "shared/authentication_status"
+
+      = yield
+
+      #footer_layer
+        = render :partial => "shared/footer"
+    = render :partial => "shared/user_feedback"
+
