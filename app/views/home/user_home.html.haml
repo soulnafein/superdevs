@@ -1,0 +1,49 @@
+- current_tab("home")
+.in
+  #left_column
+    %h2
+      Welcome back,
+      = current_user.full_name
+      !
+
+    - if current_user.country.to_s.empty?
+      %h3 I cannot suggest events for you because you did not select a country in your profile.
+      %p
+        Please
+        = link_to "choose a country", edit_user_url(current_user)
+    - elsif @user_events.empty?
+      %h3
+        There aren't planned events in
+        = current_user.country
+        at the moment
+      %p
+        Would you like us to add an event to our list?
+        = link_to "Just let us know", contact_us_url
+        %span .
+    - else
+      = render :partial => "events"
+
+  #right_column
+    - unless @user_events.empty?
+      .information
+        %h4 Hello there!
+        %p
+          We picked up the best upcoming talks, dojos, conferences and other events in
+          %strong
+            = @user_events.location
+            %span .
+          %br
+          Soon we will filter them based on your interests.
+    - unless current_user.following.empty?
+      #following.relationships
+        %h3 Following
+        - current_user.following.each do |u|
+          %a{:href=>user_path(u), :title=> u.full_name}
+            != u.small_profile_picture.to_html
+    - unless current_user.followers.empty?
+      #followers.relationships
+        %h3 Followers
+        - current_user.followers.each do |u|
+          %a{:href=> user_path(u), :title=> u.full_name}
+            != u.small_profile_picture.to_html
+  %div{:style=>"clear:both;"}

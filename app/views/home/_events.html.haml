@@ -1,0 +1,17 @@
+#events
+  %h3 Upcoming talks, meetups and other events
+  %dl{:style=>"float: left;"}
+    - @user_events.events.each do |event|
+      %dt
+        = event.date.day
+        %br
+        %strong= Date::ABBR_MONTHNAMES[event.date.month]
+        = event.date.year
+      %dd
+        %ul
+          %li{:class => cycle('even', 'odd')}
+            %a{:href=> event.link, :target=>'_blank'}
+              %h5= event.title
+            %h6= event.city.capitalize
+            %p= event.description
+  %div{:style=>'clear: both;'}
