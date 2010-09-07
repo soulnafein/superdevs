@@ -1,0 +1,85 @@
+- title("#{@user.full_name} at SuperDevs")
+:javascript
+  $(document).ready(function() {
+    $("#blog").blog_feed("#{@user.blog_feed}");
+    $("#tweets").tweet({
+      username: "#{@user.twitter_username}",
+      join_text: "auto",
+      avatar_size: 32,
+      count: 5
+    });
+  })
+
+.in
+  #profile
+    #profile_picture
+      != @user.profile_picture.to_html
+    %h2= @user.full_name
+
+    %h3= @user.tagline
+    - if not @user.company.to_s.empty?
+      %p
+        I work for:
+        %span.highlighter= @user.company
+    - if not @user.location.to_s.empty?
+      %p
+        I'm based in:
+        %span.highlighter= @user.location
+  #contacts
+    %ul#online_presence
+      - if not @user.twitter_username.to_s.empty?
+        %li
+          %a{:target=>"_blank", :href=>"http://www.twitter.com/#{@user.twitter_username}"}
+            %img{:title=>"Twitter Account", :alt=>"Twitter Account",:src=>"/images/twitter.png"}
+      - if not @user.linkedin_profile.to_s.empty?
+        %li
+          %a{:target=>"_blank", :href=> @user.linkedin_profile}
+            %img{:title=>"Linkedin Account", :alt=>"Linkedin Account", :src=>"/images/linkedin.png"}
+      - if not @user.delicious_username.to_s.empty?
+        %li
+          %a{:target=>"_blank", :href=>"http://www.delicious.com/#{@user.delicious_username}"}
+            %img{:style=>"width:16px;", :title=>"Delicious Account", :alt=>"Delicious Account", :src=>"/images/delicious.png"}
+      - if not @user.github_account.to_s.empty?
+        %li
+          %a{:target=>"_blank", :href=>"http://www.github.com/#{@user.github_account}"}
+            %img{:style=>"width:16px;", :title=>"Github Account", :alt=>"Github Account", :src=>"/images/github.gif"}
+      - if not @user.bitbucket_account.to_s.empty?
+        %li
+          %a{:target=>"_blank", :href=>"http://www.bitbucket.org/#{@user.bitbucket_account}"}
+            %img{:style=>"width:16px;", :title=>"Bitbucket Account", :alt=>"Bitbucket Account", :src=>"/images/bitbucket.gif"}
+    %ul
+      - if not @user.website.to_s.empty?
+        %li
+          website:
+          = link_to @user.website, @user.website
+      - if not @user.phone_number.to_s.empty?
+        %li
+          phone:
+          = @user.phone_number
+    - if not @user.interests.to_s.empty?
+      %ul#interests
+        %h5 Interests
+        - @user.interests.split(",").each do |interest|
+          %li.highlighter= interest.strip
+    - unless current_user and current_user.following?(@user)
+      = form_for(@user, :url => follow_user_url(@user)) do |user|
+        %p
+          %input{:type=>"submit", :value=>"Follow", :title=>"Follow #{@user.full_name} updates"}
+  %div{:style=>"clear:both"}
+.line
+- if not @user.bio.to_s.empty?
+  #bio.in
+    %h4
+      Personal profile
+    %p= @user.bio
+  .line
+#public_communication.in
+  - if not @user.twitter_username.to_s.empty?
+    #tweets
+      %h4 Latest tweets
+  - if not @user.blog_feed.to_s.empty?
+    #blog
+      %h4 Blog entries
+      %dl{:style=>"float:left;"}
+      %div{:style=>"clear:both;"}
+  %div{:style=>"clear:both;"}
