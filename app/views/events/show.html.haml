@@ -1,0 +1,24 @@
+- title("#{@event.title} Event at SuperDevs")
+.in
+  #left_column
+    %h2 
+      = @event.title
+    %br
+    = @event.description
+    %br
+    = @event.link
+    %br
+  #right_column
+    %dt
+      = @event.date.day
+      %br
+      %strong= Date::ABBR_MONTHNAMES[@event.date.month]
+      = @event.date.year
+    Location:
+    %br
+    = @event.city
+    (
+    = @event.country
+    )
+    %br
+  %div{:style=>"clear:both;"}

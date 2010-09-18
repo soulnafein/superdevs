@@ -1,0 +1,32 @@
+.in
+  %h2 Create a new event!
+.in.forms
+  = form_for(@event) do |form|
+    = form.error_messages
+    %p 
+      %label{:for=>"title"}
+        Event name
+        %br
+        = form.text_field :title
+    %p
+      %label{:date=>"date"}
+        Date
+        %br
+        = form.text_field :date
+    %p 
+      %label{:for=>"city"}
+        City
+        %br
+        = form.text_field :city
+    %p
+      %label{:for=>"country"}
+        Country
+        %br
+        = country_select :event, :country, []
+    %p 
+      %label{:for=>"description"}
+        Description
+        %br
+        = form.text_area :description
+    %p
+      = form.submit "Submit"
