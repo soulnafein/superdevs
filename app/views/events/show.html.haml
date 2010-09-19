@@ -1,0 +1,18 @@
+.in#event
+  .leftColumn
+    %h2= @event.title
+    %h3= @event.date.strftime("%d %B %Y")
+    %p.description= @event.description
+    %strong.highlighter= @event.country + "/" + @event.city
+    %p
+      = link_to "website", @event.link
+    %h3 Attendees (5)
+    %p
+      - User.where('email is not null').each do |u|
+        %a{:href=>user_path(u), :title=> u.full_name}
+          .profile_picture_medium
+            != u.medium_profile_picture.to_html
+
+  .rightColumn
+    = link_to 'Attend this event', '#', :class => 'linkButton'
+  .clear

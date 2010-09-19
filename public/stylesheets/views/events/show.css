@@ -1,0 +1,23 @@
+#event
+{
+
+}
+
+#event p.description
+{
+  width: 620px;
+}
+
+#event .leftColumn
+{
+  width:650px;
+  float:left;
+}
+
+#event .rightColumn
+{
+  text-align:center;
+  width:270px;
+  float:right;
+}
+

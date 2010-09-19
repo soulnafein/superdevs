@@ -10,8 +10,8 @@
       %dd
         %ul
           %li{:class => cycle('even', 'odd')}
-            %a{:href=> event.link, :target=>'_blank'}
-              %h5= event.title
+            %h5
+              = link_to event.title, event_url(event), :target=>'_blank'
             %h6= event.city.capitalize
             %p= event.description
   %div{:style=>'clear: both;'}
