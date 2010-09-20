@@ -2,6 +2,7 @@ Superdevs::Application.routes.draw do |map|
   resources :user_sessions
   resources :users
   resources :events
+  resources :attendances
   map.follow_user 'users/:id/follow', :controller => 'users', :action => 'follow', :method => :put
   resources :password_resets
   map.activate '/activate/:activation_code', :controller => 'activations', :action => 'create'
