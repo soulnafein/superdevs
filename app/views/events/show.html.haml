@@ -8,11 +8,13 @@
       = link_to "website", @event.link
     %h3 Attendees (5)
     %p
-      - User.where('email is not null').each do |u|
+      - @event.attendees.each do |u|
         %a{:href=>user_path(u), :title=> u.full_name}
           .profile_picture_medium
             != u.medium_profile_picture.to_html
 
   .rightColumn
-    = link_to 'Attend this event', '#', :class => 'linkButton'
+    = form_for(Attendance.new) do |f|
+      = f.submit 'Attend this event'
+      = hidden_field_tag :event_id, @event.id
   .clear
