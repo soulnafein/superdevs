@@ -6,7 +6,7 @@
     %strong.highlighter= @event.country + "/" + @event.city
     %p
       = link_to "website", @event.link
-    %h3 Attendees (5)
+    %h3 Attendees (#{@event.attendees.size})
     %p
       - @event.attendees.each do |u|
         %a{:href=>user_path(u), :title=> u.full_name}
@@ -14,7 +14,8 @@
             != u.medium_profile_picture.to_html
 
   .rightColumn
-    = form_for(Attendance.new) do |f|
-      = f.submit 'Attend this event'
-      = hidden_field_tag :event_id, @event.id
+    - unless @event.has_attendee?(current_user)
+      = form_for(Attendance.new) do |f|
+        = f.submit 'Attend this event'
+        = hidden_field_tag :event_id, @event.id
   .clear

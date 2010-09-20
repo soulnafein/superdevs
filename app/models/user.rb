@@ -100,6 +100,11 @@ class User < ActiveRecord::Base
   end
 
   include UserBehaviours::TwitterStyleFollowBehaviour
+
+  def ==(other)
+    return false if other.nil?
+    self.id == other.id
+  end
 end
 
 class UserNotFound < Exception

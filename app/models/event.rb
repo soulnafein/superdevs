@@ -21,4 +21,8 @@ class Event < ActiveRecord::Base
   def self.get_events_for_user_country(user)
     Event.where("upper(country) = ? and date > ?", user.country.to_s.upcase, Time.now).order("date ASC")
   end
+
+  def has_attendee?(user)
+    self.attendees.include?(user)
+  end
 end
