@@ -12,9 +12,13 @@
         %a{:href=>user_path(u), :title=> u.full_name}
           .profile_picture_medium
             != u.medium_profile_picture.to_html
-
   .rightColumn
-    - unless @event.has_attendee?(current_user)
+    - attendance = @event.attendance_for_user(current_user)
+    - if @event.has_attendee?(current_user)
+      = form_tag(attendance_url(attendance), :method => :delete) do
+        = submit_tag 'Unattend this event', :class => 'alternative'
+        = hidden_field_tag :event_id, @event.id
+    - else
       = form_for(Attendance.new) do |f|
         = f.submit 'Attend this event'
         = hidden_field_tag :event_id, @event.id

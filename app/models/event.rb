@@ -25,4 +25,8 @@ class Event < ActiveRecord::Base
   def has_attendee?(user)
     self.attendees.include?(user)
   end
+
+  def attendance_for_user(user)
+    self.attendances.where("user_id = ?", user.id).first
+  end
 end

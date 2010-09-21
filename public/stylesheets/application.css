@@ -190,6 +190,9 @@ input[type=submit], input[type=button] {
   cursor: pointer;
 }
 
+input[type=submit].alternative, input[type=button].alternattive {
+  background-color: #30a4b1;
+}
 /*..................................................... Navigation .....................*/
 
 #navigation ul {

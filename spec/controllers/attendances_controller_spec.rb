@@ -18,6 +18,25 @@ describe AttendancesController do
     end
   end
 
+  describe "unattending an event" do
+    before :each do
+      UserSession.stub(:find).and_return(mock_session)
+    end
+
+    it "should remove the attendance of a user" do
+      event = Event.new do |e|
+        e.title = 'A test event'
+        e.id = 12
+      end
+      Event.stub!(:find).with(event.id.to_s).and_return(event)
+      Attendance.should_receive(:delete).with(42)
+
+      delete :destroy, {:id => 42, :event_id => '12'}
+
+      response.should redirect_to event_path(event)
+    end
+  end
+
   private
   def mock_session
     session = mock(UserSession).as_null_object

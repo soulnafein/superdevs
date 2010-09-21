@@ -1,4 +1,6 @@
 Superdevs::Application.routes.draw do |map|
+  resources :examples
+
   resources :user_sessions
   resources :users
   resources :events
