@@ -28,6 +28,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def render_unauthorised_access(exception = nil)
+    if exception
+      logger.info "Rendering 403 with exception: #{exception.message}"
+    end
+
+    respond_to do |format|
+      format.html { render :file => "#{Rails.root}/public/403.html", :status => :forbidden }
+      format.xml  { head :not_found }
+      format.any  { head :not_found }
+    end
+  end
+
   def require_user
     unless current_user
       flash[:notice] = "You must be logged in to access this page"
