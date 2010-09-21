@@ -1,5 +1,6 @@
 class AttendancesController < ApplicationController
   before_filter :load_event
+  before_filter :require_user
 
   def create
     Attendance.create(:user => current_user, :event => event)
