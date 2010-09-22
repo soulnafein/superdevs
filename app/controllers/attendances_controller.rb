@@ -3,14 +3,14 @@ class AttendancesController < ApplicationController
   before_filter :require_user
 
   def create
-    Attendance.create(:user => current_user, :event => event)
+    Attendance.create(:user => current_user, :event => @event)
     redirect_to_event_with_notice('You are now attending this event.')
   end
 
   def destroy
     if user_is_allowed_to_delete_attendance
       Attendance.delete(params[:id])
-      redirect_to_event_with_notice('You are not attending this event anymore.')
+      redirect_to_event_with_notice('You are no longer attending this event.')
     else
       render_unauthorised_access
     end
