@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
     config.account_mapping_mode :internal
   end
 
-
   has_friendly_id :username
 
   attr_accessible :full_name,
@@ -29,6 +28,9 @@ class User < ActiveRecord::Base
                   :agreed_tc_and_pp,
                   :city,
                   :country
+
+  composed_of :address, :class_name => 'Address', :mapping => [[:country, :country],[:city, :city]]
+
 
   validates_presence_of :full_name
 
@@ -104,6 +106,14 @@ class User < ActiveRecord::Base
   def ==(other)
     return false if other.nil?
     self.id == other.id
+  end
+end
+
+class Address
+  attr_reader :country, :city
+
+  def initialize(country, city)
+    @country, @city = country, city
   end
 end
 
