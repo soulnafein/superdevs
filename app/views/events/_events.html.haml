@@ -7,5 +7,5 @@
         %strong= Date::ABBR_MONTHNAMES[event.date.month]
         = event.date.year
       %dd{:class => cycle('even', 'odd')}
-        %h4= link_to event.title, event_path(event.id),:target=>'_blank'
-        %h5= event.city.capitalize
+        %h4= link_to event.title, event_path(event.id)
+        %h5 #{event.city.capitalize} (#{event.country})

@@ -21,8 +21,12 @@
       #navigation
         %ul
           %li
-            = link_to 'HOME', root_url, :class => yield(:current_tab) == 'home' ? 'active' : ''
-            = link_to 'PEOPLE', users_path, :class => yield(:current_tab) != 'home' ? 'active' : ''
+            = link_to 'HOME', root_url,
+              :class => yield(:current_tab) == 'home' ? 'active' : ''
+            = link_to 'PEOPLE', users_path,
+              :class => yield(:current_tab) == 'people' ? 'active' : ''
+            = link_to 'EVENTS', events_path,
+              :class => yield(:current_tab) == 'events' ? 'active' : ''
       .clear
 
       #content

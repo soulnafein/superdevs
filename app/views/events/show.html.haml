@@ -1,3 +1,4 @@
+- current_tab('events')
 .in#event
   .leftColumn
     %h2= @event.title
@@ -13,9 +14,9 @@
           .profile_picture_medium
             != u.medium_profile_picture.to_html
   .rightColumn
-    - attendance = @event.attendance_for_user(current_user)
     - if @event.has_attendee?(current_user)
-      = form_tag(attendance_url(attendance), :method => :delete) do
+      - attendance = @event.attendance_for_user(current_user)
+      = form_tag(attendance_url(attendance.id), :method => :delete) do
         = submit_tag 'Unattend this event', :class => 'alternative'
         = hidden_field_tag :event_id, @event.id
     - else
