@@ -55,12 +55,4 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
-
-  before_filter :ensure_domain
-  def ensure_domain
-    domain = "www.superdevs.com"
-    if request.env['HTTP_HOST'] != domain
-      redirect_to domain
-    end
-  end
 end
