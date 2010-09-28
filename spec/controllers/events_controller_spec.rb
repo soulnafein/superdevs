@@ -1,10 +1,11 @@
 require 'spec_helper'
 
 describe EventsController do
-  before :each do
-    UserSession.stub(:find).and_return(mock_session)
-  end
   describe "GET 'show'" do
+    before :each do
+      UserSession.stub(:find).and_return(mock_session)
+    end
+
     it "should load the event from the database" do
       event = mock(:event)
       Event.stub(:find).with(42).and_return(event)
@@ -19,6 +20,23 @@ describe EventsController do
       get :show, :id => 666
 
       response.status.should == 404
+    end
+  end
+
+  describe "GET 'index'" do
+    it "should provide a list of events" do
+      events = [mock_model(Event), mock_model(Event)]
+      Event.stub(:all_upcoming).and_return(events)
+      today = Chronic.parse("31 january 2010").to_date
+      Date.stub(:today).and_return(today)
+      grouped_events = mock(EventsGroupedByPeriod)
+      EventsGroupedByPeriod.stub!(:new).with(events, today).
+              and_return(grouped_events)
+
+      get :index
+
+      response.should be_success
+      assigns(:events).should == grouped_events
     end
   end
 

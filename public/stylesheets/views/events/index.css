@@ -1,0 +1,48 @@
+div.events {
+}
+
+div.events h4 {
+    font-size:18px;
+}
+
+div.events h5 {
+    margin:0;padding:0;
+    font-size:14px;
+    font-weight:bold;
+}
+
+div.events dl {
+  margin-top:0;
+}
+
+div.events dt {
+  background-color:#464646;
+  color:white;
+  font-size:12px;
+  width:40px;
+  padding: 5px;
+  text-align:center;
+  margin-bottom:2px;
+  clear:both;
+}
+
+div.events dt, dd {
+  display:block; float:left;
+  margin:6px 0 0 0;
+}
+
+div.events dd {
+  width: 850px;
+  margin-left:10px;
+  height:55px;
+  padding: 5px;
+}
+
+
+div.events dt strong {
+  font-size:16px;
+}
+
+div.events dd.odd {
+  background-color:#ebebeb;
+}

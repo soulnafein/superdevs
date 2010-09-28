@@ -11,6 +11,8 @@ gem "authlogic_rpx"
 gem "flutie"
 gem "haml"
 gem "yaml_db"
+gem 'rcov'
+gem 'chronic'
 
 group :test do
   gem 'rspec', '2.0.0.beta.22'

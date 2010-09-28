@@ -1,0 +1,11 @@
+.events
+  %dl{:style=>"float: left;"}
+    - events.each do |event|
+      %dt
+        = event.date.day
+        %br
+        %strong= Date::ABBR_MONTHNAMES[event.date.month]
+        = event.date.year
+      %dd{:class => cycle('even', 'odd')}
+        %h4= link_to event.title, event_path(event.id),:target=>'_blank'
+        %h5= event.city.capitalize

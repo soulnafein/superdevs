@@ -2,10 +2,17 @@ class Event < ActiveRecord::Base
   has_many :attendances
   has_many :attendees, :through => :attendances, :source => :user
 
+  def has_attendee?(user)
+    self.attendees.include?(user)
+  end
+
+  def attendance_for_user(user)
+    self.attendances.where("user_id = ?", user.id).first
+  end
+
   def self.exists?(event)
-    Event.where(:title => event.title,
-                :date => event.date,
-                :country => event.country).size > 0
+    Event.where("title = ? and date = ? and country = ?",
+                event.title, event.date, event.country).size > 0
   end
 
   def self.get_events_for_user(user)
@@ -19,14 +26,10 @@ class Event < ActiveRecord::Base
   end
 
   def self.get_events_for_user_country(user)
-    Event.where("upper(country) = ? and date > ?", user.country.to_s.upcase, Time.now).order("date ASC")
+    Event.all_upcoming.where("upper(country) = ?", user.country.to_s.upcase)
   end
 
-  def has_attendee?(user)
-    self.attendees.include?(user)
-  end
-
-  def attendance_for_user(user)
-    self.attendances.where("user_id = ?", user.id).first
+  def self.all_upcoming
+    Event.where("date > ?", Time.now).order("date ASC")
   end
 end
