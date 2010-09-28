@@ -14,7 +14,7 @@ describe AttendancesController do
 
       post :create, {:event_id => '12'}
 
-      response.should redirect_to event_path(event)
+      response.should redirect_to event_path(event.id)
     end
   end
 
@@ -39,7 +39,7 @@ describe AttendancesController do
 
       delete :destroy, {:id => @an_attendance.id, :event_id => '12'}
 
-      response.should redirect_to event_path(@event)
+      response.should redirect_to event_path(@event.id)
     end
 
     it "should not authorise removing attendances of other users" do

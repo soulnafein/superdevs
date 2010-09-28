@@ -2,7 +2,7 @@
   - if current_user
     Logged in as
     %strong= current_user.username
-    = link_to "View profile", user_path(current_user.id), :method => :get
+    = link_to "View profile", user_path(current_user.id)
     %span.v_line
       \|
     = link_to "Edit profile", edit_user_path(current_user.id)

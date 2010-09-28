@@ -9,7 +9,7 @@
     %h3 Attendees (#{@event.attendees.size})
     %p
       - @event.attendees.each do |u|
-        %a{:href=>user_path(u), :title=> u.full_name}
+        %a{:href=>user_path(u.id), :title=> u.full_name}
           .profile_picture_medium
             != u.medium_profile_picture.to_html
   .rightColumn

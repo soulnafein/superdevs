@@ -52,7 +52,7 @@ describe UsersController do
 
       put :update, valid_info
 
-      response.should redirect_to user_url(mock_user)
+      response.should redirect_to user_url(mock_user.id)
     end
 
     it "should go back to form in case of errors" do
