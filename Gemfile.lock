@@ -1,10 +1,4 @@
 GIT
-  remote: git://github.com/rails/exception_notification
-  revision: 48cf43322841537a039ff13930c7316956230561
-  specs:
-    exception_notification (1.0.0)
-
-GIT
   remote: http://github.com/odorcicd/authlogic.git
   revision: a087ad0cba3c165ba22fcf176c28b6f7517931e8
   branch: rails3
@@ -115,7 +109,6 @@ PLATFORMS
 DEPENDENCIES
   authlogic!
   authlogic_rpx
-  exception_notification!
   feedtools
   flutie
   friendly_id (= 3.0.5)
