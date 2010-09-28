@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
   end
 
   def self.all_active_users
-    User.where("active <> 0").find_all { |u| u.registration_complete? }
+    User.where("active <> ?", false).find_all { |u| u.registration_complete? }
   end
 
   def self.find_by_username_or_email(username_or_email)
