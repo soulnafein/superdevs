@@ -10,6 +10,7 @@ gem "rpx_now"
 gem "authlogic_rpx"
 gem "flutie"
 gem "haml"
+gem "yaml_db"
 
 group :test do
   gem 'rspec', '2.0.0.beta.22'
