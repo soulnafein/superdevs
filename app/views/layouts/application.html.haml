@@ -6,7 +6,7 @@
     %title
       = yield(:title) || "SuperDevs"
     %script{:type=>"text/javascript", :src=>"http://www.google.com/jsapi?key=ABQIAAAAHj3-AxzLoN6nByzD95Qs9RSOljxHAIcaB6bpmeLQ3ja_Urx1LhQUqo1n97ZB_-dbUmm8nc93jgOCBw"}
-    = stylesheet_link_tag :flutie, 'application', 'views/home/user_home', 'views/users/show', 'views/users/index', 'views/users/edit', 'views/events/show', :cache => true
+    = stylesheet_link_tag :flutie, 'application', 'views/home/user_home', 'views/users/show', 'views/users/index', 'views/users/edit', 'views/events/show'
     = javascript_include_tag "lib/jquery-1.4.2.min", "lib/jquery.jgfeed-min", "lib/jquery.tweet.js", "blog_feed.js"
     = render :partial => "shared/google_analytics"
 
