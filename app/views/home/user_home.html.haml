@@ -40,12 +40,12 @@
       #following.relationships
         %h3 Following
         - current_user.following.each do |u|
-          %a{:href=>user_path(u), :title=> u.full_name}
+          %a{:href=>user_path(u.username), :title=> u.full_name}
             != u.small_profile_picture.to_html
     - unless current_user.followers.empty?
       #followers.relationships
         %h3 Followers
         - current_user.followers.each do |u|
-          %a{:href=> user_path(u), :title=> u.full_name}
+          %a{:href=> user_path(u.username), :title=> u.full_name}
             != u.small_profile_picture.to_html
   %div{:style=>"clear:both;"}

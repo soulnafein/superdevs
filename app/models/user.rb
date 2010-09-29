@@ -39,7 +39,6 @@ class User < ActiveRecord::Base
     config.account_mapping_mode :internal
   end
 
-
   has_friendly_id :username
 
   attr_accessible :full_name,
@@ -63,6 +62,9 @@ class User < ActiveRecord::Base
                   :agreed_tc_and_pp,
                   :city,
                   :country
+
+  composed_of :address, :class_name => 'Address', :mapping => [[:country, :country],[:city, :city]]
+
 
   validates_presence_of :full_name
 
@@ -101,7 +103,7 @@ class User < ActiveRecord::Base
   end
 
   def self.all_active_users
-    User.where("active <> 0").find_all { |u| u.registration_complete? }
+    User.where("active <> ?", false).find_all { |u| u.registration_complete? }
   end
 
   def self.find_by_username_or_email(username_or_email)
@@ -134,6 +136,19 @@ class User < ActiveRecord::Base
   end
 
   include UserBehaviours::TwitterStyleFollowBehaviour
+
+  def ==(other)
+    return false if other.nil?
+    self.id == other.id
+  end
+end
+
+class Address
+  attr_reader :country, :city
+
+  def initialize(country, city)
+    @country, @city = country, city
+  end
 end
 
 class UserNotFound < Exception

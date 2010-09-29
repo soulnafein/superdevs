@@ -52,7 +52,7 @@ describe UsersController do
 
       put :update, valid_info
 
-      response.should redirect_to user_url(mock_user)
+      response.should redirect_to user_url(mock_user.id)
     end
 
     it "should go back to form in case of errors" do
@@ -112,7 +112,7 @@ describe UsersController do
 
 
   def mock_session
-    session = mock_model(UserSession).as_null_object
+    session = mock(UserSession).as_null_object
     session.stub(:record).and_return(mock_user)
     @mock_session ||= session
   end

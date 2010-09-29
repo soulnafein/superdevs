@@ -6,6 +6,15 @@ GIT
     authlogic (2.1.3)
       activesupport
 
+<<<<<<< .merge_file_DSANWS
+GIT
+  remote: git://github.com/rails/exception_notification
+  revision: 192a49a02d63d28b23ed41cebadfedd490929cf1
+  specs:
+    exception_notification (1.0.0)
+
+=======
+>>>>>>> .merge_file_eBZ5LS
 GEM
   remote: http://rubygems.org/
   specs:

@@ -1,14 +1,11 @@
 class EventsController < ApplicationController
-  before_filter :require_user
-  
+<<<<<<< .merge_file_fB7mQU
   def new
     @event = Event.new
   end
 
   def show 
     @event = Event.find(params[:id])
-  rescue
-    render_404
   end
 
   def create
@@ -17,5 +14,13 @@ class EventsController < ApplicationController
     redirect_to @event
   rescue ActiveRecord::RecordInvalid
     render :action => 'new'
+=======
+  before_filter :require_user
+
+  def show
+    @event = Event.find(params[:id])
+  rescue
+    render_404
+>>>>>>> .merge_file_wd2EtR
   end
 end

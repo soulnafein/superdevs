@@ -54,7 +54,7 @@ describe HomeController do
 
     private
     def mock_session
-      session = mock_model(UserSession).as_null_object
+      session = mock(UserSession).as_null_object
       session.stub(:record).and_return(mock_user)
       @mock_session ||= session
     end

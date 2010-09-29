@@ -23,14 +23,6 @@
     font-size: 21px;
 }
 
-#profile_picture_medium {
-    height: 50px;
-    float:left;
-    border: 1px solid #bab9b9;
-    padding: 7px;
-    margin-right: 10px;
-    background-color: white;
-}
 
 #users_list ul {
     margin:0;

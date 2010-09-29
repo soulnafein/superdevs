@@ -5,7 +5,9 @@ Hi, <%= @user.full_name %>
 <%= @follower.full_name %> (<%= @follower.username %>) is now following you on SuperDevs.
 </p>
 <p>
-You may follow <%= @follower.full_name %> as well by clicking on the "follow" button on <%= link_to 'their profile', 'http://www.superdevs.com'+user_path(@follower) %>.
+You may follow <%= @follower.full_name %> as well by clicking on the "follow"
+  button on <%= link_to 'their profile', 'http://www.superdevs.com'+
+        user_path(@follower.username) %>.
 </p>
 <p>
 If you don't want to receive this notification please <%= link_to 'contact us', contact_us_url %>

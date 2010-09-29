@@ -38,8 +38,8 @@ Superdevs::Application.configure do
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true
 
-  config.middleware.use ExceptionNotifier,
-                        :email_prefix => "[superdevs-exceptions] ",
-                        :sender_address => %{"notifier" <exceptions@superdevs.com>},
-                        :exception_recipients => %w{admin@superdevs.com soulnafein@gmail.com}
+#config.middleware.use ExceptionNotifier,
+#                        :email_prefix => "[superdevs-exceptions] ",
+#                        :sender_address => %{"notifier" <exceptions@superdevs.com>},
+#                        :exception_recipients => %w{admin@superdevs.com soulnafein@gmail.com}
 end

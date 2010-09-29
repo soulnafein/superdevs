@@ -14,15 +14,17 @@
 #
 
 class Event < ActiveRecord::Base
-  has_many :attendances
-  has_many :attendees, :through => :attendances, :source => :user
-
+<<<<<<< .merge_file_mwrkeY
   attr_accessible :title, 
                   :city,
                   :country, 
                   :description, 
                   :link, 
                   :date
+=======
+  has_many :attendances
+  has_many :attendees, :through => :attendances, :source => :user
+>>>>>>> .merge_file_VsDmVX
 
   def self.exists?(event)
     Event.where(:title => event.title,

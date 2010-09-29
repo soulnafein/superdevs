@@ -50,8 +50,13 @@ p, span {
   margin: 0;
 }
 
+p {
+  margin:10px 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: #464646;
+  margin:0;
 }
 
 h1, h2, h3 {
@@ -185,6 +190,9 @@ input[type=submit], input[type=button] {
   cursor: pointer;
 }
 
+input[type=submit].alternative, input[type=button].alternattive {
+  background-color: #30a4b1;
+}
 /*..................................................... Navigation .....................*/
 
 #navigation ul {
@@ -224,6 +232,31 @@ input[type=submit], input[type=button] {
   padding: 2px;
 }
 
+.profile_picture_medium {
+  height: 50px;
+  width: 50px;
+  float:left;
+  border: 1px solid #bab9b9;
+  padding: 7px;
+  margin-right: 10px;
+  background-color: white;
+}
+
+.profile_picture_medium img {
+  margin:0;
+}
+
+a.linkButton {
+  text-align: center;
+  font-size: 18px;
+  margin: 5px;
+  background-color: #f7941d;
+  color:white;
+  font-weight:bold;
+  padding: 10px;
+  line-height:40px;
+}
+
 div.errorExplanation {
   background: none repeat scroll 0 0 #FBE3E4;
   color: #D12F19;
@@ -238,6 +271,10 @@ div._success {
   border: 1px solid green;
   background-color: #99FF99;
   text-align: center;
+}
+
+div.clear {
+  clear:both
 }
 
 
