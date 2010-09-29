@@ -1,7 +1,12 @@
 #second_layer
   #introduction
     %h2 Become a super developer!
-    %h3 Mash your web presence into a single profile page. Share your blog, tweets, github updates and much more with other devs.
+    %h3
+      Share your interests, tweets and blogs with other developers.
+      Attend the
+      = link_to "talks, events and conferences", events_path,
+        :style => 'text-decoration:underline;color:#666'
+      in your area.
     #introduction_links
       %a#join_us_link{:href => login_path } Join us!
       or
@@ -17,6 +22,13 @@
       %p Check out the latest trends in the development community. Find out what popular developers are interested in or read blogs of developers with interests similar to yours.
     %div{:style => 'float:left;'}
       %h4 Socialise
-      %p Meet other developers at conferences or user groups near you. Stay up to date with events related to your interests. Follow other developers and gain popularity within the community.
+      %p
+        Meet other developers at
+        = link_to "conferences", events_path
+        or user groups near you.
+        Stay up to date with
+        = link_to "events", events_path
+        related to your interests.
+        Follow other developers and gain popularity within the community.
     %div{:style => 'clear:both'}
 
