@@ -1,0 +1,7 @@
+.in
+  - if current_user
+    Hello  
+    %b= current_user.full_name
+    Are you organizing an event? 
+    =link_to "Click here", new_event_path
+    let all the superdevs know!
