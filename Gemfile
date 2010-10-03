@@ -16,6 +16,7 @@ gem 'chronic'
 gem 'maruku'
 gem 'ruby-debug-base'
 gem 'ruby-debug-ide'
+gem 'rack-force_domain'
 
 group :test do
   gem 'rspec', '2.0.0.beta.22'
