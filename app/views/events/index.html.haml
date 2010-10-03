@@ -8,7 +8,8 @@
       and let all the superdevs know!
   - else 
     %p 
-      If you login you'll be able to add your own events
+      = link_to 'Login', login_url
+      and add your own event :)
   - unless @events.todays_events.empty?
     %h3 Happening today
     = render :partial => 'events',
