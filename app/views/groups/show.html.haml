@@ -8,8 +8,9 @@
     .description
       :markdown
         #{@group.description}
-      = link_to 'Edit description',
-                edit_group_url(@group.unique_name), :class => 'edit'
+      - if @group.organizer?(current_user)
+        = link_to 'Edit description',
+                  edit_group_url(@group.unique_name), :class => 'edit'
     .members
       %h3 Members
       %ul

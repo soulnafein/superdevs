@@ -8,6 +8,11 @@ class Group < ActiveRecord::Base
     [self.organizer]
   end
 
+  def organizer?(user)
+    return false if user.nil?
+    self.organizer.id == user.id
+  end
+
   def self.find_active_by_unique_name(name)
     Group.all_active.where("unique_name = ?", name).
             first || (raise GroupNotFound)
