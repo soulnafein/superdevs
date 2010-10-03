@@ -1,9 +1,24 @@
 - title("#{@group.name} at SuperDevs")
-- current_tab("groups")
+- current_tab('groups')
 .in
   %h2= @group.name
 .line
 .in
-  %div.description
-    :markdown
-      #{@group.description}
+  #group_page
+    .description
+      :markdown
+        #{@group.description}
+      - if @group.organizer?(current_user)
+        = link_to 'Edit description',
+                  edit_group_url(@group.unique_name), :class => 'edit'
+    .members
+      %h3 Members
+      %ul
+        - @group.members.each do |user|
+          %li{:class => cycle('even', 'odd')}
+            %h5
+              = link_to user.full_name, user_path(user.username)
+              (Organizer)
+            .profile_picture_medium
+              != user.medium_profile_picture.to_html
+

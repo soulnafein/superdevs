@@ -1,0 +1,24 @@
+#group_page
+{
+  width:100%;
+  overflow:hidden;
+}
+
+  #group_page .description {
+    float:left;
+    width:650px;
+  }
+
+  #group_page .members {
+    float:right;
+    width:200px;
+  }
+    #group_page .members ul {
+      list-style-type:none;
+    }
+
+    #group_page .members ul li.odd {
+      background-color:#ebebeb;
+    }
+
+

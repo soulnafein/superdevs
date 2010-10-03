@@ -5,7 +5,6 @@ gem "authlogic", :git => "http://github.com/odorcicd/authlogic.git", :branch => 
 gem "friendly_id", "3.0.5"
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'mysql', '2.8.1'
-#gem "exception_notification", :git => "git://github.com/rails/exception_notification", :require => 'exception_notifier'
 gem "rpx_now"
 gem "authlogic_rpx"
 gem "annotate"
@@ -15,6 +14,8 @@ gem "yaml_db"
 gem 'rcov'
 gem 'chronic'
 gem 'maruku'
+gem 'ruby-debug-base'
+gem 'ruby-debug-ide'
 
 group :test do
   gem 'rspec', '2.0.0.beta.22'

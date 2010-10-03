@@ -1,5 +1,25 @@
 require 'spec_helper'
 
 describe Group do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should include the organizer in the members list" do
+    organizer = mock_model(User)
+    group = Group.new do |g|
+      g.organizer = organizer
+    end
+
+    group.members.should include organizer
+  end
+
+  it "should tell me whether a user is the organizer of the group" do
+    david_santoro = mock_model(User)
+    ken_fassone = mock_model(User)
+
+    group = Group.new do |g|
+      g.organizer = david_santoro
+    end
+
+    group.organizer?(david_santoro).should be_true
+    group.organizer?(ken_fassone).should be_false
+    group.organizer?(nil).should be_false
+  end
 end

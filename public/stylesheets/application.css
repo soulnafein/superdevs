@@ -277,6 +277,11 @@ div.clear {
   clear:both
 }
 
+a.edit {
+  background: url(/images/icons/edit.png) no-repeat top left;
+  padding-left:20px;
+}
+
 
 
 
