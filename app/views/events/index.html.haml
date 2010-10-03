@@ -1,5 +1,11 @@
 - current_tab('events')
 .in
+  - if current_user
+    Hello  
+    %b= current_user.full_name
+    Are you organizing an event? 
+    =link_to "Click here", new_event_path
+    let all the superdevs know!
   %h2 Upcoming events, talks and conferences for developers
   - unless @events.todays_events.empty?
     %h3 Happening today
