@@ -18,4 +18,7 @@ class EventsController < ApplicationController
   rescue ActiveRecord::RecordInvalid
     render :action => 'new'
   end
+
+  def index
+  end
 end
