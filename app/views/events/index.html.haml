@@ -12,15 +12,15 @@
       and add your own event :)
   - unless @events.todays_events.empty?
     %h3 Happening today
-    = render :partial => 'events',
+    = render :partial => 'shared/events',
              :locals => {:events => @events.todays_events}
   - unless @events.tomorrows_events.empty?
     %h3 Happening tomorrow
-    = render :partial => 'events',
+    = render :partial => 'shared/events',
              :locals => {:events => @events.tomorrows_events}
   - unless @events.all_other_events.empty?
     %h3 Coming up
-    = render :partial => 'events',
+    = render :partial => 'shared/events',
              :locals => {:events => @events.all_other_events}
   .clear
 
