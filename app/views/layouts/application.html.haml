@@ -27,6 +27,8 @@
               :class => yield(:current_tab) == 'people' ? 'active' : ''
             = link_to 'EVENTS', events_path,
               :class => yield(:current_tab) == 'events' ? 'active' : ''
+            = link_to 'GROUPS', groups_path,
+              :class => yield(:current_tab) == 'groups' ? 'active' : ''
       .clear
 
       #content

@@ -2,6 +2,8 @@ class Group < ActiveRecord::Base
   has_friendly_id :unique_name
   belongs_to :organizer, :class_name => 'User'
 
+  attr_accessible :description
+
   def members
     [self.organizer]
   end

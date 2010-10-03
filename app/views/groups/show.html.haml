@@ -1,5 +1,5 @@
 - title("#{@group.name} at SuperDevs")
-- current_tab("groups")
+- current_tab('groups')
 .in
   %h2= @group.name
 .line
@@ -8,6 +8,8 @@
     .description
       :markdown
         #{@group.description}
+      = link_to 'Edit description',
+                edit_group_url(@group.unique_name), :class => 'edit'
     .members
       %h3 Members
       %ul

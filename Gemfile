@@ -14,6 +14,8 @@ gem "yaml_db"
 gem 'rcov'
 gem 'chronic'
 gem 'maruku'
+gem 'ruby-debug-base'
+gem 'ruby-debug-ide'
 
 group :test do
   gem 'rspec', '2.0.0.beta.22'
