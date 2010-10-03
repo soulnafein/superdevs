@@ -77,13 +77,15 @@ describe EventsController do
     end
 
     it "should save event" do
-      group = Group.new do |g|
-        g.organizer = mock_user
-      end
+      group = mock_model(Group)
+      group.stub(:organizer?).and_return(true)
+      group.stub(:unique_name).and_return('london-developers')
       Group.stub(:find_active_by_unique_name).with('london-developers').
               and_return(group)
       Event.stub(:new).and_return(mock_event)
       mock_event.should_receive(:save!)
+      mock_event.should_receive(:group=).with(group)
+
       valid_post = {:group_id => 'london-developers',
                     :event => {:title =>  "Geek night",
                                :city => "London",
@@ -93,7 +95,7 @@ describe EventsController do
 
       post :create, valid_post
 
-      response.should redirect_to ("/events/#{mock_event.id}")  
+      response.should redirect_to group_url(group.unique_name)
     end
 
     it "should only allow event creation by the organiser of the group" do

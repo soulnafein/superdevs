@@ -1,6 +1,7 @@
 class Group < ActiveRecord::Base
   has_friendly_id :unique_name
   belongs_to :organizer, :class_name => 'User'
+  has_many :events
 
   attr_accessible :description
 

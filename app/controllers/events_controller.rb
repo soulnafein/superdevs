@@ -15,8 +15,10 @@ class EventsController < ApplicationController
     group = Group.find_active_by_unique_name(group_id)
     if group.organizer?(current_user)
       @event = Event.new(params[:event])
+      @event.group = group
       @event.save!
-      redirect_to @event
+      redirect_to group_url(group.unique_name),
+                  :notice => 'Event created'
     else
       render_unauthorised_access
     end
