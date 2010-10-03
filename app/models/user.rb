@@ -1,3 +1,37 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                 :integer         not null, primary key
+#  full_name          :string(255)
+#  tagline            :string(255)
+#  bio                :text
+#  location           :string(255)
+#  company            :string(255)
+#  job_title          :string(255)
+#  website            :string(255)
+#  twitter_username   :string(255)
+#  linkedin_profile   :string(255)
+#  github_account     :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  interests          :string(255)
+#  email              :string(255)
+#  phone_number       :string(255)
+#  blog_feed          :string(255)
+#  username           :string(255)
+#  crypted_password   :string(255)
+#  password_salt      :string(255)
+#  persistence_token  :string(255)
+#  active             :boolean
+#  perishable_token   :string(255)
+#  agreed_tc_and_pp   :boolean         default(FALSE)
+#  bitbucket_account  :string(255)
+#  delicious_username :string(255)
+#  country            :string(255)
+#  city               :string(255)
+#
+
 class User < ActiveRecord::Base
   acts_as_authentic do |config|
     config.validates_format_of_login_field_options :with => /^([A-Z]|\d|[_])+$/i, :message => "should use only letters, numbers and underscore"

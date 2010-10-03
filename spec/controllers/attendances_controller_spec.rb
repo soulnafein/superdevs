@@ -52,7 +52,6 @@ describe AttendancesController do
               and_return(attendance_of_other_user)
 
       delete :destroy, {:id => 42, :event_id => '12'}
-
       response.status.should == 403
     end
   end

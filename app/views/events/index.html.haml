@@ -1,6 +1,15 @@
 - current_tab('events')
 .in
   %h2 Upcoming events, talks and conferences for developers
+  - if current_user
+    %p 
+      Are you organizing an event? 
+      =link_to "Click here", new_event_path
+      and let all the superdevs know!
+  - else 
+    %p 
+      = link_to 'Login', login_url
+      and add your own event :)
   - unless @events.todays_events.empty?
     %h3 Happening today
     = render :partial => 'events',

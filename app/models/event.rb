@@ -2,6 +2,13 @@ class Event < ActiveRecord::Base
   has_many :attendances
   has_many :attendees, :through => :attendances, :source => :user
 
+  attr_accessible :title, 
+                  :city,
+                  :country, 
+                  :description, 
+                  :link, 
+                  :date
+
   def has_attendee?(user)
     self.attendees.include?(user)
   end
@@ -30,6 +37,14 @@ class Event < ActiveRecord::Base
   end
 
   def self.all_upcoming
-    Event.where("date > ?", Time.now).order("date ASC")
+    Event.where("date > ?", Time.now).order("date ASC") 
+  end 
+ 
+  def has_attendee?(user)
+    self.attendees.include?(user)
+  end
+
+  def attendance_for_user(user)
+    self.attendances.where("user_id = ?", user.id).first
   end
 end
