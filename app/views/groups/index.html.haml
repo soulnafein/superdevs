@@ -1,0 +1,10 @@
+- title("Developer groups at SuperDevs")
+- current_tab("groups")
+#group_list.in
+  %h2 All the groups
+  %ul
+    - @groups.each do |group|
+      %li{:class => cycle('even', 'odd')}
+        %h3
+          = link_to group.name, group_path(group.unique_name)
+

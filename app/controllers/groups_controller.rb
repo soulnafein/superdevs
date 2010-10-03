@@ -4,4 +4,8 @@ class GroupsController < ApplicationController
   rescue GroupNotFound
     render_404
   end
+
+  def index
+    @groups = Group.all_active
+  end
 end

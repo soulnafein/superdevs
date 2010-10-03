@@ -19,6 +19,18 @@ describe GroupsController do
     end
   end
 
+  describe "GET 'index'" do
+    it "should load all the active groups from the database" do
+      groups = [mock_group, mock_group]
+      Group.stub(:all_active).and_return(groups)
+
+      get :index
+
+      response.should be_success
+      assigns(:groups).should == groups
+    end
+  end
+
   def mock_group
     @mock_group ||= mock_model(Group)
   end
