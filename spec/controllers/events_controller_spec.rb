@@ -5,9 +5,30 @@ describe EventsController do
     before :each do
       UserSession.stub(:find).and_return(mock_session)
     end
-    it "should be successful" do
-      get 'new'
-      response.should be_success
+
+    it "should provide the group when adding an event for a group" do
+      group = Group.new do |g|
+        g.organizer = mock_user
+      end
+      Group.stub(:find_active_by_unique_name).with('london-developers').
+              and_return(group)
+
+      get :new, :group_id => 'london-developers'
+
+      assigns(:event).group.should == group
+    end
+
+    it "should only allow editing by the organiser of the group" do
+      group = Group.new do |g|
+        g.organizer = mock_model(User)
+      end
+      Group.stub(:find_active_by_unique_name).with("london-developers").
+              and_return(group)
+      valid_info = {:group_id => "london-developers"}
+
+      get :new, valid_info
+
+      response.status.should == 403
     end
   end
 
@@ -56,13 +77,41 @@ describe EventsController do
     end
 
     it "should save event" do
+      group = Group.new do |g|
+        g.organizer = mock_user
+      end
+      Group.stub(:find_active_by_unique_name).with('london-developers').
+              and_return(group)
       Event.stub(:new).and_return(mock_event)
       mock_event.should_receive(:save!)
-      valid_post = {:event => {:title => "Geek night", :city => "London", :country => "United Kingdom", :description => "A geek night", :date=>"10-10-2010"}}
+      valid_post = {:group_id => 'london-developers',
+                    :event => {:title =>  "Geek night",
+                               :city => "London",
+                               :country => "United Kingdom",
+                               :description => "A geek night",
+                               :date=>"10-10-2010"}}
 
       post :create, valid_post
 
       response.should redirect_to ("/events/#{mock_event.id}")  
+    end
+
+    it "should only allow event creation by the organiser of the group" do
+      group = Group.new do |g|
+        g.organizer = mock_model(User)
+      end
+      Group.stub(:find_active_by_unique_name).with("london-developers").
+              and_return(group)
+
+      valid_post = {:event => {:title => "Geek night", :city => "London",
+                               :country => "United Kingdom",
+                               :description => "A geek night",
+                               :date=>"10-10-2010"},
+                               :group_id => "london-developers" }
+
+      post :create, valid_post
+
+      response.status.should == 403
     end
   end
 

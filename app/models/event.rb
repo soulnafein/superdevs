@@ -1,13 +1,15 @@
 class Event < ActiveRecord::Base
   has_many :attendances
   has_many :attendees, :through => :attendances, :source => :user
+  belongs_to :group
 
   attr_accessible :title, 
                   :city,
                   :country, 
                   :description, 
                   :link, 
-                  :date
+                  :date,
+                  :group
 
   def has_attendee?(user)
     self.attendees.include?(user)

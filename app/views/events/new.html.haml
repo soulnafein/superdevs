@@ -30,3 +30,4 @@
         = form.text_area :description
     %p
       = form.submit "Submit"
+    = hidden_field_tag :group_id, @event.group.unique_name
