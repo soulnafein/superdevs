@@ -9,6 +9,13 @@ describe EventsController do
     end
   end
 
+  describe "GET 'index'" do 
+    it "should be successful" do
+      get 'index'
+      response.should be_success
+    end
+  end
+
   before :each do
     UserSession.stub(:find).and_return(mock_session)
   end  
