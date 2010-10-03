@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :require_user
-  
+  before_filter :require_user, :only => [:new, :create] 
   def new
     @event = Event.new
   end

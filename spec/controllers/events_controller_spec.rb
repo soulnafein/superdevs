@@ -2,6 +2,9 @@ require 'spec_helper'
  
 describe EventsController do
   describe "GET 'new'" do
+    before :each do
+      UserSession.stub(:find).and_return(mock_session)
+    end
     it "should be successful" do
       get 'new'
       response.should be_success
@@ -47,7 +50,11 @@ describe EventsController do
     end
   end
   
-    describe "POST 'create'" do
+  describe "POST 'create'" do
+    before :each do
+      UserSession.stub(:find).and_return(mock_session)
+    end
+
     it "should save event" do
       Event.stub(:new).and_return(mock_event)
       mock_event.should_receive(:save!)
