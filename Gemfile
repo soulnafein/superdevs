@@ -13,6 +13,7 @@ gem "haml"
 gem "yaml_db"
 gem 'rcov'
 gem 'chronic'
+gem 'maruku'
 
 group :test do
   gem 'rspec', '2.0.0.beta.22'
