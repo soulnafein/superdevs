@@ -11,6 +11,8 @@
       - if @group.organizer?(current_user)
         = link_to 'Edit description',
                   edit_group_url(@group.unique_name), :class => 'edit'
+      - else
+        %a#join_group_link{:href => "" } Join group!
     .members
       %h3 Members
       %ul
