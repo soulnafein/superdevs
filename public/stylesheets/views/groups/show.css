@@ -7,6 +7,16 @@
   #group_page .description {
     float:left;
     width:650px;
+    margin-bottom:20px;
+  }
+
+  #group_page .events {
+    clear:both;
+    width:650px;
+  }
+
+  #group_page .events dd {
+    width:580px;
   }
 
   #group_page .members {

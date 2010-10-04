@@ -282,6 +282,11 @@ a.edit {
   padding-left:20px;
 }
 
+a.add {
+  background: url(/images/icons/add.png) no-repeat top left;
+  padding-left:20px;
+}
+
 
 
 
