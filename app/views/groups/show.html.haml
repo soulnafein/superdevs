@@ -23,7 +23,8 @@
               != user.medium_profile_picture.to_html
     .events
       %h3 Upcoming events
-      %p= link_to "Add an event", new_group_event_url(@group), :class => 'add'
+      - if @group.organizer?(current_user)
+        %p= link_to "Add an event", new_group_event_url(@group), :class => 'add'
       = render :partial => 'shared/events',
-             :locals => {:events => @group.events}
+        :locals => {:events => @group.events}
 

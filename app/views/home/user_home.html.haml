@@ -15,9 +15,6 @@
         There aren't planned events in
         = current_user.country
         at the moment
-      %p
-        Would you like to add an event to our list?
-        =link_to "Click here", new_event_path
         %span .
     - else
       = render :partial => "user_events"
@@ -33,9 +30,6 @@
             %span .
           %br
           Soon we will filter them based on your interests.
-          %br
-          Would you like to add an event to our list?
-          =link_to "Click here", new_event_path
     - unless current_user.following.empty?
       #following.relationships
         %h3 Following
