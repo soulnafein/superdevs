@@ -2,11 +2,13 @@ class Group < ActiveRecord::Base
   has_friendly_id :unique_name
   belongs_to :organizer, :class_name => 'User'
   has_many :events
+  has_many :members, :through => :members, :source => :user
 
   attr_accessible :description
 
   def members
-    [self.organizer]
+    @members = [] if @members.nil?
+    [self.organizer] | @members
   end
 
   def organizer?(user)
