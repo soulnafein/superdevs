@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MembersController do
+describe MembershipsController do
   before :each do
     UserSession.stub(:find).and_return(mock_session)
   end
@@ -10,7 +10,7 @@ describe MembersController do
       Group.stub(:find_active_by_unique_name).with('superdevs').
           and_return(mock_group)
 
-      Member.should_receive(:create).with(:group => mock_group, :user => mock_user)
+      Membership.should_receive(:create).with(:group => mock_group, :user => mock_user)
       get :create, {:id => 'superdevs'}
 
       response.should redirect_to group_url(mock_group.unique_name)

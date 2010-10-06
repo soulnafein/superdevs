@@ -1,5 +1,5 @@
 Superdevs::Application.routes.draw do
-  resources :user_sessions, :users, :events, :attendances, :password_resets, :members
+  resources :user_sessions, :users, :events, :attendances, :password_resets, :memberships
 
   resources :groups do
     resources :events

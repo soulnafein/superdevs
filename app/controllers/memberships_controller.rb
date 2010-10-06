@@ -1,10 +1,10 @@
-class MembersController < ApplicationController
+class MembershipsController < ApplicationController
   before_filter :require_user
   before_filter :load_group
 
   def create
     load_group
-    Member.create(:user => current_user, :group => @group)
+    Membership.create(:user => current_user, :group => @group)
     redirect_to_group_with_notice('You are now a member of this group.')
   end
 
