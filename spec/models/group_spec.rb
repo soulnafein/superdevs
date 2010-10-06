@@ -22,4 +22,6 @@ describe Group do
     group.organizer?(ken_fassone).should be_false
     group.organizer?(nil).should be_false
   end
+
+  it "should tell me if an user is member of the group"
 end
