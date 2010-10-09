@@ -46,3 +46,12 @@ div.events dt strong {
 div.events dd.odd {
   background-color:#ebebeb;
 }
+#attendances_list li .profile_picture_small {
+  background-color:white;
+  border:1px solid #BAB9B9;
+  float:left;
+  height:31px;
+  margin-right:10px;
+  padding:7px;
+  width:31px;
+}

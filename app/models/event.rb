@@ -49,4 +49,8 @@ class Event < ActiveRecord::Base
   def attendance_for_user(user)
     self.attendances.where("user_id = ?", user.id).first
   end
+
+  def is_organizer?(user)
+    user.id == group.organizer.id
+  end
 end

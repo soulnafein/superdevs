@@ -17,7 +17,7 @@ class AttendancesController < ApplicationController
   end
 
   def index
-    if @event.group.organizer.id == current_user.id
+    if @event.is_organizer?(current_user)
       @attendees = @event.attendees
     else
       render_unauthorised_access
