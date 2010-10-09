@@ -1,3 +1,22 @@
+#group_page_header {
+  width:100%
+}
+  #group_page_header .title {
+    float:left;
+    width:650px;
+    margin-bottom:20px;
+  }
+  #group_page_header .membership {
+    float:right;
+    width:200px;
+  }
+    #group_page_header .membership input {
+      margin: 5px 0; 
+    }
+  #group_page_header .line {
+    clear:both;
+    width:100%;
+  }
 #group_page
 {
   width:100%;
