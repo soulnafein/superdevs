@@ -1,13 +1,15 @@
 require 'spec_helper'
 
 describe Group do
-  it "should include the organizer in the members organizer list" do
+  it "should include the organizer as the first member of the member organizer list" do
     organizer = mock_model(User)
+    ken_fassone = mock_model(User)
     group = Group.new do |g|
       g.organizer = organizer
+      g.members.push(ken_fassone)
     end
 
-    group.members_organizer.should include organizer
+    group.members_organizer.first.should == organizer
   end
 
   it "should tell me whether a user is the organizer of the group" do

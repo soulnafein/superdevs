@@ -28,13 +28,15 @@
     .members
       %h3 Members
       %ul
-        - @group.members.each do |user|
+        - @group.members_organizer.each do |user|
           %li{:class => cycle('even', 'odd')}
             %h5
               = link_to user.full_name, user_path(user.username)
-              (Organizer)
+              - if @group.organizer?(user) 
+                (Organizer)
             .profile_picture_medium
               != user.medium_profile_picture.to_html
+            %div{:style => "clear:both"}
     .events
       %h3 Upcoming events
       - if @group.organizer?(current_user)
