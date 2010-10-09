@@ -19,14 +19,9 @@ describe MembershipsController do
 
   describe "Disjoin from a group" do
     before :each do
- #     @a_group = Group.new do |g|
- #       g.id = 'superdevs'
- #       g.unique_name = 'superdevs'
- #     end
       @a_membership = Membership.new do |m|
         m.id = 18
         m.user = mock_user
-        #m.group = @a_group
         m.group = mock_group
       end
     end

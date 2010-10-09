@@ -56,6 +56,40 @@ describe AttendancesController do
     end
   end
 
+  describe "get attendees" do
+    before :each do
+      UserSession.stub(:find).and_return(mock_session)
+      @event = Event.new do |e|
+        e.id = 42
+      end
+    end
+
+    it "should show list to organizer" do
+      current_user_group = Group.new do |g|
+        g.id = 18
+        g.organizer = mock_user
+      end
+      @event.group = current_user_group
+      Event.stub(:find).with(@event.id).and_return(@event)
+
+      get :index, :event_id => @event.id
+      response.should be_success
+    end
+
+    it "should forbid non organizer to see the list" do
+      another_user_group = Group.new do |g|
+        g.id = 42
+        g.organizer = mock_model(User) #another_user
+      end
+      @event.group = another_user_group
+      Event.stub(:find).with(@event.id).and_return(@event)
+ 
+      get :index, :event_id => @event.id
+
+      response.status.should == 403
+    end
+  end
+
   private
   def mock_session
     session = mock(UserSession).as_null_object

@@ -16,6 +16,14 @@ class AttendancesController < ApplicationController
     end
   end
 
+  def index
+    if @event.group.organizer.id == current_user.id
+      @attendees = @event.attendees
+    else
+      render_unauthorised_access
+    end
+  end 
+
   private
   def load_event
     @event = Event.find(params[:event_id])

@@ -5,6 +5,9 @@ Superdevs::Application.routes.draw do
     resources :events
   end
 
+  resources :events do
+    resources :attendances
+  end
 
   match 'users/:id/follow', :to => 'users#follow', :as => 'follow_user',
           :via  => :put
