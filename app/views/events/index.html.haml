@@ -1,26 +1,17 @@
 - current_tab('events')
 .in
   %h2 Upcoming events, talks and conferences for developers
-  - if current_user
-    %p 
-      Are you organizing an event? 
-      =link_to "Click here", new_event_path
-      and let all the superdevs know!
-  - else 
-    %p 
-      = link_to 'Login', login_url
-      and add your own event :)
   - unless @events.todays_events.empty?
     %h3 Happening today
-    = render :partial => 'events',
+    = render :partial => 'shared/events',
              :locals => {:events => @events.todays_events}
   - unless @events.tomorrows_events.empty?
     %h3 Happening tomorrow
-    = render :partial => 'events',
+    = render :partial => 'shared/events',
              :locals => {:events => @events.tomorrows_events}
   - unless @events.all_other_events.empty?
     %h3 Coming up
-    = render :partial => 'events',
+    = render :partial => 'shared/events',
              :locals => {:events => @events.all_other_events}
   .clear
 
