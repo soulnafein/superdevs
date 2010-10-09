@@ -1,7 +1,21 @@
 - title("#{@group.name} at SuperDevs")
+
 - current_tab('groups')
 .in
-  %h2= @group.name
+  .leftColumn
+    %h2= @group.name
+  .rightColumn
+    - if !@group.organizer?(current_user)
+      - if @group.member?(current_user)
+        - membership = @group.membership_for_user(current_user)
+        = form_tag(membership_url(membership.id), :method => :delete) do
+          = submit_tag 'Disjoin group!', :class => 'alternative'
+          = hidden_field_tag :group_id, @group.unique_name
+      - else
+        = form_for(Membership.new) do
+          = submit_tag 'Join group!'
+          = hidden_field_tag :group_id, @group.unique_name
+        
 .line
 .in
   #group_page
@@ -11,8 +25,6 @@
       - if @group.organizer?(current_user)
         = link_to 'Edit description',
                   edit_group_url(@group.unique_name), :class => 'edit'
-      - else
-        %a#join_group_link{:href => "" } Join group!
     .members
       %h3 Members
       %ul

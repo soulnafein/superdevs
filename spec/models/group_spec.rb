@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Group do
-  it "should include the organizer in the members list" do
+  it "should include the organizer in the members organizer list" do
     organizer = mock_model(User)
     group = Group.new do |g|
       g.organizer = organizer

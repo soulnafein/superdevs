@@ -21,6 +21,10 @@ class Group < ActiveRecord::Base
     self.members.include?(user)
   end
 
+  def membership_for_user(user)
+    self.membership.where("user_id = ?", user.id).first
+  end
+
   def self.find_active_by_unique_name(name)
     Group.all_active.where("unique_name = ?", name).
             first || (raise GroupNotFound)
