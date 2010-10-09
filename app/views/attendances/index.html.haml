@@ -1,0 +1,19 @@
+- current_tab("events")
+#users_list.in
+  %h2 
+    Subscription for 
+    = @event.title
+    (
+    = @attendees.count
+    )
+  %ul
+    - @attendees.each do |user|
+      %li{:class => cycle('even', 'odd')}
+        .profile_picture_medium
+          != user.medium_profile_picture.to_html
+        %h3
+          = user.full_name
+          (
+          %span><= link_to "#{user.username}", user_path(user.username)
+          )
+        %div{:style=>"clear:both"}
