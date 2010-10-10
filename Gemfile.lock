@@ -48,6 +48,10 @@ GEM
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    factory_girl (1.3.2)
+    factory_girl_rails (1.0)
+      factory_girl (~> 1.3)
+      rails (>= 3.0.0.beta4)
     feedtools (0.2.29)
       activerecord (>= 1.10.1)
       builder (>= 1.2.4)
@@ -130,6 +134,7 @@ DEPENDENCIES
   authlogic!
   authlogic_rpx
   chronic
+  factory_girl_rails
   feedtools
   flutie
   friendly_id (= 3.0.5)

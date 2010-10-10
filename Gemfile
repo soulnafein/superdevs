@@ -17,6 +17,7 @@ gem 'maruku'
 gem 'ruby-debug-base'
 gem 'ruby-debug-ide'
 gem 'rack-force_domain'
+gem 'factory_girl_rails'
 
 group :test do
   gem 'rspec', '2.0.0.beta.22'
