@@ -95,18 +95,18 @@ GEM
     rcov (0.9.9)
     rpx_now (0.6.23)
       json_pure
-    rspec (2.0.0.beta.22)
-      rspec-core (= 2.0.0.beta.22)
-      rspec-expectations (= 2.0.0.beta.22)
-      rspec-mocks (= 2.0.0.beta.22)
-    rspec-core (2.0.0.beta.22)
-    rspec-expectations (2.0.0.beta.22)
+    rspec (2.0.0)
+      rspec-core (= 2.0.0)
+      rspec-expectations (= 2.0.0)
+      rspec-mocks (= 2.0.0)
+    rspec-core (2.0.0)
+    rspec-expectations (2.0.0)
       diff-lcs (>= 1.1.2)
-    rspec-mocks (2.0.0.beta.22)
-      rspec-core (= 2.0.0.beta.22)
-      rspec-expectations (= 2.0.0.beta.22)
-    rspec-rails (2.0.0.beta.22)
-      rspec (= 2.0.0.beta.22)
+    rspec-mocks (2.0.0)
+      rspec-core (= 2.0.0)
+      rspec-expectations (= 2.0.0)
+    rspec-rails (2.0.0)
+      rspec (= 2.0.0)
     ruby-debug-base (0.10.3)
       linecache (>= 0.3)
     ruby-debug-ide (0.4.10)
@@ -140,8 +140,8 @@ DEPENDENCIES
   rails (= 3.0.0)
   rcov
   rpx_now
-  rspec (= 2.0.0.beta.22)
-  rspec-rails (= 2.0.0.beta.22)
+  rspec (= 2.0.0)
+  rspec-rails (= 2.0.0)
   ruby-debug-base
   ruby-debug-ide
   sqlite3-ruby
