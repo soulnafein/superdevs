@@ -19,4 +19,10 @@ describe Event do
     event.has_attendee?(an_attendee).should be_true
     event.has_attendee?(a_stranger).should be_false
   end
+
+  it "should tell me whether a user is an organizer" do
+    a_user = User.new
+    event = Event.new(:group => nil)
+    event.is_organizer?(a_user).should be_false
+  end
 end
