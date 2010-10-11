@@ -9,10 +9,6 @@
       = link_to "website", @event.link
     %h3 
       Attendees (#{@event.attendees.size})
-      - if @event.is_organizer?(current_user)
-        [
-        = link_to "show list", [@event, :attendances] 
-        ]
     %p
       - @event.attendees.each do |u|
         %a{:href=>user_path(u.username), :title=> u.full_name}

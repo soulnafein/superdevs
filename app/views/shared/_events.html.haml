@@ -9,3 +9,5 @@
       %dd{:class => cycle('even', 'odd')}
         %h4= link_to event.title, event_path(event.id)
         %h5 #{event.city.capitalize} (#{event.country})
+        - if event.is_organizer?(current_user)
+          = link_to "Attendees (#{event.attendees.size})", [event, :attendances], :class => 'attendees_list'
