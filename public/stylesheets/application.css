@@ -287,7 +287,10 @@ a.add {
   padding-left:20px;
 }
 
-
+a.attendees_list {
+  background: url(/images/icons/attendees_list.png) no-repeat top left;
+  padding-left:20px;
+}
 
 
 
