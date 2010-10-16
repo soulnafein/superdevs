@@ -20,8 +20,8 @@ gem 'rack-force_domain'
 gem 'factory_girl_rails'
 
 group :test do
-  gem 'rspec', '2.0.0.beta.22'
-  gem 'rspec-rails', '2.0.0.beta.22'
+  gem 'rspec', '2.0.0'
+  gem 'rspec-rails', '2.0.0'
 end
 
 gem 'feedtools'

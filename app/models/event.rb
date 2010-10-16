@@ -51,6 +51,7 @@ class Event < ActiveRecord::Base
   end
 
   def is_organizer?(user)
-    user.id == group.organizer.id
+    return false if group.nil?
+    group.organizer?(user)
   end
 end
