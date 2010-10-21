@@ -32,6 +32,59 @@ describe EventsController do
     end
   end
 
+  describe "GET 'edit'" do
+    before :each do
+      UserSession.stub(:find).and_return(mock_session)
+    end
+
+    it "should provide the event when editing an event for a group" do
+      group = mock_model(Group)
+      event = mock_model(Event, :group => group, :is_organizer? => true)
+      Event.stub(:find).with(42).and_return(event)
+
+      get :edit, {:group_id => 'london-developers', :id => 42}
+
+      assigns(:event).should == event
+    end
+
+    it "should only allow editing by the organiser of the group" do
+      group = mock_model(Group)
+      event = mock_model(Event, :group => group, :is_organizer? => false)
+      Event.stub(:find).with(42).and_return(event)
+
+      get :edit, {:group_id => "london-developers", :id => 42}
+
+      response.status.should == 403
+    end
+  end
+  describe "PUT 'update'" do
+    before :each do
+      UserSession.stub(:find).and_return(mock_session)
+    end
+
+    it "should update the event" do
+      Event.stub(:find).with("42").and_return(mock_event)
+      valid_info = {:id => "42",
+                    :group_id => 'london-developers',
+                    :event => {"description" => "a description"}}
+      mock_event.should_receive(:update_attributes!).with(valid_info[:event])
+
+      put :update, valid_info
+
+      response.should redirect_to group_event_url(mock_event.group.unique_name, mock_event.id)
+    end
+
+    it "should only allow editing by the organiser of the group" do
+      group = mock_model(Group).as_null_object
+      event = mock_model(Event, :group => group, :is_organizer? => false)
+      Event.stub(:find).with(42).and_return(event)
+
+      put :update, {:group_id => "london-developers", :id => 42}
+
+      response.status.should == 403
+    end
+  end
+
   describe "GET 'show'" do
     before :each do
       UserSession.stub(:find).and_return(mock_session)
@@ -44,58 +97,6 @@ describe EventsController do
       get :show, :id => 42
 
       response.should be_success
-      assigns(:event).should == event
-    end
-
-    it "should send back a 404 when give an invalid id" do
-      get :show, :id => 666
-
-      response.status.should == 404
-    end
-  end
-
-  describe "GET 'index'" do
-    it "should provide a list of events" do
-      events = [mock_model(Event), mock_model(Event)]
-      Event.stub(:all_upcoming).and_return(events)
-      today = Chronic.parse("31 january 2010").to_date
-      Date.stub(:today).and_return(today)
-      grouped_events = mock(EventsGroupedByPeriod)
-      EventsGroupedByPeriod.stub!(:new).with(events, today).
-              and_return(grouped_events)
-
-      get :index
-
-      response.should be_success
-      assigns(:events).should == grouped_events
-    end
-  end
-  
-  describe "POST 'create'" do
-    before :each do
-      UserSession.stub(:find).and_return(mock_session)
-    end
-
-    it "should save event" do
-      group = mock_model(Group)
-      group.stub(:organizer?).and_return(true)
-      group.stub(:unique_name).and_return('london-developers')
-      Group.stub(:find_active_by_unique_name).with('london-developers').
-              and_return(group)
-      Event.stub(:new).and_return(mock_event)
-      mock_event.should_receive(:save!)
-      mock_event.should_receive(:group=).with(group)
-
-      valid_post = {:group_id => 'london-developers',
-                    :event => {:title =>  "Geek night",
-                               :city => "London",
-                               :country => "United Kingdom",
-                               :description => "A geek night",
-                               :date=>"10-10-2010"}}
-
-      post :create, valid_post
-
-      response.should redirect_to group_url(group.unique_name)
     end
 
     it "should only allow event creation by the organiser of the group" do
@@ -118,7 +119,9 @@ describe EventsController do
   end
 
   def mock_event(stubs={})
-    @mock_event ||= mock_model(Event, stubs).as_null_object
+    event = mock_model(Event, stubs).as_null_object
+    event.stub(:group).and_return(mock_model(Group, :unique_name => "london-developers"))
+    @mock_event ||=  event
   end
 
 

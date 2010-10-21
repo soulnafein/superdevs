@@ -63,6 +63,7 @@ describe GroupsController do
     before :each do
       UserSession.stub(:find).and_return(mock_session)
     end
+
     it "should update the group" do
       Group.stub(:find_active_by_unique_name).with("london-developers").
               and_return(mock_group)
