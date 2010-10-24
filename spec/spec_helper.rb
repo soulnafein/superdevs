@@ -8,6 +8,38 @@ require 'rspec/rails'
 # in ./support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
+#fixture to be substituted by factory girl
+module TestBuilders
+  def user_david
+    user = User.new(:full_name => "David", :username => "davidsantoro")
+    user.id = 123
+    user
+  end
+
+  def user_ken
+    user = User.new(:full_name => "Ken", :username => "kenfassone")
+    user.id = 678
+    user
+  end
+
+  def group
+    Group.new(:name => "London Developers",
+              :unique_name => "london-developers",
+              :organizer => user_david,
+              :description => "A description",
+              :active => true)
+  end
+end
+
+module SessionTestHelper
+  def logged_in_user_is(user)
+    session = mock(UserSession).as_null_object
+    session.stub(:record).and_return(user)
+    UserSession.stub(:find).and_return(session)
+    user
+  end
+end
+
 Rspec.configure do |config|
   # == Mock Framework
   #
@@ -25,3 +57,5 @@ Rspec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 end
+
+
