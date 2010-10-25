@@ -23,11 +23,13 @@ module TestBuilders
   end
 
   def group
-    Group.new(:name => "London Developers",
-              :unique_name => "london-developers",
-              :organizer => user_david,
-              :description => "A description",
-              :active => true)
+    Group.new do |g|
+      g.name = "London Developers"
+      g.unique_name = "london-developers"
+      g.organizer = user_david
+      g.description = "A description"
+      g.active = true
+    end
   end
 end
 

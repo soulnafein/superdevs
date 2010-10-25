@@ -33,6 +33,12 @@ class Group < ActiveRecord::Base
   def self.all_active
     Group.where("active = ?", true)
   end
+
+  def create_event(params)
+    event = Event.new(params)
+    event.group = self
+    event.save!
+  end
 end
 
 class GroupNotFound < Exception
