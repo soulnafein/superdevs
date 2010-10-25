@@ -3,7 +3,12 @@
   .leftColumn
     %h2= @event.title
     %h3= @event.date.strftime("%d %B %Y")
-    %p.description= @event.description
+    %p.description
+      - if @event.group.nil?
+        = @event.description
+      - else
+        :markdown
+          #{@event.description}
     %strong.highlighter= @event.country + "/" + @event.city
     %p
       = link_to "website", @event.link
