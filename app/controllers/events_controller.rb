@@ -49,6 +49,6 @@ class EventsController < ApplicationController
 
   def index
     today = Date.today
-    @events = EventsGroupedByPeriod.new(Event.all_upcoming, today)
+    @events = EventsGroupedByPeriod.new(Event.united_kingdom, today)
   end
 end
