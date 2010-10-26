@@ -40,8 +40,12 @@ class Event < ActiveRecord::Base
 
   def self.all_upcoming
     Event.where("date > ?", Time.now).order("date ASC") 
-  end 
- 
+  end
+
+  def self.all_past
+    Event.where("date < ?", Time.now).order("date ASC")
+  end
+
   def has_attendee?(user)
     self.attendees.include?(user)
   end
