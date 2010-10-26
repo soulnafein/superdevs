@@ -1,8 +1,12 @@
 - current_tab('events')
 .in#event
   .leftColumn
-    %h2= @event.title
+    %h2
+      = @event.title
     %h3= @event.date.strftime("%d %B %Y")
+    %h4
+      - if @event.group
+        [#{link_to @event.group.name, group_url(@event.group.unique_name)}]
     %p.description
       - if @event.group.nil?
         = @event.description
@@ -10,8 +14,10 @@
         :markdown
           #{@event.description}
     %strong.highlighter= @event.country + "/" + @event.city
+    - unless @event.link.to_s.empty?
+      %p
+        = link_to "website", @event.link
     %p
-      = link_to "website", @event.link
     %h3 
       Attendees (#{@event.attendees.size})
     %p
