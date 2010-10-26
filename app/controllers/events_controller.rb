@@ -10,13 +10,6 @@ class EventsController < ApplicationController
     end
   end
 
-  def edit
-    @event = Event.find(params[:id])
-    unless @event.is_organizer?(current_user)
-      render_unauthorised_access
-    end
-  end
-
   def create
     group_id = params[:group_id]
     group = Group.find_active_by_unique_name(group_id)
@@ -29,6 +22,13 @@ class EventsController < ApplicationController
     end
   rescue ActiveRecord::RecordInvalid
     render :action => 'new'
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+    unless @event.is_organizer?(current_user)
+      render_unauthorised_access
+    end
   end
 
   def update

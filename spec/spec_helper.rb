@@ -31,6 +31,13 @@ module TestBuilders
       g.active = true
     end
   end
+
+  def event
+    Event.new do |e|
+      e.id = 123
+      e.description = "A description"
+    end
+  end
 end
 
 module SessionTestHelper
