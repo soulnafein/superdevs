@@ -1,6 +1,8 @@
 class Event < ActiveRecord::Base
   has_many :attendances
+  has_many :trackings
   has_many :attendees, :through => :attendances, :source => :user
+  has_many :trackers, :through => :trackings, :source => :user
   belongs_to :group
 
   attr_accessible :title, 
@@ -61,5 +63,9 @@ class Event < ActiveRecord::Base
   def is_organizer?(user)
     return false if group.nil?
     group.organizer?(user)
+  end
+
+  def has_tracker?(user)
+    self.trackers.include?(user)
   end
 end

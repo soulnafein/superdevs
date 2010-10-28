@@ -25,14 +25,23 @@
         %a{:href=>user_path(u.username), :title=> u.full_name}
           .profile_picture_medium
             != u.medium_profile_picture.to_html
+    %h3 Trackers (#{@event.trackers.size})
+    %p
+      - @event.trackers.each do |u|
+        %a{:href=>user_path(u.username), :title=> u.full_name}
+          .profile_picture_medium
+            != u.medium_profile_picture.to_html
   .rightColumn
     - if @event.has_attendee?(current_user)
       - attendance = @event.attendance_for_user(current_user)
       = form_tag(attendance_url(attendance.id), :method => :delete) do
         = submit_tag 'Unattend this event', :class => 'alternative'
+        %p or
         = hidden_field_tag :event_id, @event.id
     - else
       = form_for(Attendance.new) do |f|
         = f.submit 'Attend this event'
         = hidden_field_tag :event_id, @event.id
+        %p or
+        %p= link_to "Keep track of this event"
   .clear

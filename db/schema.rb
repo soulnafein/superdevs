@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101006171714) do
+ActiveRecord::Schema.define(:version => 20101027200538) do
 
   create_table "attendances", :force => true do |t|
     t.integer  "user_id"
@@ -65,6 +65,13 @@ ActiveRecord::Schema.define(:version => 20101006171714) do
 
   add_index "rpx_identifiers", ["identifier"], :name => "index_rpx_identifiers_on_identifier", :unique => true
   add_index "rpx_identifiers", ["user_id"], :name => "index_rpx_identifiers_on_user_id"
+
+  create_table "trackings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "full_name"
