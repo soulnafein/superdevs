@@ -17,7 +17,8 @@ class UserSessionsController < ApplicationController
     else
       if @user_session.registration_complete?
         flash[:notice] = "Successfully signed in."
-        redirect_to root_url, :notice => "Successfully logged in"
+        redirect_to session[:return_to] || root_url, :notice => "Successfully logged in"
+	session[:return_to] = nil
       else
         flash[:notice] = "Welcome back! Please complete required registration details before continuing.."
         redirect_to edit_mandatory_details_url
