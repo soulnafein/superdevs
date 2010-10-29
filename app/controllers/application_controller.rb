@@ -41,7 +41,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    unless current_user
+    unless current_user 
+      session[:return_to] = request.fullpath
       flash[:notice] = "You must be logged in to access this page"
       redirect_to login_path
       return false

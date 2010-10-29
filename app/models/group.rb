@@ -21,6 +21,14 @@ class Group < ActiveRecord::Base
     self.members.include?(user)
   end
 
+  def past_events
+    self.events.all_past
+  end
+
+  def upcoming_events
+    self.events.all_upcoming
+  end
+
   def membership_for_user(user)
     self.membership.where("user_id = ?", user.id).first
   end
@@ -32,6 +40,12 @@ class Group < ActiveRecord::Base
 
   def self.all_active
     Group.where("active = ?", true)
+  end
+
+  def create_event(params)
+    event = Event.new(params)
+    event.group = self
+    event.save!
   end
 end
 

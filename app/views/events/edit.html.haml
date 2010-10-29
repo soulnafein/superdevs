@@ -1,0 +1,33 @@
+.in
+  %h2 Edit event
+.in.forms
+  = form_for(@event) do |form|
+    = form.error_messages
+    %p 
+      %label{:for=>"title"}
+        Event name
+        %br
+        = form.text_field :title
+    %p
+      %label{:date=>"date"}
+        Date
+        %br
+        = date_select :event, :date
+    %p 
+      %label{:for=>"city"}
+        City
+        %br
+        = form.text_field :city
+    %p
+      %label{:for=>"country"}
+        Country
+        %br
+        = country_select :event, :country, []
+    %p 
+      %label{:for=>"description"}
+        Description
+        %br
+        = form.text_area :description
+    %p
+      = form.submit "Submit"
+    = hidden_field_tag :group_id, @event.group.unique_name

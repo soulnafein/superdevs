@@ -39,9 +39,17 @@ class Event < ActiveRecord::Base
   end
 
   def self.all_upcoming
-    Event.where("date > ?", Time.now).order("date ASC") 
-  end 
- 
+    Event.where("date > ?", Time.now).order("date ASC")
+  end
+
+  def self.united_kingdom
+    Event.all_upcoming.where("upper(country) = 'UNITED KINGDOM'")
+  end
+
+  def self.all_past
+    Event.where("date < ?", Time.now).order("date ASC")
+  end
+
   def has_attendee?(user)
     self.attendees.include?(user)
   end

@@ -42,5 +42,10 @@
       - if @group.organizer?(current_user)
         %p= link_to "Add an event", new_group_event_url(@group), :class => 'add'
       = render :partial => 'shared/events',
-        :locals => {:events => @group.events}
+        :locals => {:events => @group.upcoming_events}
+      %h3 Past events
+      - if @group.organizer?(current_user)
+        %p= link_to "Add an event", new_group_event_url(@group), :class => 'add'
+      = render :partial => 'shared/events',
+        :locals => {:events => @group.past_events}
 
