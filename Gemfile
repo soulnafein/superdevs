@@ -17,11 +17,12 @@ gem 'maruku'
 gem 'ruby-debug-base'
 gem 'ruby-debug-ide'
 gem 'rack-force_domain'
-gem 'factory_girl_rails'
 
 group :test do
+  gem "capybara", "0.3.9"
   gem 'rspec', '2.0.0'
   gem 'rspec-rails', '2.0.0'
+  gem 'factory_girl_rails'
 end
 
 gem 'feedtools'
