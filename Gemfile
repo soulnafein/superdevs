@@ -19,8 +19,10 @@ gem 'ruby-debug-ide'
 gem 'rack-force_domain'
 
 group :test do
+  gem "capybara", "0.3.9"
   gem 'rspec', '2.0.0'
   gem 'rspec-rails', '2.0.0'
+  gem 'factory_girl_rails'
 end
 
 gem 'feedtools'
