@@ -32,4 +32,8 @@ end
 Factory.define :event do |e|
   e.id 123
   e.description "A description"
+  e.date DateTime::now()
+  e.country "United Kingdom"
+  e.city "London"
+  e.attendees []
 end

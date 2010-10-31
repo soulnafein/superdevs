@@ -11,5 +11,16 @@ describe "FriendlyForwardings" do
     click_button 'user_session_submit'
     current_path.should == edit_user_path(user)
   end
+
+  it "should forward to the event page ater signout and login from event attend" do
+    event = Factory(:event)
+    visit event_url(event)
+    click_button 'attendance_submit'
+    user = Factory(:user)
+    fill_in 'user_session_username', :with => user.email
+    fill_in 'user_session_password', :with => user.password
+    click_button 'user_session_submit'
+    current_path.should == event_path(event)
+  end
 end
 
