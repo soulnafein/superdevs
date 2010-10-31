@@ -30,10 +30,15 @@ Factory.define :group do |g|
 end
 
 Factory.define :event do |e|
-  e.id 123
   e.description "A description"
   e.date DateTime::now()
   e.country "United Kingdom"
   e.city "London"
   e.attendees []
 end
+
+Factory.define :attendance do |a|
+  a.user {|user| user.association(:user)}
+  a.event { |event| event.association(:event)}
+end
+
