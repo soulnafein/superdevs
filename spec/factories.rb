@@ -12,12 +12,12 @@ Factory.define :user do |u|
 end
 
 Factory.define :david, :parent => :user do |u|
-   u.username "david"
-   u.full_name "David Santoro"
+  u.sequence(:username){|n| "david#{n}"}
+  u.full_name "David Santoro"
 end
 
 Factory.define :ken, :parent => :user do |u|
-   u.username "ken"
+   u.sequence(:username){|n| "ken#{n}"}
    u.full_name "Ken Alex Fassone"
 end
 
