@@ -6,6 +6,8 @@ Factory.define :user do |u|
   u.sequence(:email) {|n| "current_user#{n}@email.it"}
   u.password "apassword"
   u.password_confirmation "apassword"
+  u.country "United Kingdom"
+  u.city "London"
   u.full_name "current user"
   u.agreed_tc_and_pp true
   u.active true
