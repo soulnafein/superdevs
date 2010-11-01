@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def complete_registration
     current_user.email = params[:user][:email]
-    current_user.username = params[:user][:username].gsub(".", "")
+    current_user.username = params[:user][:username]
     current_user.full_name = params[:user][:full_name]
     current_user.agreed_tc_and_pp = params[:user][:agreed_tc_and_pp]
     current_user.save!
@@ -52,6 +52,8 @@ class UsersController < ApplicationController
 
   def addrpxauth
     @user = current_user
+    @user.username = params[:user][:username]
+    @user
     if @user.save
       flash[:notice] = "Successfully added RPX authentication for this account."
       render :action => 'show'
