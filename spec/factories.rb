@@ -24,7 +24,7 @@ end
 Factory.define :group do |g|
   g.name "London Developers"
   g.unique_name "london-developers"
-  g.organizer {|organizer| organizer.association(:david) }
+  g.organizer {|organizer| organizer.association(:user) }
   g.description "A description"
   g.active true
 end
