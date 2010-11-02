@@ -81,9 +81,8 @@ describe UsersController do
 
   describe "POST 'create'" do
     it "should save user" do
-      User.stub(:new).and_return(@user)
-      @user.should_receive(:save!)
-      @user.should_receive(:deliver_activation_instructions!)
+      User.stub(:new).and_return(mock_user)
+      mock_user.should_receive(:save!)
       valid_signup = {:user => {:username => "soulnafein", :email => "soulnafe@gmail.com", :password => "test", :password_confirmation => 'test'}}
 
       post :create, valid_signup 
