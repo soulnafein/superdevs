@@ -44,3 +44,9 @@ Factory.define :attendance do |a|
   a.event { |event| event.association(:event)}
 end
 
+Factory.define :membership do |m|
+  m.id 18
+  m.user {|user| user.association(:user)} 
+  m.group {|group| group.association(:group)} 
+end
+

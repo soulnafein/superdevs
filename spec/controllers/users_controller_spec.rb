@@ -1,15 +1,17 @@
 require 'spec_helper'
 
 describe UsersController do
+  include SessionTestHelper
 
   describe "GET 'show'" do
     it "should load the user from the database" do
-      User.stub(:find_active_by_username).with(42).and_return(mock_user)
+      @user = Factory(:user)
+      User.stub(:find_active_by_username).with(42).and_return(@user)
 
       get :show, :id => 42
 
       response.should be_success
-      assigns(:user).should == mock_user
+      assigns(:user).should == @user
     end
 
     it "should send back a 404 when give an invalid id" do
@@ -21,16 +23,17 @@ describe UsersController do
 
   describe "GET 'edit'" do
     before :each do
-      UserSession.stub(:find).and_return(mock_session)
+      @user = Factory(:user)
+      logged_in_user_is(@user)
     end
 
     it "should load the user from the database" do
-      User.stub(:find_active_by_username).with(42).and_return(mock_user)
+      User.stub(:find_active_by_username).with(42).and_return(@user)
 
       get :edit, :id => 42
 
       response.should be_success
-      assigns(:user).should == mock_user
+      assigns(:user).should == @user
     end
 
     it "should send back a 404 when give an invalid id" do
@@ -42,17 +45,18 @@ describe UsersController do
 
   describe "PUT 'update'" do
     before :each do
-      UserSession.stub(:find).and_return(mock_session)
+      @user = Factory(:user, :id => 1)
+      logged_in_user_is(@user)
     end
 
     it "should update user" do
-      User.stub(:find_active_by_username).with(1).and_return(mock_user)
+      User.stub(:find_active_by_username).with(1).and_return(@user)
       valid_info = {:id => 1, :user => {"username" => "soulnafein", "email" => "soulnafe@gmail.com", "password" => "test", "password_confirmation" => 'test'}}
-      mock_user.should_receive(:update_attributes!).with(valid_info[:user])
+      @user.should_receive(:update_attributes!).with(valid_info[:user])
 
       put :update, valid_info
 
-      response.should redirect_to user_url(mock_user.id)
+      response.should redirect_to user_url(@user) 
     end
 
     it "should go back to form in case of errors" do
@@ -77,11 +81,12 @@ describe UsersController do
 
   describe "POST 'create'" do
     it "should save user" do
-      User.stub(:new).and_return(mock_user)
-      mock_user.should_receive(:save!)
+      User.stub(:new).and_return(@user)
+      @user.should_receive(:save!)
+      @user.should_receive(:deliver_activation_instructions!)
       valid_signup = {:user => {:username => "soulnafein", :email => "soulnafe@gmail.com", :password => "test", :password_confirmation => 'test'}}
 
-      post :create, valid_signup
+      post :create, valid_signup 
 
       response.should redirect_to("/invitation_requested")
     end
@@ -99,7 +104,7 @@ describe UsersController do
 
   describe "GET 'index'" do
     it "should provide a list of all the active developers" do
-      active_users = [mock_user, mock_user]
+      active_users = [@user, @user]
       User.should_receive(:all_active_users).and_return(active_users)
 
       get :index
@@ -108,13 +113,6 @@ describe UsersController do
       response.should render_template(:index)
       assigns[:users].should == active_users
     end
-  end
-
-
-  def mock_session
-    session = mock(UserSession).as_null_object
-    session.stub(:record).and_return(mock_user)
-    @mock_session ||= session
   end
 
   def mock_user(stubs={})
