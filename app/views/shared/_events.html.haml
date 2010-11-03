@@ -12,4 +12,5 @@
         - if event.is_organizer?(current_user)
           = link_to "Attendees (#{event.attendees.size})", [event, :attendances], :class => 'attendees_list'
           = link_to "Edit event", edit_group_event_url(event.group.unique_name, event.id), :class => 'edit'
-
+        - elsif !event.attendees.empty?
+          %em{:class => 'attendees_count'}Attendees (#{event.attendees.size})
