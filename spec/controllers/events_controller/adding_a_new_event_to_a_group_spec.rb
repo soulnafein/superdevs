@@ -1,20 +1,19 @@
 require 'spec_helper'
 
 describe EventsController, "Adding a new event to a group" do
-  include TestBuilders
   include SessionTestHelper
 
   before :each do
-    @david = user_david
-    @ken = user_ken
+    @david = Factory(:david)
+    @ken = Factory(:ken)
+    @the_group = Factory(:group, :organizer => @ken)
   end
 
   it "should only be allowed to the group's organizer" do
     logged_in_user_is(@david)
-    the_group = group
-    the_group.organizer = @ken
+
     Group.stub(:find_active_by_unique_name).with("london-developers").
-            and_return(the_group)
+            and_return(@the_group)
 
     get :new, {:id => 123, :group_id => "london-developers"}
     response.status.should == 403
@@ -25,9 +24,7 @@ describe EventsController, "Adding a new event to a group" do
 
   context "When the group event's organizer is logged in" do
     before :each do
-      logged_in_user_is(@david)
-      @the_group = group
-      @the_group.organizer = @david
+      logged_in_user_is(@ken)
       Group.stub(:find_active_by_unique_name).with("london-developers").
               and_return(@the_group)
     end
