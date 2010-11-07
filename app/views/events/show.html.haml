@@ -29,7 +29,11 @@
           .profile_picture_medium
             != u.medium_profile_picture.to_html
   .rightColumn
-    - if @event.has_attendee?(current_user)
+    - if current_user.nil?
+      .loginBlock
+        = link_to "Login or sign up", login_url 
+        to attend this event.
+    - elsif @event.has_attendee?(current_user)
       - attendance = @event.attendance_for_user(current_user)
       = form_tag(attendance_url(attendance.id), :method => :delete) do
         = submit_tag 'Unattend this event', :class => 'alternative'
