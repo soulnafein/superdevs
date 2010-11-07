@@ -17,8 +17,17 @@ class Event < ActiveRecord::Base
     self.attendees.include?(user)
   end
 
-  def attendance_for_user(user)
-    self.attendances.where("user_id = ?", user.id).first
+  def register_attendee(user)
+    self.attendees << user unless has_attendee?(user)
+  end
+
+  def unregister_attendee(user)
+    self.attendees.delete(user)
+  end
+
+  def is_organizer?(user)
+    return false if group.nil?
+    group.organizer?(user)
   end
 
   def self.exists?(event)
@@ -50,19 +59,6 @@ class Event < ActiveRecord::Base
 
   def self.all_past
     Event.where("date < ?", Time.now).order("date ASC")
-  end
-
-  def has_attendee?(user)
-    self.attendees.include?(user)
-  end
-
-  def attendance_for_user(user)
-    self.attendances.where("user_id = ?", user.id).first
-  end
-
-  def is_organizer?(user)
-    return false if group.nil?
-    group.organizer?(user)
   end
 
   def has_tracker?(user)

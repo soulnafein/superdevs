@@ -50,5 +50,20 @@ describe Event do
     event.is_organizer?(a_user).should be_true
   end
 
+  it "should register an attendee for the event" do
+    david = Factory(:david)
+    event = Event.new
+    5.times { event.register_attendee(david) }
+    event.attendees.length.should == 1
+    event.has_attendee?(david).should be_true
+  end
+
+  it "should unregister an attendee of the event" do
+    david, ken = Factory(:david), Factory(:ken)
+    event = Factory(:event, :attendees => [david, ken])
+    event.unregister_attendee(david)
+    event.attendees.length.should == 1
+    event.has_attendee?(david).should be_false
+  end
 
 end
