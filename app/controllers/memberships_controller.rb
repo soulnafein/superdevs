@@ -32,4 +32,8 @@ class MembershipsController < ApplicationController
     membership = Membership.find(params[:id])
     membership.user.id == current_user.id
   end
+
+  def return_path
+    group_url(load_group)
+  end
 end

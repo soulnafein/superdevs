@@ -29,6 +29,10 @@ class AttendancesController < ApplicationController
     @event = Event.find(params[:event_id])
   end
 
+  def return_path
+    event_url(load_event)
+  end
+
   def redirect_to_event_with_notice(notice)
     redirect_to(event_url(@event), :notice => notice)
   end
@@ -37,4 +41,5 @@ class AttendancesController < ApplicationController
     attendance = Attendance.find(params[:id])
     attendance.user.id == current_user.id
   end
+
 end

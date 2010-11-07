@@ -1,15 +1,18 @@
 require 'spec_helper'
 
 describe GroupsController do
+  include SessionTestHelper
+
   describe "GET 'show'" do
     it "should load the group from the database" do
+      @the_group = Factory(:group)
       Group.stub(:find_active_by_unique_name).with("london-developers").
-            and_return(mock_group)
+            and_return(@the_group)
 
       get :show, :id => "london-developers"
 
       response.should be_success
-      assigns(:group).should == mock_group
+      assigns(:group).should == @the_group
     end
 
     it "should send back a 404 when give an invalid id" do
@@ -21,7 +24,8 @@ describe GroupsController do
 
   describe "GET 'index'" do
     it "should load all the active groups from the database" do
-      groups = [mock_group, mock_group]
+      @the_group = Factory(:group)
+      groups = [@the_group, @the_group]
       Group.stub(:all_active).and_return(groups)
 
       get :index
@@ -33,25 +37,25 @@ describe GroupsController do
 
   describe "GET 'edit'" do
     before :each do
-      UserSession.stub(:find).and_return(mock_session)
+      @user = Factory(:user)
+      logged_in_user_is(@user)
     end
 
     it "should load the group from the database" do
+      @the_group = Factory(:group, :organizer => @user)
       Group.stub(:find_active_by_unique_name).with("london-developers").
-              and_return(mock_group)
+              and_return(@the_group)
 
       get :edit, :id => "london-developers"
 
       response.should be_success
-      assigns(:group).should == mock_group
+      assigns(:group).should == @the_group
     end
 
     it "should only allow editing by the organiser of the group" do
-      group = Group.new do |g|
-        g.organizer = mock_model(User)
-      end
+      @the_group = Factory(:group, :organizer => Factory(:ken))
       Group.stub(:find_active_by_unique_name).with("london-developers").
-              and_return(group)
+              and_return(@the_group)
 
       get :edit, :id => "london-developers"
 
@@ -61,27 +65,27 @@ describe GroupsController do
 
   describe "PUT 'update'" do
     before :each do
-      UserSession.stub(:find).and_return(mock_session)
+      @user = Factory(:user)
+      logged_in_user_is(@user)
     end
 
     it "should update the group" do
+      @the_group = mock_model(Group).as_null_object
       Group.stub(:find_active_by_unique_name).with("london-developers").
-              and_return(mock_group)
+              and_return(@the_group)
       valid_info = {:id => "london-developers",
                     :group => {"description" => "a description"}}
-      mock_group.should_receive(:update_attributes!).with(valid_info[:group])
+      @the_group.should_receive(:update_attributes!).with(valid_info[:group])
 
       put :update, valid_info
-
-      response.should redirect_to group_url(mock_group.unique_name)
+      response.should redirect_to group_url(@the_group.unique_name)
     end
 
     it "should only allow editing by the organiser of the group" do
-      group = Group.new do |g|
-        g.organizer = mock_model(User)
-      end
+      @the_group = Factory(:group, :organizer => Factory(:ken))
+
       Group.stub(:find_active_by_unique_name).with("london-developers").
-              and_return(group)
+              and_return(@the_group)
       valid_info = {:id => "london-developers",
                     :group => {"description" => "a description"}}
 
@@ -91,19 +95,5 @@ describe GroupsController do
 
       response.status.should == 403
     end
-  end
-
-  def mock_session
-    session = mock(UserSession).as_null_object
-    session.stub(:record).and_return(mock_user)
-    @mock_session ||= session
-  end
-
-  def mock_user
-    @mock_user ||= mock_model(User).as_null_object
-  end
-
-  def mock_group
-    @mock_group ||= mock_model(Group).as_null_object
   end
 end

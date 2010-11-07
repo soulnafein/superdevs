@@ -1,16 +1,18 @@
 require 'spec_helper'
 
 describe AttendancesController do
+  include SessionTestHelper
+
   describe "attending an event" do
     before :each do
-      UserSession.stub(:find).and_return(mock_session)
+      @david = Factory(:david)
+      logged_in_user_is(@david)
     end
 
     it "should add a user to the attendees of an event" do
-      event = Event.new(:title => 'A test event')
-      event.id = 12
+      event = Factory(:event, :id => 12)
       Event.stub!(:find).with(event.id.to_s).and_return(event)
-      Attendance.should_receive(:create).with(:event => event, :user => mock_user)
+      Attendance.should_receive(:create).with(:event => event, :user => @david)
 
       post :create, {:event_id => '12'}
 
@@ -20,34 +22,26 @@ describe AttendancesController do
 
   describe "unattending an event" do
     before :each do
-      UserSession.stub(:find).and_return(mock_session)
-      @event = Event.new do |e|
-        e.title = 'A test event'
-        e.id = 12
-      end
+      @david = Factory(:david)
+      logged_in_user_is(@david)
+
+      @event = Factory(:event, :id => 12)
       Event.stub!(:find).with(@event.id.to_s).and_return(@event)
-      @an_attendance = Attendance.new do |a|
-        a.id = 54
-        a.user = mock_user
-        a.event = @event
-      end
+      @an_attendance = Factory(:attendance, :id => 1,  :user => @david)
     end
 
     it "should remove the attendance of a user" do
-      Attendance.stub(:find).with(@an_attendance.id).and_return(@an_attendance)
-      Attendance.should_receive(:delete).with(@an_attendance.id)
+      Attendance.stub(:find).with(@an_attendance.id.to_s).and_return(@an_attendance)
+      Attendance.should_receive(:delete).with(@an_attendance.id.to_s)
 
-      delete :destroy, {:id => @an_attendance.id, :event_id => '12'}
+      delete :destroy, {:id => '1', :event_id => '12'}
 
       response.should redirect_to event_path(@event.id)
     end
 
     it "should not authorise removing attendances of other users" do
-      attendance_of_other_user = Attendance.new do |a|
-        a.id = 42
-        a.event = @event
-        a.user = mock_model(User)
-      end
+      attendance_of_other_user = Factory(:attendance, :id => 42, :event => @event, :user => Factory(:ken))
+
       Attendance.stub(:find).with(attendance_of_other_user.id).
               and_return(attendance_of_other_user)
 
@@ -58,48 +52,29 @@ describe AttendancesController do
 
   describe "get attendees" do
     before :each do
-      UserSession.stub(:find).and_return(mock_session)
-      @event = Event.new do |e|
-        e.id = 42
-      end
+      @david = Factory(:david)
+      logged_in_user_is(@david)
     end
 
     it "should show list to organizer" do
-      current_user_group = Group.new do |g|
-        g.id = 18
-        g.organizer = mock_user
-      end
-      @event.group = current_user_group
+      @current_user_group = Factory(:group, :id => 18, :organizer => @david)
+      @event = Factory(:event, :id => 42, :group => @current_user_group)
+
       Event.stub(:find).with(@event.id).and_return(@event)
 
-      get :index, :event_id => @event.id
+      get :index, :event_id => 42
       response.should be_success
     end
 
     it "should forbid non organizer to see the list" do
-      another_user_group = Group.new do |g|
-        g.id = 42
-        g.organizer = mock_model(User) #another_user
-      end
-      @event.group = another_user_group
+      @ken = Factory(:ken)
+      another_user_group = Factory(:group, :id => 42, :organizer => @ken)
+      @event = Factory(:event, :id => 42, :group => another_user_group)
+
       Event.stub(:find).with(@event.id).and_return(@event)
  
       get :index, :event_id => @event.id
-
       response.status.should == 403
     end
-  end
-
-  private
-  def mock_session
-    session = mock(UserSession).as_null_object
-    session.stub(:record).and_return(mock_user)
-    @mock_session ||= session
-  end
-
-  def mock_user(stubs={})
-    user = User.new(:username => 'dsantoro', :full_name => 'David Santoro',
-                    :country => 'United Kingdom', :city => 'London')
-    @mock_user ||= user
   end
 end
