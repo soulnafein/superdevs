@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :require_user, :only => [:new, :create, :edit]
+  before_filter :require_user, :only => [:new, :create, :edit, :attend]
 
   def new
     group = Group.find_active_by_unique_name(params[:group_id])
@@ -25,14 +25,14 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
+    load_event
     unless @event.is_organizer?(current_user)
       render_unauthorised_access
     end
   end
 
   def update
-    @event = Event.find(params[:id])
+    load_event
     if @event.is_organizer?(current_user)
       @event.update_attributes!(params[:event])
       redirect_to group_event_url(@event.group.unique_name, @event.id)
@@ -42,7 +42,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    load_event
   rescue
     render_404
   end
@@ -50,5 +50,12 @@ class EventsController < ApplicationController
   def index
     today = Date.today
     @events = EventsGroupedByPeriod.new(Event.united_kingdom, today)
+  end
+
+  include AttendingAndTrackingForEvents
+
+ private
+  def load_event
+    @event = Event.find(params[:id])
   end
 end

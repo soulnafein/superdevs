@@ -262,6 +262,17 @@ a.linkButton {
   line-height:40px;
 }
 
+a.linkButtonAlt {
+  text-align: center;
+  font-size: 18px;
+  margin: 5px;
+  background-color: #30a4b1;
+  color:white;
+  font-weight:bold;
+  padding: 10px;
+  line-height:40px;
+}
+
 div.errorExplanation {
   background: none repeat scroll 0 0 #FBE3E4;
   color: #D12F19;
@@ -295,6 +306,10 @@ a.add {
 a.attendees_list {
   background: url(/images/icons/attendees_list.png) no-repeat top left;
   padding-left:20px;
+}
+
+div.container {
+  overflow:auto;
 }
 
 

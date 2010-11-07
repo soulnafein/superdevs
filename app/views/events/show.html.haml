@@ -1,3 +1,4 @@
+- title("#{@event.title} on the #{@event.date.strftime("%d %B %Y")} - SuperDevs")
 - current_tab('events')
 .in#event
   .leftColumn
@@ -21,21 +22,28 @@
       - if @event.is_organizer?(current_user)
         = link_to "Edit event", edit_group_event_url(@event.group.unique_name, @event.id), :class => 'edit'
     %p
-    %h3 
-      Attendees (#{@event.attendees.size})
-    %p
-      - @event.attendees.each do |u|
-        %a{:href=>user_path(u.username), :title=> u.full_name}
-          .profile_picture_medium
-            != u.medium_profile_picture.to_html
+    .container
+      %h3  Attendees (#{@event.attendees.size})
+      %p
+        - @event.attendees.each do |u|
+          %a{:href=>user_path(u.username), :title=> u.full_name}
+            .profile_picture_medium
+              != u.medium_profile_picture.to_html
+    .container
+      %h3 Trackers (#{@event.trackers.size})
+      %p
+        - @event.trackers.each do |u|
+          %a{:href=>user_path(u.username), :title=> u.full_name}
+            .profile_picture_medium
+              != u.medium_profile_picture.to_html
   .rightColumn
     - if @event.has_attendee?(current_user)
-      - attendance = @event.attendance_for_user(current_user)
-      = form_tag(attendance_url(attendance.id), :method => :delete) do
-        = submit_tag 'Unattend this event', :class => 'alternative'
-        = hidden_field_tag :event_id, @event.id
+      %p= link_to "Unattend this event", unattend_event_path(@event.id), :class => 'linkButtonAlt'
     - else
-      = form_for(Attendance.new) do |f|
-        = f.submit 'Attend this event'
-        = hidden_field_tag :event_id, @event.id
+      %p= link_to "Attend this event", attend_event_path(@event.id), :class => 'linkButton'
+    %p or
+    - if @event.has_tracker?(current_user)
+      %p= link_to "Stop tracking this event", untrack_event_path(@event.id)
+    - else
+      %p= link_to "Track this event", track_event_path(@event.id)
   .clear
