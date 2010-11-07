@@ -66,4 +66,20 @@ describe Event do
     event.has_attendee?(david).should be_false
   end
 
+  it "should register a tracker for the event" do
+    david = Factory(:david)
+    event = Event.new
+    5.times { event.register_tracker(david) }
+    event.trackers.length.should == 1
+    event.has_tracker?(david).should be_true
+  end
+
+  it "should unregister a tracker of the event" do
+    david, ken = Factory(:david), Factory(:ken)
+    event = Factory(:event, :trackers => [david, ken])
+    event.unregister_tracker(david)
+    event.trackers.length.should == 1
+    event.has_attendee?(david).should be_false
+  end
+
 end

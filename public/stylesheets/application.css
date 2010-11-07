@@ -308,6 +308,10 @@ a.attendees_list {
   padding-left:20px;
 }
 
+div.container {
+  overflow:auto;
+}
+
 
 
 

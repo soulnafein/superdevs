@@ -25,6 +25,18 @@ class Event < ActiveRecord::Base
     self.attendees.delete(user)
   end
 
+  def has_tracker?(user)
+    self.trackers.include?(user)
+  end
+
+  def register_tracker(user)
+    self.trackers << user unless has_tracker?(user)
+  end
+
+  def unregister_tracker(user)
+    self.trackers.delete(user)
+  end
+
   def is_organizer?(user)
     return false if group.nil?
     group.organizer?(user)

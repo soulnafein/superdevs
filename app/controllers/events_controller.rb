@@ -64,6 +64,18 @@ class EventsController < ApplicationController
     redirect_to event_path(@event.id)
   end
 
+  def track
+    load_event
+    @event.register_tracker(current_user)
+    redirect_to event_path(@event.id)
+  end
+
+  def untrack
+    load_event
+    @event.unregister_tracker(current_user)
+    redirect_to event_path(@event.id)
+  end
+
   private
   def load_event
     @event = Event.find(params[:id])

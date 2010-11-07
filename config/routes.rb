@@ -9,6 +9,8 @@ Superdevs::Application.routes.draw do
     member do
       get 'attend'
       get 'unattend'
+      get 'track'
+      get 'untrack'
     end
   end
 
