@@ -9,7 +9,7 @@ class UserSession < Authlogic::Session::Base
     puts @rpx_data['profile']
     self.attempted_record.activate!
     self.attempted_record.full_name = @rpx_data['profile']['displayName'] if attempted_record.full_name.blank?
-    self.attempted_record.username = @rpx_data['profile']['preferredUsername'] if attempted_record.username.blank?
+    self.attempted_record.username = @rpx_data['profile']['preferredUsername'].gsub(".", "") if attempted_record.username.blank?
     self.attempted_record.email = @rpx_data['profile']['email'] if attempted_record.email.blank?
   end
 

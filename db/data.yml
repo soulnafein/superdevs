@@ -493,7 +493,7 @@ events:
     - "Parallelism and Performance: Are You Getting Full Return on Your CPU Investment?"
     - Baton Rouge
     - United States
-    - "Presenter: Adam MachanicAbstract:In today's multi-core-driven world, query performance is very much determined by how well you're taking advantage of the processing power at your disposal. Are your big queries using every available clock tick, or are they lagging behind?"
+    - "Presenter: Adam MachanicAbstract:In today's multi-core-driven world, query performance is very much determined by how well you're taking advantage of the processing power at your disposal. Are your big queries.rb using every available clock tick, or are they lagging behind?"
     - http://www.developerfusion.com/event/85067/parallelism-and-performance-are-you-getting-full-return-on-your-cpu-investment/
     - 2010-07-29 08:34:57
     - 2010-07-29 08:34:57

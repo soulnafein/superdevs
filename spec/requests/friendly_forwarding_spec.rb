@@ -15,7 +15,7 @@ describe "FriendlyForwardings" do
   it "should forward to the event page ater signout and login from event attend" do
     event = Factory(:event)
     visit event_url(event)
-    click_button 'attendance_submit'
+    click_link 'Attend this event'
     user = Factory(:user)
     fill_in 'user_session_username', :with => user.email
     fill_in 'user_session_password', :with => user.password

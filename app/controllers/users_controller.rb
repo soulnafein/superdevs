@@ -52,6 +52,8 @@ class UsersController < ApplicationController
 
   def addrpxauth
     @user = current_user
+    @user.username = params[:user][:username]
+    @user
     if @user.save
       flash[:notice] = "Successfully added RPX authentication for this account."
       render :action => 'show'

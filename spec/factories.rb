@@ -37,6 +37,7 @@ Factory.define :event do |e|
   e.country "United Kingdom"
   e.city "London"
   e.attendees []
+  e.trackers []
 end
 
 Factory.define :attendance do |a|
