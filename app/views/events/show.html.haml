@@ -23,7 +23,7 @@
         = link_to "Edit event", edit_group_event_url(@event.group.unique_name, @event.id), :class => 'edit'
     %p
     .container
-      - if !@event.attendees.empty?
+      - unless @event.attendees.empty?
         %h3  Attendees (#{@event.attendees.size})
         %p
           - @event.attendees.each do |u|
@@ -31,7 +31,7 @@
               .profile_picture_medium
                 != u.medium_profile_picture.to_html
     .container
-      - if !@event.trackers.empty?
+      - unless @event.trackers.empty?
         %h3 Trackers (#{@event.trackers.size})
         %p
           - @event.trackers.each do |u|
