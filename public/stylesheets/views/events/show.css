@@ -21,3 +21,10 @@
   float:right;
 }
 
+#event div.loginBlock
+{
+  -moz-border-radius:10px 10px 10px 10px;
+  padding:10px 15px 10px 15px;
+  margin: 10px 15px 15px 15px;
+  border:2px solid #DDDDDD;
+}
