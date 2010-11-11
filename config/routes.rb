@@ -6,11 +6,13 @@ Superdevs::Application.routes.draw do
   end
 
   resources :events do
+    resources :attendances
     member do
       get 'attend'
       get 'unattend'
       get 'track'
       get 'untrack'
+      get 'attendances'
     end
   end
 
