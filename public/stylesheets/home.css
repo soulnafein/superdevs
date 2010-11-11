@@ -4,17 +4,17 @@ body {
 
 #first_layer {
   margin: 0 auto;
-  width: 900px;
+  width: 960px;
 }
 
 #footer_layer {
   margin: 0 auto;
-  width: 900px;
+  width: 960px;
 }
 
 #second_layer {
   margin: 0 auto;
-  width: 900px;
+  width: 960px;
   background: url(/images/superdev.png) top right no-repeat;
   height: 372px;
   clear: both;
@@ -30,7 +30,7 @@ body {
 
 #key_points {
   margin: 0 auto;
-  width: 900px;
+  width: 960px;
 }
 
 #key_points div {
