@@ -1,8 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.0'
-#gem "authlogic", :git => "http://github.com/odorcicd/authlogic.git", :branch => "rails3"
-gem 'authlogic', '2.1.6'
+gem "authlogic", :git => "http://github.com/odorcicd/authlogic.git", :branch => "rails3"
 gem 'authlogic_rpx'
 gem "friendly_id", "3.0.5"
 gem 'sqlite3-ruby', :require => 'sqlite3'
