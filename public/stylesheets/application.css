@@ -156,7 +156,7 @@ img {
   float: left;
   background: url(/images/logo.png) no-repeat top left;
   line-height: 120px;
-  width: 300px;
+  width: 360px;
   height: 120px;
   margin: 0;
   position: relative;
@@ -164,7 +164,7 @@ img {
 
 #logo a {
   height: 120px;
-  width: 300px;
+  width: 360px;
   opacity: 0;
   -moz-opacity: .5;
   filter: alpha(opacity = 0);
