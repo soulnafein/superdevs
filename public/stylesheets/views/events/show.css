@@ -72,7 +72,7 @@
 #event .date {
   background: url(/images/icons/date.png) no-repeat top left;
   padding-left: 40px;
-  margin-bottom:0px;
+  margin-bottom:0;
 }
 
 #event .container {

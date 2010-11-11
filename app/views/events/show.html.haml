@@ -9,19 +9,19 @@
     %h3.date= @event.date.strftime("%d %B %Y")
     %ul.details
       %li.location= @event.city + " (" + @event.country + ")"
-      %li.website
-        - unless @event.link.to_s.empty?
+      - unless @event.link.to_s.empty?
+        %li.website
           = link_to @event.link, @event.link
-    %p
       - if @event.is_organizer?(current_user)
-        = link_to "Edit event", edit_group_event_url(@event.group.unique_name, @event.id), :class => 'edit'
+        %p
+          = link_to "Edit event", edit_group_event_url(@event.group.unique_name, @event.id), :class => 'edit'
     %p
     %div.description
       - if @event.group.nil?
         = @event.description
       - else
         :markdown
-          #{@event.description}
+          @event.description
 
     .container
       - if !@event.attendees.empty?
