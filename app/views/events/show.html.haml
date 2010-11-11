@@ -20,8 +20,7 @@
       - if @event.group.nil?
         = @event.description
       - else
-        :markdown
-          @event.description
+        #{@event.description}
 
     .container
       - if !@event.attendees.empty?
