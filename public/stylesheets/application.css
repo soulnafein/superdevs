@@ -243,6 +243,7 @@ input[type=submit].alternative, input[type=button].alternattive {
   border: 1px solid #bab9b9;
   padding: 7px;
   margin-right: 10px;
+  margin-bottom: 10px;
   background-color: white;
 }
 
