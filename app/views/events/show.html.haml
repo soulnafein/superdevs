@@ -33,6 +33,18 @@
         %h4 Trackers (#{@event.trackers.size})
         = render :partial => 'shared/block_of_users',
                  :locals => { :users => @event.trackers }
+    - unless @event.comments.empty?
+      %h4 Comments
+      = render :partial => 'shared/comments',
+                :locals => { :comments => @event.comments }
+    - if current_user
+      .add_comment
+        %h4 Add a comment:
+        = form_for([@event, @event.comments.build]) do |f|
+          %p
+            = f.text_area :body
+          %p
+          = f.submit
   .rightColumn
     = render :partial => 'events/attend_and_track'
   .clear

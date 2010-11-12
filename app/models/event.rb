@@ -19,5 +19,7 @@ class Event < ActiveRecord::Base
     group.organizer?(user)
   end
 
+  has_many :comments
+
   extend EventBehaviours::Queries
 end

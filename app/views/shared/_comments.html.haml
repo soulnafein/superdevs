@@ -1,0 +1,15 @@
+.comments
+  %ul
+    - comments.each do |c|
+      %li
+        %div
+          = render :partial => 'shared/medium_user_avatar',
+                   :locals => { :user => c.author }
+          .comment_arrow
+          .comment_text
+            %a{:href=> user_url(c.author)}= c.author.full_name
+            %span.says -
+            %span.comment_date= c.created_at.strftime('%d %B %Y at %I:%M%p')
+            .comment_body
+              = c.body
+

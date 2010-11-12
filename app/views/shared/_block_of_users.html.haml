@@ -1,5 +1,4 @@
 %p
   - users.each do |u|
-    %a{:href=>user_path(u.username), :title=> u.full_name}
-      .profile_picture_medium
-        != u.medium_profile_picture.to_html
+    = render :partial => 'shared/medium_user_avatar',
+             :locals => { :user => u }

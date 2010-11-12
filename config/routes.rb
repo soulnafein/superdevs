@@ -1,4 +1,6 @@
 Superdevs::Application.routes.draw do
+  get "comments/create"
+
   resources :user_sessions, :users, :events, :attendances, :password_resets, :memberships
 
   resources :groups do
@@ -7,6 +9,7 @@ Superdevs::Application.routes.draw do
 
   resources :events do
     resources :attendances
+    resources :comments
     member do
       get 'attend'
       get 'unattend'

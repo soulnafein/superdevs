@@ -10,10 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101027200538) do
+ActiveRecord::Schema.define(:version => 20101112151504) do
 
   create_table "attendances", :force => true do |t|
     t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.text     "body"
+    t.integer  "author_id"
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
