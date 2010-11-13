@@ -31,4 +31,13 @@ class Notifier < ActionMailer::Base
     body          :follower => follower, :user => user
     content_type  "text/html"
   end
+
+  def week_event_notification(user ,event)
+    @user, @event = user, event
+    subject       "Reminder: \"#{event.title}\" is next week"
+    from          "noreply-notifications@superdevs.com"
+    recipients    "nexusventuri@gmail.com" #user.email
+    sent_on       Time.now
+    content_type  "text/html"
+  end
 end

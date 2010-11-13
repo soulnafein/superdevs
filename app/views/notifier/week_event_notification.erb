@@ -1,0 +1,19 @@
+<p>
+<img src="http://www.superdevs.com/images/logo.png">
+</p>
+<p>
+Hi, <%= @user.full_name %>
+</p>
+<p>
+A superdevs gathering <%= @event.title %> will take place next week! 
+</p>
+<p>
+Ask your butler to prepare your costume for the event and get prepared for the topic!
+</p>
+<p>
+You can get more information about the gathering to <%= event_url(@event) %> page
+</p>
+<p>
+If you don't want to receive this notification please <%= link_to 'contact us', contact_us_url %>
+</p>
+
