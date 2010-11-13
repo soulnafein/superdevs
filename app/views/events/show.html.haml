@@ -24,12 +24,12 @@
           #{@event.description}
 
     .container
-      - if !@event.attendees.empty?
+      - unless @event.attendees.empty?
         %h4  Attendees (#{@event.attendees.size})
         = render :partial => 'shared/block_of_users',
                  :locals => { :users => @event.attendees }
     .container
-      - if !@event.trackers.empty?
+      - unless @event.trackers.empty?
         %h4 Trackers (#{@event.trackers.size})
         = render :partial => 'shared/block_of_users',
                  :locals => { :users => @event.trackers }
