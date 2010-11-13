@@ -7,3 +7,4 @@ tmp/*
 .idea
 production/
 .orig
+**/*.orig

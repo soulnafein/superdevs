@@ -28,3 +28,87 @@
   margin: 10px 15px 15px 15px;
   border:2px solid #DDDDDD;
 }
+
+#event h2 {
+  font-size:40px;
+  line-height:40px;
+}
+
+#event h4 {
+  font-family:Lucida Grande, sans-serif;
+  font-weight:bold;
+  font-style:normal;
+}
+#event h3 {
+  font-family: Lucida Grande,sans-serif;
+  font-weight:normal;
+  margin-bottom:20px;
+}
+
+#event div.description {
+  background-color:#ebebeb;
+  padding: 10px;
+  margin: 40px 0;
+}
+
+#event ul.details {
+  list-style:none;
+}
+
+#event ul.details li {
+  padding-left: 20px;
+  padding-right:20px;
+  display:inline;
+}
+
+#event li.website {
+  background: url(/images/icons/link_go.png) no-repeat top left;
+}
+
+#event li.location {
+  background: url(/images/icons/globe_model.png) no-repeat top left;
+}
+
+#event .date {
+  background: url(/images/icons/date.png) no-repeat top left;
+  padding-left: 40px;
+  margin-bottom:0;
+}
+
+#event .container {
+  margin-bottom: 20px;
+}
+
+div.comments {
+  margin:20px 0;
+}
+
+div.comments li {
+  list-style:none;
+  margin-bottom:20px;
+}
+
+div.comment_arrow {
+  margin-left:15px;
+  margin-top:20px;
+  border-color:transparent #EDEDED;
+  border-style:solid;
+  border-width:9px 9px 9px 0;
+  float:left;
+  height:0;
+  width:0;
+}
+
+span.comment_date {
+  font-weight:bold;
+}
+
+div.comment_text {
+  margin-left: 100px;
+  background: #ededed;
+  padding: 10px;
+}
+
+.add_comment {
+  margin-left: 100px;
+}

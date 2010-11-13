@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :require_user, :only => [:new, :create, :edit, :attend]
+  before_filter :require_user, :only => [:new, :create, :edit, :attend, :unattend, :track, :untrack]
 
   def new
     group = Group.find_active_by_unique_name(params[:group_id])

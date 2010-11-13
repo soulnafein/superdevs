@@ -88,7 +88,6 @@ h3 {
   font-family: Georgia, sans-serif;
   font-size: 24px;
   font-weight: bold;
-  display: inline;
 }
 
 h4 {
@@ -156,7 +155,7 @@ img {
   float: left;
   background: url(/images/logo.png) no-repeat top left;
   line-height: 120px;
-  width: 300px;
+  width: 360px;
   height: 120px;
   margin: 0;
   position: relative;
@@ -164,7 +163,7 @@ img {
 
 #logo a {
   height: 120px;
-  width: 300px;
+  width: 360px;
   opacity: 0;
   -moz-opacity: .5;
   filter: alpha(opacity = 0);
@@ -244,6 +243,7 @@ input[type=submit].alternative, input[type=button].alternattive {
   border: 1px solid #bab9b9;
   padding: 7px;
   margin-right: 10px;
+  margin-bottom: 10px;
   background-color: white;
 }
 
@@ -311,7 +311,6 @@ a.attendees_list {
 div.container {
   overflow:auto;
 }
-
 
 
 

@@ -86,7 +86,6 @@ GEM
     maruku (0.6.0)
       syntax (>= 1.0.0)
     mime-types (1.16)
-    mysql (2.8.1)
     nokogiri (1.4.3.1)
     polyglot (0.3.1)
     rack (1.2.1)
@@ -160,7 +159,6 @@ DEPENDENCIES
   friendly_id (= 3.0.5)
   haml
   maruku
-  mysql (= 2.8.1)
   rack-force_domain
   rails (= 3.0.0)
   rcov

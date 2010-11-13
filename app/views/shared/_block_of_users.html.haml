@@ -1,0 +1,4 @@
+%p
+  - users.each do |u|
+    = render :partial => 'shared/medium_user_avatar',
+             :locals => { :user => u }
