@@ -5,13 +5,16 @@
 Hi, <%= @user.full_name %>
 </p>
 <p>
-A superdevs gathering <%= @event.title %> will take place next week! 
+The superdevs gathering <%= @event.title %> will take place next week! 
 </p>
 <p>
-Ask your butler to prepare your costume for the event and get prepared for the topic!
+You showed us your interest for <%= @event.title %> a while ago, and it's just one week to go!
 </p>
 <p>
-You can get more information about the gathering to <%= event_url(@event) %> page
+Ask your butler to prepare your costume, take your ideas and bring them with you for the event!
+</p>
+<p>
+You can get more information, discuss, share your ideas about the gathering <%= link_to 'here on superdevs!',event_url(@event) %>
 </p>
 <p>
 If you don't want to receive this notification please <%= link_to 'contact us', contact_us_url %>
