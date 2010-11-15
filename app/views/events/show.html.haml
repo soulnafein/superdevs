@@ -45,6 +45,11 @@
             = f.text_area :body
           %p
           = f.submit
+    - else
+      .add_comment
+        %h4
+          = link_to "Sign in", login_url
+          to add a comment
   .rightColumn
     = render :partial => 'events/attend_and_track'
   .clear
