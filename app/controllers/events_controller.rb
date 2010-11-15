@@ -43,7 +43,8 @@ class EventsController < ApplicationController
 
   def show
     load_event
-    print Notifier.week_event_notification(User.new(:email => 'nexusventuri@gmail.com'), @event) #.week_event_notification(current_user, @event)
+  rescue
+    render_404
   end
 
   def index

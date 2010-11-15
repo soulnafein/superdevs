@@ -5,7 +5,7 @@
 Hi, <%= @user.full_name %><br>
 </p>
 <p>
-The superdevs gathering <b style="color: rgb(51, 102, 255);"><%= @event.title %></b> will take place next week! 
+The superdevs gathering <b style="color: rgb(51, 102, 255);"><%= @event.title %></b> will take place <%= @event.date.strftime("%A, %d %B %Y") %>! 
 </p>
 <p>
 You showed us your interest for <b style="color: rgb(51, 102, 255);"><%= @event.title %></b> a while ago, and it's just one week to go!
