@@ -11,10 +11,5 @@ module Superdevs
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-    config.action_mailer.default_url_options = {:host => "superdevs.com"}
-    config.action_mailer.delivery_method = :sendmail
-    config.action_mailer.sendmail_settings = {
-            :location => '/usr/sbin/sendmail'
-    }
   end
 end
