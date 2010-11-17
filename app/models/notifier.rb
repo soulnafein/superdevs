@@ -36,7 +36,7 @@ class Notifier < ActionMailer::Base
     @user, @event = user, event
     subject       "Reminder: \"#{event.title}\" is next week"
     from          "noreply-notifications@superdevs.com"
-    recipients    "nexusventuri@gmail.com" #user.email
+    recipients    user.email
     sent_on       Time.now
     content_type  "text/html"
   end
