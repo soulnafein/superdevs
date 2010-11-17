@@ -1,0 +1,30 @@
+<p>
+<img src="http://www.superdevs.com/images/logo.png">
+</p>
+<p>
+Hello <%= @user.full_name %>, 
+</p>
+<p>
+The event <b style="color: rgb(51, 102, 255);"><%= @event.title %></b> will take place on <%= @event.date.strftime("%A, %d %B %Y") %>! 
+</p>
+<p>
+You registered your interest for <b style="color: rgb(51, 102, 255);"><%= @event.title %></b> on SuperDevs a while ago, and it's just one week to go!
+</p>
+<p>
+Ask your butler to prepare your costume, have the groom prepare the horses, and tell the cook that you will dining out (ask the event organizer if food is provided). 
+</p>
+<p>
+Gather your ideas and bring them with you to the event!
+</p>
+<p>
+You can get more information, discuss your ideas, and share your thoughts about the gathering <%= link_to 'on the superdevs event page!',event_url(@event) %>
+<br/>
+</p>
+<p>
+Enjoy the event!
+</p>
+<p>
+P.S.<br/>
+If you don't want to receive this notification please <%= link_to 'contact us', contact_us_url %>
+</p>
+
