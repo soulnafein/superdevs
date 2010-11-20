@@ -40,4 +40,13 @@ class Notifier < ActionMailer::Base
     sent_on       Time.now
     content_type  "text/html"
   end
+  
+  def tomorrow_event_notification(user, event)
+    @user, @event = user, event
+    subject       "Remender: \"#{event.title}\" is tomorrow!"
+    from          "noreply-notifications@superdevs.com"
+    recipients    user.email
+    sent_on       Time.now
+    content_type  "text/html"
+  end
 end
