@@ -20,7 +20,7 @@ module EventBehaviours
     end
 
     def all_upcoming
-      Event.where("date > ?", Time.now).order("date ASC")
+      Event.where("date > ?", Time.now.beginning_of_day).order("date ASC")
     end
 
     def united_kingdom

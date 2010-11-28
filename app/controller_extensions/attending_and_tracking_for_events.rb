@@ -22,4 +22,8 @@ module AttendingAndTrackingForEvents
     @event.unregister_tracker(current_user)
     redirect_to event_path(@event.id)
   end
+
+  def login
+    redirect_to event_path(params[:id])
+  end
 end
