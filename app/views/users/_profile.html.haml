@@ -1,0 +1,18 @@
+#profile
+  #profile_picture
+    != @user.profile_picture.to_html
+
+  %h2= @user.full_name
+
+  - if (user_can_edit && @user.tagline.to_s.empty?)
+    %a.add{:href=>'#'} Add a tagline
+  - else
+    %h3= @user.tagline
+  - if not @user.company.to_s.empty?
+    %p
+      I work for:
+      %span.highlighter= @user.company
+  - if not @user.location.to_s.empty?
+    %p
+      I'm based in:
+      %span.highlighter= @user.location

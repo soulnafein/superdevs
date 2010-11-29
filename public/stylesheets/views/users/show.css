@@ -12,7 +12,6 @@ div#profile_picture {
 }
 
 div#profile h2 {
-  padding-left: 220px;
   font-size: 42px;
   font-family: Lucida Grande, Arial, serif;
   font-style: normal;
@@ -23,13 +22,11 @@ div#profile h2 {
 
 div#profile h3 {
   display: block;
-  padding-left: 220px;
   font-style: italic;
   margin: 0;
 }
 
 div#profile p {
-  padding-left: 220px;
 }
 
 div#contacts {
