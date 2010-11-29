@@ -7,28 +7,24 @@ describe Event do
   end
 
   it "should tell me whether a user is attending an event" do
-    an_attendee = User.new
-    an_attendee.id = 1
+    an_attendee = Factory(:david)
 
     event = Event.new
     event.attendees.push(an_attendee)
 
-    a_stranger = User.new
-    a_stranger.id = 2
+    a_stranger = Factory(:ken)
 
     event.has_attendee?(an_attendee).should be_true
     event.has_attendee?(a_stranger).should be_false
   end
 
   it "should tell me whether a user is tracking an event" do
-    a_tracker = User.new
-    a_tracker.id = 1
+    a_tracker = Factory(:david)
 
     event = Event.new
     event.trackers.push(a_tracker)
 
-    a_stranger = User.new
-    a_stranger.id = 2
+    a_stranger = Factory(:ken)
 
     event.has_tracker?(a_tracker).should be_true
     event.has_tracker?(a_stranger).should be_false
