@@ -16,6 +16,7 @@ Superdevs::Application.routes.draw do
       get 'track'
       get 'untrack'
       get 'attendances'
+      get 'login'
     end
   end
 
