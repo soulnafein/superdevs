@@ -7,7 +7,7 @@ ActiveAjax.EventPublisher = function() {
 
   publ.canFire = function(eventName) {
     priv.subscriptions[eventName] = [];
-    publ['on' + eventName.capitalize()] = function(action) {
+    publ[('on_' + eventName).toCamelCase()] = function(action) {
       priv.subscriptions[eventName].push(action);
     };
   };

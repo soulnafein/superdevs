@@ -11,6 +11,11 @@ div#profile_picture {
   padding: 10px;
 }
 
+div#profile .main_info
+{
+  margin-left:220px;
+}
+
 div#profile h2 {
   font-size: 42px;
   font-family: Lucida Grande, Arial, serif;

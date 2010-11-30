@@ -10,7 +10,9 @@
     'views/users/show', 'views/users/index', 'views/users/edit',
     'views/events/show', 'views/events/index', 'views/groups/show',
     'views/groups/index'
-    = javascript_include_tag "lib/jquery-1.4.2.min", "lib/jquery.jgfeed-min", "lib/jquery.tweet.js", "blog_feed.js"
+    = javascript_include_tag "lib/jquery-1.4.2.min", "lib/jquery.jgfeed-min", "lib/jquery.tweet.js",
+    "ActiveAjax/Array", "ActiveAjax/String", "ActiveAjax/EventPublisher",
+    "ActiveAjax/Model", "EditableText","ProfilePage","blog_feed.js"
     = render :partial => "shared/google_analytics"
 
   %body

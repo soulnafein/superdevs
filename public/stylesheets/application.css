@@ -312,6 +312,8 @@ div.container {
   overflow:auto;
 }
 
-
+.hidden {
+  display:none!important;
+}
 
 

@@ -1,40 +1,40 @@
 var SuperDevs = SuperDevs || {};
 
-SuperDevs.EditableText = function(element, model, field) {
-  var priv = {};
-
+SuperDevs.EditableText = function(params) {
   var textbox = $("<input type='text' val='' />");
+  var isEditing = false;
+  var elem = params.htmlElement;
+  var model = params.model;
+  var field = params.fieldName;
 
-  priv.init = function() {
-    element.click(priv.showTextbox);
-    model['on'+field.capitalize()+'Changed'](function(newValue) {
-      element.html(newValue);
-    })
-  };
+  function init() {
+    elem.click(showTextbox);
+    var methodName = ('on_' + field + 'Changed').toCamelCase();
+    model[methodName](function(newValue) {
+      elem.html(newValue);
+    });
+  }
 
-  priv.isEditing = false;
-  priv.notEditing = function() {
-    return !priv.isEditing;
-  };
+  function notEditing() {
+    return !isEditing;
+  }
 
-  priv.showTextbox = function() {
-    if (priv.notEditing()) {
+  function showTextbox() {
+    if (notEditing()) {
       textbox.val(model[field]());
-      element.html(textbox);
-      textbox.blur(priv.changeModel);
+      elem.html(textbox);
+      textbox.blur(changeModel);
       textbox.focus();
-      priv.isEditing = true;
+      isEditing = true;
     }
-  };
+  }
 
-  priv.changeModel = function () {
+  function changeModel() {
     model[field](textbox.val());
-    priv.isEditing = false;
-  };
+    isEditing = false;
+  }
 
-  priv.init();
+  init();
 
-  return {
-
-  };
+  return {};
 };

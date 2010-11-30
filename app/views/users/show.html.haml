@@ -2,6 +2,8 @@
 - title("#{@user.full_name} at SuperDevs")
 :javascript
   $(document).ready(function() {
+    var user = #{@user.to_json};
+    SuperDevs.ProfilePage.init(user);
     $("#blog").blog_feed("#{@user.blog_feed}");
     $("#tweets").tweet({
       username: "#{@user.twitter_username}",

@@ -7,10 +7,15 @@ describe("Editable text spec", function() {
       anHeader = $("<h1>David</h1>");
       html.append(anHeader);
     });
+    var options = {
+      htmlElement: anHeader,
+      model: user,
+      fieldName: 'name'
+    };
+    SuperDevs.EditableText(options);
   });
 
   it("should make me edit the name when I click it", function() {
-    SuperDevs.EditableText(anHeader, user, 'name');
 
     anHeader.click();
     var newTextbox = anHeader.find('input[type=text]');
@@ -22,8 +27,6 @@ describe("Editable text spec", function() {
   });
 
   it("should change the model when loosing focus from the textbox", function() {
-    SuperDevs.EditableText(anHeader, user, 'name');
-
     anHeader.click();
     var newTextbox = anHeader.find('input[type=text]');
     newTextbox.val('Whatever');
@@ -34,7 +37,6 @@ describe("Editable text spec", function() {
   });
 
   it("should change the element text when the model changes", function() {
-    SuperDevs.EditableText(anHeader, user, 'name');
     user.name('Luigi');
 
     expect(anHeader.text()).toEqual('Luigi');

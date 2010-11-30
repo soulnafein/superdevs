@@ -2,17 +2,24 @@
   #profile_picture
     != @user.profile_picture.to_html
 
-  %h2= @user.full_name
+  .main_info
+    %h2= @user.full_name
 
-  - if (user_can_edit && @user.tagline.to_s.empty?)
-    %a.add{:href=>'#'} Add a tagline
-  - else
-    %h3= @user.tagline
-  - if not @user.company.to_s.empty?
+    - if user_can_edit && has_no_tagline?
+      %p
+        %a.add.tagline{:href=>'#'} Add a tagline
+      %h3{:class => hide_tagline_class}= @user.tagline
+
+    - if user_can_edit && has_no_company?
+      %p
+        %a.add.company{:href=>'#'} Show what company you work for
+      %p{:class => "company #{hide_company_class}"}
+        I work for:
+        %span.highlighter= @user.company
+
     %p
-      I work for:
-      %span.highlighter= @user.company
-  - if not @user.location.to_s.empty?
-    %p
+    - if user_can_edit && @user.location.to_s.empty?
+      %a.add.city{:href=>'#'} Select your city
+    - elsif @user.location.to_s.empty?
       I'm based in:
       %span.highlighter= @user.location
