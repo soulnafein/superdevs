@@ -28,9 +28,9 @@ describe("Editable text spec", function() {
 
   it("should change the model when loosing focus from the textbox", function() {
     anHeader.click();
-    var newTextbox = anHeader.find('input[type=text]');
-    newTextbox.val('Whatever');
-    newTextbox.blur();
+    var textbox = textbox();
+    textbox.val('Whatever');
+    textbox.blur();
 
     expect(user.name()).toEqual('Whatever');
     expect(anHeader.html()).toEqual('Whatever');
@@ -38,20 +38,19 @@ describe("Editable text spec", function() {
 
   it("should change the element text when the model changes", function() {
     user.name('Luigi');
-
     expect(anHeader.text()).toEqual('Luigi');
   });
 
   it("should work many times", function() {
     anHeader.click();
-    var newTextbox = anHeader.find('input[type=text]');
-    newTextbox.val('Whatever');
-    newTextbox.blur();
+    var textbox = textbox();
+    textbox.val('Whatever');
+    textbox.blur();
     expect(user.name()).toEqual('Whatever');
 
     anHeader.click();
-    newTextbox.val('Santoro');
-    newTextbox.blur();
+    textbox.val('Santoro');
+    textbox.blur();
     expect(user.name()).toEqual('Santoro');
 
   })
