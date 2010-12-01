@@ -44,5 +44,13 @@ ActiveAjax.Model = function(json) {
   };
   priv.init();
 
+  publ.onChanged = function(fieldName, action) {
+    publ[('on_' + fieldName + 'Changed').toCamelCase()](action);
+  };
+
+  publ.valueOf = function(fieldName) {
+    return publ[fieldName]();
+  };
+
   return publ;
 };

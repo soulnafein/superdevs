@@ -8,14 +8,14 @@ describe("ActiveAjax Model", function() {
     model.surname('Wagg');
 
     expect(model.name()).toEqual('Mike');
-    expect(model.surname()).toEqual('Wagg');
+    expect(model.valueOf('surname')).toEqual('Wagg');
   });
 
   it ("should notify subscribers when attributes are updated", function() {
     var model = ActiveAjax.Model(json);
     var listOfChanges = [];
     model.onNameChanged(function(newName) {listOfChanges.push(newName);});
-    model.onNameChanged(function(newName) {listOfChanges.push(newName);});
+    model.onChanged('name', function(newName) {listOfChanges.push(newName);});
 
     model.name("X");
     model.name("Y");

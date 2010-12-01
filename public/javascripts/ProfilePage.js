@@ -17,7 +17,7 @@ SuperDevs.ProfilePage.TagLine = function() {
 
   return {
     init: function(model) {
-      SuperDevs.EditableText(tagLineHeader(), model, 'tagline');
+      SuperDevs.EditableText(model, 'tagline');
 
       tagLineLink().click(function() {
         hideTagLineLink();

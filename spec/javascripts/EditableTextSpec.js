@@ -16,7 +16,6 @@ describe("Editable text spec", function() {
   });
 
   it("should make me edit the name when I click it", function() {
-
     anHeader.click();
     var newTextbox = anHeader.find('input[type=text]');
 
@@ -41,6 +40,20 @@ describe("Editable text spec", function() {
 
     expect(anHeader.text()).toEqual('Luigi');
   });
+
+  it("should work many times", function() {
+    anHeader.click();
+    var newTextbox = anHeader.find('input[type=text]');
+    newTextbox.val('Whatever');
+    newTextbox.blur();
+    expect(user.name()).toEqual('Whatever');
+
+    anHeader.click();
+    newTextbox.val('Santoro');
+    newTextbox.blur();
+    expect(user.name()).toEqual('Santoro');
+
+  })
 });
 
 function inHtmlFixture(action) {
