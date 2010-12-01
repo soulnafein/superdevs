@@ -2,6 +2,10 @@ describe("Editable text spec", function() {
   var anHeader;
   var user = ActiveAjax.Model({'user' : {'name':'David', 'surname':'Wagg'}});
 
+  function textbox() {
+    return anHeader.find('input[type=text]');
+  }
+
   beforeEach(function() {
     inHtmlFixture(function(html) {
       anHeader = $("<h1>David</h1>");
@@ -17,12 +21,9 @@ describe("Editable text spec", function() {
 
   it("should make me edit the name when I click it", function() {
     anHeader.click();
-    var newTextbox = anHeader.find('input[type=text]');
 
-    expect(newTextbox.length).toEqual(1);
-    expect(newTextbox.val()).toEqual('David');
-
-    expect(newTextbox[0]).toEqual(document.activeElement);
+    expect(textbox()).toBeOneElementWithValueEqual('David');
+    expect(textbox()).toBeFocused();
   });
 
   it("should change the model when loosing focus from the textbox", function() {
