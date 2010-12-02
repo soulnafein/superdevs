@@ -22,4 +22,5 @@ class Event < ActiveRecord::Base
   has_many :comments
 
   extend EventBehaviours::Queries
+
 end

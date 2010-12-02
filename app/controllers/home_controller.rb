@@ -4,6 +4,7 @@ class HomeController < ApplicationController
     if current_user
       @user_events = get_user_events_for_city
       @user_events = get_user_events_for_country if @user_events.empty?
+      @events_attended_by_user = Event.get_events_attended_by_user(current_user)
       render "user_home", :layout => "application"
     end
   end

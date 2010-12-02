@@ -34,7 +34,7 @@ div.events dt, dd {
 div.events dd {
   width: 850px;
   margin-left:10px;
-  height:55px;
+  min-height:55px;
   padding: 5px;
 }
 
