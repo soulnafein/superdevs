@@ -16,6 +16,8 @@ div.events dl {
 }
 
 div.events dt {
+  height:55px;
+  vertical-align:middle;
   background-color:#464646;
   color:white;
   font-size:12px;
@@ -34,8 +36,12 @@ div.events dt, dd {
 div.events dd {
   width: 850px;
   margin-left:10px;
-  height:55px;
+  min-height:55px;
   padding: 5px;
+}
+
+div.events dd.today {
+  background: #fefe99!important;
 }
 
 

@@ -104,3 +104,6 @@ div.relationships h3 {
     display:block;
 }
 
+div#user_home div.events dd {
+  width: 480px;
+}

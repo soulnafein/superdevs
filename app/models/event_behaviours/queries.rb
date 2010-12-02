@@ -19,8 +19,13 @@ module EventBehaviours
       Event.all_upcoming.where("upper(country) = ?", user.country.to_s.upcase)
     end
 
+    def get_events_attended_by_user(user)
+      attended_events_ids = Attendance.where('user_id = ?', user.id).map { |a| a.event_id }
+      Event.all_upcoming.find_all {|e| attended_events_ids.include?(e.id)}
+    end
+
     def all_upcoming
-      Event.where("date > ?", Time.now.beginning_of_day).order("date ASC")
+      Event.where("date >= ?", Time.now.beginning_of_day).order("date ASC")
     end
 
     def united_kingdom
@@ -28,7 +33,7 @@ module EventBehaviours
     end
 
     def all_past
-      Event.where("date < ?", Time.now).order("date ASC")
+      Event.where("date < ?", Time.now.beginning_of_day).order("date ASC")
     end
   end
 end

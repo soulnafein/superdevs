@@ -48,8 +48,13 @@ describe HomeController do
         assigns[:user_events].location.should == "United Kingdom"
       end
 
-      it "should notify the page that events for the all country has been loaded" do
-        
+      it "should show all the upcoming evens that the user is attending" do
+        Event.stub(:get_events_attended_by_user).with(@user).and_return(@expected_events)
+
+        get 'index'
+
+        assigns[:events_attended_by_user].should_not be_nil
+        assigns[:events_attended_by_user].should == @expected_events
       end
     end
   end
