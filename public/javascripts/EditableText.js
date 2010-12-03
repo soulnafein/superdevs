@@ -9,50 +9,75 @@ SuperDevs.EditableText = function(params) {
   var addLink = $("<a href='#'>"+params.addLinkText+"</a>");
 
   function init() {
-    if(value() === '')
-    {
-      currentState
-    }
-
-    currentState = value() === '' ? transitions.toAddingState() : transitions.to
-    currentState = states.showing;
-    elem.click(function() { currentState.elementClicked() });
-    textbox.blur(function() {currentState.editingCompleted()});
+    elem.click(function() { currentState.onElementClicked() });
+    addLink.click(function() { currentState.onAddLinkClicked()});
+    textbox.blur(function() {currentState.onEditingCompleted()});
     model.onChanged(field, function(newValue) {elem.html(newValue)});
+    changeState(states.initial);
   }
 
   var states = {};
-  var transitions = {};
-
-  transitions = {
-    fromEditingToShowing: function() {
-      currentState=states.showing;
-      textbox.detach();
-      changeModel();
-    },
-    fromShowingToEditing: function() {
-      currentState = states.editing;
-      showTextbox();
-    }
-  };
 
   states = {
-    editing: {
-      editingCompleted: transitions.fromEditingToShowing
+    initial: {
+      onEnter: function() {
+        if(getValue() === '')
+          changeState(states.adding);
+        else
+          changeState(states.showing);
+      }
     },
     showing: {
-      elementClicked: transitions.fromShowingToEditing
+      onEnter: function() {elem.show()},
+      onElementClicked: function() {
+        changeState(states.editing);
+      }
     },
     adding: {
+      onEnter: function() {
+        hideElement();
+        showLink()
+      },
+      onAddLinkClicked: function() {
+        changeState(states.editing)
+      }
+    },
+    editing: {
+      onEnter: function() {
+        hideLink();
+        showTextbox();
+        showElement();
+      },
+      onEditingCompleted: function() {changeState(states.editingConfirmed);},
+      onElementClicked: function() {}
+    },
+    editingConfirmed: {
+      onEnter: function() {
+        textbox.detach();
+        changeModel();
+        changeState(states.initial);
+      }
     }
   };
 
-  function hideLink() {
+  function showLink() {
+    elem.after(addLink);
+  }
 
+  function hideLink() {
+    addLink.detach();
+  }
+
+  function hideElement() {
+    elem.hide();
+  }
+
+  function showElement() {
+    elem.show();
   }
 
   function showTextbox() {
-    textbox.val(model.valueOf(field));
+    textbox.val(getValue());
     elem.html(textbox);
     textbox.focus();
   }
@@ -61,8 +86,15 @@ SuperDevs.EditableText = function(params) {
     model[field](textbox.val());
   }
 
-  function value() {
-    model[field]();
+  function getValue() {
+    return model.valueOf(field);
+  }
+
+  function changeState(newState)
+  {
+    currentState = newState;
+    var action = newState.onEnter;
+    if (action) action();
   }
 
   init();
