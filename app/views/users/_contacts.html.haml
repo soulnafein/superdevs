@@ -21,14 +21,15 @@
         %a{:target=>"_blank", :href=>"http://www.bitbucket.org/#{@user.bitbucket_account}"}
           %img{:style=>"width:16px;", :title=>"Bitbucket Account", :alt=>"Bitbucket Account", :src=>"/images/bitbucket.gif"}
   %ul
-    - if not @user.website.to_s.empty?
-      %li
-        website:
+    %li
+      website:
+      - if user_can_edit
+        %span{:class=> "website #{hide_website_class}"}= @user.website
+      - else
         = link_to @user.website, @user.website
-    - if not @user.phone_number.to_s.empty?
-      %li
-        phone:
-        = @user.phone_number
+    %li
+      phone:
+      %span{:class => "phone #{hide_phone_class}"}= @user.phone_number
   - if not @user.interests.to_s.empty?
     %ul#interests
       %h5 Interests

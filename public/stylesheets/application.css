@@ -86,6 +86,7 @@ h2 {
 
 h3 {
   font-family: Georgia, sans-serif;
+  display:block;
   font-size: 24px;
   font-weight: bold;
 }
@@ -313,7 +314,7 @@ div.container {
 }
 
 .hidden {
-  display:none!important;
+  display:none;
 }
 
 

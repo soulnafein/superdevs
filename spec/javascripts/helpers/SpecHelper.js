@@ -14,7 +14,7 @@ beforeEach(function() {
     },
     toBeFocused: function() {
       var elem = this.actual[0];
-      return elem == document.activeElement;
+      return elem === document.activeElement;
     }
   })
 });

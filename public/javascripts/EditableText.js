@@ -6,7 +6,7 @@ SuperDevs.EditableText = function(params) {
   var field = params.fieldName;
   var currentState;
   var textbox = $("<input type='text' val='' />");
-  var addLink = $("<a href='#'>"+params.addLinkText+"</a>");
+  var addLink = $("<a class='add' href='#'>"+params.addLinkText+"</a>");
 
   function init() {
     elem.click(function() { currentState.onElementClicked() });
@@ -45,8 +45,8 @@ SuperDevs.EditableText = function(params) {
     editing: {
       onEnter: function() {
         hideLink();
-        showTextbox();
         showElement();
+        showTextbox();
       },
       onEditingCompleted: function() {changeState(states.editingConfirmed);},
       onElementClicked: function() {}

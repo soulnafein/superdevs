@@ -3,7 +3,8 @@
 :javascript
   $(document).ready(function() {
     var user = #{@user.to_json};
-    SuperDevs.ProfilePage.init(user);
+    var canEdit = #{user_can_edit};
+    SuperDevs.ProfilePage.init(user, canEdit);
     $("#blog").blog_feed("#{@user.blog_feed}");
     $("#tweets").tweet({
       username: "#{@user.twitter_username}",

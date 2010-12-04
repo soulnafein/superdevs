@@ -5,21 +5,16 @@
   .main_info
     %h2= @user.full_name
 
-    - if user_can_edit && has_no_tagline?
-      %p
-        %a.add.tagline{:href=>'#'} Add a tagline
-      %h3{:class => hide_tagline_class}= @user.tagline
-
-    - if user_can_edit && has_no_company?
-      %p
-        %a.add.company{:href=>'#'} Show what company you work for
-      %p{:class => "company #{hide_company_class}"}
-        I work for:
-        %span.highlighter= @user.company
+    %h3{:class => hide_tagline_class}= @user.tagline
 
     %p
-    - if user_can_edit && @user.location.to_s.empty?
-      %a.add.city{:href=>'#'} Select your city
-    - elsif @user.location.to_s.empty?
+      I work for:
+      %span{:class => "company highlighter #{hide_company_class}"}= @user.company
+
+    %p
       I'm based in:
-      %span.highlighter= @user.location
+      %span{:class => "city highlighter #{hide_city_class}"}= @user.city
+      - if user_can_edit
+        %span{:class => 'country'}= country_select :user, :country, [], :include_blank => true
+      - else
+        %span{:class => 'country highlighter'}= @user.country
