@@ -12,6 +12,7 @@ describe("Editable text spec", function() {
       fieldName: 'name'
     };
     SuperDevs.EditableText(options);
+    spyOn(jQuery, 'ajax').andCallFake(function() {});
   });
 
   function getTexbox() {
@@ -68,6 +69,7 @@ describe("Editable text spec when starting with an empty value", function() {
       fieldName: 'brand',
       addLinkText: 'Add a brand'
     };
+    spyOn(jQuery, 'ajax').andCallFake(function() {});
   });
 
   it("should show a link", function() {

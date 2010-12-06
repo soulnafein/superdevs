@@ -35,6 +35,14 @@ module UsersHelper
     has_no_website? ? 'hidden' : ''
   end
 
+  def has_no_bio?
+    @user.bio.to_s.empty?
+  end
+
+  def hide_bio_class
+    has_no_bio? ? 'hidden' : ''
+  end
+
   def has_no_phone?
     @user.phone_number.to_s.empty?
   end

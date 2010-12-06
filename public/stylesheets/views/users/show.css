@@ -68,6 +68,10 @@ div#bio p {
   padding-right: 50px;
 }
 
+div#bio {
+  overflow:auto;
+}
+
 div#public_communication {
   margin-top: 14px;
 }

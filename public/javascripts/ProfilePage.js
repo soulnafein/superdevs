@@ -3,6 +3,10 @@ var SuperDevs = SuperDevs || {};
 SuperDevs.ProfilePage = function() {
   var priv = {};
 
+  var fullnameHeader = function() {
+    return $("h2")
+  };
+
   var tagLineHeader = function() {
     return $("h3")
   };
@@ -23,10 +27,20 @@ SuperDevs.ProfilePage = function() {
     return $("span.phone");
   };
 
+  var bioParagraph = function() {
+    return $("p.bio");
+  };
+
   return {
     init: function(userJson, canEdit) {
       if (canEdit) {
-        var model = ActiveAjax.Model(userJson);
+        var model = ActiveAjax.Model(userJson, '/users/' + userJson.user.username);
+
+        SuperDevs.EditableText({
+          htmlElement: fullnameHeader(),
+          model: model,
+          fieldName: 'full_name',
+          addLinkText: 'Add your name'});
 
         SuperDevs.EditableText({
           htmlElement: tagLineHeader(),
@@ -57,6 +71,12 @@ SuperDevs.ProfilePage = function() {
           model: model,
           fieldName: 'phone_number',
           addLinkText: 'Choose a phone number'});
+
+        SuperDevs.EditableText({
+          htmlElement: bioParagraph(),
+          model: model,
+          fieldName: 'bio',
+          addLinkText: 'Add a short personal profile'});
       }
     }
   }
