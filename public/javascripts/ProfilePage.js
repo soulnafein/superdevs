@@ -72,7 +72,7 @@ SuperDevs.ProfilePage = function() {
           fieldName: 'phone_number',
           addLinkText: 'Choose a phone number'});
 
-        SuperDevs.EditableText({
+        SuperDevs.EditableArea({
           htmlElement: bioParagraph(),
           model: model,
           fieldName: 'bio',
