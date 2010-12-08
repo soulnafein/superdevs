@@ -22,6 +22,7 @@ group :test do
   gem 'rspec', '2.0.1'
   gem 'rspec-rails', '2.0.1'
   gem 'factory_girl_rails'
+  gem 'jasmine'
 end
 
 gem 'feedtools'

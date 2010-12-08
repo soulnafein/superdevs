@@ -2,10 +2,7 @@
   - if current_user
     Logged in as
     %strong= current_user.username
-    = link_to "View profile", user_path(current_user.username)
-    %span.v_line
-      \|
-    = link_to "Edit profile", edit_user_path(current_user.username)
+    = link_to "Your profile", user_path(current_user.username)
     %span.v_line
       \|
     = link_to "Logout", logout_path

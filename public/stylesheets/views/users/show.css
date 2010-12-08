@@ -11,8 +11,12 @@ div#profile_picture {
   padding: 10px;
 }
 
+div#profile .main_info
+{
+  margin-left:220px;
+}
+
 div#profile h2 {
-  padding-left: 220px;
   font-size: 42px;
   font-family: Lucida Grande, Arial, serif;
   font-style: normal;
@@ -22,14 +26,11 @@ div#profile h2 {
 }
 
 div#profile h3 {
-  display: block;
-  padding-left: 220px;
   font-style: italic;
   margin: 0;
 }
 
 div#profile p {
-  padding-left: 220px;
 }
 
 div#contacts {
@@ -49,12 +50,27 @@ div#contacts ul {
   padding: 0;
 }
 
+div#contacts label{
+  display:inline;
+}
+
+div#contacts input[type=text] {
+  width:230px;
+}
+
 ul#online_presence li {
   display: inline;
 }
 
+ul#interests {
+  width:250px;
+}
+
 ul#interests li {
-  display: inline;
+  display: inline-block;
+  background-color: #ffff66;
+  padding: 2px;
+  margin:2px;
 }
 
 div#bio h4 {
@@ -65,6 +81,10 @@ div#bio p {
   display: block;
   padding-left: 300px;
   padding-right: 50px;
+}
+
+div#bio {
+  overflow:auto;
 }
 
 div#public_communication {
@@ -110,7 +130,7 @@ div#blog {
 
 div#blog h4 {
   line-height: 60px;
-  background: url(/images/feed.png) no-repeat right;
+  background: url(/images/icons/feed-32x32.png) no-repeat right;
   margin-bottom: 0;
 }
 
@@ -168,4 +188,8 @@ div#blog li {
 
 div#blog dd.odd {
   background-color: #ebebeb;
+}
+
+#bio a.add {
+  margin-left:135px;
 }

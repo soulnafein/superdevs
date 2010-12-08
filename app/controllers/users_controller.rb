@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:edit, :follow, :edit_mandatory_details, :complete_registration, :update]
+  before_filter :require_user, :only => [:follow, :edit_mandatory_details, :edit_accounts, :complete_registration, :update]
 
   def index
     @users = User.all_active_users
@@ -10,8 +10,9 @@ class UsersController < ApplicationController
     load_user
   end
 
-  def edit
+  def edit_accounts
     load_user
+    render :layout => false if @user
   end
 
   def edit_mandatory_details
@@ -31,9 +32,12 @@ class UsersController < ApplicationController
   def update
     load_user
     @user.update_attributes!(params[:user])
-    redirect_to(@user, :notice => 'Profile successfully updated.')
+    respond_to do |format|
+      format.html { redirect_to(@user, :notice => 'Profile successfully updated.') }
+      format.json { head 200 }
+    end
   rescue ActiveRecord::RecordInvalid
-    render :action => :edit
+    head 400
   end
 
   def new
@@ -58,7 +62,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Successfully added RPX authentication for this account."
       render :action => 'show'
     else
-      render :action => 'edit'
+      render :action => 'edit_mandatory_details'
     end
   end
 

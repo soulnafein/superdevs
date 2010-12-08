@@ -1,0 +1,36 @@
+%h3 Edit your accounts
+
+.forms
+  = form_for(@user) do |f|
+    %p
+      %label{:for=>"blog_feed"}
+        BLOG FEED RSS, ATOM, etc. (e.g. http://www.davidsantoro.net/?feed=rss2)
+        %br
+        = f.text_field :blog_feed, :class => 'blog_feed'
+
+    %p
+      %label{:for=>"twitter_username"}
+        TWITTER USERNAME (e.g. soulnafein)
+        %br
+        = f.text_field :twitter_username, :class => 'twitter_username'
+
+    %p
+      %label{:for=>"linkedin_profile"}
+        LINKEDIN PROFILE (e.g. http://uk.linkedin.com/in/davidsantoro)
+        %br
+        = f.text_field :linkedin_profile, :class => 'linkedin_profile'
+
+    %p
+      %label{:for=>"delicious_username"}
+        DELICIOUS USERNAME (e.g. soulnafein)
+        %br
+        = f.text_field :delicious_username, :class => 'delicious_username'
+
+    %p
+      %label{:for=>"github_account"}
+        GITHUB USERNAME (e.g. soulnafein)
+        %br
+        = f.text_field :github_account, :class => 'github_account'
+
+    %p
+      = f.submit "Save"
