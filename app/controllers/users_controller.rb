@@ -36,6 +36,8 @@ class UsersController < ApplicationController
       format.html { redirect_to(@user, :notice => 'Profile successfully updated.') }
       format.json { head 200 }
     end
+  rescue ActiveRecord::RecordInvalid
+    head 400
   end
 
   def new
