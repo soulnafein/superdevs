@@ -115,15 +115,5 @@ describe("Editable text spec when starting with an empty value", function() {
   })
 });
 
-function HtmlFixture(html) {
-  $("#fixture").remove();
-  var fixture = $("<div id='fixture'></div>");
-  $("body").append(fixture);
-  fixture.append(html);
-}
-
-function HTML() {
-  return $("#fixture");
-}
 
 

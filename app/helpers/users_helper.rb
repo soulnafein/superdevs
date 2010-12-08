@@ -50,4 +50,12 @@ module UsersHelper
   def hide_phone_class
     has_no_phone? ? 'hidden' : ''
   end
+
+  def has_no_interests?
+    @user.interests.to_s.empty?
+  end
+
+  def hide_interests_class
+    has_no_interests? ? 'hidden' : ''
+  end
 end

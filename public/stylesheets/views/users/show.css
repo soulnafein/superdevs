@@ -50,12 +50,23 @@ div#contacts ul {
   padding: 0;
 }
 
+div#contacts input[type=text] {
+  width:230px;
+}
+
 ul#online_presence li {
   display: inline;
 }
 
+ul#interests {
+  width:250px;
+}
+
 ul#interests li {
-  display: inline;
+  display: inline-block;
+  background-color: #ffff66;
+  padding: 2px;
+  margin:2px;
 }
 
 div#bio h4 {

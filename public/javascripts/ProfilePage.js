@@ -3,33 +3,59 @@ var SuperDevs = SuperDevs || {};
 SuperDevs.ProfilePage = function() {
   var priv = {};
 
-  var fullnameHeader = function() {
+  function fullnameHeader() {
     return $("h2")
-  };
+  }
 
-  var tagLineHeader = function() {
+  function tagLineHeader() {
     return $("h3")
-  };
+  }
 
-  var companyElement = function() {
-    return $("span.company");
-  };
+  function companyElement() {
+    return $("span.company")
+  }
 
-  var cityElement = function() {
-    return $("span.city");
-  };
+  function cityElement() {
+    return $("span.city")
+  }
 
-  var websiteElement = function() {
-    return $("span.website");
-  };
+  function websiteElement() {
+    return $("span.website")
+  }
 
-  var phoneElement = function() {
-    return $("span.phone");
-  };
+  function phoneElement() {
+    return $("span.phone")
+  }
 
-  var bioParagraph = function() {
-    return $("p.bio");
-  };
+  function bioParagraph() {
+    return $("p.bio")
+  }
+
+  function interestsList() {
+    return $("ul#interests");
+  }
+
+  function interestsTextbox() {
+    return $("input.interests");
+  }
+
+  function editInterestsLink() {
+    return $("a.edit.interests");
+  }
+
+  function initInterestsEditing(model) {
+    SuperDevs.BindableList(interestsList(), model, 'interests');
+    SuperDevs.BindableTextbox(interestsTextbox(), model, 'interests');
+    editInterestsLink().click(function() {
+      interestsTextbox().parent().show();
+      interestsTextbox().focus();
+      editInterestsLink().hide();
+    });
+    interestsTextbox().blur(function() {
+      interestsTextbox().parent().hide();
+      editInterestsLink().show();
+    })
+  }
 
   return {
     init: function(userJson, canEdit) {
@@ -77,6 +103,8 @@ SuperDevs.ProfilePage = function() {
           model: model,
           fieldName: 'bio',
           addLinkText: 'Add a short personal profile'});
+
+        initInterestsEditing(model);
       }
     }
   }
