@@ -1,3 +1,5 @@
+require File.dirname(__FILE__) + "/reverse_markdown.rb"
+
 class MeetupFeed
   API_KEY = "8043755844411bd5a772c72373c3357"
   FEED_URI_TEMPLATE = "http://api.meetup.com/events.atom/?&key=#{API_KEY}&group_id="
@@ -17,6 +19,7 @@ class MeetupFeed
     feed.items.map do |item|
       Event.new(:title => item.title.content.strip,
                 :date => parse_date_from_item(item),
+                :description => parse_description_from_item(item),
                 :link => item.link.href,
                 :country => @configuration[group_ids.first][2],
                 :city => @configuration[group_ids.first][1])
@@ -33,6 +36,14 @@ class MeetupFeed
     matches = date_regexp.match(item.content.content)
     raise "Couldn't match date in content:\n #{item.content.content}" if (not matches) || (not matches[1])
     return matches[1]
+  end
+
+  def parse_description_from_item(item)
+    #[CDATA[<h3>Sat Jul 31 12:00:00 BST 2010</h3>
+    #**CONTENT
+    description = item.content.content.sub(/^<h3>(\w+ \w+ \w+ \d+:\d+:\d+ \w+ \d\d\d\d)<\/h3>/i, "")
+    description.gsub!(/<br \/>/, "\n")
+    ReverseMarkdown.new.parse_string(description)
   end
 
   #TODO: duplicated, refactor! check developer_fusion_feed class

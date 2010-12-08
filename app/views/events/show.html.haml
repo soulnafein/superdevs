@@ -17,11 +17,8 @@
           = link_to "Edit event", edit_group_event_url(@event.group.unique_name, @event.id), :class => 'edit'
     %p
     %div.description
-      - if @event.group.nil?
-        = @event.description
-      - else
-        :markdown
-          #{@event.description}
+      :markdown
+        #{@event.description}
 
     .container
       - unless @event.attendees.empty?
