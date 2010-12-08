@@ -35,7 +35,7 @@
       %span{:class => "phone #{hide_phone_class}"}= @user.phone_number
   %label Interests
   %ul#interests
-    - @user.interests.split(",").each do |interest|
+    - @user.interests.to_s.split(",").each do |interest|
       %li= interest.strip
   - if user_can_edit
     %p
