@@ -21,7 +21,7 @@ describe UsersController do
     end
   end
 
-  describe "GET 'edit'" do
+  describe "GET 'edit_accounts'" do
     before :each do
       @user = Factory(:user)
       logged_in_user_is(@user)
@@ -30,14 +30,14 @@ describe UsersController do
     it "should load the user from the database" do
       User.stub(:find_active_by_username).with(42).and_return(@user)
 
-      get :edit, :id => 42
+      get :edit_accounts, :id => 42
 
       response.should be_success
       assigns(:user).should == @user
     end
 
     it "should send back a 404 when give an invalid id" do
-      get :edit, :id => 666
+      get :edit_accounts, :id => 666
 
       response.status.should == 404
     end
@@ -57,16 +57,6 @@ describe UsersController do
       put :update, valid_info
 
       response.should redirect_to user_url(@user) 
-    end
-
-    it "should go back to form in case of errors" do
-      User.stub(:find_active_by_username).with(1).and_return(mock_user_with_errors)
-      mock_user.should_receive(:update_attributes!).and_raise(ActiveRecord::RecordInvalid.new(mock_user_with_errors))
-      invalid_info = {:id => 1, :user => {"username" => "soulnafein", "email" => "soulnafe@gmail.com.", "password" => "test", "password_confirmation" => 'testsss'}}
-
-      put :update, invalid_info
-
-      response.should render_template(:edit)
     end
   end
 

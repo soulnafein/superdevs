@@ -43,6 +43,10 @@ SuperDevs.ProfilePage = function() {
     return $("a.edit.interests");
   }
 
+  function countryDropDown() {
+    return $("#user_country");
+  }
+
   function initInterestsEditing(model) {
     SuperDevs.BindableList(interestsList(), model, 'interests');
     SuperDevs.BindableTextbox(interestsTextbox(), model, 'interests');
@@ -64,7 +68,7 @@ SuperDevs.ProfilePage = function() {
   return {
     init: function(userJson, canEdit) {
       if (canEdit) {
-        var model = ActiveAjax.Model(userJson, '/users/' + userJson.user.username);
+        var model = ActiveAjax.Model(userJson, '/users/' + userJson.user.username + '.json');
 
         SuperDevs.EditableText({
           htmlElement: fullnameHeader(),
@@ -111,6 +115,8 @@ SuperDevs.ProfilePage = function() {
         initInterestsEditing(model);
 
         initAccountsEditing();
+
+        SuperDevs.BindableDropDown(countryDropDown(), model, 'country');
       }
     }
   }
