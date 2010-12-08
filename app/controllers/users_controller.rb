@@ -14,6 +14,11 @@ class UsersController < ApplicationController
     load_user
   end
 
+  def edit_accounts
+    load_user
+    render :layout => false
+  end
+
   def edit_mandatory_details
   end
 

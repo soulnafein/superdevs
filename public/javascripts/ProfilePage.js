@@ -57,6 +57,10 @@ SuperDevs.ProfilePage = function() {
     })
   }
 
+  function initAccountsEditing() {
+    $("a.edit.accounts").facebox();
+  }
+
   return {
     init: function(userJson, canEdit) {
       if (canEdit) {
@@ -105,6 +109,8 @@ SuperDevs.ProfilePage = function() {
           addLinkText: 'Add a short personal profile'});
 
         initInterestsEditing(model);
+
+        initAccountsEditing();
       }
     }
   }

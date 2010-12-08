@@ -50,6 +50,10 @@ div#contacts ul {
   padding: 0;
 }
 
+div#contacts label{
+  display:inline;
+}
+
 div#contacts input[type=text] {
   width:230px;
 }
@@ -126,7 +130,7 @@ div#blog {
 
 div#blog h4 {
   line-height: 60px;
-  background: url(/images/feed.png) no-repeat right;
+  background: url(/images/icons/feed-32x32.png) no-repeat right;
   margin-bottom: 0;
 }
 
@@ -184,4 +188,8 @@ div#blog li {
 
 div#blog dd.odd {
   background-color: #ebebeb;
+}
+
+#bio a.add {
+  margin-left:135px;
 }

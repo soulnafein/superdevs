@@ -1,36 +1,39 @@
 #contacts
   %ul#online_presence
+    - if not @user.blog_feed.to_s.empty?
+      %li
+        %a{:target=>"_blank", :href=>@user.blog_feed}
+          %img{:title=>"Blog Feed", :alt=>"Blog Feed",:src=>"/images/icons/feed-24x24.png"}
     - if not @user.twitter_username.to_s.empty?
       %li
         %a{:target=>"_blank", :href=>"http://www.twitter.com/#{@user.twitter_username}"}
-          %img{:title=>"Twitter Account", :alt=>"Twitter Account",:src=>"/images/twitter.png"}
+          %img{:title=>"Twitter Account", :alt=>"Twitter Account",:src=>"/images/icons/twitter-24x24.png"}
     - if not @user.linkedin_profile.to_s.empty?
       %li
         %a{:target=>"_blank", :href=> @user.linkedin_profile}
-          %img{:title=>"Linkedin Account", :alt=>"Linkedin Account", :src=>"/images/linkedin.png"}
+          %img{:title=>"Linkedin Account", :alt=>"Linkedin Account", :src=>"/images/icons/linkedin-24x24.png"}
     - if not @user.delicious_username.to_s.empty?
       %li
         %a{:target=>"_blank", :href=>"http://www.delicious.com/#{@user.delicious_username}"}
-          %img{:style=>"width:16px;", :title=>"Delicious Account", :alt=>"Delicious Account", :src=>"/images/delicious.png"}
+          %img{:title=>"Delicious Account", :alt=>"Delicious Account", :src=>"/images/icons/delicious-24x24.png"}
     - if not @user.github_account.to_s.empty?
       %li
         %a{:target=>"_blank", :href=>"http://www.github.com/#{@user.github_account}"}
-          %img{:style=>"width:16px;", :title=>"Github Account", :alt=>"Github Account", :src=>"/images/github.gif"}
-    - if not @user.bitbucket_account.to_s.empty?
-      %li
-        %a{:target=>"_blank", :href=>"http://www.bitbucket.org/#{@user.bitbucket_account}"}
-          %img{:style=>"width:16px;", :title=>"Bitbucket Account", :alt=>"Bitbucket Account", :src=>"/images/bitbucket.gif"}
+          %img{:title=>"Github Account", :alt=>"Github Account", :src=>"/images/icons/github-24x24.png"}
+  - if user_can_edit
+    %p
+      %a.edit.accounts{:href => edit_accounts_user_url(@user.username)}Edit accounts
   %ul
     %li
-      website:
+      %label Website:
       - if user_can_edit
         %span{:class=> "website #{hide_website_class}"}= @user.website
       - else
         = link_to @user.website, @user.website
     %li
-      phone:
+      %label Phone:
       %span{:class => "phone #{hide_phone_class}"}= @user.phone_number
-  %h5 Interests
+  %label Interests
   %ul#interests
     - @user.interests.split(",").each do |interest|
       %li= interest.strip
@@ -42,6 +45,5 @@
       %input.interests{:type => 'text'}
   - unless current_user and current_user.following?(@user)
     = form_for(@user, :url => follow_user_url(@user)) do |user|
-      %p
-        %input{:type=>"submit", :value=>"Follow", :title=>"Follow #{@user.full_name} updates"}
+      %input{:type=>"submit", :value=>"Follow", :title=>"Follow #{@user.full_name} updates"}
 %div{:style=>"clear:both"}

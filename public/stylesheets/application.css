@@ -198,6 +198,27 @@ input[type=submit], input[type=button] {
 input[type=submit].alternative, input[type=button].alternattive {
   background-color: #30a4b1;
 }
+
+.forms input[type=text].blog_feed {
+  background:url(/images/icons/feed-32x32.png) no-repeat 2px 2px;
+  padding-left: 40px;
+}
+.forms input[type=text].twitter_username {
+  background:url(/images/icons/twitter-32x32.png) no-repeat 2px 2px;
+  padding-left: 40px;
+}
+.forms input[type=text].linkedin_profile {
+  background:url(/images/icons/linkedin-32x32.png) no-repeat 2px 2px;
+  padding-left: 40px;
+}
+.forms input[type=text].delicious_username {
+  background:url(/images/icons/delicious-32x32.png) no-repeat 2px 2px;
+  padding-left: 40px;
+}
+.forms input[type=text].github_account {
+  background:url(/images/icons/github-32x32.png) no-repeat 2px 2px;
+  padding-left: 40px;
+}
 /*..................................................... Navigation .....................*/
 
 #navigation ul {
