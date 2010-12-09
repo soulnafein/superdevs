@@ -49,6 +49,7 @@
   background-color:#ebebeb;
   padding: 10px;
   margin: 40px 0;
+  overflow:auto;
 }
 
 #event ul.details {

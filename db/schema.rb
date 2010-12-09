@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101112151504) do
+ActiveRecord::Schema.define(:version => 20101208233434) do
 
   create_table "attendances", :force => true do |t|
     t.integer  "user_id"
@@ -27,17 +27,8 @@ ActiveRecord::Schema.define(:version => 20101112151504) do
     t.datetime "updated_at"
   end
 
-  create_table "events", :force => true do |t|
-    t.string   "title"
-    t.string   "city"
-    t.string   "country"
-    t.text     "description"
-    t.string   "link"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "date"
-    t.integer  "group_id"
-  end
+# Could not dump table "events" because of following StandardError
+#   Unknown type 'bool' for column 'disabled'
 
   create_table "groups", :force => true do |t|
     t.string   "unique_name"
