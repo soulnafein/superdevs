@@ -25,7 +25,7 @@ module EventBehaviours
     end
 
     def all_upcoming
-      Event.where("date >= ? and disabled = ?", Time.now.utc.beginning_of_day, 0).order("date ASC")
+      Event.where("date >= ? and disabled = ?", Time.now.utc.beginning_of_day, false).order("date ASC")
     end
 
     def united_kingdom
