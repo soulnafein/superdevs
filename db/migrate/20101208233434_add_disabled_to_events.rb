@@ -1,6 +1,6 @@
 class AddDisabledToEvents < ActiveRecord::Migration
   def self.up
-    add_column :events, :disabled, :bool, :default => false
+    add_column :events, :disabled, :boolean, :default => false
   end
 
   def self.down

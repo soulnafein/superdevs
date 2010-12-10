@@ -24,5 +24,10 @@ module EventBehaviours
     def unregister_tracker(user)
       self.trackers.delete(user)
     end
+
+    def attendees_followed_by(user)
+      users_followed = user.following
+      users_followed.find_all {|u| self.has_attendee?(u)}
+    end
   end
 end

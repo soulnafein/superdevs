@@ -78,4 +78,13 @@ describe Event do
     event.has_attendee?(david).should be_false
   end
 
+  it "should list the attendees followed by a user" do
+    david, ken, stranger = Factory(:david), Factory(:ken), Factory(:stranger)
+    Relationship.stub(:users_followed_by).with(david).and_return([ken])
+    event_attended_by_friend = Factory(:event, :attendees => [ken, stranger])
+    event_attended_by_friend.attendees_followed_by(david).should == [ken]
+
+    event_with_stranger = Factory(:event, :attendees => [stranger])
+    event_with_stranger.attendees_followed_by(david).should == []
+  end
 end

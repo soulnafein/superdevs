@@ -10,13 +10,11 @@ module UserBehaviours
     end
 
     def followers
-      followers = Relationship.where("followed_id = ?", self.id).map { |r| r.follower_id }
-      User.all_active_users.find_all { |u| followers.include?(u.id) }
+      Relationship.followers_of_user(self)
     end
 
     def following
-      followed = Relationship.where("follower_id = ?", self.id).map { |r| r.followed_id }
-      User.all_active_users.find_all { |u| followed.include?(u.id) }
+      Relationship.users_followed_by(self)
     end
 
     def following?(user)

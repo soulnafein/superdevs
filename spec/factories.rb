@@ -18,6 +18,11 @@ Factory.define :david, :parent => :user do |u|
   u.full_name "David Santoro"
 end
 
+Factory.define :stranger, :parent => :user do |u|
+  u.sequence(:username){|n| "strangeson#{n}"}
+  u.full_name "Stranger Strangeson"
+end
+
 Factory.define :ken, :parent => :user do |u|
    u.sequence(:username){|n| "ken#{n}"}
    u.full_name "Ken Alex Fassone"
@@ -33,7 +38,7 @@ end
 
 Factory.define :event do |e|
   e.description "A description"
-  e.date DateTime::now()
+  e.date Time.now.utc
   e.country "United Kingdom"
   e.city "London"
   e.attendees []
