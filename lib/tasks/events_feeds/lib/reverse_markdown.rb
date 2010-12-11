@@ -263,7 +263,7 @@ EOF
 
 r = ReverseMarkdown.new
 
-puts r.parse_string(example)
+#puts r.parse_string(example)
 
 #r.print_errors
 
