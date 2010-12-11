@@ -16,6 +16,7 @@ gem 'maruku'
 gem 'ruby-debug-base'
 gem 'ruby-debug-ide'
 gem 'rack-force_domain'
+gem 'icalendar'
 
 group :test do
   gem "capybara", "0.3.9"
