@@ -60,8 +60,8 @@ class EventsController < ApplicationController
     cal = Icalendar::Calendar.new
     cal.custom_property("METHOD","PUBLISH")
     cal_event = Icalendar::Event.new 
-    cal_event.dtstart = @event.date.strftime("%Y%m%dT%H%M%S")
-    cal_event.dtend =  @event.date.since(3600).strftime("%Y%m%dT%H%M%S")
+    cal_event.dtstart = @event.date.to_date.strftime("%Y%m%dT%H%M%S")
+    cal_event.dtend =  (@event.date.to_date + 1.day - 1.seconds).strftime("%Y%m%dT%H%M%S")
     cal_event.summary = "SuperDevs event: #{@event.title}"
     cal_event.description = "#{@event.description}\nNeed more info? check the event page(#{event_url(@event)}) on SuperDevs!"
     cal_event.klass = "PUBLIC"       
