@@ -1,3 +1,5 @@
+require 'icalendar'
+
 class EventsController < ApplicationController
   before_filter :require_user, :only => [:new, :create, :edit, :attend, :unattend, :track, :untrack, :login]
 
@@ -50,6 +52,22 @@ class EventsController < ApplicationController
   def index
     today = Date.today
     @events = EventsGroupedByPeriod.new(Event.united_kingdom, today)
+  end
+
+  def icalendar
+    @event = Event.find(params[:id])
+
+    cal = Icalendar::Calendar.new
+    cal.custom_property("METHOD","PUBLISH")
+    cal_event = Icalendar::Event.new 
+    cal_event.dtstart = @event.date.to_date.strftime("%Y%m%dT%H%M%S")
+    cal_event.dtend =  (@event.date.to_date + 1.day - 1.seconds).strftime("%Y%m%dT%H%M%S")
+    cal_event.summary = "SuperDevs event: #{@event.title}"
+    cal_event.description = "#{@event.description}\nNeed more info? check the event page(#{event_url(@event)}) on SuperDevs!"
+    cal_event.klass = "PUBLIC"       
+    cal_event.location = @event.city
+    cal.add_event(cal_event)
+    send_data(cal.to_ical, :type => 'text/calendar', :disposition => "inline; filename=event#{@event.id}.vcs", :filename=>"event#{@event.id}.vcs")
   end
 
   include AttendingAndTrackingForEvents

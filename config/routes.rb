@@ -23,6 +23,7 @@ Superdevs::Application.routes.draw do
       get 'untrack'
       get 'attendances'
       get 'login'
+      get 'icalendar'
     end
   end
 
