@@ -1,7 +1,9 @@
 .events
   %dl{:style=>"float: left;"}
+    - previous_date = Time.now.utc.yesterday
     - events.each do |event|
-      %dt
+
+      %dt{:style => (previous_date.to_date == event.date.to_date ? 'visibility:hidden' : '')}
         - if event.date.today?
           %br
           %span{:style => 'color:#f7941d;font-size:12px'}Today
@@ -10,6 +12,7 @@
           %br
           %strong= Date::ABBR_MONTHNAMES[event.date.month]
           = event.date.year
+      - previous_date = event.date
       %dd{:class => cycle('even', 'odd') + (event.date.today? ? ' today' : '') }
         %h4= link_to event.title, event_path(event.id)
         %h5 #{event.city.capitalize} (#{event.country})
