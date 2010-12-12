@@ -26,8 +26,7 @@ module EventBehaviours
     end
 
     def attendees_followed_by(user)
-      users_followed = user.following
-      self.attendees & users_followed
+      Relationship.subset_of_users_followed_by(user, self.attendees).map {|r| r.followed }
     end
   end
 end

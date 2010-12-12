@@ -39,8 +39,4 @@ Superdevs::Application.configure do
   config.i18n.fallbacks = true
 
   config.middleware.use Rack::ForceDomain, "www.superdevs.com"
-#config.middleware.use ExceptionNotifier,
-#                        :email_prefix => "[superdevs-exceptions] ",
-#                        :sender_address => %{"notifier" <exceptions@superdevs.com>},
-#                        :exception_recipients => %w{admin@superdevs.com soulnafein@gmail.com}
 end

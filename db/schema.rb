@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20101212202656) do
     t.datetime "updated_at"
   end
 
+  add_index "attendances", ["event_id"], :name => "index_attendances_on_event_id"
   add_index "attendances", ["user_id"], :name => "index_attendances_on_user_id"
 
   create_table "comments", :force => true do |t|
@@ -65,6 +66,9 @@ ActiveRecord::Schema.define(:version => 20101212202656) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
   create_table "rpx_identifiers", :force => true do |t|
     t.string   "identifier",    :null => false

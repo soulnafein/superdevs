@@ -1,7 +1,7 @@
 module UserBehaviours
   module TwitterStyleFollowBehaviour
     def deliver_new_follower_notification!(follower)
-      Notifier.deliver_new_follower_notification(self, follower)
+      Notifier.new_follower_notification(self, follower).deliver
     end
 
     def start_following(user)
