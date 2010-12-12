@@ -27,7 +27,7 @@ module EventBehaviours
 
     def attendees_followed_by(user)
       users_followed = user.following
-      users_followed.find_all {|u| self.has_attendee?(u)}
+      self.attendees & users_followed
     end
   end
 end

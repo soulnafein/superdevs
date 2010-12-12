@@ -18,11 +18,11 @@
           = link_to "Edit event", edit_group_event_url(event.group.unique_name, event.id), :class => 'edit'
         - elsif !event.attendees.empty?
           %em{:class => 'attendees_count'}Attendees (#{event.attendees.size})
-        - if event.attendees_followed_by(current_user).size > 0
+        - attending_friends = event.attendees_followed_by(current_user);
+        - if attending_friends.size > 0
           %div
-            - attending_friends = event.attendees_followed_by(current_user).size;
             %p.friendsInfo
-              = "#{pluralize(attending_friends, 'person')} you are following #{pluralize(attending_friends, 'is', 'are').gsub(/\d+/,'')} attending or tracking"
+              = "#{pluralize(attending_friends.size, 'person')} you are following #{pluralize(attending_friends.size, 'is', 'are').gsub(/\d+/,'')} attending or tracking"
           - event.attendees_followed_by(current_user).each do |u|
             %a{:href=>user_path(u.username), :title=> u.full_name}
               != u.small_profile_picture.to_html
