@@ -43,8 +43,18 @@ ActiveAjax.Model = function(json, url) {
 
   priv.save = function() {
     params = {};
-    params[priv.modelName] = priv.getModel();
+    params[priv.modelName] = priv.replaceNullsWithEmpty(priv.getModel());
     priv.ajax.put(url, params);
+  };
+
+  priv.replaceNullsWithEmpty = function(anObject) {
+    var newObject = {};
+    for(var m in anObject) {
+      if (anObject[m]!=null){
+        newObject[m] = anObject[m];
+      }
+    }
+    return newObject;
   };
 
   priv.init = function() {

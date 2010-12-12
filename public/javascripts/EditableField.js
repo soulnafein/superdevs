@@ -20,7 +20,7 @@ SuperDevs.EditableField = function(params, editingElement) {
   states = {
     initial: {
       onEnter: function() {
-        if(getValue() === '')
+        if(getValue() === '' || getValue() === null)
           changeState(states.adding);
         else
           changeState(states.showing);

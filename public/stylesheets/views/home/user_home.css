@@ -1,3 +1,7 @@
+div#user_home {
+  overflow:auto;
+}
+
 div#left_column {
     width:580px;
     float:left;

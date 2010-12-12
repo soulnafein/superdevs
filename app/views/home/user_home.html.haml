@@ -12,7 +12,7 @@
         %h3 I cannot suggest events for you because you did not select a country in your profile.
         %p
           Please
-          = link_to "choose a country", edit_user_url(current_user.username)
+          = link_to "choose a country", user_url(current_user.username)
       - elsif @user_events.empty?
         %h3
           There aren't planned events in
@@ -46,4 +46,3 @@
           - current_user.followers.each do |u|
             %a{:href=> user_path(u.username), :title=> u.full_name}
               != u.small_profile_picture.to_html
-    %div{:style=>"clear:both;"}

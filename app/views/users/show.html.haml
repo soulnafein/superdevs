@@ -2,7 +2,7 @@
 - title("#{@user.full_name} at SuperDevs")
 :javascript
   $(document).ready(function() {
-    var user = #{@user.to_json};
+    var user = #{@user.to_json(:only => [:username, :full_name, :tagline, :country, :company, :city, :website, :phone_number, :bio, :interests])};
     var canEdit = #{user_can_edit};
     SuperDevs.ProfilePage.init(user, canEdit);
     $("#blog").blog_feed("#{@user.blog_feed}");

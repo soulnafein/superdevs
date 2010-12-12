@@ -58,7 +58,6 @@ describe("Editable text spec", function() {
 describe("Editable text spec when starting with an empty value", function() {
   var brandHeader, options, car;
 
-
   beforeEach(function() {
     HtmlFixture("<h3 style='display:none'></h3>");
     brandHeader = $("h3");
@@ -73,6 +72,14 @@ describe("Editable text spec when starting with an empty value", function() {
   });
 
   it("should show a link", function() {
+    SuperDevs.EditableText(options);
+    var link = HTML().find('a');
+    expect(link.length).toEqual(1);
+    expect(link.text()).toEqual('Add a brand');
+  });
+
+  it("should show link even for null values", function() {
+    car.brand(null);
     SuperDevs.EditableText(options);
     var link = HTML().find('a');
     expect(link.length).toEqual(1);
