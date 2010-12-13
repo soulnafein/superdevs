@@ -26,7 +26,7 @@ module EventBehaviours
     end
 
     def attendees_followed_by(user)
-      Relationship.subset_of_users_followed_by(user, self.attendees).map {|r| r.followed }
+      Relationship.subset_of_users_followed_by(user, self.attendees | self.trackers).map {|r| r.followed }
     end
   end
 end

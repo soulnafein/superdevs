@@ -87,4 +87,14 @@ describe Event do
     event_with_stranger = Factory(:event, :attendees => [stranger])
     event_with_stranger.attendees_followed_by(david).should == []
   end
+
+  it "should list the trackers followed by a user" do
+    david, ken, stranger = Factory(:david), Factory(:ken), Factory(:stranger)
+    david.start_following(ken)
+    event_attended_by_friend = Factory(:event, :trackers => [ken, stranger])
+    event_attended_by_friend.attendees_followed_by(david).should == [ken]
+
+    event_with_stranger = Factory(:event, :trackers => [stranger])
+    event_with_stranger.attendees_followed_by(david).should == []
+  end
 end
