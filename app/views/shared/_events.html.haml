@@ -1,32 +1,32 @@
 .events
   %dl{:style=>"float: left;"}
     - previous_date = Time.now.utc.yesterday
-    - events.each do |event|
+    - events.rows.each do |row|
 
-      %dt{:style => (previous_date.to_date == event.date.to_date ? 'visibility:hidden' : '')}
-        - if event.date.today?
+      %dt{:style => (previous_date.to_date == row.event.date.to_date ? 'visibility:hidden' : '')}
+        - if row.event.date.today?
           %br
           %span{:style => 'color:#f7941d;font-size:12px'}Today
         - else
-          = event.date.day
+          = row.event.date.day
           %br
-          %strong= Date::ABBR_MONTHNAMES[event.date.month]
-          = event.date.year
-      - previous_date = event.date
-      %dd{:class => cycle('even', 'odd') + (event.date.today? ? ' today' : '') }
-        %h4= link_to event.title, event_path(event.id)
-        %h5 #{event.city.capitalize} (#{event.country})
-        - if event.is_organizer?(current_user)
-          = link_to "Attendees (#{event.attendees.size})", [event, :attendances], :class => 'attendees_list'
-          = link_to "Edit event", edit_group_event_url(event.group.unique_name, event.id), :class => 'edit'
-        - elsif !event.attendees.empty?
-          %em{:class => 'attendees_count'}Attendees (#{event.attendees.size})
-        - attending_friends = event.attendees_followed_by(current_user);
+          %strong= Date::ABBR_MONTHNAMES[row.event.date.month]
+          = row.event.date.year
+      - previous_date = row.event.date
+      %dd{:class => cycle('even', 'odd') + (row.event.date.today? ? ' today' : '') }
+        %h4= link_to row.event.title, event_path(row.event.id)
+        %h5 #{row.event.city.capitalize} (#{row.event.country})
+        - if row.event.is_organizer?(current_user)
+          = link_to "Attendees (#{row.event.attendees.size})", [row.event, :attendances], :class => 'attendees_list'
+          = link_to "Edit event", edit_group_event_url(row.event.group.unique_name, row.event.id), :class => 'edit'
+        - elsif !row.event.attendees.empty?
+          %em{:class => 'attendees_count'}Attendees (#{row.event.attendees.size})
+        - attending_friends = row.event.attendees_followed_by(current_user);
         - if attending_friends.size > 0
           %div
             %p.friendsInfo
               = "#{pluralize(attending_friends.size, 'person')} you are following #{pluralize(attending_friends.size, 'is', 'are').gsub(/\d+/,'')} attending or tracking"
-          - event.attendees_followed_by(current_user).each do |u|
+          - row.event.attendees_followed_by(current_user).each do |u|
             %a{:href=>user_path(u.username), :title=> u.full_name}
               != u.small_profile_picture.to_html
 
