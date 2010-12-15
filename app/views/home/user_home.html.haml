@@ -7,7 +7,7 @@
         = current_user.full_name + "!"
       - if @events_attended_by_user
         %h3 Events you are attending
-        = render :partial => 'shared/events', :locals => {:events => EventListViewModel.new(@events_attended_by_user, current_user)}
+        = render :partial => 'shared/events', :locals => {:events => EventsListPresenter.new(@events_attended_by_user, current_user)}
       - if current_user.country.to_s.empty?
         %h3 I cannot suggest events for you because you did not select a country in your profile.
         %p
@@ -21,7 +21,7 @@
           %span .
       - else
         %h3 Upcoming talks, meetups and other events
-        = render :partial => 'shared/events', :locals => {:events => EventListViewModel.new(@user_events.events, current_user)}
+        = render :partial => 'shared/events', :locals => {:events => EventsListPresenter.new(@user_events.events, current_user)}
 
     #right_column
       - unless @user_events.empty?

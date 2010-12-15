@@ -4,14 +4,14 @@
   - unless @events.todays_events.empty?
     %h3 Happening today
     = render :partial => 'shared/events',
-             :locals => {:events => EventListViewModel.new(@events.todays_events, current_user)}
+             :locals => {:events => EventsListPresenter.new(@events.todays_events, current_user)}
   - unless @events.tomorrows_events.empty?
     %h3 Happening tomorrow
     = render :partial => 'shared/events',
-             :locals => {:events => EventListViewModel.new(@events.tomorrows_events, current_user)}
+             :locals => {:events => EventsListPresenter.new(@events.tomorrows_events, current_user)}
   - unless @events.all_other_events.empty?
     %h3 Coming up
     = render :partial => 'shared/events',
-             :locals => {:events => EventListViewModel.new(@events.all_other_events, current_user)}
+             :locals => {:events => EventsListPresenter.new(@events.all_other_events, current_user)}
   .clear
 

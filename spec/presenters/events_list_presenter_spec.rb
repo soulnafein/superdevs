@@ -6,7 +6,7 @@ describe "Event list view model used in several page when showing events" do
                   Factory.build(:event, :id => 2),
                   Factory.build(:event, :id => 3)]
 
-    view_model = EventListViewModel.new(events, nil)
+    view_model = EventsListPresenter.new(events, nil)
 
     view_model.rows[0].event.should == events[0]
     view_model.rows[1].event.should == events[1]
@@ -18,7 +18,7 @@ describe "Event list view model used in several page when showing events" do
                   Factory.build(:event, :date => Time.utc(2010, 3, 12, 20, 30)),
                   Factory.build(:event, :date => Time.utc(2010, 3, 15, 18, 30))]
 
-    view_model = EventListViewModel.new(events, nil)
+    view_model = EventsListPresenter.new(events, nil)
 
     view_model.rows[0].show_date?.should be_true
     view_model.rows[1].show_date?.should be_false
@@ -35,7 +35,7 @@ describe "Event list view model used in several page when showing events" do
       event_with_no_friends.stub(:attendees_followed_by).with(@current_user).and_return([])
 
       events = [event_with_no_friends]
-      view_model = EventListViewModel.new(events, @current_user)
+      view_model = EventsListPresenter.new(events, @current_user)
 
       view_model.rows[0].attending_or_tracking_friends_info.should ==
               ""
@@ -47,7 +47,7 @@ describe "Event list view model used in several page when showing events" do
       event_with_one_friend.stub(:attendees_followed_by).with(@current_user).and_return([david])
 
       events = [event_with_one_friend]
-      view_model = EventListViewModel.new(events, @current_user)
+      view_model = EventsListPresenter.new(events, @current_user)
 
       view_model.rows[0].attending_or_tracking_friends_info.should ==
               "1 person you are following is attending or tracking"
@@ -59,7 +59,7 @@ describe "Event list view model used in several page when showing events" do
       event_with_two_friends.stub(:attendees_followed_by).with(@current_user).and_return([david, ken])
 
       events = [event_with_two_friends]
-      view_model = EventListViewModel.new(events, @current_user)
+      view_model = EventsListPresenter.new(events, @current_user)
 
       view_model.rows[0].attending_or_tracking_friends_info.should ==
               "2 people you are following are attending or tracking"
@@ -74,7 +74,7 @@ describe "Event list view model used in several page when showing events" do
     event_with_two_friends.stub(:attendees_followed_by).with(current_user).and_return([david, ken])
 
     events = [event_with_two_friends]
-    view_model = EventListViewModel.new(events, current_user)
+    view_model = EventsListPresenter.new(events, current_user)
 
     view_model.rows[0].attending_or_tracking_friends.should == [david, ken]
   end

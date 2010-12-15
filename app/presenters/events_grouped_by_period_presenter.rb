@@ -1,4 +1,4 @@
-class EventsGroupedByPeriod
+class EventsGroupedByPeriodPresenter
   def initialize(events, today)
     @events = events
     @today = today
