@@ -122,3 +122,6 @@ SuperDevs.ProfilePage = function() {
   }
 }();
 
+var aFunction = function() {      };
+
+var anotherObject = function() {   return {};  }();
