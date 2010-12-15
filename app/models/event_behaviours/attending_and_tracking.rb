@@ -1,6 +1,5 @@
 module EventBehaviours
   module AttendingAndTracking
-
     def has_attendee?(user)
       self.attendees.include?(user)
     end

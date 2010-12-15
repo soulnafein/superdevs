@@ -51,7 +51,7 @@ class EventsController < ApplicationController
 
   def index
     today = Date.today
-    @events = EventsGroupedByPeriod.new(Event.united_kingdom, today)
+    @events = EventsGroupedByPeriodPresenter.new(Event.united_kingdom, today)
   end
 
   def icalendar
