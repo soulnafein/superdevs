@@ -2,14 +2,45 @@ div#user_home {
   overflow:auto;
 }
 
+ul.updates {
+  list-style:none;
+  line-height:20px;
+  font-size:12px;
+  font-weight:normal;
+}
+
+ul.updates li {
+  padding-left: 40px;
+  min-height:40px;
+}
+
+ul.updates li.event {
+  background:url(/images/icons/date.png) no-repeat;
+}
+
+
+div#user_home h3{
+  font-family:Lucida, sans-serif;
+  font-size:20px;
+}
+
 div#left_column {
-    width:580px;
-    float:left;
+  width:580px;
+  float:left;
+  margin-right:20px;
 }
 
 div#right_column {
     float:left;
-    width:250px;
+    width:310px;
+}
+
+div#following {
+  margin:0 0 20px 0;
+}
+
+div#followers {
+  margin:0 0 20px 0;
 }
 
 div#events {
@@ -109,5 +140,21 @@ div.relationships h3 {
 }
 
 div#user_home div.events dd {
-  width: 480px;
+  width: 240px;
 }
+
+div#user_home div.events dd h4 {
+  font-size:16px;
+  line-height:20px;
+}
+
+h2.followers, h2.following {
+  padding-left:40px;
+  background: url(/images/icons/group.png) no-repeat center left;
+}
+
+h2.events {
+  padding-left:40px;
+  background:url(/images/icons/date.png) no-repeat center left;
+}
+

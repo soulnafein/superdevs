@@ -3,46 +3,40 @@
   .in
     #left_column
       %h2
-        Welcome back
-        = current_user.full_name + "!"
-      - if @events_attended_by_user
-        %h3 Events you are attending
-        = render :partial => 'shared/events', :locals => {:events => EventsListPresenter.new(@events_attended_by_user, current_user)}
-      - if current_user.country.to_s.empty?
-        %h3 I cannot suggest events for you because you did not select a country in your profile.
-        %p
-          Please
-          = link_to "choose a country", user_url(current_user.username)
-      - elsif @user_events.empty?
-        %h3
-          There aren't planned events in
-          = current_user.country
-          at the moment
-          %span .
-      - else
-        %h3 Upcoming talks, meetups and other events
-        = render :partial => 'shared/events', :locals => {:events => EventsListPresenter.new(@user_events.events, current_user)}
+        News and friends updates
+      %ul.updates
+        %li.event
+          :markdown
+            [Erling Wegger Linde](#), [Martin Fowler](#), and [Bob Martin](#) are attending
+            [London Clojure Dojo](#) on the 15th of February 2010.
+        %li.event
+          :markdown
+            [Joshua Block](#) is attending
+            [Multithreading for dummies](#) on the 15th of February 2010.
+        %li.event
+          :markdown
+            [Erling Wegger Linde](#) is attending
+            [Ruby User Group October Meetup](#) on the 15th of February 2010.
+        %li.event
+          :markdown
+            [Martin Fowler](#), and [Bob Martin](#) are attending
+            [London Clojure Dojo](#) on the 23th of February 2010.
+
 
     #right_column
-      - unless @user_events.empty?
-        .information
-          %h4 Hello there!
-          %p
-            We picked up the best upcoming talks, dojos, conferences and other events in
-            %strong
-              = @user_events.location
-              %span .
-            %br
-            Soon we will filter them based on your interests.
       - unless current_user.following.empty?
         #following.relationships
-          %h3 Following
+          %h2.following Following
           - current_user.following.each do |u|
             %a{:href=>user_path(u.username), :title=> u.full_name}
               != u.small_profile_picture.to_html
       - unless current_user.followers.empty?
         #followers.relationships
-          %h3 Followers
+          %h2.followers Followers
           - current_user.followers.each do |u|
             %a{:href=> user_path(u.username), :title=> u.full_name}
               != u.small_profile_picture.to_html
+      %h2.events Tracked events
+      = render :partial => 'shared/events',
+               :locals => {:events => @user_home_presenter.attended_or_tracked_events}
+
