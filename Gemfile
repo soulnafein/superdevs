@@ -16,7 +16,8 @@ gem 'ruby-debug-base'
 gem 'ruby-debug-ide'
 gem 'rack-force_domain'
 gem 'icalendar'
-gem "delayed_job",  :git => 'git://github.com/collectiveidea/delayed_job.git'
+gem 'delayed_job',  :git => 'git://github.com/collectiveidea/delayed_job.git'
+gem 'pg', :require => 'pg'
 
 group :test do
   gem 'rcov'

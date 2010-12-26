@@ -15,7 +15,7 @@ describe UsersController do
     end
 
     it "should send back a 404 when give an invalid id" do
-      get :show, :id => 666
+      get :show, :id => '666'
 
       response.status.should == 404
     end
@@ -37,7 +37,7 @@ describe UsersController do
     end
 
     it "should send back a 404 when give an invalid id" do
-      get :edit_accounts, :id => 666
+      get :edit_accounts, :id => '666'
 
       response.status.should == 404
     end

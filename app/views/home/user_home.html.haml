@@ -1,27 +1,29 @@
 - current_tab('home')
+:javascript
+  __utmSetVar('member');
 #user_home
   .in
     #left_column
       %h2
-        News and friends updates
+        What's going on
       %ul.updates
-        %li.event
-          :markdown
-            [Erling Wegger Linde](#), [Martin Fowler](#), and [Bob Martin](#) are attending
-            [London Clojure Dojo](#) on the 15th of February 2010.
-        %li.event
-          :markdown
-            [Joshua Block](#) is attending
-            [Multithreading for dummies](#) on the 15th of February 2010.
-        %li.event
-          :markdown
-            [Erling Wegger Linde](#) is attending
-            [Ruby User Group October Meetup](#) on the 15th of February 2010.
-        %li.event
-          :markdown
-            [Martin Fowler](#), and [Bob Martin](#) are attending
-            [London Clojure Dojo](#) on the 23th of February 2010.
-
+        - @user_home_presenter.friends_activities.each do |fa|
+          %li
+            .profile_picture_medium
+              != fa.friend.medium_profile_picture.to_html
+            %div
+              %h3= link_to fa.friend.full_name, user_url(fa.friend.username)
+              %p
+                is attending
+                = link_to fa.event.title, event_url(fa.event.id)
+                on the
+                = fa.event.date.strftime("%d %B %Y")
+              %p.actions
+                %span.date= distance_of_time_in_words(fa.date, Time.now.utc) + ' ago'
+                %span.v_line= "|"
+                = link_to "Attend", attend_event_url(fa.event.id)
+                %span.v_line= "|"
+                = link_to "Track", track_event_url(fa.event.id)
 
     #right_column
       - unless current_user.following.empty?
