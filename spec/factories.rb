@@ -57,7 +57,6 @@ Factory.define :membership do |m|
 end
 
 Factory.define :friend_activity do |fa|
-  fa.user {|user| user.association(:david)}
   fa.event {|event| event.association(:event)}
   fa.friend {|friend| friend.association(:ken)}
   fa.date Time.now.utc
