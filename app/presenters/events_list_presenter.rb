@@ -1,10 +1,15 @@
 class EventsListPresenter
   def initialize(events, current_user)
-    @rows = events.map {|event| EventListRow.new(event, current_user)}
+    @current_user = current_user
+    @rows = events.map {|event| EventListRow.new(event, @current_user)}
     @rows.each_cons(2) {|pair| pair[1].previous_row = pair[0]}
   end
 
   attr_reader :rows
+
+  def show_admin_actions?
+    Admin.user_admin?(@current_user)
+  end
 end
 
 class EventListRow

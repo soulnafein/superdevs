@@ -24,6 +24,7 @@ Superdevs::Application.routes.draw do
       get 'attendances'
       get 'login'
       get 'icalendar'
+      get 'deactivate'
     end
   end
 

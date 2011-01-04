@@ -17,6 +17,8 @@
         - if row.event.is_organizer?(current_user)
           = link_to "Attendees (#{row.event.attendees.size})", [row.event, :attendances], :class => 'attendees_list'
           = link_to "Edit event", edit_group_event_url(row.event.group.unique_name, row.event.id), :class => 'edit'
+        - if events.show_admin_actions?
+          = link_to "Disable event", deactivate_event_url(row.event.id), :class => 'delete'
         - elsif !row.event.attendees.empty?
           %em{:class => 'attendees_count'}Attendees (#{row.event.attendees.size})
         - unless row.attending_or_tracking_friends.empty?

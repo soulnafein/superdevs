@@ -24,8 +24,8 @@ Factory.define :stranger, :parent => :user do |u|
 end
 
 Factory.define :ken, :parent => :user do |u|
-   u.sequence(:username){|n| "ken#{n}"}
-   u.full_name "Ken Alex Fassone"
+  u.sequence(:username){|n| "ken#{n}"}
+  u.full_name "Ken Alex Fassone"
 end
 
 Factory.define :group do |g|

@@ -54,6 +54,16 @@ class EventsController < ApplicationController
     @events = EventsGroupedByPeriodPresenter.new(Event.united_kingdom, today)
   end
 
+  def deactivate
+    if Admin.user_admin?(current_user)
+      load_event
+      @event.deactivate!
+      redirect_to events_url
+    else
+      render_unauthorised_access
+    end
+  end
+
   def icalendar
     @event = Event.find(params[:id])
 

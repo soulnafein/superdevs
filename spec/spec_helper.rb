@@ -15,6 +15,10 @@ module SessionTestHelper
     UserSession.stub(:find).and_return(session)
     user
   end
+
+  def user_is_admin(user)
+    Admin.stub!(:user_admin?).with(user).and_return(true)
+  end
 end
 
 Rspec.configure do |config|

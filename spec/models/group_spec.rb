@@ -25,7 +25,7 @@ describe Group do
     group.organizer?(nil).should be_false
   end
 
-  it "should have many members with the organizer" do 
+  it "should have many members with the organizer" do
     group = Group.new
     group.members.size.should == 0
   end

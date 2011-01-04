@@ -78,4 +78,16 @@ describe "Event list view model used in several page when showing events" do
 
     view_model.rows[0].attending_or_tracking_friends.should == [david, ken]
   end
+
+  it "should show admin actions when an admin access the page" do
+    david, ken = [Factory.build(:david, :id => 1), Factory.build(:ken, :id => 2)]
+    Admin.stub!(:user_admin?).with(david).and_return(true)
+    Admin.stub!(:user_admin?).with(ken).and_return(false)
+
+    view_model_for_david = EventsListPresenter.new([Factory.build(:event)], david)
+    view_model_for_ken = EventsListPresenter.new([Factory.build(:event)], ken)
+
+    view_model_for_david.show_admin_actions?.should be_true
+    view_model_for_ken.show_admin_actions?.should be_false
+  end
 end

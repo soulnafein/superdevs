@@ -5,7 +5,8 @@ class Event < ActiveRecord::Base
                   :description, 
                   :link, 
                   :date,
-                  :group
+                  :group,
+                  :disabled
 
   has_many :attendances
   has_many :trackings
@@ -23,4 +24,8 @@ class Event < ActiveRecord::Base
 
   extend EventBehaviours::Queries
 
+  def deactivate!
+    self.disabled = true
+    self.save!
+  end
 end
