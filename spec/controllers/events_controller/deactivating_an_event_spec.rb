@@ -11,7 +11,7 @@ describe EventsController, "Deactivating an event" do
   it "should allow deactivation of event when admin ask for it" do
     logged_in_user_is(@david)
     user_is_admin(@david)
-    event = Factory(:event, :id => 12)
+    event = Factory.build(:event, :id => 12)
     Event.stub!(:find).with(event.id.to_s).and_return(event)
     event.should_receive(:deactivate!)
 

@@ -4,9 +4,9 @@ describe EventsController, "Adding a new event to a group" do
   include SessionTestHelper
 
   before :each do
-    @david = Factory(:david)
-    @ken = Factory(:ken)
-    @the_group = Factory(:group, :organizer => @ken)
+    @david = Factory.build(:david, :id => 1)
+    @ken = Factory.build(:ken, :id => 2)
+    @the_group = Factory.build(:group, :organizer => @ken)
   end
 
   it "should only be allowed to the group's organizer" do

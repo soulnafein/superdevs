@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe TomorrowEventNotification do
   before :each do
-    @david = Factory(:david)
-    @event = Factory(:event, :attendees => [@david])
+    @david = Factory.build(:david)
+    @event = Factory.build(:event, :attendees => [@david])
     @events = [@event]
     @today = Date::civil(2010, 01, 01)
     @tomorrow = @today + 1

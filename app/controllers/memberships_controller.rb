@@ -25,7 +25,7 @@ class MembershipsController < ApplicationController
   end
 
   def redirect_to_group_with_notice(notice)
-    redirect_to(@group, :notice => notice)
+    redirect_to group_url(@group.unique_name), :notice => notice
   end
 
   def user_is_allowed_to_delete_membership

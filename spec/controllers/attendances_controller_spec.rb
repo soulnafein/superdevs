@@ -5,13 +5,13 @@ describe AttendancesController do
 
   describe "get attendees" do
     before :each do
-      @david = Factory(:david)
+      @david = Factory.build(:david, :id => 1)
       logged_in_user_is(@david)
     end
 
     it "should show list to organizer" do
-      @current_user_group = Factory(:group, :id => 18, :organizer => @david)
-      @event = Factory(:event, :id => 42, :group => @current_user_group)
+      @current_user_group = Factory.build(:group, :id => 18, :organizer => @david)
+      @event = Factory.build(:event, :id => 42, :group => @current_user_group)
 
       Event.stub(:find).with(@event.id).and_return(@event)
 
@@ -20,9 +20,9 @@ describe AttendancesController do
     end
 
     it "should forbid non organizer to see the list" do
-      @ken = Factory(:ken)
-      another_user_group = Factory(:group, :id => 42, :organizer => @ken)
-      @event = Factory(:event, :id => 42, :group => another_user_group)
+      @ken = Factory.build(:ken, :id => 2)
+      another_user_group = Factory.build(:group, :id => 42, :organizer => @ken)
+      @event = Factory.build(:event, :id => 42, :group => another_user_group)
 
       Event.stub(:find).with(@event.id).and_return(@event)
  
