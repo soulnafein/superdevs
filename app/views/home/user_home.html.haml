@@ -1,6 +1,6 @@
 - current_tab('home')
 :javascript
-  __utmSetVar('member');
+  _gaq.push(['_setVar', 'member']);
 #user_home
   .in
     #left_column
@@ -38,7 +38,7 @@
           - current_user.followers.each do |u|
             %a{:href=> user_path(u.username), :title=> u.full_name}
               != u.small_profile_picture.to_html
-      %h2.events Tracked events
+      %h2.events Your events
       = render :partial => 'shared/events',
                :locals => {:events => @user_home_presenter.attended_or_tracked_events}
 
