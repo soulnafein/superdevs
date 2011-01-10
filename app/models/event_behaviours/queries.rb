@@ -19,9 +19,11 @@ module EventBehaviours
       Event.all_upcoming.where("upper(country) = ?", user.country.to_s.upcase)
     end
 
-    def get_events_attended_by_user(user)
+    def get_events_attended_or_tracked_by_user(user)
       attended_events_ids = Attendance.where('user_id = ?', user.id).map { |a| a.event_id }
-      Event.all_upcoming.find_all {|e| attended_events_ids.include?(e.id)}
+      tracked_events_ids = Tracking.where('user_id = ?', user.id).map { |a| a.event_id }
+      attended_or_tracked_events_id = (attended_events_ids | tracked_events_ids)
+      Event.all_upcoming.where(:id => attended_or_tracked_events_id)
     end
 
     def all_upcoming

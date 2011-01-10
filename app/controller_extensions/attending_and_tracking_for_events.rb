@@ -2,6 +2,7 @@ module AttendingAndTrackingForEvents
   def attend
     load_event
     @event.register_attendee(current_user)
+    FriendActivity.create!(:friend => current_user, :event => @event, :date => Time.now.utc)
     redirect_to event_path(@event.id)
   end
 

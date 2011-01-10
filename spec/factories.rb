@@ -24,8 +24,8 @@ Factory.define :stranger, :parent => :user do |u|
 end
 
 Factory.define :ken, :parent => :user do |u|
-   u.sequence(:username){|n| "ken#{n}"}
-   u.full_name "Ken Alex Fassone"
+  u.sequence(:username){|n| "ken#{n}"}
+  u.full_name "Ken Alex Fassone"
 end
 
 Factory.define :group do |g|
@@ -54,5 +54,11 @@ Factory.define :membership do |m|
   m.id 18
   m.user {|user| user.association(:user)} 
   m.group {|group| group.association(:group)} 
+end
+
+Factory.define :friend_activity do |fa|
+  fa.event {|event| event.association(:event)}
+  fa.friend {|friend| friend.association(:ken)}
+  fa.date Time.now.utc
 end
 

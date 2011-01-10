@@ -27,35 +27,15 @@ describe HomeController do
     end
 
     context "When showing events" do
-      it "should provide events for the user city" do
-        Event.stub!(:get_events_for_user_city).with(@user).and_return(@expected_events)
+      it "should send to the page the user home presenter" do
+        user_home_presenter = stub(:user_home_presenter)
+        UserHomePresenter.stub!(:new).with(@user).and_return(user_home_presenter)
 
         get 'index'
 
-        assigns[:user_events].should_not be_nil
-        assigns[:user_events].events.should == @expected_events
-        assigns[:user_events].location.should == "London, United Kingdom"
+        assigns[:user_home_presenter].should == user_home_presenter
       end
 
-      it "should get events from the all country if there are not events for the user's city" do
-        Event.stub!(:get_events_for_user_city).with(@user).and_return([])
-        Event.stub!(:get_events_for_user_country).with(@user).and_return(@expected_events)
-
-        get 'index'
-
-        assigns[:user_events].should_not be_nil
-        assigns[:user_events].events.should == @expected_events
-        assigns[:user_events].location.should == "United Kingdom"
-      end
-
-      it "should show all the upcoming evens that the user is attending" do
-        Event.stub(:get_events_attended_by_user).with(@user).and_return(@expected_events)
-
-        get 'index'
-
-        assigns[:events_attended_by_user].should_not be_nil
-        assigns[:events_attended_by_user].should == @expected_events
-      end
     end
   end
 end

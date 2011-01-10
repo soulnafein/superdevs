@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe EventsGroupedByPeriod do
+describe EventsGroupedByPeriodPresenter do
   before :each do
     @today = Chronic.parse("14 March 2010")
     @tomorrow = Chronic.parse("15 March 2010")
@@ -12,7 +12,7 @@ describe EventsGroupedByPeriod do
     todays_events = [Event.new(:date => @today), Event.new(:date => @today)]
     all_events = todays_events + @other_events
 
-    grouped_events = EventsGroupedByPeriod.new(all_events, @today)
+    grouped_events = EventsGroupedByPeriodPresenter.new(all_events, @today)
 
     grouped_events.todays_events.size.should == 2
     grouped_events.todays_events[0].date.should == @today
@@ -24,7 +24,7 @@ describe EventsGroupedByPeriod do
                        Event.new(:date => @tomorrow)]
     all_events = tomorrow_events + @other_events
 
-    grouped_events = EventsGroupedByPeriod.new(all_events, @today)
+    grouped_events = EventsGroupedByPeriodPresenter.new(all_events, @today)
 
     grouped_events.tomorrows_events.size.should == 2
     grouped_events.tomorrows_events[0].date.should == @tomorrow
@@ -37,7 +37,7 @@ describe EventsGroupedByPeriod do
                        Event.new(:date => @tomorrow)]
     all_events = todays_events + tomorrows_events + @other_events
 
-    grouped_events = EventsGroupedByPeriod.new(all_events, @today)
+    grouped_events = EventsGroupedByPeriodPresenter.new(all_events, @today)
 
     all_other_events = grouped_events.all_other_events
     all_other_events.size.should == 2
