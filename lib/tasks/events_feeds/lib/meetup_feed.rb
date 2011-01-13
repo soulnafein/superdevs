@@ -13,17 +13,18 @@ class MeetupFeed
     get_events_by_group_ids(@group_ids)
   end
 
-  private
   def get_events_by_group_ids(group_ids)
     feed = load_feed(generate_feed_url(group_ids))
     feed.items.map do |item|
-      Event.new(:title => item.title.content.strip,
-                :date => parse_date_from_item(item),
-                :description => parse_description_from_item(item),
-                :unique_identifier => parse_unique_identifier_from_item(item),
-                :link => item.link.href,
-                :country => @configuration[group_ids.first][2],
-                :city => @configuration[group_ids.first][1])
+      Event.new do |e|
+        e.title = item.title.content.strip
+        e.date = parse_date_from_item(item)
+        e.description = parse_description_from_item(item)
+        e.unique_identifier = parse_unique_identifier_from_item(item)
+        e.link = item.link.href
+        e.country = @configuration[group_ids.first][2]
+        e.city = @configuration[group_ids.first][1]
+      end
     end
   end
 
@@ -48,7 +49,7 @@ class MeetupFeed
   end
 
   def parse_unique_identifier_from_item(item)
-    puts item.content.content.grep /id/
+    item.id.content
   end
 
   #TODO: duplicated, refactor! check developer_fusion_feed class
