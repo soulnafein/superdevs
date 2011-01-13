@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110104210638) do
+ActiveRecord::Schema.define(:version => 20110107215550) do
 
   create_table "admins", :force => true do |t|
     t.integer  "user_id"
@@ -61,7 +61,8 @@ ActiveRecord::Schema.define(:version => 20110104210638) do
     t.datetime "updated_at"
     t.datetime "date"
     t.integer  "group_id"
-    t.boolean  "disabled",    :default => false
+    t.boolean  "disabled",          :default => false
+    t.string   "unique_identifier"
   end
 
   create_table "friend_activities", :force => true do |t|

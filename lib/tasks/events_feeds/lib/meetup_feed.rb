@@ -20,6 +20,7 @@ class MeetupFeed
       Event.new(:title => item.title.content.strip,
                 :date => parse_date_from_item(item),
                 :description => parse_description_from_item(item),
+                :unique_identifier => parse_unique_identifier_from_item(item),
                 :link => item.link.href,
                 :country => @configuration[group_ids.first][2],
                 :city => @configuration[group_ids.first][1])
@@ -44,6 +45,10 @@ class MeetupFeed
     description = item.content.content.sub(/^<h3>(\w+ \w+ \w+ \d+:\d+:\d+ \w+ \d\d\d\d)<\/h3>/i, "")
     description.gsub!(/<br \/>/, "\n")
     ReverseMarkdown.new.parse_string(description)
+  end
+
+  def parse_unique_identifier_from_item(item)
+    puts item.content.content.grep /id/
   end
 
   #TODO: duplicated, refactor! check developer_fusion_feed class
