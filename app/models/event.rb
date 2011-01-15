@@ -16,8 +16,7 @@ class Event < ActiveRecord::Base
 
   belongs_to :group
   def is_organizer?(user)
-    return false if group.nil?
-    group.organizer?(user)
+    group && group.organizer?(user)
   end
 
   has_many :comments

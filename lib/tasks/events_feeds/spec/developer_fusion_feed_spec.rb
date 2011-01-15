@@ -41,6 +41,11 @@ describe DeveloperFusionFeed do
     @events.first.description.should == mock_feed.items.first.summary.content
   end
 
+  it "should generate a unique identifier from the developer fusion event" do
+    @events.first.unique_identifier.should ==
+            "developer-fusion-76810"
+  end
+
   private
   def mock_feed
     mock_feed = mock(:feed).as_null_object
