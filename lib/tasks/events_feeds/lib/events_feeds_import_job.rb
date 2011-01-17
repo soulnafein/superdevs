@@ -27,6 +27,8 @@ module EventsFeedsImportJob
       existing_event = Event.where(:unique_identifier => e.unique_identifier).first
       if existing_event
         existing_event.update_attributes!(e.attributes)
+        existing_event.group_id = e.group_id
+        existing_event.save!
       else
         e.save!
       end
