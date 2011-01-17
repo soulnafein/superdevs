@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe MeetupFeed do
   before :each do
-    @configuration = { 123 => ["London Java Community", "London", "United Kingdom"]}
+    @configuration = { 123 => ["London Java Community", "London", "United Kingdom", 456]}
     mock_feed
     feed_uri = URI.parse("http://api.meetup.com/events.atom/?&key=8043755844411bd5a772c72373c3357&group_id=123")
     RSS::Parser.stub!(:parse).with(feed_uri).and_return(@mock_feed)
@@ -42,6 +42,10 @@ DESCRIPTION
   it "should get country and city from configuration" do
     @events.first.country.should == "United Kingdom"
     @events.first.city.should == "London"
+  end
+
+  it "should associate the relative superdevs group" do
+    @events.first.group_id.should == 456
   end
 
   private

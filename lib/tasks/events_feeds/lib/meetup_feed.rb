@@ -24,6 +24,7 @@ class MeetupFeed
         e.link = item.link.href
         e.country = @configuration[group_ids.first][2]
         e.city = @configuration[group_ids.first][1]
+        e.group_id = @configuration[group_ids.first][3]
       end
     end
   end

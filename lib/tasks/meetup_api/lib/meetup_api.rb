@@ -4,6 +4,7 @@ require 'rexml/document'
 class MeetupApi
   API_KEY = "8043755844411bd5a772c72373c3357"
   def self.retrieve_groups_id(groups_name)
+    puts groups_name
 
     groups_name.map do |group_name|
       url = "http://api.meetup.com/groups.xml/?group_urlname=#{group_name}&key=#{API_KEY}"
