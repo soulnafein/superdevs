@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + "/reverse_markdown.rb"
 
 class MeetupFeed
   API_KEY = "8043755844411bd5a772c72373c3357"
-  FEED_URI_TEMPLATE = "http://api.meetup.com/events.atom/?&key=#{API_KEY}&group_id="
+  FEED_URI_TEMPLATE = "http://api.meetup.com/events.json/?&key=#{API_KEY}&group_id="
 
   def initialize(configuration)
     @configuration = configuration
@@ -14,17 +14,18 @@ class MeetupFeed
   end
 
   def get_events_by_group_ids(group_ids)
-    feed = load_feed(generate_feed_url(group_ids))
-    feed.items.map do |item|
+    meetup_events = load_feed(generate_feed_url(group_ids))
+    meetup_events.map do |item|
+      meetup_group_id = item["group_id"].to_i
       Event.new do |e|
-        e.title = item.title.content.strip
-        e.date = parse_date_from_item(item)
+        e.title = item["name"].strip
+        e.date = Time.at(item["utc_time"][0..-4].to_i).utc
         e.description = parse_description_from_item(item)
         e.unique_identifier = parse_unique_identifier_from_item(item)
-        e.link = item.link.href
-        e.country = @configuration[group_ids.first][2]
-        e.city = @configuration[group_ids.first][1]
-        e.group_id = @configuration[group_ids.first][3]
+        e.link = item["event_url"]
+        e.country = @configuration[meetup_group_id][2]
+        e.city = @configuration[meetup_group_id][1]
+        e.group_id = @configuration[meetup_group_id][3]
       end
     end
   end
@@ -33,35 +34,19 @@ class MeetupFeed
     FEED_URI_TEMPLATE + group_ids.join(",")
   end
 
-  def parse_date_from_item(item)
-    #[CDATA[<h3>Sat Jul 31 12:00:00 BST 2010</h3>
-    date_regexp = Regexp.new(/<h3>(\w+ \w+ \w+ \d+:\d+:\d+ \w+ \d\d\d\d)<\/h3>/i)
-    matches = date_regexp.match(item.content.content)
-    raise "Couldn't match date in content:\n #{item.content.content}" if (not matches) || (not matches[1])
-    return matches[1]
-  end
-
   def parse_description_from_item(item)
-    #[CDATA[<h3>Sat Jul 31 12:00:00 BST 2010</h3>
-    #**CONTENT
-    description = item.content.content.sub(/^<h3>(\w+ \w+ \w+ \d+:\d+:\d+ \w+ \d\d\d\d)<\/h3>/i, "")
+    description = item["description"]
     description.gsub!(/<br \/>/, "\n")
     ReverseMarkdown.new.parse_string(description)
   end
 
   def parse_unique_identifier_from_item(item)
-    item.id.content
+    item["event_url"]
   end
 
-  #TODO: duplicated, refactor! check developer_fusion_feed class
   def load_feed(url)
-    rss_source = URI.parse(url)
-    rss = nil
-    begin
-      rss = RSS::Parser.parse(rss_source)
-    rescue RSS::InvalidRSSError
-      rss = RSS::Parser.parse(rss_source, false)
-    end
-    rss
+    uri = URI.parse(url)
+    response = Net::HTTP.get(uri).to_s
+    ActiveSupport::JSON.decode(response)["results"]
   end
 end
