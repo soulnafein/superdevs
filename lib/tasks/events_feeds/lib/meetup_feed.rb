@@ -17,15 +17,19 @@ class MeetupFeed
     meetup_events = load_feed(generate_feed_url(group_ids))
     meetup_events.map do |item|
       meetup_group_id = item["group_id"].to_i
-      Event.new do |e|
-        e.title = item["name"].strip
-        e.date = Time.at(item["utc_time"][0..-4].to_i).utc
-        e.description = parse_description_from_item(item)
-        e.unique_identifier = parse_unique_identifier_from_item(item)
-        e.link = item["event_url"]
-        e.country = @configuration[meetup_group_id][2]
-        e.city = @configuration[meetup_group_id][1]
-        e.group_id = @configuration[meetup_group_id][3]
+      begin
+        Event.new do |e|
+          e.title = item["name"].strip
+          e.date = Time.at(item["utc_time"][0..-4].to_i).utc
+          e.description = parse_description_from_item(item)
+          e.unique_identifier = parse_unique_identifier_from_item(item)
+          e.link = item["event_url"]
+          e.country = @configuration[meetup_group_id][2]
+          e.city = @configuration[meetup_group_id][1]
+          e.group_id = @configuration[meetup_group_id][3]
+        end
+      rescue Exception
+        puts "Error parsing meetup event with url: #{item['event_url']}"
       end
     end
   end

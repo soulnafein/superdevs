@@ -23,14 +23,17 @@ module EventsFeedsImportJob
     meetup_events = MeetupFeed.new(configuration_meetups).get_events
     puts "Meetup.com events: #{meetup_events.count}"
     events = developer_fusion_events + meetup_events
-    events.flatten.each do |e|
+    events.flatten.compact.each do |e|
       existing_event = Event.where(:unique_identifier => e.unique_identifier).first
-      if existing_event
-        existing_event.update_attributes!(e.attributes)
-        existing_event.group_id = e.group_id
-        existing_event.save!
-      else
-        e.save!
+      begin
+        if existing_event
+          existing_event.update_attributes(e.attributes)
+          existing_event.group_id = e.group_id
+          existing_event.save
+        else
+          e.save
+        end
+      rescue Exception
       end
     end
   end
