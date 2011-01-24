@@ -39,8 +39,7 @@ class MeetupFeed
   end
 
   def parse_description_from_item(item)
-    description = item["description"]
-    description.gsub!(/<br \/>/, "\n")
+    description = "<p>#{item["description"]}</p>"
     ReverseMarkdown.new.parse_string(description)
   end
 
