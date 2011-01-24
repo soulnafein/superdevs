@@ -11,7 +11,7 @@
           %li
             .profile_picture_medium
               != fa.friend.medium_profile_picture.to_html
-            %div
+            .update
               %h3= link_to fa.friend.full_name, user_url(fa.friend.username)
               %p
                 is attending

@@ -16,6 +16,10 @@ ul.updates li {
   margin-top:10px;
 }
 
+ul.updates li div.update {
+  width:500px;
+}
+
 ul.updates li div{
   float:left;
 }
