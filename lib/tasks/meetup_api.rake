@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/meetup_api/lib/meetup_api'
+require File.dirname(__FILE__) + '/meetup_api/meetup_api'
 namespace :meetup do
   desc "retrieve group id given a list of groups name"
   task :retrieve_groups_id do

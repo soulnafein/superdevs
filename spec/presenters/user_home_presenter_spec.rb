@@ -20,7 +20,7 @@ describe "User homepage with updates, followers and so on" do
   it "should show the latests updates for the current user" do
     expected_friends_activities = [Factory.build(:friend_activity), Factory.build(:friend_activity)]
 
-    FriendActivity.stub(:latest_updates_for_user).with(@current_user).
+    FriendActivity.stub(:latest_friends_activities_for_user).with(@current_user).
             and_return(expected_friends_activities)
 
     presenter = UserHomePresenter.new(@current_user)
