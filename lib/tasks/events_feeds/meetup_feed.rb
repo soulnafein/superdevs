@@ -40,7 +40,7 @@ class MeetupFeed
 
   def parse_description_from_item(item)
     description = "<p>#{item["description"]}</p>"
-    ReverseMarkdown.new.parse_string(description)
+    ReverseMarkdown.new.parse_string(Iconv.conv('utf-8', 'iso-8859-1', description))
   end
 
   def parse_unique_identifier_from_item(item)

@@ -33,7 +33,8 @@ module EventsFeedsImportJob
         else
           e.save
         end
-      rescue Exception
+      rescue Exception => ex
+        puts ex.display
       end
     end
   end
