@@ -1,4 +1,5 @@
 require 'spec_helper'
+require File.dirname(__FILE__) + '/../../../../lib/tasks/events_feeds/developer_fusion_feed'
 
 describe DeveloperFusionFeed do
   before :each do
