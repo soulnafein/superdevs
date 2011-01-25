@@ -28,8 +28,9 @@ class MeetupFeed
           e.city = @configuration[meetup_group_id][1]
           e.group_id = @configuration[meetup_group_id][3]
         end
-      rescue Exception
+      rescue Exception => e
         puts "Error parsing meetup event with url: #{item['event_url']}"
+        puts e.display
       end
     end
   end
@@ -40,6 +41,7 @@ class MeetupFeed
 
   def parse_description_from_item(item)
     description = "<p>#{item["description"]}</p>"
+    description.gsub!(/<br[ ]*\/>/, "\n")
     ReverseMarkdown.new.parse_string(Iconv.conv('utf-8', 'iso-8859-1', description))
   end
 
