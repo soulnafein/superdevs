@@ -113,3 +113,40 @@ div.comment_text {
 .add_comment {
   margin-left: 100px;
 }
+.calendar_add {
+  background: url("/images/add.png") no-repeat top left;
+  padding: 0 0 0 19px;
+  color: #30A4B1;
+  cursor:pointer;
+}
+.calendars{
+  display:none;
+  position:absolute;
+  border: 1px solid #BAB9B9;
+  background-color:white;
+  padding: 5px 10px 5px 10px;
+  border-radius: 0 10px 10px 10px;
+}
+.calendars li {
+  padding: 0.25em 0 0;
+  margin: 0;
+  list-style: none outside none;
+}
+span.calendar_option {
+  display: block;
+  float: left;
+  height: 16px;
+  width: 16px;
+}
+
+span.outlook {
+  background-image: url("/images/outlook16x16.png");
+}
+
+span.icalendar {
+  background-image: url("/images/icalendar.png");
+}
+
+span.google_calendar {
+  background-image: url("/images/google_calendar16x16.png");
+}

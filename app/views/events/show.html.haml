@@ -6,7 +6,23 @@
     %h3
       - if @event.group
         Organised by #{link_to @event.group.name, group_url(@event.group.unique_name)}
-    %h3.date= @event.date.strftime("%d %B %Y")
+    %h3.date 
+      = @event.date.strftime("%d %B %Y")
+      %span.calendar_add Save to calendar
+    .calendars
+      %ul
+        %li
+          %a{:href => icalendar_event_url(@event), :title => "Export to Outlook"}
+            %span.outlook.calendar_option
+            Outlook
+        %li
+          %a{:href => google_calendar_event_url(@event), :title => "Export to Google calendar"} 
+            %span.google_calendar.calendar_option
+            Google
+        %li
+          %a{:href => icalendar_event_url(@event), :title => "Export to ICal"}
+            %span.icalendar.calendar_option
+            ICal
     %ul.details
       %li.location= @event.city + " (" + @event.country + ")"
       - unless @event.link.to_s.empty?
@@ -50,3 +66,13 @@
   .rightColumn
     = render :partial => 'events/attend_and_track'
   .clear
+:javascript
+  $(document).ready(function(){
+    $(".calendar_add").click(function(e){
+      $(".calendars").css({"top" : e.pageY, "left": e.pageX}).show(500);
+      e.stopPropagation();
+    });
+    $("body").click(function(e){
+      $(".calendars").hide(200);
+    });
+  });
