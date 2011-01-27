@@ -6,7 +6,6 @@ class UserSession < Authlogic::Session::Base
 
   private
   def map_rpx_data
-    puts @rpx_data['profile']
     self.attempted_record.activate!
     self.attempted_record.full_name = @rpx_data['profile']['displayName'] if attempted_record.full_name.blank?
     self.attempted_record.username = @rpx_data['profile']['preferredUsername'].gsub(".", "") if attempted_record.username.blank?

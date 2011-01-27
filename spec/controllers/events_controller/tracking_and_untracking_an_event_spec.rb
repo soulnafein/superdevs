@@ -4,12 +4,12 @@ describe EventsController, "Tracking and Untracking an event" do
   include SessionTestHelper
 
   before :each do
-    @david = Factory(:david)
+    @david = Factory.build(:david)
     logged_in_user_is(@david)
   end
 
   it "should add a user to the trackers of an event" do
-    event = Factory(:event, :id => 12)
+    event = Factory.build(:event, :id => 12)
     Event.stub!(:find).with(event.id.to_s).and_return(event)
     event.should_receive(:register_tracker).with(@david)
 
@@ -19,7 +19,7 @@ describe EventsController, "Tracking and Untracking an event" do
   end
 
   it "should remove a user from the trackers of an event" do
-    event = Factory(:event, :id => 12)
+    event = Factory.build(:event, :id => 12)
     Event.stub!(:find).with(event.id.to_s).and_return(event)
     event.should_receive(:unregister_tracker).with(@david)
 

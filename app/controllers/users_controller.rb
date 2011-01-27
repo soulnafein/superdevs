@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     current_user.full_name = params[:user][:full_name]
     current_user.agreed_tc_and_pp = params[:user][:agreed_tc_and_pp]
     current_user.save!
-    redirect_to(current_user, :notice => 'Registration complete.')
+    redirect_to user_url(current_user.username), :notice => 'Registration complete.'
   rescue ActiveRecord::RecordInvalid
     render :action => :edit_mandatory_details
   end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     load_user
     @user.update_attributes!(params[:user])
     respond_to do |format|
-      format.html { redirect_to(@user, :notice => 'Profile successfully updated.') }
+      format.html { redirect_to user_url(@user.username), :notice => 'Profile successfully updated.' }
       format.json { head 200 }
     end
   rescue ActiveRecord::RecordInvalid

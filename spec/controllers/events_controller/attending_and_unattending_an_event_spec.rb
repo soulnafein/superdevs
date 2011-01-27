@@ -4,12 +4,12 @@ describe EventsController, "Attending and Unattending an event" do
   include SessionTestHelper
 
   before :each do
-    @david = Factory(:david)
+    @david = Factory.build(:david)
     logged_in_user_is(@david)
   end
 
   it "should add a user to the attendees of an event" do
-    event = Factory(:event, :id => 12)
+    event = Factory.build(:event, :id => 12)
     Event.stub!(:find).with(event.id.to_s).and_return(event)
     event.should_receive(:register_attendee).with(@david)
 
@@ -19,7 +19,7 @@ describe EventsController, "Attending and Unattending an event" do
   end
 
   it "should add an activity that declares the attendance to the event" do
-    event = Factory(:event, :id => 12)
+    event = Factory.build(:event, :id => 12)
     Event.stub!(:find).with(event.id.to_s).and_return(event)
     stubbed_time = Time.now
     Time.stub(:now).and_return(stubbed_time)
@@ -32,7 +32,7 @@ describe EventsController, "Attending and Unattending an event" do
   end
 
   it "should remove a user from the attendees of an event" do
-    event = Factory(:event, :id => 12)
+    event = Factory.build(:event, :id => 12)
     Event.stub!(:find).with(event.id.to_s).and_return(event)
     event.should_receive(:unregister_attendee).with(@david)
 

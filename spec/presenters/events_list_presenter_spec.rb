@@ -27,7 +27,7 @@ describe "Event list view model used in several page when showing events" do
 
   context "When generating the attending and tracking friends info message" do
     before :each do
-      @current_user = Factory(:user)
+      @current_user = Factory.build(:user)
     end
 
     it "should be empty for 0 friends" do

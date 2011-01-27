@@ -7,7 +7,7 @@ describe EventsController, "icalendar for event" do
   end
   
   it "should render the page correctly" do
-    event = Factory(:event, :id => 12)
+    event = Factory.build(:event, :id => 12)
     Event.stub!(:find).with(event.id.to_s).and_return(event)
 
     get :icalendar, {:id => '12'}

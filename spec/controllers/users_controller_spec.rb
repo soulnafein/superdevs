@@ -5,7 +5,7 @@ describe UsersController do
 
   describe "GET 'show'" do
     it "should load the user from the database" do
-      @user = Factory(:user)
+      @user = Factory.build(:user)
       User.stub(:find_active_by_username).with(42).and_return(@user)
 
       get :show, :id => 42
@@ -23,7 +23,7 @@ describe UsersController do
 
   describe "GET 'edit_accounts'" do
     before :each do
-      @user = Factory(:user)
+      @user = Factory.build(:user)
       logged_in_user_is(@user)
     end
 
@@ -45,7 +45,7 @@ describe UsersController do
 
   describe "PUT 'update'" do
     before :each do
-      @user = Factory(:user, :id => 1)
+      @user = Factory.build(:user, :id => 1)
       logged_in_user_is(@user)
     end
 

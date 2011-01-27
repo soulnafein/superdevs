@@ -5,7 +5,7 @@ describe GroupsController do
 
   describe "GET 'show'" do
     it "should load the group from the database" do
-      @the_group = Factory(:group)
+      @the_group = Factory.build(:group)
       Group.stub(:find_active_by_unique_name).with("london-developers").
             and_return(@the_group)
 
@@ -24,7 +24,7 @@ describe GroupsController do
 
   describe "GET 'index'" do
     it "should load all the active groups from the database" do
-      @the_group = Factory(:group)
+      @the_group = Factory.build(:group)
       groups = [@the_group, @the_group]
       Group.stub(:all_active).and_return(groups)
 
@@ -37,12 +37,12 @@ describe GroupsController do
 
   describe "GET 'edit'" do
     before :each do
-      @user = Factory(:user)
+      @user = Factory.build(:user, :id => 1)
       logged_in_user_is(@user)
     end
 
     it "should load the group from the database" do
-      @the_group = Factory(:group, :organizer => @user)
+      @the_group = Factory.build(:group, :organizer => @user)
       Group.stub(:find_active_by_unique_name).with("london-developers").
               and_return(@the_group)
 
@@ -53,7 +53,7 @@ describe GroupsController do
     end
 
     it "should only allow editing by the organiser of the group" do
-      @the_group = Factory(:group, :organizer => Factory(:ken))
+      @the_group = Factory.build(:group, :organizer => Factory.build(:ken, :id => 2))
       Group.stub(:find_active_by_unique_name).with("london-developers").
               and_return(@the_group)
 
@@ -65,7 +65,7 @@ describe GroupsController do
 
   describe "PUT 'update'" do
     before :each do
-      @user = Factory(:user)
+      @user = Factory.build(:user, :id => 1)
       logged_in_user_is(@user)
     end
 
@@ -82,7 +82,7 @@ describe GroupsController do
     end
 
     it "should only allow editing by the organiser of the group" do
-      @the_group = Factory(:group, :organizer => Factory(:ken))
+      @the_group = Factory.build(:group, :organizer => Factory.build(:ken, :id => 2))
 
       Group.stub(:find_active_by_unique_name).with("london-developers").
               and_return(@the_group)

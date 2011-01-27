@@ -1,4 +1,5 @@
 require 'spec_helper'
+require File.dirname(__FILE__) + '/../../../../lib/tasks/events_feeds/developer_fusion_feed'
 
 describe DeveloperFusionFeed do
   before :each do
@@ -39,6 +40,11 @@ describe DeveloperFusionFeed do
 
   it "should get description from item description" do
     @events.first.description.should == mock_feed.items.first.summary.content
+  end
+
+  it "should generate a unique identifier from the developer fusion event" do
+    @events.first.unique_identifier.should ==
+            "developer-fusion-76810"
   end
 
   private

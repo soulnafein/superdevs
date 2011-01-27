@@ -1,9 +1,10 @@
 require 'spec_helper'
+require File.dirname(__FILE__) + '/../../../../lib/tasks/email_notifications/tomorrow_event_notification'
 
 describe TomorrowEventNotification do
   before :each do
-    @david = Factory(:david)
-    @event = Factory(:event, :attendees => [@david])
+    @david = Factory.build(:david)
+    @event = Factory.build(:event, :attendees => [@david])
     @events = [@event]
     @today = Date::civil(2010, 01, 01)
     @tomorrow = @today + 1

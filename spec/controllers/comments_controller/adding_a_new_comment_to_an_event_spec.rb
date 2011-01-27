@@ -4,7 +4,7 @@ describe CommentsController, "Adding a new comment to an event" do
   include SessionTestHelper
 
   before :each do
-    @david = Factory(:david)
+    @david = Factory.build(:david)
     logged_in_user_is(@david)
   end
 

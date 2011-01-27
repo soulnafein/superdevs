@@ -19,8 +19,16 @@ class DeveloperFusionFeed
   def create_events_from_feeds_items(feeds_items)
     feeds_items.map do |item|
       title, date, city, country = parse_title_date_city_country_from_title(item.title.content)
-      Event.new(:title => title, :country => country, :city => city,
-                :link => item.link.href, :date => date, :description => item.summary.content)
+      regex_for_id = /\/event\/([0-9]+)\//i
+      Event.new do |e|
+        e.title = title
+        e.country = country
+        e.city = city
+        e.link = item.link.href
+        e.date = date
+        e.description = item.summary.content
+        e.unique_identifier = "developer-fusion-" + regex_for_id.match(item.link.href)[1].to_s
+      end
     end
   end
 

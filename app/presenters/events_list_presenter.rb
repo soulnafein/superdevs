@@ -8,7 +8,7 @@ class EventsListPresenter
   attr_reader :rows
 
   def show_admin_actions?
-    Admin.user_admin?(@current_user)
+    @current_user && Admin.user_admin?(@current_user)
   end
 end
 

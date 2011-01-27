@@ -12,9 +12,9 @@ describe HomeController do
 
   context "When the visitor is logged in" do
     before :each do
-      @user = Factory(:user)
+      @user = Factory.build(:user, :id => 1)
       logged_in_user_is(@user)
-      @expected_events = [Factory(:event)]
+      @expected_events = [Factory.build(:event)]
     end
 
     it "should show a personalised home page" do
