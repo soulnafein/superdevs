@@ -70,21 +70,8 @@ class EventsController < ApplicationController
     send_data(event_to_ical(@event), :type => 'text/calendar', :disposition => "inline; filename=event#{@event.id}.vcs", :filename=>"event#{@event.id}.vcs")
   end
 
-  def event_to_ical(event)
-    cal = Icalendar::Calendar.new
-    cal.custom_property("METHOD","PUBLISH")
-    cal_event = Icalendar::Event.new 
-    cal_event.dtstart = event.date.to_date.strftime("%Y%m%d")
-    cal_event.dtend =  (event.date.to_date + 1.day - 1.seconds).strftime("%Y%m%d")
-    cal_event.summary = "SuperDevs event: #{event.title}"
-    cal_event.description = "#{event.description}\nNeed more info? check the event page(#{event_url(event)}) on SuperDevs!"
-    cal_event.klass = "PUBLIC"       
-    cal_event.location = event.city
-    cal.add_event(cal_event)
-    cal.to_ical
-  end
-
   include AttendingAndTrackingForEvents
+  include EventsHelper
 
  private
   def load_event
