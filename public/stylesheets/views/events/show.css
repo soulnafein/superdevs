@@ -24,6 +24,7 @@
 #event div.loginBlock
 {
   -moz-border-radius:10px 10px 10px 10px;
+  border-radius:10px 10px 10px 10px;
   padding:10px 15px 10px 15px;
   margin: 10px 15px 15px 15px;
   border:2px solid #DDDDDD;
@@ -126,6 +127,7 @@ div.comment_text {
   background-color:white;
   padding: 5px 10px 5px 10px;
   border-radius: 0 10px 10px 10px;
+  -moz-border-radius:0px 10px 10px 10px;
 }
 .calendars li {
   padding: 0.25em 0 0;
