@@ -7,7 +7,7 @@ development:
   database: superdevs_development
   username: superdevs
   password: m4rt1nf0wl3r
-  encoding: sql_ascii
+  encoding: utf-8
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,4 +19,4 @@ test:
   database: superdevs_test
   username: superdevs
   password: m4rt1nf0wl3r
-  encoding: sql_ascii
+  encoding: utf-8
