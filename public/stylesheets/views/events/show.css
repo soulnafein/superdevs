@@ -137,6 +137,7 @@ div.comment_text {
 span.calendar_option {
   display: block;
   float: left;
+  margin-right: 5px;
   height: 16px;
   width: 16px;
 }
