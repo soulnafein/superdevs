@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110107215550) do
+ActiveRecord::Schema.define(:version => 20110208194933) do
 
   create_table "admins", :force => true do |t|
     t.integer  "user_id"
@@ -65,17 +65,6 @@ ActiveRecord::Schema.define(:version => 20110107215550) do
     t.string   "unique_identifier"
   end
 
-  create_table "friend_activities", :force => true do |t|
-    t.integer  "friend_id"
-    t.integer  "event_id"
-    t.datetime "date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "friend_activities", ["date"], :name => "index_friend_activities_on_date"
-  add_index "friend_activities", ["friend_id"], :name => "index_friend_activities_on_friend_id"
-
   create_table "groups", :force => true do |t|
     t.string   "unique_name"
     t.string   "name"
@@ -120,6 +109,17 @@ ActiveRecord::Schema.define(:version => 20110107215550) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "user_activities", :force => true do |t|
+    t.integer  "friend_id"
+    t.integer  "event_id"
+    t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_activities", ["date"], :name => "index_friend_activities_on_date"
+  add_index "user_activities", ["friend_id"], :name => "index_friend_activities_on_friend_id"
 
   create_table "users", :force => true do |t|
     t.string   "full_name"

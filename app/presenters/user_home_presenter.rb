@@ -9,6 +9,6 @@ class UserHomePresenter
   end
 
   def friends_activities
-    FriendActivity.latest_friends_activities_for_user(@user)
+    UserActivity.latest_friends_activities_for_user(@user)
   end
 end

@@ -26,7 +26,7 @@ describe EventsController, "Attending and Unattending an event" do
 
     params = {:event => event, :friend => @david, :date => stubbed_time.utc}
 
-    FriendActivity.should_receive(:create!).with(params)
+    UserActivity.should_receive(:create!).with(params)
 
     get :attend, {:id => '12'}
   end
