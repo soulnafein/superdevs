@@ -21,10 +21,11 @@ describe EventsController, "Attending and Unattending an event" do
   it "should add an activity that declares the attendance to the event" do
     event = Factory.build(:event, :id => 12)
     Event.stub!(:find).with(event.id.to_s).and_return(event)
+    Event.stub!(:find).with(event.id).and_return(event)
     stubbed_time = Time.now
     Time.stub(:now).and_return(stubbed_time)
 
-    params = {:event => event, :friend => @david, :date => stubbed_time.utc}
+    params = {:activity => UserIsAttendingAnEvent.new(event), :friend => @david, :date => stubbed_time.utc}
 
     UserActivity.should_receive(:create!).with(params)
 

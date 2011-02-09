@@ -15,7 +15,7 @@
               %h3= link_to fa.friend.full_name, user_url(fa.friend.username)
               %p
                 is attending
-                = link_to fa.event.title, event_url(fa.event.id)
+                = link_to fa.activity.event.title, event_url(fa.event.id)
                 on the
                 = fa.event.date.strftime("%d %B %Y")
               %p.actions

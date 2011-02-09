@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110208194933) do
+ActiveRecord::Schema.define(:version => 20110208201134) do
 
   create_table "admins", :force => true do |t|
     t.integer  "user_id"
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20110208194933) do
     t.datetime "date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "activity"
   end
 
   add_index "user_activities", ["date"], :name => "index_friend_activities_on_date"

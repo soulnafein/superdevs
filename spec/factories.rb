@@ -57,7 +57,7 @@ Factory.define :membership do |m|
 end
 
 Factory.define :user_activity do |ua|
-  ua.event {|event| event.association(:event)}
+  ua.activity UserIsAttendingAnEvent.new(Factory(:event))
   ua.friend {|friend| friend.association(:ken)}
   ua.date Time.now.utc
 end
