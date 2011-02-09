@@ -38,7 +38,6 @@ module EventBehaviours
       Event.all_upcoming.where("upper(country) = 'UNITED KINGDOM'")
     end
 
-    private
     def active_events
       Event.where(:disabled => false)
     end
