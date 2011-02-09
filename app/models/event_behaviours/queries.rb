@@ -27,15 +27,20 @@ module EventBehaviours
     end
 
     def all_upcoming
-      Event.where("date >= ? and disabled = ?", Time.now.utc.beginning_of_day, false).order("date ASC")
+      Event.active_events.where("date >= ?", Time.now.utc.beginning_of_day).order("date ASC")
+    end
+
+    def all_past
+      Event.active_events.where("date < ?", Time.now.utc.beginning_of_day).order("date ASC")
     end
 
     def united_kingdom
       Event.all_upcoming.where("upper(country) = 'UNITED KINGDOM'")
     end
 
-    def all_past
-      Event.where("date < ?", Time.now.utc.beginning_of_day).order("date ASC")
+    private
+    def active_events
+      Event.where(:disabled => false)
     end
   end
 end
