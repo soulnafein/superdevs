@@ -7,23 +7,23 @@
       %h2
         What's going on
       %ul.updates
-        - @user_home_presenter.friends_activities.each do |fa|
+        - @user_home_presenter.friends_activities.each do |ua|
           %li
             .profile_picture_medium
-              != fa.friend.medium_profile_picture.to_html
+              != ua.friend.medium_profile_picture.to_html
             .update
-              %h3= link_to fa.friend.full_name, user_url(fa.friend.username)
+              %h3= link_to ua.friend.full_name, user_url(ua.friend.username)
               %p
                 is attending
-                = link_to fa.activity.event.title, event_url(fa.activity.event.id)
+                = link_to ua.activity.event.title, event_url(ua.activity.event.id)
                 on the
-                = fa.activity.event.date.strftime("%d %B %Y")
+                = ua.activity.event.date.strftime("%d %B %Y")
               %p.actions
-                %span.date= distance_of_time_in_words(fa.date, Time.now.utc) + ' ago'
+                %span.date= distance_of_time_in_words(ua.date, Time.now.utc) + ' ago'
                 %span.v_line= "|"
-                = link_to "Attend", attend_event_url(fa.activity.event.id)
+                = link_to "Attend", attend_event_url(ua.activity.event.id)
                 %span.v_line= "|"
-                = link_to "Track", track_event_url(fa.activity.event.id)
+                = link_to "Track", track_event_url(ua.activity.event.id)
 
     #right_column
       - unless current_user.following.empty?

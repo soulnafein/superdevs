@@ -6,13 +6,13 @@ describe DeveloperFusionFeed do
     RSS::Parser.stub!(:parse).
             and_return(mock_feed)
     RSS::Parser.stub!(:parse).
-            with(URI.parse("http://www.developerfusion.com/community/events/north-america/us/format/atom/")).
+            with(URI.parse("http://www.developerfusion.com/community/events/north-america/us/format/atom/"), false).
             and_return(mock_feed)
     @events = DeveloperFusionFeed.new.get_events
   end
 
   it "should creates events for each item in the feeds" do
-    @events.size.should == 4
+    @events.size.should == 2
   end
 
   it "should parse country from title" do
