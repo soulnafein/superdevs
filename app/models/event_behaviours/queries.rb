@@ -27,11 +27,11 @@ module EventBehaviours
     end
 
     def all_upcoming
-      Event.active_events.where("date >= ?", Time.now.utc.beginning_of_day).order("date ASC")
+      Event.active_events.where("date >= ?", Time.now.utc.beginning_of_day).order("date ASC, title ASC")
     end
 
     def all_past
-      Event.active_events.where("date < ?", Time.now.utc.beginning_of_day).order("date ASC")
+      Event.active_events.where("date < ?", Time.now.utc.beginning_of_day).order("date ASC, title ASC")
     end
 
     def united_kingdom

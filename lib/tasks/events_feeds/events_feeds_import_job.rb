@@ -24,7 +24,7 @@ module EventsFeedsImportJob
     puts "Meetup.com events: #{meetup_events.count}"
     events = developer_fusion_events + meetup_events
     events.flatten.compact.each do |e|
-      existing_event = Event.where(:unique_identifier => e.unique_identifier).first
+      existing_event = Event.where("unique_identifier = ?", e.unique_identifier).first
       begin
         if existing_event
           existing_event.update_attributes(e.attributes)
