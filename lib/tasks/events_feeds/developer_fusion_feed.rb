@@ -3,8 +3,7 @@ require 'uri'
 
 class DeveloperFusionFeed
   FEEDS = [
-            "http://www.developerfusion.com/community/events/europe/gb/format/atom/",
-            "http://www.developerfusion.com/community/events/north-america/us/format/atom/"
+            "http://www.developerfusion.com/community/events/europe/gb/format/atom/"
           ]
   def get_events
     feeds_items = get_combined_feeds_items
@@ -40,12 +39,6 @@ class DeveloperFusionFeed
 
   def load_feed(url)
     rss_source = URI.parse(url)
-    rss = nil
-    begin
-      rss = RSS::Parser.parse(rss_source)
-    rescue RSS::InvalidRSSError
-      rss = RSS::Parser.parse(rss_source, false)
-    end
-    rss
+    RSS::Parser.parse(rss_source, false)
   end
 end
