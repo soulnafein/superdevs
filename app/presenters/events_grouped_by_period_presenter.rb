@@ -14,6 +14,6 @@ class EventsGroupedByPeriodPresenter
   end
 
   def all_other_events
-    (@events - todays_events - tomorrows_events).sort_by { |e| e.date }.sort_by {|e| e.title }
+    (@events - todays_events - tomorrows_events)
   end
 end
