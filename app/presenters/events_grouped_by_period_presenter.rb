@@ -6,14 +6,14 @@ class EventsGroupedByPeriodPresenter
   end
 
   def todays_events
-    @events.find_all { |e| e.date.to_date == @today.to_date }.sort_by {|e| e.title}
+    @events.find_all { |e| e.date.to_date == @today.to_date }
   end
 
   def tomorrows_events
-    @events.find_all { |e| e.date.to_date == @tomorrow.to_date }.sort_by {|e| e.title}
+    @events.find_all { |e| e.date.to_date == @tomorrow.to_date }
   end
 
   def all_other_events
-    (@events - todays_events - tomorrows_events)
+    @events - todays_events - tomorrows_events
   end
 end
