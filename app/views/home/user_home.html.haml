@@ -17,7 +17,7 @@
                 is attending
                 = link_to fa.activity.event.title, event_url(fa.event.id)
                 on the
-                = fa.event.date.strftime("%d %B %Y")
+                = fa.activity.event.strftime("%d %B %Y")
               %p.actions
                 %span.date= distance_of_time_in_words(fa.date, Time.now.utc) + ' ago'
                 %span.v_line= "|"
