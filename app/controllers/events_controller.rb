@@ -67,7 +67,9 @@ class EventsController < ApplicationController
   def icalendar
     @event = Event.find(params[:id])
 
-    send_data(event_to_ical(@event), :type => 'text/calendar', :disposition => "inline; filename=event#{@event.id}.vcs", :filename=>"event#{@event.id}.vcs")
+    send_data(event_to_ical(@event),
+              :type => 'text/calendar',
+              :disposition => "inline; filename=event#{@event.id}.vcs", :filename=>"event#{@event.id}.vcs")
   end
 
   include AttendingAndTrackingForEvents
