@@ -9,7 +9,7 @@
       %ul.updates
         - @user_home_presenter.friends_activities.each do |ua|
           %li
-            = render :partial => 'shared/user_activities/user_is_attending_an_event',
+            = render :partial => @user_home_presenter.template_for_activity(ua.activity),
               :locals => {:user_activity => ua}
 
     #right_column

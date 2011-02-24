@@ -1,0 +1,17 @@
+- ua = user_activity
+.profile_picture_medium
+  != ua.friend.medium_profile_picture.to_html
+.update
+  %h3= link_to ua.friend.full_name, user_url(ua.friend.username)
+  %p
+    organised the event
+    = link_to ua.activity.event.title, event_url(ua.activity.event.id)
+    for the group
+    = link_to ua.activity.event.group.name, group_url(ua.activity.group.id)
+  %p.actions
+    %span.date= distance_of_time_in_words(ua.date, Time.now.utc) + ' ago'
+    %span.v_line= "|"
+    = link_to "Attend", attend_event_url(ua.activity.event.id)
+    %span.v_line= "|"
+    = link_to "Track", track_event_url(ua.activity.event.id)
+

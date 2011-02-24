@@ -11,4 +11,8 @@ class UserHomePresenter
   def friends_activities
     UserActivity.latest_friends_activities_for_user(@user)
   end
+
+  def template_for_activity(activity)
+    "shared/user_activities/#{activity.class.to_s.underscore}"
+  end
 end

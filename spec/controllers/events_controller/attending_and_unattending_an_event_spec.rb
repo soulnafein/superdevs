@@ -41,5 +41,4 @@ describe EventsController, "Attending and Unattending an event" do
 
     response.should redirect_to event_path(event.id)
   end
-
 end

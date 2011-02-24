@@ -40,11 +40,28 @@ describe EventsController, "Adding a new event to a group" do
       valid_params = {:group_id => "london-developers",
                       :event => {"description" => "Whatever"}}
 
-      @the_group.should_receive(:create_event).with(valid_params[:event])
+      @the_group.should_receive(:create_event).with(valid_params[:event]).and_return(Factory(:event, :id => 2, :group => @the_group))
+      UserActivity.stub(:create!)
 
       post :create, valid_params
 
       response.should redirect_to group_url("london-developers")
+    end
+
+    it "should create an activity stating that the organizer created an event" do
+      now = Time.now
+      Time.stub(:now).and_return(now)
+      valid_params = {:group_id => "london-developers",
+                      :event => {"description" => "Whatever"}}
+
+      the_event  = Factory(:event_with_group)
+      @the_group.stub(:create_event).and_return(the_event)
+      UserActivity.should_receive(:create!).
+              with(:friend => @ken,
+                   :activity => UserCreatedAnEvent.new(the_event),
+                   :date => Time.now.utc)
+
+      post :create, valid_params
     end
   end
 end

@@ -16,7 +16,10 @@ class EventsController < ApplicationController
     group_id = params[:group_id]
     group = Group.find_active_by_unique_name(group_id)
     if group.organizer?(current_user)
-      group.create_event(params[:event])
+      event = group.create_event(params[:event])
+      UserActivity.create!(:friend => current_user,
+                           :activity => UserCreatedAnEvent.new(event),
+                           :date => Time.now.utc)
       redirect_to group_url(group.unique_name),
                   :notice => 'Event created'
     else

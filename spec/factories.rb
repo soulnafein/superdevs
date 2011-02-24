@@ -45,6 +45,10 @@ Factory.define :event do |e|
   e.trackers []
 end
 
+Factory.define :event_with_group, :parent => :event do |u|
+  u.group { |group| group.association(:group) }
+end
+
 Factory.define :attendance do |a|
   a.user {|user| user.association(:user)}
   a.event { |event| event.association(:event)}

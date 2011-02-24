@@ -46,6 +46,7 @@ class Group < ActiveRecord::Base
     event = Event.new(params)
     event.group = self
     event.save!
+    event
   end
 end
 

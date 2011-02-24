@@ -28,5 +28,14 @@ describe "User homepage with updates, followers and so on" do
     presenter.friends_activities.should_not be_nil
     presenter.friends_activities.should == expected_friends_activities
   end
+  
+  it "should pick a different template based on the activity type" do
+    presenter = UserHomePresenter.new(@current_user)
+    
+    presenter.template_for_activity(UserIsAttendingAnEvent.new(Factory(:event))).should ==
+            "shared/user_activities/user_is_attending_an_event"
+    presenter.template_for_activity(UserCreatedAnEvent.new(Factory(:event, :group => Factory(:group)))).should ==
+            "shared/user_activities/user_created_an_event"
+  end
 end
 
