@@ -19,13 +19,18 @@ class UsersController < ApplicationController
   end
 
   def complete_registration
+    original_username = current_user.username
     current_user.email = params[:user][:email]
     current_user.username = params[:user][:username]
     current_user.full_name = params[:user][:full_name]
     current_user.agreed_tc_and_pp = params[:user][:agreed_tc_and_pp]
+    current_user.password = "v3ryc0mpl3xpa$$w0rd27037289373289326hajsdhds"
+    current_user.password_confirmation = "v3ryc0mpl3xpa$$w0rd27037289373289326hajsdhds"
     current_user.save!
+    puts "WHat the fuck?"
     redirect_to user_url(current_user.username), :notice => 'Registration complete.'
   rescue ActiveRecord::RecordInvalid
+    current_user.username = original_username
     render :action => :edit_mandatory_details
   end
 
