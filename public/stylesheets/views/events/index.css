@@ -68,3 +68,8 @@ p.friendsInfo {
   line-height:20px;
   margin:0px;
 }
+
+div.pagination {
+  float:right;
+  padding-top: 5px;
+}

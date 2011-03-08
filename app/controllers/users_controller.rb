@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :require_user, :only => [:follow, :edit_mandatory_details, :edit_accounts, :complete_registration, :update]
 
   def index
-    @users = User.all_active_users
+    @users = User.all_active_users_per_page params[:page]
   end
 
   def show

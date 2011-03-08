@@ -72,6 +72,10 @@ class User < ActiveRecord::Base
     User.where("active <> ?", false).order("created_at DESC").find_all { |u| u.registration_complete? }
   end
 
+  def self.all_active_users_per_page(page)
+    User.all_active_users.paginate :page => page, :per_page => 20
+  end
+
   def self.find_by_username_or_email(username_or_email)
     User.where(:email => username_or_email).first ||
     User.where(:username => username_or_email).first

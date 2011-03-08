@@ -92,11 +92,29 @@ describe UsersController do
   end
 
   describe "GET 'index'" do
-    it "should provide a list of all the active developers" do
+
+    before :each do
+      @user = Factory.build(:user)
+      @ken = Factory.build(:ken)
+    end
+
+    it "should provide a list of active developers on first page" do
       active_users = [@user, @user]
-      User.should_receive(:all_active_users).and_return(active_users)
+      User.should_receive(:all_active_users_per_page).and_return(active_users)
 
       get :index
+
+      response.should be_success
+      response.should render_template(:index)
+      assigns[:users].should == active_users
+    end
+
+    it "should provide a list of active developer on any page" do
+      active_users = [@ken, @user]
+      page_number = 5
+      User.should_receive(:all_active_users_per_page).with(page_number).and_return(active_users)
+
+      get :index, :page => 5
 
       response.should be_success
       response.should render_template(:index)

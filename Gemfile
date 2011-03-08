@@ -11,6 +11,7 @@ gem "flutie"
 gem "haml"
 gem "yaml_db"
 gem 'chronic'
+gem 'will_paginate'
 gem 'maruku'
 gem 'ruby-debug-base'
 gem 'ruby-debug-ide'
