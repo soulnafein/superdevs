@@ -35,7 +35,7 @@
     %div.description
       :markdown
         #{@event.description}
-
+    = render :partial => 'shared/add_this'
     .container
       - unless @event.attendees.empty?
         %h4  Attendees (#{@event.attendees.size})
