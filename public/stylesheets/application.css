@@ -343,4 +343,6 @@ div.container {
   display:none;
 }
 
-
+.addthis_toolbox span {
+  font-size:10px!important;
+}
