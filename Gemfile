@@ -4,7 +4,6 @@ gem 'rails', '3.0.3'
 gem "authlogic", :git => "http://github.com/odorcicd/authlogic.git", :branch => "rails3"
 gem 'authlogic_rpx'
 gem "friendly_id", "3.0.5"
-gem 'sqlite3-ruby', :require => 'sqlite3'
 gem "rpx_now"
 gem "annotate"
 gem "flutie"
