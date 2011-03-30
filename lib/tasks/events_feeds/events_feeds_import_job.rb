@@ -4,6 +4,7 @@ module EventsFeedsImportJob
   def self.execute
     configuration_meetups = {
             841735  => ["Londonjavacommunity", "London", "United Kingdom", 6],
+            1692643 => ['london-software-craftsmanship', "London", "United Kingdom", 8],
             1501605 => ['grad-dc', "London", "United Kingdom", 7],
             1278286 => ["UK-London-C-CPlusPlus-Techies-Meetup-Group", "London", "United Kingdom", nil],
             543596  => ["dotnet-121", "London", "United Kingdom", 3],
