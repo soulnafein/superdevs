@@ -55,6 +55,10 @@ class EventsController < ApplicationController
   def index
     today = Date.today
     @events = EventsGroupedByPeriodPresenter.new(Event.united_kingdom, today)
+    respond_to do |format|
+      format.html
+      format.json { render :json => @events}
+    end
   end
 
   def deactivate
