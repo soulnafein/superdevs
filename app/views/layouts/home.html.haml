@@ -4,7 +4,7 @@
     %meta{'http-equiv'=>"Content-Type", :content=>"text/html; charset=ISO-8859-1"}
     = csrf_meta_tag
     %title SuperDevs
-    = stylesheet_link_tag :flutie, "application", "home"
+    = stylesheet_link_tag :flutie, "application", "home", "buttons"
     = render :partial => "shared/google_analytics"
 
   %body
@@ -19,4 +19,5 @@
       #footer_layer
         = render :partial => "shared/footer"
     = render :partial => "shared/user_feedback"
+
 

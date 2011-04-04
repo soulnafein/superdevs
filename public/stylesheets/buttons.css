@@ -1,0 +1,45 @@
+a.super_button {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: normal;
+    color: #FFFFFF;
+    text-transform: none;
+    text-decoration: none;
+    letter-spacing: normal;
+    word-spacing: 0;
+    line-height: 24px;
+    text-align: center;
+    vertical-align: baseline;
+    direction: ltr;
+    background: #EA5A30 -moz-linear-gradient(50% 0%, #F7941D, #EA5A30) repeat scroll 0 0;
+    -moz-border-radius: 4px 4px 4px 4px;
+    opacity: 1;
+    width: 202px;
+    height: 24px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0 2.4px 0 0;
+    padding: 12px 36px;
+    border: 1px solid #EA5A30;
+    position: relative;
+    display: inline-block;
+    visibility: visible;
+    z-index: auto;
+    overflow-x: visible;
+    overflow-y: visible;
+    white-space: normal;
+    clip: auto;
+    float: none;
+    clear: none;
+    -moz-box-sizing: content-box;
+    cursor: pointer;
+    list-style: disc outside none;
+}
+a.super_button:hover
+{
+    color:white;
+    text-decoration:underline;
+}

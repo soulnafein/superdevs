@@ -16,7 +16,7 @@ body {
   margin: 0 auto;
   width: 960px;
   background: url(/images/superdev.png) top right no-repeat;
-  height: 372px;
+  height: 300px;
   clear: both;
 }
 
@@ -29,53 +29,89 @@ body {
 }
 
 #key_points {
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
   width: 960px;
+  overflow:auto;
 }
 
 #key_points div {
   width: 290px;
   text-align: left;
-  padding: 5px;
+  padding: 10px 5px;
+  margin: 0 10px;
   line-height: 21px;
+  background: #464646 -moz-linear-gradient(50% 0%, #666, #555) repeat scroll 0 0;
+  -moz-border-radius: 4px 4px 4px 4px;
 }
 
-p {
-  font-size:16px;
+#key_points h3 {
+  color:white;
+}
+
+#key_points .heading {
+  text-align:left;
+  background:none;
+  width:auto;
+}
+
+#key_points p {
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+#key_points h4 a {
+  padding-left:40px;
+  padding-right:40px;
+}
+
+h4.links a {
+  background:url(/images/icons/feed.png) no-repeat top left
+}
+
+h4.code a {
+  background:url(/images/icons/tag.png) no-repeat top left
+}
+
+h4.events a {
+  background:url(/images/icons/calendar.png) no-repeat top left
 }
 
 #introduction {
   text-align: left;
   width: 550px;
   line-height: 40px;
-  padding-top: 40px;
 }
 
 h2 {
-  font-family: Lucida Grande, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 36px;
 }
 
 h3 {
-  font-family: Lucida Grande, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 24px;
   color: #666666;
 }
 
 h4 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
   margin: 0;
   text-align: center;
   color: white;
-  font-size:24px;
-  line-height:40px;
+  font-size: 24px;
+  line-height: 40px;
+}
+
+h4 a {
 }
 
 #introduction_links {
   font-size: 24px;
   line-height: 24px;
-  margin: 60px 0 0 60px;
+  margin: 30px 0 0 60px;
 }
 
 #introduction_links a {
@@ -83,7 +119,6 @@ h4 {
   color: white;
   vertical-align: middle;
   font-weight: bold;
-  height: 50px;
   padding: 10px;
 }
 
@@ -93,14 +128,15 @@ h4 {
 
 #join_us_link {
   text-align: center;
-  margin: 40px auto 0;
+  margin: 0 auto 0;
   width: 150px;
   background-color: #f7941d;
 }
 
 #see_users {
   text-align: center;
-  margin: 40px auto 0;
+  margin: 0 auto 0;
   width: 150px;
-  background-color: #30a4b1;
+  background: #30a4b1 -moz-linear-gradient(50% 0%, #30a4b1, #30757c) repeat scroll 0 0;
+  border: 1px solid #30757c;
 }
