@@ -27,12 +27,14 @@
           %li
             = link_to 'HOME', root_url,
               :class => yield(:current_tab) == 'home' ? 'active' : ''
-            = link_to 'PEOPLE', users_path,
-              :class => yield(:current_tab) == 'people' ? 'active' : ''
+            = link_to 'LINKS', links_url,
+              :class => yield(:current_tab) == 'links' ? 'active' : ''
             = link_to 'EVENTS', events_path,
               :class => yield(:current_tab) == 'events' ? 'active' : ''
             = link_to 'GROUPS', groups_path,
               :class => yield(:current_tab) == 'groups' ? 'active' : ''
+            = link_to 'PEOPLE', users_path,
+              :class => yield(:current_tab) == 'people' ? 'active' : ''
       .clear
 
       #content

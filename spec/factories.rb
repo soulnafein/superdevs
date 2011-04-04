@@ -66,3 +66,23 @@ Factory.define :user_activity do |ua|
   ua.date Time.now.utc
 end
 
+Factory.define :link do |l|
+  l.url 'http://arandomlink.rnd'
+  l.title 'Link Title'
+  l.description "Link description"
+end
+
+Factory.define :a_link, :parent => :link do |l|
+  l.url 'http://www.google.com'
+  l.title 'Google Search Engine'
+  l.description "I'm the best search engine in the world"
+  l.id 343
+end
+
+Factory.define :another_link, :parent => :link do |l|
+  l.url 'http://www.yahoo.com'
+  l.title 'Yahoo Search Engine'
+  l.description "I'm the other best search engine in the world"
+  l.id 245
+end
+

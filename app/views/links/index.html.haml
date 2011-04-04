@@ -1,0 +1,9 @@
+- current_tab("links")
+.in
+  %h2 Links on SuperDevs
+  %ul
+    - @links.each do |link|
+      %li{:class => cycle('even', 'odd')}
+        %h3= link_to link.title, link.url
+        %p= link.description
+
