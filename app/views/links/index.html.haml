@@ -1,9 +1,15 @@
 - current_tab("links")
-.in
-  %h2 Links on SuperDevs
-  %ul
-    - @links.each do |link|
-      %li{:class => cycle('even', 'odd')}
-        %h3= link_to link.title, link.url
-        %p= link.description
+.left_column
+  - @links.each do |link|
+    %div.rounded_content
+      %h3= link_to link.title, link.url
+      %h4= link_to link.url, link.url
+      .author
+        .profile_picture_small
+          != link.author.small_profile_picture.to_html
+        %h5= link_to link.author.full_name, user_url(1)
+        %span.when= distance_of_time_in_words(link.created_at, Time.now.utc) + ' ago'
+      %p= link.description
+.right_column
+  %a.super_button{:href => '#'} + Add a Link
 

@@ -1,0 +1,48 @@
+!!!
+%html{:xmlns=>"http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{'http-equiv'=>"Content-Type", :content=>"text/html; charset=ISO-8859-1"}
+    = csrf_meta_tag
+    %title
+      = yield(:title) || "SuperDevs"
+    %script{:type=>"text/javascript", :src=>"http://www.google.com/jsapi?key=ABQIAAAAHj3-AxzLoN6nByzD95Qs9RSOljxHAIcaB6bpmeLQ3ja_Urx1LhQUqo1n97ZB_-dbUmm8nc93jgOCBw"}
+    = stylesheet_link_tag :flutie, 'facebox', 'application', 'views/home/user_home',
+    'views/users/show', 'views/users/index', 'views/users/edit',
+    'views/events/show', 'views/events/index', 'views/groups/show',
+    'views/groups/index', 'buttons'
+    = javascript_include_tag "lib/jquery-1.4.2.min", "lib/jquery.jgfeed-min", "lib/jquery.tweet.js",
+                             "lib/facebox/facebox.js",
+    "ActiveAjax/Array", "ActiveAjax/String", "ActiveAjax/EventPublisher", "ActiveAjax/Ajax",
+    "ActiveAjax/Model", "BindableTextbox", "BindableList", "BindableDropDown", "EditableField", "EditableArea", "EditableText","ProfilePage","blog_feed.js"
+    = render :partial => "shared/google_analytics"
+
+  %body
+    #wrapper
+      %h1#logo
+        %a{:href=>"/"} SuperDevs
+      = render :partial => "shared/authentication_status"
+
+      #navigation
+        %ul
+          %li
+            = link_to 'HOME', root_url,
+              :class => yield(:current_tab) == 'home' ? 'active' : ''
+            = link_to 'LINKS', links_url,
+              :class => yield(:current_tab) == 'links' ? 'active' : ''
+            = link_to 'EVENTS', events_path,
+              :class => yield(:current_tab) == 'events' ? 'active' : ''
+            = link_to 'GROUPS', groups_path,
+              :class => yield(:current_tab) == 'groups' ? 'active' : ''
+            = link_to 'PEOPLE', users_path,
+              :class => yield(:current_tab) == 'people' ? 'active' : ''
+      .clear
+
+      #new_content
+        - if flash[:notice]
+          .in.success
+            = flash[:notice]
+        = yield
+
+      = render :partial => "shared/footer"
+
+    = render :partial => "shared/user_feedback"
