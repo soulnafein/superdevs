@@ -407,3 +407,8 @@ div.right_columns {float:right;}
 {
   overflow:auto;
 }
+
+label.required {
+  padding-left:15px;
+  background:url(/images/icons/asterisk_red.png) no-repeat center left;
+}

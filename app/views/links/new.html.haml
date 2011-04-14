@@ -1,0 +1,20 @@
+- current_tab("links")
+.in
+  %h2 Share a link on SuperDevs
+.in.forms
+  = form_for(@link) do |form|
+    = form.error_messages
+    %p
+      %label.required{:for=>"title"}
+        Title
+      = form.text_field :title
+    %p
+      %label.required{:for=>"url"}
+        URL
+      = form.text_field :url
+    %p
+      %label.required{:for=>"description"}
+        Description
+      = form.text_area :description
+    %p
+      = form.submit "Post now"
