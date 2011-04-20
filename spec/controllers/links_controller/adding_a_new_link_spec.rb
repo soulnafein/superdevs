@@ -7,14 +7,6 @@ describe LinksController, "Adding a new link" do
     @david = Factory.build(:david, :id => 1)
   end
 
-  it "should visualise the form for creating links" do
-    logged_in_user_is @david
-    get :new
-
-    response.should be_success
-    assigns(:link).class.should == Link
-  end
-
   context "When posting valid details for a link" do
     it "should save the link and redirect to the links page" do
       logged_in_user_is @david
@@ -43,8 +35,9 @@ describe LinksController, "Adding a new link" do
       }
       post :create, wrong_details
 
-      response.should render_template('new')
+      response.should render_template('posts/new')
       assigns(:link).errors.any?.should be_true
+      assigns(:code_snippet).should_not be_nil
     end
   end
 end

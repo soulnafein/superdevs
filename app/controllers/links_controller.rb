@@ -1,15 +1,11 @@
 class LinksController < ApplicationController
-  before_filter :require_user, :only => [:new, :create]
+  before_filter :require_user, :only => [:create]
   layout 'new_application'
 
   def index
     @links = Link.get_latest
   end
 
-  def new
-    @link = Link.new
-    render :layout => 'application'
-  end
 
   def create
     @link = Link.new(params['link'])
@@ -17,6 +13,7 @@ class LinksController < ApplicationController
     @link.save!
     redirect_to links_url
   rescue ActiveRecord::RecordInvalid
-    render :action => :new, :layout => 'application'
+    @code_snippet = CodeSnippet.new
+    render :action => 'posts/new', :layout => 'application'
   end
 end

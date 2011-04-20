@@ -11,5 +11,5 @@
         %span.when= distance_of_time_in_words(link.created_at, Time.now.utc) + ' ago'
       %p= link.description
 .right_column
-  = link_to '+ Add a Link', new_link_url, :class => 'super_button'
+  = link_to '+ Add a Link', new_post_url, :class => 'super_button'
 

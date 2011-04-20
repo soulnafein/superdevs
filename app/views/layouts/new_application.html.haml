@@ -9,11 +9,15 @@
     = stylesheet_link_tag :flutie, 'facebox', 'application', 'views/home/user_home',
     'views/users/show', 'views/users/index', 'views/users/edit',
     'views/events/show', 'views/events/index', 'views/groups/show',
-    'views/groups/index', 'buttons'
+    'views/groups/index', 'buttons',
+    'shCore', 'shThemeDefault'
     = javascript_include_tag "lib/jquery-1.4.2.min", "lib/jquery.jgfeed-min", "lib/jquery.tweet.js",
                              "lib/facebox/facebox.js",
     "ActiveAjax/Array", "ActiveAjax/String", "ActiveAjax/EventPublisher", "ActiveAjax/Ajax",
-    "ActiveAjax/Model", "BindableTextbox", "BindableList", "BindableDropDown", "EditableField", "EditableArea", "EditableText","ProfilePage","blog_feed.js"
+    "ActiveAjax/Model", "BindableTextbox", "BindableList", "BindableDropDown", "EditableField", "EditableArea", "EditableText","ProfilePage","blog_feed.js", "Tabs",
+    "lib/syntaxhighlighter/scripts/shCore.js",
+    "lib/syntaxhighlighter/scripts/shBrushRuby.js"
+
     = render :partial => "shared/google_analytics"
 
   %body
@@ -29,6 +33,8 @@
               :class => yield(:current_tab) == 'home' ? 'active' : ''
             = link_to 'LINKS', links_url,
               :class => yield(:current_tab) == 'links' ? 'active' : ''
+            = link_to 'CODE', code_snippets_url,
+              :class => yield(:current_tab) == 'code_snippets' ? 'active' : ''
             = link_to 'EVENTS', events_path,
               :class => yield(:current_tab) == 'events' ? 'active' : ''
             = link_to 'GROUPS', groups_path,

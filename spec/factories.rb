@@ -86,3 +86,27 @@ Factory.define :another_link, :parent => :link do |l|
   l.id 245
 end
 
+Factory.define :code_snippet do |cs|
+  cs.code 'Lots of code.... in some language'
+  cs.language 'rb'
+  cs.title 'Code snippet Title'
+  cs.description "A code snippet description"
+  cs.author {|user| user.association(:user)}
+end
+
+Factory.define :a_code_snippet, :parent => :code_snippet do |cs|
+  cs.code 'Some code'
+  cs.language 'py'
+  cs.title 'Code I want to share'
+  cs.description "A new script I wrote"
+  cs.id 343
+end
+
+Factory.define :another_code_snippet, :parent => :code_snippet do |cs|
+  cs.code 'Some crappy code'
+  cs.language 'csharp'
+  cs.title 'Code I found at work'
+  cs.description "This is really shitty code"
+  cs.id 245
+end
+

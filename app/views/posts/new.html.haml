@@ -1,0 +1,51 @@
+- current_tab("links")
+:javascript
+  $(document).ready(function() {
+    $('.tabs').tabs();
+  });
+.in
+  %h2 Share a link on SuperDevs
+.in.forms
+  .togglers
+    %h3 Share a new
+    %ul.tabs
+      %li.selected
+        %a.tab{:href => '#', :rel => '#new_link_form'} Link
+      %li
+        %a.tab{:href => '#', :rel => '#new_code_snippet_form'} Code Snippet
+  = form_for(@link, :html => {:id => 'new_link_form'}) do |link_form|
+    = link_form.error_messages
+    %p
+      %label.required{:for=>"title"}
+        Title
+      = link_form.text_field :title
+    %p
+      %label.required{:for=>"url"}
+        URL
+      = link_form.text_field :url
+    %p
+      %label.required{:for=>"description"}
+        Description
+      = link_form.text_area :description
+    %p
+      = link_form.submit "Post now"
+  = form_for(@code_snippet, :html => {:id => 'new_code_snippet_form'}) do |code_form|
+    = code_form.error_messages
+    %p
+      %label.required{:for=>"title"}
+        Title
+      = code_form.text_field :title
+    %p
+      %label.required{:for => "language"}
+        Language
+      = code_form.select :language, CodeSnippet.languages
+    %p
+      %label.required{:for=>"code"}
+        Code
+      = code_form.text_area :code
+    %p
+      %label.required{:for=>"description"}
+        Description
+      = code_form.text_area :description
+    %p
+      = code_form.submit "Post now"

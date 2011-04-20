@@ -56,12 +56,12 @@ p, span {
 }
 
 p {
-  margin:10px 0;
+  margin: 10px 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: #464646;
-  margin:0;
+  margin: 0;
 }
 
 h1, h2, h3 {
@@ -86,7 +86,7 @@ h2 {
 
 h3 {
   font-family: Georgia, sans-serif;
-  display:block;
+  display: block;
   font-size: 24px;
   font-weight: bold;
 }
@@ -200,25 +200,30 @@ input[type=submit].alternative, input[type=button].alternattive {
 }
 
 .forms input[type=text].blog_feed {
-  background:url(/images/icons/feed-32x32.png) no-repeat 2px 2px;
+  background: url(/images/icons/feed-32x32.png) no-repeat 2px 2px;
   padding-left: 40px;
 }
+
 .forms input[type=text].twitter_username {
-  background:url(/images/icons/twitter-32x32.png) no-repeat 2px 2px;
+  background: url(/images/icons/twitter-32x32.png) no-repeat 2px 2px;
   padding-left: 40px;
 }
+
 .forms input[type=text].linkedin_profile {
-  background:url(/images/icons/linkedin-32x32.png) no-repeat 2px 2px;
+  background: url(/images/icons/linkedin-32x32.png) no-repeat 2px 2px;
   padding-left: 40px;
 }
+
 .forms input[type=text].delicious_username {
-  background:url(/images/icons/delicious-32x32.png) no-repeat 2px 2px;
+  background: url(/images/icons/delicious-32x32.png) no-repeat 2px 2px;
   padding-left: 40px;
 }
+
 .forms input[type=text].github_account {
-  background:url(/images/icons/github-32x32.png) no-repeat 2px 2px;
+  background: url(/images/icons/github-32x32.png) no-repeat 2px 2px;
   padding-left: 40px;
 }
+
 /*..................................................... Navigation .....................*/
 
 #navigation ul {
@@ -261,17 +266,18 @@ input[type=submit].alternative, input[type=button].alternattive {
 .profile_picture_medium {
   height: 50px;
   width: 50px;
-  float:left;
+  float: left;
   border: 1px solid #bab9b9;
   padding: 7px;
   margin-right: 10px;
   margin-bottom: 10px;
   background-color: white;
 }
+
 .profile_picture_small {
   height: 32px;
   width: 32px;
-  float:left;
+  float: left;
   border: 1px solid #bab9b9;
   padding: 2px;
   margin-right: 10px;
@@ -280,7 +286,7 @@ input[type=submit].alternative, input[type=button].alternattive {
 }
 
 .profile_picture_medium img {
-  margin:0;
+  margin: 0;
 }
 
 a.linkButton {
@@ -288,10 +294,10 @@ a.linkButton {
   font-size: 18px;
   margin: 5px;
   background-color: #f7941d;
-  color:white;
-  font-weight:bold;
+  color: white;
+  font-weight: bold;
   padding: 10px;
-  line-height:40px;
+  line-height: 40px;
 }
 
 a.linkButtonAlt {
@@ -299,10 +305,10 @@ a.linkButtonAlt {
   font-size: 18px;
   margin: 5px;
   background-color: #30a4b1;
-  color:white;
-  font-weight:bold;
+  color: white;
+  font-weight: bold;
   padding: 10px;
-  line-height:40px;
+  line-height: 40px;
 }
 
 div.errorExplanation {
@@ -322,57 +328,56 @@ div._success {
 }
 
 div.clear {
-  clear:both
+  clear: both
 }
 
 a.edit {
   background: url(/images/icons/edit.png) no-repeat top left;
-  padding-left:20px;
+  padding-left: 20px;
 }
 
 a.add {
   background: url(/images/icons/add.png) no-repeat top left;
-  padding-left:20px;
+  padding-left: 20px;
 }
 
 a.delete {
   background: url(/images/icons/delete.png) no-repeat top left;
-  padding-left:20px;
+  padding-left: 20px;
 }
 
 a.attendees_list {
   background: url(/images/icons/attendees_list.png) no-repeat top left;
-  padding-left:20px;
+  padding-left: 20px;
 }
 
 div.container {
-  overflow:auto;
+  overflow: auto;
 }
 
 .hidden {
-  display:none;
+  display: none;
 }
 
 .addthis_toolbox span {
-  font-size:10px!important;
+  font-size: 10px !important;
 }
 
 /* New layout */
-div.rounded_content
-{
+div.rounded_content {
   -moz-border-radius: 5px 5px 5px 5px;
   -webkit-border-radius: 5px 5px 5px 5px;
   border: 1px solid #ccc;
   background: white;
-  text-align:left;
-  padding:10px;
+  text-align: left;
+  padding: 10px;
   margin: 0 0 20px 0;
-  overflow:auto;
+  overflow: auto;
 }
 
 div.rounded_content div.author {
-  overflow:auto;
-  margin:10px 0;
+  overflow: auto;
+  margin: 10px 0;
 }
 
 div.rounded_content h4 a {
@@ -381,34 +386,72 @@ div.rounded_content h4 a {
 
 div.rounded_content h4, div.rounded_content h3 {
   font-family: Helvetica, Arial, sans-serif;
-  font-style:normal;
+  font-style: normal;
 }
 
 div.rounded_content h4 {
-  font-size:18px;
+  font-size: 18px;
 }
 
 div.rounded_content p {
-  font-size:16px;
+  font-size: 16px;
 }
 
 div.rounded_content span.when {
-  font-size:12px;
+  font-size: 12px;
   color: #999;
 }
 
 div.left_column {
-  float:left;
+  float: left;
   width: 680px;
 }
-div.right_columns {float:right;}
 
-#new_content
-{
-  overflow:auto;
+div.right_columns {
+  float: right;
+}
+
+#new_content {
+  overflow: auto;
 }
 
 label.required {
-  padding-left:15px;
-  background:url(/images/icons/asterisk_red.png) no-repeat center left;
+  padding-left: 15px;
+  background: url(/images/icons/asterisk_red.png) no-repeat center left;
+}
+
+div.togglers h3 {
+  float:left;
+  margin-right:20px;
+}
+
+ul.tabs li {
+  display:inline-block;
+}
+
+ul.tabs li a{
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  color: #999;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: baseline;
+  direction: ltr;
+  -moz-border-radius: 4px 4px 4px 4px;
+  height: 20px;
+  padding: 10px 30px;
+  display: inline-block;
+}
+
+ul.tabs li.selected a{
+  background-color: #30A4B1;
+  color: #FFFFFF;
+}
+
+ul.tabs a:hover {
+  text-decoration: underline;
+}
+
+#new_code_snippet_form {
+  display:none;
 }
