@@ -5,6 +5,14 @@ body {
   line-height: 21px;
   color: #464646; }
 
+#wrapper {
+  width: 960px;
+  margin: 0 auto; }
+
+header, nav {
+  display: block;
+  overflow: auto; }
+
 a:link, a:visited {
   color: #30a4b1;
   text-decoration: none; }

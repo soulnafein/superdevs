@@ -23,13 +23,7 @@ em.attendees_count {
 
 
 
-#navigation {
-  width: 960px;
-  margin-bottom: 20px;
-  float: left;
-  position: relative;
-  background-color: #464646;
-}
+
 
 
 /* General fonts */
@@ -199,6 +193,13 @@ input[type=submit].alternative, input[type=button].alternattive {
 
 /*..................................................... Navigation .....................*/
 
+#navigation {
+  width: 960px;
+  margin-bottom: 20px;
+  float: left;
+  position: relative;
+  background-color: #464646;
+}
 #navigation ul {
   margin: 0px;
   padding: 0px;

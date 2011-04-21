@@ -1,0 +1,19 @@
+nav {
+  width: 960px;
+  margin-bottom: 21px;
+  background-color: #464646; }
+  nav ul {
+    margin: 0;
+    padding: 0; }
+  nav li {
+    list-style: none;
+    float: left;
+    font-weight: normal; }
+  nav a:link, nav a:visited {
+    float: left;
+    color: white;
+    font-size: 16px;
+    line-height: 21px;
+    padding: 21px 30px; }
+  nav a:hover, nav a.active {
+    background-color: #30a4b1; }

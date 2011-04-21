@@ -1,15 +1,18 @@
 !!!
-%html{:xmlns=>"http://www.w3.org/1999/xhtml"}
+%html
   %head
     %meta{'http-equiv'=>"Content-Type", :content=>"text/html; charset=ISO-8859-1"}
     = csrf_meta_tag
     %title
       = yield(:title) || "SuperDevs"
     %script{:type=>"text/javascript", :src=>"http://www.google.com/jsapi?key=ABQIAAAAHj3-AxzLoN6nByzD95Qs9RSOljxHAIcaB6bpmeLQ3ja_Urx1LhQUqo1n97ZB_-dbUmm8nc93jgOCBw"}
-    = stylesheet_link_tag :flutie, 'facebox', 'application', 'views/home/user_home',
-    'views/users/show', 'views/users/index', 'views/users/edit',
-    'views/events/show', 'views/events/index', 'views/groups/show','buttons',
-    'views/groups/index'
+    = stylesheet_link_tag "http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css",
+                          "base",
+                          "forms",
+                          "header",
+                          "footer",
+                          "navigation"
+
     = javascript_include_tag "lib/jquery-1.4.2.min", "lib/jquery.jgfeed-min", "lib/jquery.tweet.js",
                              "lib/facebox/facebox.js",
     "ActiveAjax/Array", "ActiveAjax/String", "ActiveAjax/EventPublisher", "ActiveAjax/Ajax",
@@ -18,11 +21,12 @@
 
   %body
     #wrapper
-      %h1#logo
-        %a{:href=>"/"} SuperDevs
-      = render :partial => "shared/authentication_status"
+      %header
+        %h1#logo
+          %a{:href=>"/"} SuperDevs
+        = render :partial => "shared/authentication_status"
 
-      #navigation
+      %nav
         %ul
           %li
             = link_to 'HOME', root_url,

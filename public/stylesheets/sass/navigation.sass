@@ -1,3 +1,28 @@
 @import "mixins"
 @import "settings"
 
+nav
+  width: $site_width
+  margin-bottom: $base_line_height
+  background-color: $main_text_color
+
+  ul
+    margin: 0
+    padding: 0
+
+
+  li
+    list-style: none
+    float: left
+    font-weight: normal
+
+  a:link, a:visited
+    float: left
+    color: $alt_text_color
+    font-size: $base_font_size
+    line-height: $base_line_height
+    padding: $base_line_height 30px
+
+  a:hover, a.active
+    background-color: $secondary_color
+
