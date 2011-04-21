@@ -1,142 +1,81 @@
-body {
-  margin: 0;
-}
-
 #first_layer {
+  overflow: auto;
   margin: 0 auto;
-  width: 960px;
-}
-
-#footer_layer {
-  margin: 0 auto;
-  width: 960px;
-}
+  width: 960px; }
 
 #second_layer {
   margin: 0 auto;
   width: 960px;
   background: url(/images/superdev.png) top right no-repeat;
-  height: 300px;
-  clear: both;
-}
+  height: 300px; }
+  #second_layer #introduction {
+    width: 550px; }
+    #second_layer #introduction h2 {
+      font-size: 32px;
+      line-height: 42px;
+      font-weight: bold; }
+    #second_layer #introduction p {
+      font-size: 22.4px;
+      line-height: 42px; }
+    #second_layer #introduction #introduction_links {
+      margin: 21px 0 0 63px; }
 
 #third_layer {
-  border-top: 20px solid #30a4b1;
-  border-bottom: 20px solid #30a4b1;
-  padding: 10px 0;
+  border-top: 21px solid #30a4b1;
+  border-bottom: 21px solid #30a4b1;
+  padding: 11px 0 31px 0;
   background-color: #464646;
   color: white;
-}
+  overflow: auto;
+  text-align: center; }
+  #third_layer h3 {
+    font-size: 24px;
+    line-height: 42px;
+    font-weight: bold; }
+  #third_layer h4 {
+    font-size: 19.2px;
+    line-height: 42px;
+    font-weight: bold;
+    text-align: center; }
+    #third_layer h4 a {
+      padding: 0 42px;
+      line-height: 42px;
+      display: inline-block; }
+  #third_layer h4.links a {
+    background: url(/images/icons/feed.png) no-repeat center left; }
+  #third_layer h4.code a {
+    background: url(/images/icons/tag.png) no-repeat center left; }
+  #third_layer h4.events a {
+    background: url(/images/icons/calendar.png) no-repeat center left; }
+  #third_layer #key_points {
+    margin: 0 auto;
+    overflow: auto;
+    width: 960px; }
+    #third_layer #key_points div {
+      width: 260px;
+      text-align: left;
+      padding: 10px;
+      margin: 11px;
+      background-color: #666666;
+      background-image: -moz-linear-gradient(top, #666666, #555555);
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #666666), color-stop(1, #555555));
+      background-image: -webkit-linear-gradient(#666666, #555555);
+      background-image: linear-gradient(top, #666666, #555555);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#666666, endColorstr=#555555);
+      -moz-border-radius-topleft: 4px;
+      -webkit-border-top-left-radius: 4px;
+      border-top-left-radius: 4px;
+      -moz-border-radius-topright: 4px;
+      -webkit-border-top-right-radius: 4px;
+      border-top-right-radius: 4px;
+      -moz-border-radius-bottomleft: 4px;
+      -webkit-border-bottom-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      -moz-border-radius-bottomright: 4px;
+      -webkit-border-bottom-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      overflow: auto; }
 
-#key_points {
-  margin: 0 auto 20px auto;
-  width: 960px;
-  overflow:auto;
-}
-
-#key_points div {
-  width: 290px;
-  text-align: left;
-  padding: 10px 5px;
-  margin: 0 10px;
-  line-height: 21px;
-  background: #464646 -moz-linear-gradient(50% 0%, #666, #555) repeat scroll 0 0;
-  -moz-border-radius: 4px 4px 4px 4px;
-}
-
-#key_points h3 {
-  color:white;
-}
-
-#key_points .heading {
-  text-align:left;
-  background:none;
-  width:auto;
-}
-
-#key_points p {
-  font-size: 18px;
-  margin: 0 10px;
-}
-
-#key_points h4 a {
-  padding-left:40px;
-  padding-right:40px;
-}
-
-h4.links a {
-  background:url(/images/icons/feed.png) no-repeat top left
-}
-
-h4.code a {
-  background:url(/images/icons/tag.png) no-repeat top left
-}
-
-h4.events a {
-  background:url(/images/icons/calendar.png) no-repeat top left
-}
-
-#introduction {
-  text-align: left;
-  width: 550px;
-  line-height: 40px;
-}
-
-h2 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 36px;
-}
-
-h3 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 24px;
-  color: #666666;
-}
-
-h4 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-style: normal;
-  margin: 0;
-  text-align: center;
-  color: white;
-  font-size: 24px;
-  line-height: 40px;
-}
-
-h4 a {
-}
-
-#introduction_links {
-  font-size: 24px;
-  line-height: 24px;
-  margin: 30px 0 0 60px;
-}
-
-#introduction_links a {
-  text-align: center;
-  color: white;
-  vertical-align: middle;
-  font-weight: bold;
-  padding: 10px;
-}
-
-#introduction_links a:hover {
-  text-decoration: underline;
-}
-
-#join_us_link {
-  text-align: center;
-  margin: 0 auto 0;
-  width: 150px;
-  background-color: #f7941d;
-}
-
-#see_users {
-  text-align: center;
-  margin: 0 auto 0;
-  width: 150px;
-  background: #30a4b1 -moz-linear-gradient(50% 0%, #30a4b1, #30757c) repeat scroll 0 0;
-  border: 1px solid #30757c;
-}
+#footer_layer {
+  margin: 0 auto;
+  width: 960px; }

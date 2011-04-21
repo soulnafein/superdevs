@@ -1,0 +1,57 @@
+=rounded-corners($top-left, $top-right=$top-left, $bottom-left=$top-left, $bottom-right=$top-left)
+  -moz-border-radius-topleft: $top-left
+  -webkit-border-top-left-radius: $top-left
+  border-top-left-radius: $top-left
+  -moz-border-radius-topright: $top-right
+  -webkit-border-top-right-radius: $top-right
+  border-top-right-radius: $top-right
+  -moz-border-radius-bottomleft: $bottom-left
+  -webkit-border-bottom-left-radius: $bottom-left
+  border-bottom-left-radius: $bottom-left
+  -moz-border-radius-bottomright: $bottom-right
+  -webkit-border-bottom-right-radius: $bottom-right
+  border-bottom-right-radius: $bottom-right
+
+=shadow($horizontal_offset, $vertical_offset, $blur_radius, $colour)
+  -webkit-box-shadow: $horizontal_offset $vertical_offset $blur_radius $colour
+  -moz-box-shadow: $horizontal_offset $vertical_offset $blur_radius $colour
+  box-shadow: $horizontal_offset $vertical_offset $blur_radius $colour
+
+=inset-shadow($horizontal_offset, $vertical_offset, $blur_radius, $colour)
+  -webkit-box-shadow: inset $horizontal_offset $vertical_offset $blur_radius $colour
+  -moz-box-shadow: inset $horizontal_offset $vertical_offset $blur_radius $colour
+  box-shadow: inset $horizontal_offset $vertical_offset $blur_radius $colour
+
+=linear-gradient($from, $to, $fallback=$from)
+  background-color: $fallback
+  background-image: -moz-linear-gradient(top, $from, $to)
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, $from),color-stop(1, $to))
+  background-image: -webkit-linear-gradient($from, $to)
+  background-image: linear-gradient(top, $from, $to)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$from}, endColorstr=#{$to})
+  
+=transition($style, $duration, $ease)
+  transition: $style $duration $ease
+  -webkit-transition: $style $duration $ease
+  -moz-transition: $style $duration $ease
+  
+=button($from, $to, $text_color, $corner)
+  +rounded-corners($corner)
+  +linear-gradient($from, $to)
+  +shadow(1px, 1px, 1px, #ccc)
+  border: 1px solid $from
+  padding: 1em 2.9em 0.8em 2.9em
+  cursor: pointer
+  color: $text_color
+  text-shadow: #fff 0 1px 0
+  text-align: center
+  font-weight: bold
+  text-transform: uppercase
+  text-decoration: none
+
+=clearfix
+  content: "."
+  display: block
+  height: 0
+  clear: both
+  visibility: hidden

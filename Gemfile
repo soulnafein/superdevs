@@ -6,7 +6,6 @@ gem 'authlogic_rpx'
 gem "friendly_id", "3.0.5"
 gem "rpx_now"
 gem "annotate"
-gem "flutie"
 gem "haml"
 gem "yaml_db"
 gem 'chronic'

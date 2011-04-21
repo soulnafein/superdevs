@@ -1,10 +1,15 @@
 !!!
-%html{:xmlns=>"http://www.w3.org/1999/xhtml"}
+%html
   %head
     %meta{'http-equiv'=>"Content-Type", :content=>"text/html; charset=ISO-8859-1"}
     = csrf_meta_tag
     %title SuperDevs
-    = stylesheet_link_tag :flutie, "application", "home", "buttons"
+    = stylesheet_link_tag "http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css",
+                          "base",
+                          "forms",
+                          "header",
+                          "footer",
+                          "home"
     = render :partial => "shared/google_analytics"
 
   %body

@@ -1,0 +1,84 @@
+@import "mixins"
+@import "settings"
+
+#first_layer
+  overflow: auto
+  margin: 0 auto
+  width: $site_width
+
+#second_layer
+  margin: 0 auto
+  width: $site_width
+  background: url(/images/superdev.png) top right no-repeat
+  height: 300px
+
+  #introduction
+    width: 550px
+
+    h2
+      font-size: 2*$base_font_size
+      line-height: 2*$base_line_height
+      font-weight: bold
+
+    p
+      font-size: 1.4*$base_font_size
+      line-height: 2*$base_line_height
+
+    #introduction_links
+      margin: $base_line_height 0 0 3*$base_line_height
+
+
+#third_layer
+  border-top: $base_line_height solid $secondary_color
+  border-bottom: $base_line_height solid $secondary_color
+  padding: 11px 0 $base_line_height+10 0
+  background-color: $main_text_color
+  color: $alt_text_color
+  overflow: auto
+  text-align: center
+
+
+  h3
+    font-size: 1.5*$base_font_size
+    line-height: 2*$base_line_height
+    font-weight: bold
+
+  h4
+    font-size: 1.2*$base_font_size
+    line-height: 2*$base_line_height
+    font-weight: bold
+    text-align: center
+
+    a
+      padding: 0 2*$base_line_height
+      line-height: 2*$base_line_height
+      display: inline-block
+
+  h4.links a
+    background: url(/images/icons/feed.png) no-repeat center left
+
+  h4.code a
+    background: url(/images/icons/tag.png) no-repeat center left
+
+  h4.events a
+    background: url(/images/icons/calendar.png) no-repeat center left
+
+
+  #key_points
+    margin: 0 auto
+    overflow: auto
+    width: $site_width
+
+    div
+      width: 260px
+      text-align: left
+      padding: 10px
+      margin: 11px
+      +linear_gradient(#666, #555)
+      +rounded_corners(4px)
+      overflow: auto
+
+#footer_layer
+  margin: 0 auto
+  width: 960px
+
