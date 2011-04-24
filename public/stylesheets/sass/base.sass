@@ -12,10 +12,37 @@ body
   width: $site_width
   margin: 0 auto
 
-header, nav
+header, nav, section
   display: block
   overflow: auto
 
+section
+  +rounded_corners(10px)
+  +shadow(1px, 1px, 1px, grey)
+  background-color: white
+  padding: $base_line_height
+  border: 1px solid #ccc
+  margin: 0 0 $base_line_height 0
+
+  p
+    width: 750px
+
+
+h2
+  font-size: 2.0*$base_font_size
+  line-height: 2*$base_line_height
+  font-weight: bold
+
+h3
+  font-size: 1.5*$base_font_size
+  line-height: 2*$base_line_height
+  font-weight: bold
+
+h4
+  font-size: $base_line_height
+
+ul
+  margin: 10px 0
 
 a:link, a:visited
   color: $secondary_color

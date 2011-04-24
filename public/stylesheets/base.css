@@ -9,9 +9,48 @@ body {
   width: 960px;
   margin: 0 auto; }
 
-header, nav {
+header, nav, section {
   display: block;
   overflow: auto; }
+
+section {
+  -moz-border-radius-topleft: 10px;
+  -webkit-border-top-left-radius: 10px;
+  border-top-left-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -webkit-border-top-right-radius: 10px;
+  border-top-right-radius: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  -webkit-box-shadow: 1px 1px 1px grey;
+  -moz-box-shadow: 1px 1px 1px grey;
+  box-shadow: 1px 1px 1px grey;
+  background-color: white;
+  padding: 21px;
+  border: 1px solid #cccccc;
+  margin: 0 0 21px 0; }
+  section p {
+    width: 750px; }
+
+h2 {
+  font-size: 32px;
+  line-height: 42px;
+  font-weight: bold; }
+
+h3 {
+  font-size: 24px;
+  line-height: 42px;
+  font-weight: bold; }
+
+h4 {
+  font-size: 21px; }
+
+ul {
+  margin: 10px 0; }
 
 a:link, a:visited {
   color: #30a4b1;
