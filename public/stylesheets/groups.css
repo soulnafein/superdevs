@@ -1,0 +1,14 @@
+#group_page {
+  overflow: auto; }
+  #group_page div.membership {
+    float: right; }
+  #group_page h2 {
+    display: inline-block;
+    line-height: 63px; }
+  #group_page div.left {
+    width: 677px;
+    float: left; }
+  #group_page div.right {
+    width: 260px;
+    margin-left: 21px;
+    float: left; }

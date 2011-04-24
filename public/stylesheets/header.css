@@ -1,3 +1,7 @@
+header {
+  display: block;
+  overflow: auto; }
+
 #logo {
   float: left;
   background: url(/images/logo.png) no-repeat top left;

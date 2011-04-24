@@ -1,7 +1,7 @@
 @import "mixins"
 @import "settings"
 
-a.button
+a.button, input[type=submit]
   color: $alt_text_color
   font-size: $base_font_size*1.5
   line-height: $base_line_height*2
@@ -14,11 +14,12 @@ a.button
   border: 1px solid $primary_color_dark
   display: inline-block
 
-a.button:hover
+a.button:hover, input[type=submit]:hover
   text-decoration: underline
 
 a.button.alternative
   +linear_gradient($secondary_color, $secondary_color_dark)
   border-color: $secondary_color_dark
+
 
 

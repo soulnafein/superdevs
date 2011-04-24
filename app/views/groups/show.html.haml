@@ -1,50 +1,54 @@
 - title("#{@group.name} at SuperDevs")
 
 - current_tab('groups')
-.in
-  #group_page_header
-    .title
-      %h2= @group.name
-    .membership
-      - if !@group.organizer?(current_user)
-        - if @group.member?(current_user)
-          - membership = @group.membership_for_user(current_user)
-          = form_tag(membership_url(membership.id), :method => :delete) do
-            = submit_tag 'Leave this group', :class => 'alternative'
-            = hidden_field_tag :group_id, @group.unique_name
-        - else
-          = form_for(Membership.new) do
-            = submit_tag 'Join this group'
-            = hidden_field_tag :group_id, @group.unique_name
-    .line
-.in
-  #group_page
-    .description
-      :markdown
-        #{@group.description}
-      - if @group.organizer?(current_user)
-        = link_to 'Edit description',
-                  edit_group_url(@group.unique_name), :class => 'edit'
-    .members
-      %h3 Members
-      %ul
-        - @group.members_organizer.each do |user|
-          %li{:class => cycle('even', 'odd')}
-            %h5
-              = link_to user.full_name, user_path(user.username)
-              - if @group.organizer?(user) 
-                (Organizer)
-            .profile_picture_medium
-              != user.medium_profile_picture.to_html
-            %div{:style => "clear:both"}
-    .events
+#group_page
+  .left
+    %section#group_page_header
+      .title
+        %h2= @group.name
+        .membership
+          - if !@group.organizer?(current_user)
+            - if @group.member?(current_user)
+              - membership = @group.membership_for_user(current_user)
+              = form_tag(membership_url(membership.id), :method => :delete) do
+                = submit_tag 'Leave this group', :class => 'alternative'
+                = hidden_field_tag :group_id, @group.unique_name
+            - else
+              = form_for(Membership.new) do
+                = submit_tag 'Join this group'
+                = hidden_field_tag :group_id, @group.unique_name
+
+      .description
+        :markdown
+          #{@group.description}
+        - if @group.organizer?(current_user)
+          = link_to 'Edit description',
+                    edit_group_url(@group.unique_name), :class => 'edit'
+
+    %section.events
       %h3 Upcoming events
       - if @group.organizer?(current_user)
         %p= link_to "Add an event", new_group_event_url(@group), :class => 'add'
       = render :partial => 'shared/events',
         :locals => {:events => EventsListPresenter.new(@group.upcoming_events, current_user)}
+
+    %section.events
       %h3 Past events
       - if @group.organizer?(current_user)
       = render :partial => 'shared/events',
         :locals => {:events => EventsListPresenter.new(@group.past_events, current_user)}
+
+  .right
+    %section.members
+      %h3 Members
+      %ul.simple
+        - @group.members_organizer.each do |user|
+          %li{:class => cycle('even', 'odd')}
+            %h5
+              = link_to user.full_name, user_path(user.username)
+              - if @group.organizer?(user)
+                (Organizer)
+            .profile_picture_medium
+              != user.medium_profile_picture.to_html
+            %div{:style => "clear:both"}
 

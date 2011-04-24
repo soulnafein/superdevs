@@ -1,4 +1,4 @@
-a.button {
+a.button, input[type=submit] {
   color: white;
   font-size: 24px;
   line-height: 42px;
@@ -27,7 +27,7 @@ a.button {
   border: 1px solid #ea5a30;
   display: inline-block; }
 
-a.button:hover {
+a.button:hover, input[type=submit]:hover {
   text-decoration: underline; }
 
 a.button.alternative {

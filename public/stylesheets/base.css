@@ -9,10 +9,6 @@ body {
   width: 960px;
   margin: 0 auto; }
 
-header, nav, section {
-  display: block;
-  overflow: auto; }
-
 section {
   -moz-border-radius-topleft: 10px;
   -webkit-border-top-left-radius: 10px;
@@ -32,9 +28,9 @@ section {
   background-color: white;
   padding: 21px;
   border: 1px solid #cccccc;
-  margin: 0 0 21px 0; }
-  section p {
-    width: 750px; }
+  margin: 0 0 21px 0;
+  display: block;
+  overflow: auto; }
 
 h2 {
   font-size: 32px;

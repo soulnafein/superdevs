@@ -12,10 +12,6 @@ body
   width: $site_width
   margin: 0 auto
 
-header, nav, section
-  display: block
-  overflow: auto
-
 section
   +rounded_corners(10px)
   +shadow(1px, 1px, 1px, grey)
@@ -23,10 +19,8 @@ section
   padding: $base_line_height
   border: 1px solid #ccc
   margin: 0 0 $base_line_height 0
-
-  p
-    width: 750px
-
+  display: block
+  overflow: auto
 
 h2
   font-size: 2.0*$base_font_size
