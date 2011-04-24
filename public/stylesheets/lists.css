@@ -1,2 +1,4 @@
-li.odd {
+ul.simple li {
+  padding: 10px; }
+ul.simple li.odd {
   background-color: #ebebeb; }

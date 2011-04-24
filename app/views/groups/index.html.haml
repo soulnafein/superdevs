@@ -1,8 +1,8 @@
 - title("Developer groups at SuperDevs")
 - current_tab("groups")
-#group_list.in
+%section#group_list
   %h2 All the groups
-  %ul
+  %ul.simple
     - @groups.each do |group|
       %li{:class => cycle('even', 'odd'), :style => 'list-style:none'}
         %h3
