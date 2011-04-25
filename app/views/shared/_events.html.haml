@@ -1,22 +1,17 @@
 .events
-  %dl{:style=>"float: left;"}
+  %dl
     - events.rows.each do |row|
 
       %dt{:style => print_unless(row.show_date?, 'visibility:hidden')}
-        - if row.event.date.today?
-          %br
-          %span{:style => 'color:#f7941d;font-size:12px'}Today
-        - else
-          = row.event.date.day
-          %br
-          %strong= Date::ABBR_MONTHNAMES[row.event.date.month]
-          = row.event.date.year
-      %dd{:class => cycle('even', 'odd') + (row.event.date.today? ? ' today' : '') }
-        %h4
+        %span.month= Date::ABBR_MONTHNAMES[row.event.date.month]
+        %span.day= row.event.date.day
+      %dd{:class => cycle('even', 'odd')}
+        %h3
           = link_to row.event.title, event_path(row.event.id)
-          - if row.event.group
-            %span.highlighter= row.event.group.name
-        %h5 #{row.event.city.capitalize} (#{row.event.country})
+        %h4 #{row.event.city.capitalize} (#{row.event.country})
+        - if row.event.group
+          %h5
+            %span.group= row.event.group.name
         - if row.event.is_organizer?(current_user)
           = link_to "Attendees (#{row.event.attendees.size})", [row.event, :attendances], :class => 'attendees_list'
           = link_to "Edit event", edit_group_event_url(row.event.group.unique_name, row.event.id), :class => 'edit'

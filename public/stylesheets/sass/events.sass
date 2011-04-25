@@ -1,0 +1,63 @@
+@import "settings"
+@import "mixins"
+
+section.events
+
+  h1
+    padding-left: 40px
+    margin: 0 0 $base_line_height 10px
+    background: url(/images/icons/date.png) no-repeat center left
+
+  dl
+    margin-top: $base_line_height
+
+  dt
+    float: left
+    border: 1px solid red
+    width: 62px
+    text-align: center
+    font-weight: bold
+    +linear-gradient(#ececec, white)
+    +rounded-corners(4px)
+    margin: 0 0 20px 20px
+    clear: both
+
+    .month
+      +linear-gradient(#FF3333,#CD3333)
+      display: block
+      color: white
+
+    .day
+      display:block
+      font-size: 2*$base_font_size
+      line-height: 2*$base_line_height
+
+  dd
+    float: left
+    width: 500px
+    padding: 11px
+    margin: 0 0 20px 20px
+
+  dd.odd
+    background: $bg_color
+
+  span.group
+    background: $primary_color
+    color: white
+    line-height: $base_line_height
+    font-size: $base_font_size
+    display: inline-block
+    padding: 0 10px
+    +rounded-corners(4px)
+
+  em.attendees_count
+    color: #5FA010
+
+  p.friendsInfo
+    color: #999999
+    font-size: 12px
+    line-height: $base_line_height
+    margin: 0
+
+
+

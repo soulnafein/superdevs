@@ -5,7 +5,7 @@
   .left
     %section#group_page_header
       .title
-        %h2= @group.name
+        %h1= @group.name
         .membership
           - if !@group.organizer?(current_user)
             - if @group.member?(current_user)
@@ -26,21 +26,21 @@
                     edit_group_url(@group.unique_name), :class => 'edit'
 
     %section.events
-      %h3 Upcoming events
+      %h2 Upcoming events
       - if @group.organizer?(current_user)
         %p= link_to "Add an event", new_group_event_url(@group), :class => 'add'
       = render :partial => 'shared/events',
         :locals => {:events => EventsListPresenter.new(@group.upcoming_events, current_user)}
 
     %section.events
-      %h3 Past events
+      %h2 Past events
       - if @group.organizer?(current_user)
       = render :partial => 'shared/events',
         :locals => {:events => EventsListPresenter.new(@group.past_events, current_user)}
 
   .right
     %section.members
-      %h3 Members
+      %h2 Members
       %ul.simple
         - @group.members_organizer.each do |user|
           %li{:class => cycle('even', 'odd')}

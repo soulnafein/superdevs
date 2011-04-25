@@ -1,11 +1,11 @@
 - title("Developer groups at SuperDevs")
 - current_tab("groups")
 %section#group_list
-  %h2 All the groups
+  %h1 All the groups
   %ul.simple
     - @groups.each do |group|
       %li{:class => cycle('even', 'odd'), :style => 'list-style:none'}
-        %h3
+        %h2
           = link_to group.name, group_path(group.unique_name)
   %p.notification
     Would you like to add your group here? Just

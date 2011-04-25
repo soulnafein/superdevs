@@ -32,17 +32,17 @@ section {
   display: block;
   overflow: auto; }
 
-h2 {
-  font-size: 32px;
-  line-height: 42px;
+h1 {
+  font-size: 33.6px;
+  line-height: 63px;
   font-weight: bold; }
 
-h3 {
+h2 {
   font-size: 24px;
   line-height: 42px;
   font-weight: bold; }
 
-h4 {
+h3 {
   font-size: 21px; }
 
 ul {

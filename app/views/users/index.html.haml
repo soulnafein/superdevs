@@ -1,7 +1,7 @@
 - current_tab("people")
 #users_list
   %section
-    %h2 All the SuperDevs
+    %h1 All the SuperDevs
     %p
       Look at all the beautiful faces!
       %br
@@ -20,7 +20,7 @@
         %li{:class => cycle('even', 'odd')}
           .profile_picture_medium
             != user.medium_profile_picture.to_html
-          %h3
+          %h2
             = user.full_name
             (
             %span><= link_to "#{user.username}", user_path(user.username)

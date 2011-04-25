@@ -1,17 +1,19 @@
 - current_tab('events')
-.in
-  %h2 Upcoming events, talks and conferences for developers
+#events_list_page
+  %h1 Upcoming events, talks and conferences for developers
   - unless @events.todays_events.empty?
-    %h3 Happening today
-    = render :partial => 'shared/events',
-             :locals => {:events => EventsListPresenter.new(@events.todays_events, current_user)}
+    %section.events
+      %h2 Happening today
+      = render :partial => 'shared/events',
+               :locals => {:events => EventsListPresenter.new(@events.todays_events, current_user)}
   - unless @events.tomorrows_events.empty?
-    %h3 Happening tomorrow
-    = render :partial => 'shared/events',
-             :locals => {:events => EventsListPresenter.new(@events.tomorrows_events, current_user)}
+    %section.events
+      %h2 Happening tomorrow
+      = render :partial => 'shared/events',
+               :locals => {:events => EventsListPresenter.new(@events.tomorrows_events, current_user)}
   - unless @events.all_other_events.empty?
-    %h3 Coming up
-    = render :partial => 'shared/events',
-             :locals => {:events => EventsListPresenter.new(@events.all_other_events, current_user)}
-  .clear
+    %section.events
+      %h2 Coming up
+      = render :partial => 'shared/events',
+               :locals => {:events => EventsListPresenter.new(@events.all_other_events, current_user)}
 
