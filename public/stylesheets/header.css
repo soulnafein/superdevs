@@ -1,6 +1,6 @@
 header {
   display: block;
-  overflow: auto; }
+  overflow: hidden; }
 
 #logo {
   float: left;

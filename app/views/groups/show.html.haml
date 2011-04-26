@@ -2,21 +2,21 @@
 
 - current_tab('groups')
 #group_page
+  %h1= @group.name
+  .membership
+    - if !@group.organizer?(current_user)
+      - if @group.member?(current_user)
+        - membership = @group.membership_for_user(current_user)
+        = form_tag(membership_url(membership.id), :method => :delete) do
+          = submit_tag 'Leave this group', :class => 'alternative'
+          = hidden_field_tag :group_id, @group.unique_name
+      - else
+        = form_for(Membership.new) do
+          = submit_tag 'Join this group'
+          = hidden_field_tag :group_id, @group.unique_name
+
   .left
     %section#group_page_header
-      .title
-        %h1= @group.name
-        .membership
-          - if !@group.organizer?(current_user)
-            - if @group.member?(current_user)
-              - membership = @group.membership_for_user(current_user)
-              = form_tag(membership_url(membership.id), :method => :delete) do
-                = submit_tag 'Leave this group', :class => 'alternative'
-                = hidden_field_tag :group_id, @group.unique_name
-            - else
-              = form_for(Membership.new) do
-                = submit_tag 'Join this group'
-                = hidden_field_tag :group_id, @group.unique_name
 
       .description
         :markdown
@@ -39,6 +39,7 @@
         :locals => {:events => EventsListPresenter.new(@group.past_events, current_user)}
 
   .right
+
     %section.members
       %h2 Members
       %ul.simple

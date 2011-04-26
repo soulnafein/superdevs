@@ -22,7 +22,7 @@ a.button, input[type=submit] {
   -moz-border-radius-bottomright: 4px;
   -webkit-border-bottom-right-radius: 4px;
   border-bottom-right-radius: 4px;
-  padding: 0 42px;
+  padding: 0 21px;
   margin: 10.5px 10.5px;
   border: 1px solid #ea5a30;
   display: inline-block; }

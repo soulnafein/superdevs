@@ -2,11 +2,9 @@
 @import "mixins"
 
 section.events
-
-  h1
-    padding-left: 40px
-    margin: 0 0 $base_line_height 10px
-    background: url(/images/icons/date.png) no-repeat center left
+  h3
+    font-weight: normal
+    line-height: $base_line_height
 
   dl
     margin-top: $base_line_height
@@ -19,7 +17,7 @@ section.events
     font-weight: bold
     +linear-gradient(#ececec, white)
     +rounded-corners(4px)
-    margin: 0 0 20px 20px
+    margin: 0 0 20px 0
     clear: both
 
     .month
@@ -28,13 +26,13 @@ section.events
       color: white
 
     .day
-      display:block
+      display: block
       font-size: 2*$base_font_size
       line-height: 2*$base_line_height
 
   dd
     float: left
-    width: 500px
+    width: 520px
     padding: 11px
     margin: 0 0 20px 20px
 
@@ -60,4 +58,103 @@ section.events
     margin: 0
 
 
+#events_list_page
+  dd
+    width: 800px
+  h1
+    padding-left: 40px
+    margin: 0 0 $base_line_height 10px
+    background: url(/images/icons/date.png) no-repeat center left
+
+#event
+  overflow: auto
+
+  p.description
+    width: 620px
+
+  .leftColumn
+    width: 650px
+    float: left
+
+  .rightColumn
+    text-align: center
+    width: 270px
+    float: right
+
+  div.loginBlock
+    +rounded-corners(10px)
+    padding: 10px 15px 10px 15px
+    margin: 10px 15px 15px 15px
+    border: 2px solid #DDDDDD
+
+  h4
+    font-weight: bold
+    font-style: normal
+
+  h3
+    font-weight: normal
+    margin-bottom: 20px
+
+  div.description
+    background-color: #ebebeb
+    padding: 10px
+    margin: 40px 0
+    overflow: auto
+
+  ul.details
+    list-style: none
+
+  ul.details li
+    padding-left: 20px
+    padding-right: 20px
+    display: inline
+
+  li.website
+    background: url(/images/icons/link_go.png) no-repeat top left
+
+  li.location
+    background: url(/images/icons/globe_model.png) no-repeat top left
+
+  .date
+    background: url(/images/icons/date.png) no-repeat top left
+    padding-left: 40px
+    margin-bottom: 0
+
+  .calendar_add
+    background: url("/images/add.png") no-repeat center left
+    padding: 0 0 0 19px
+    color: #30A4B1
+    cursor: pointer
+
+  .calendars
+    +rounded-corners(0px, 10px, 10px, 10px)
+    display: none
+    position: absolute
+    border: 1px solid #BAB9B9
+    background-color: white
+    padding: 5px 10px 5px 10px
+
+  .calendars li
+    padding: 0.25em 0 0
+    margin: 0
+    list-style: none outside none
+
+  span.calendar_option
+    display: block
+    float: left
+    margin-right: 5px
+    height: 16px
+    width: 16px
+
+  span.outlook
+    background-image: url("/images/outlook16x16.png")
+
+  span.icalendar
+    background-image: url("/images/icalendar.png")
+
+  span.google_calendar
+    background-image: url("/images/google_calendar16x16.png")
+
+  section.container .profile_picture_medium
+    margin: 10px 10px 0 0
 

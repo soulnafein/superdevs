@@ -4,14 +4,13 @@
   border: 1px solid #cccccc;
   width: 50px;
   height: 50px;
-  float: left;
-  margin-right: 20px;
-  margin-top: 10px;
-  margin-bottom: 12px; }
+  float: left; }
   .profile_picture_medium img {
     margin: 0; }
 
 #users_list li {
   padding: 5px 10px; }
-#users_list h3 a {
+#users_list h2 a {
   font-size: 16px; }
+#users_list .profile_picture_medium {
+  margin-right: 20px; }

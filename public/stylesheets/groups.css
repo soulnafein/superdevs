@@ -2,6 +2,9 @@
   overflow: auto; }
   #group_page div.membership {
     float: right; }
+  #group_page h1 {
+    float: left;
+    margin: 0 0 21px 20px; }
   #group_page h2 {
     display: inline-block;
     line-height: 63px; }

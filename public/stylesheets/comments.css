@@ -1,0 +1,26 @@
+section.comments {
+  margin: 20px 0; }
+  section.comments li {
+    list-style: none;
+    margin-bottom: 20px; }
+  section.comments div.comment_arrow {
+    margin-left: 15px;
+    margin-top: 20px;
+    border-color: transparent #ededed;
+    border-style: solid;
+    border-width: 9px 9px 9px 0;
+    float: left;
+    height: 0;
+    width: 0; }
+  section.comments span.comment_date {
+    color: #999999;
+    font-size: 12px;
+    line-height: 21px; }
+  section.comments div.comment_text {
+    margin-left: 86px;
+    background: #ededed;
+    padding: 10px; }
+  section.comments .add_comment {
+    margin-left: 100px; }
+  section.comments li {
+    overflow: auto; }

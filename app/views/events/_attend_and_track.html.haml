@@ -4,9 +4,9 @@
     to attend or track this event.
 -else
   - if @event.has_attendee?(current_user)
-    %p= link_to "Unattend this event", unattend_event_path(@event.id), :class => 'linkButtonAlt'
+    %p= link_to "Unattend this event", unattend_event_path(@event.id), :class => 'button alternative'
   - else
-    %p= link_to "Attend this event", attend_event_path(@event.id), :class => 'linkButton'
+    %p= link_to "Attend this event", attend_event_path(@event.id), :class => 'button'
   %p or
   - if @event.has_tracker?(current_user)
     %p= link_to "Stop tracking this event", untrack_event_path(@event.id)

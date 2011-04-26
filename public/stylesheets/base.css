@@ -41,9 +41,13 @@ h2 {
   font-size: 24px;
   line-height: 42px;
   font-weight: bold; }
+  h2 a {
+    font-size: 16px; }
 
 h3 {
-  font-size: 21px; }
+  font-size: 21px;
+  line-height: 42px;
+  font-weight: bold; }
 
 ul {
   margin: 10px 0; }

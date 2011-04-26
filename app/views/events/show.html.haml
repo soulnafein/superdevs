@@ -1,71 +1,73 @@
 - title("#{@event.title} on the #{@event.date.strftime("%d %B %Y")} - SuperDevs")
 - current_tab('events')
-.in#event
+#event
   .leftColumn
-    %h2= @event.title
-    %h3
-      - if @event.group
-        Organised by #{link_to @event.group.name, group_url(@event.group.unique_name)}
-    %h3.date 
-      = @event.date.strftime("%d %B %Y")
-      %span.calendar_add Save to calendar
-    .calendars
-      %ul
-        %li
-          %a{:href => icalendar_event_url(@event), :title => "Export to Outlook"}
-            %span.outlook.calendar_option
-            Outlook
-        %li
-          %a{:href => google_calendar_event_url(@event), :title => "Export to Google calendar"} 
-            %span.google_calendar.calendar_option
-            Google
-        %li
-          %a{:href => icalendar_event_url(@event), :title => "Export to ICal"}
-            %span.icalendar.calendar_option
-            ICal
-    %ul.details
-      %li.location= @event.city + " (" + @event.country + ")"
-      - unless @event.link.to_s.empty?
-        %li.website
-          = link_to @event.link, @event.link
-      - if @event.is_organizer?(current_user)
-        %p
-          = link_to "Edit event", edit_group_event_url(@event.group.unique_name, @event.id), :class => 'edit'
-    %p
-    %div.description
-      :markdown
-        #{@event.description}
-    = render :partial => 'shared/add_this'
-    .container
-      - unless @event.attendees.empty?
+    %section
+      %h1= @event.title
+      %h2
+        - if @event.group
+          Organised by #{link_to @event.group.name, group_url(@event.group.unique_name)}
+      %h3.date
+        = @event.date.strftime("%d %B %Y")
+        %span.calendar_add Save to calendar
+      .calendars
+        %ul
+          %li
+            %a{:href => icalendar_event_url(@event), :title => "Export to Outlook"}
+              %span.outlook.calendar_option
+              Outlook
+          %li
+            %a{:href => google_calendar_event_url(@event), :title => "Export to Google calendar"}
+              %span.google_calendar.calendar_option
+              Google
+          %li
+            %a{:href => icalendar_event_url(@event), :title => "Export to ICal"}
+              %span.icalendar.calendar_option
+              ICal
+      %ul.details
+        %li.location= @event.city + " (" + @event.country + ")"
+        - unless @event.link.to_s.empty?
+          %li.website
+            = link_to @event.link, @event.link
+        - if @event.is_organizer?(current_user)
+          %p
+            = link_to "Edit event", edit_group_event_url(@event.group.unique_name, @event.id), :class => 'edit'
+      %p
+      .description
+        :markdown
+          #{@event.description}
+      = render :partial => 'shared/add_this'
+    - unless @event.attendees.empty?
+      %section.container
         %h4  Attendees (#{@event.attendees.size})
         = render :partial => 'shared/block_of_users',
                  :locals => { :users => @event.attendees }
-    .container
-      - unless @event.trackers.empty?
+    - unless @event.trackers.empty?
+      %section.container
         %h4 Trackers (#{@event.trackers.size})
         = render :partial => 'shared/block_of_users',
                  :locals => { :users => @event.trackers }
-    - unless @event.comments.empty?
-      %h4 Comments
-      = render :partial => 'shared/comments',
-                :locals => { :comments => @event.comments }
-    - if current_user
-      .add_comment
-        %h4 Add a comment:
-        = form_for([@event, @event.comments.build]) do |f|
-          %p
-            = f.text_area :body
-          %p
-          = f.submit
-    - else
-      .add_comment
-        %h4
-          = link_to "Sign in", login_url
-          to add a comment
+
+    %section.comments
+      - unless @event.comments.empty?
+        %h4 Comments
+        = render :partial => 'shared/comments',
+                  :locals => { :comments => @event.comments }
+      - if current_user
+        .add_comment
+          %h4 Add a comment:
+          = form_for([@event, @event.comments.build]) do |f|
+            %p
+              = f.text_area :body
+            %p
+            = f.submit "Post Comment"
+      - else
+        .add_comment
+          %h4
+            = link_to "Sign in", login_url
+            to add a comment
   .rightColumn
     = render :partial => 'events/attend_and_track'
-  .clear
 :javascript
   $(document).ready(function(){
     $(".calendar_add").click(function(e){

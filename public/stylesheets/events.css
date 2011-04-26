@@ -1,7 +1,6 @@
-section.events h1 {
-  padding-left: 40px;
-  margin: 0 0 21px 10px;
-  background: url(/images/icons/date.png) no-repeat center left; }
+section.events h3 {
+  font-weight: normal;
+  line-height: 21px; }
 section.events dl {
   margin-top: 21px; }
 section.events dt {
@@ -28,7 +27,7 @@ section.events dt {
   -moz-border-radius-bottomright: 4px;
   -webkit-border-bottom-right-radius: 4px;
   border-bottom-right-radius: 4px;
-  margin: 0 0 20px 20px;
+  margin: 0 0 20px 0;
   clear: both; }
   section.events dt .month {
     background-color: #ff3333;
@@ -40,11 +39,12 @@ section.events dt {
     display: block;
     color: white; }
   section.events dt .day {
+    display: block;
     font-size: 32px;
     line-height: 42px; }
 section.events dd {
   float: left;
-  width: 500px;
+  width: 520px;
   padding: 11px;
   margin: 0 0 20px 20px; }
 section.events dd.odd {
@@ -75,3 +75,104 @@ section.events p.friendsInfo {
   font-size: 12px;
   line-height: 21px;
   margin: 0; }
+
+#events_list_page dd {
+  width: 800px; }
+#events_list_page h1 {
+  padding-left: 40px;
+  margin: 0 0 21px 10px;
+  background: url(/images/icons/date.png) no-repeat center left; }
+
+#event {
+  overflow: auto; }
+  #event p.description {
+    width: 620px; }
+  #event .leftColumn {
+    width: 650px;
+    float: left; }
+  #event .rightColumn {
+    text-align: center;
+    width: 270px;
+    float: right; }
+  #event div.loginBlock {
+    -moz-border-radius-topleft: 10px;
+    -webkit-border-top-left-radius: 10px;
+    border-top-left-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    -webkit-border-top-right-radius: 10px;
+    border-top-right-radius: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    -moz-border-radius-bottomright: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px 15px 10px 15px;
+    margin: 10px 15px 15px 15px;
+    border: 2px solid #dddddd; }
+  #event h4 {
+    font-weight: bold;
+    font-style: normal; }
+  #event h3 {
+    font-weight: normal;
+    margin-bottom: 20px; }
+  #event div.description {
+    background-color: #ebebeb;
+    padding: 10px;
+    margin: 40px 0;
+    overflow: auto; }
+  #event ul.details {
+    list-style: none; }
+  #event ul.details li {
+    padding-left: 20px;
+    padding-right: 20px;
+    display: inline; }
+  #event li.website {
+    background: url(/images/icons/link_go.png) no-repeat top left; }
+  #event li.location {
+    background: url(/images/icons/globe_model.png) no-repeat top left; }
+  #event .date {
+    background: url(/images/icons/date.png) no-repeat top left;
+    padding-left: 40px;
+    margin-bottom: 0; }
+  #event .calendar_add {
+    background: url("/images/add.png") no-repeat center left;
+    padding: 0 0 0 19px;
+    color: #30a4b1;
+    cursor: pointer; }
+  #event .calendars {
+    -moz-border-radius-topleft: 0px;
+    -webkit-border-top-left-radius: 0px;
+    border-top-left-radius: 0px;
+    -moz-border-radius-topright: 10px;
+    -webkit-border-top-right-radius: 10px;
+    border-top-right-radius: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    -moz-border-radius-bottomright: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: none;
+    position: absolute;
+    border: 1px solid #bab9b9;
+    background-color: white;
+    padding: 5px 10px 5px 10px; }
+  #event .calendars li {
+    padding: 0.25em 0 0;
+    margin: 0;
+    list-style: none outside none; }
+  #event span.calendar_option {
+    display: block;
+    float: left;
+    margin-right: 5px;
+    height: 16px;
+    width: 16px; }
+  #event span.outlook {
+    background-image: url("/images/outlook16x16.png"); }
+  #event span.icalendar {
+    background-image: url("/images/icalendar.png"); }
+  #event span.google_calendar {
+    background-image: url("/images/google_calendar16x16.png"); }
+  #event section.container .profile_picture_medium {
+    margin: 10px 10px 0 0; }
