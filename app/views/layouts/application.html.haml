@@ -17,6 +17,7 @@
                           "groups",
                           "events",
                           "comments",
+                          "profile",
                           "navigation"
 
     = javascript_include_tag "lib/jquery-1.4.2.min", "lib/jquery.jgfeed-min", "lib/jquery.tweet.js",
@@ -47,13 +48,11 @@
               :class => yield(:current_tab) == 'groups' ? 'active' : ''
             = link_to 'PEOPLE', users_path,
               :class => yield(:current_tab) == 'people' ? 'active' : ''
-      .clear
 
-      #content
-        - if flash[:notice]
-          .in.success
-            = flash[:notice]
-        = yield
+      - if flash[:notice]
+        .success
+          = flash[:notice]
+      = yield
 
       = render :partial => "shared/footer"
 

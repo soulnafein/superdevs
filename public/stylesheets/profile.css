@@ -1,0 +1,132 @@
+/*...........................Profile....................... */
+div#profile {
+  float: left;
+  width: 620px; }
+  div#profile .main_info {
+    margin-left: 220px; }
+  div#profile h2 {
+    font-size: 42px;
+    font-family: Lucida Grande, Arial, serif;
+    font-style: normal;
+    margin-top: 0;
+    margin-bottom: 0;
+    letter-spacing: -3px; }
+  div#profile h3 {
+    font-style: italic;
+    margin: 0; }
+
+div#contacts {
+  background-color: #ebebeb;
+  padding: 20px;
+  width: 250px;
+  overflow: hidden;
+  float: right; }
+  div#contacts label {
+    display: inline;
+    font-weight: bold;
+    margin: 5px 0 0 2px; }
+  div#contacts form {
+    text-align: center; }
+  div#contacts ul {
+    list-style: none;
+    padding: 0; }
+  div#contacts label {
+    display: inline; }
+  div#contacts input[type=text] {
+    width: 230px; }
+
+div#profile_picture {
+  float: left;
+  border: 1px solid #bab9b9;
+  padding: 10px; }
+
+ul#online_presence li {
+  display: inline; }
+
+ul#interests {
+  width: 250px; }
+  ul#interests li {
+    display: inline-block;
+    background-color: #ffff66;
+    padding: 2px;
+    margin: 2px; }
+
+div#bio {
+  overflow: auto; }
+  div#bio h4 {
+    float: left; }
+  div#bio p {
+    display: block;
+    padding-left: 300px;
+    padding-right: 50px; }
+  div#bio a.add {
+    margin-left: 135px; }
+
+div#public_communication {
+  margin-top: 14px; }
+
+div#tweets {
+  padding: 0;
+  float: left; }
+  div#tweets h4 {
+    background: url(/images/bird.png) no-repeat top left;
+    line-height: 60px;
+    padding-left: 75px;
+    margin-bottom: 0; }
+  div#tweets ul {
+    background-color: #ebebeb;
+    list-style: none;
+    margin: 0;
+    padding: 10px 20px;
+    width: 220px; }
+  div#tweets li {
+    padding: 10px 0 9px 0;
+    border-bottom: 1px dashed #bab9b9;
+    line-height: 20px; }
+    div#tweets li img {
+      float: left;
+      margin: 4px 5px 4px 0; }
+
+/*...............Blog.............................. */
+div#blog {
+  padding-left: 300px; }
+  div#blog h4 {
+    line-height: 60px;
+    background: url(/images/icons/feed-32x32.png) no-repeat right;
+    margin-bottom: 0; }
+  div#blog dl {
+    margin-top: 0; }
+  div#blog dt {
+    margin: 0;
+    height: 60px;
+    font-size: 12px;
+    line-height: 20px;
+    width: 40px;
+    padding: 0 10px;
+    text-align: center;
+    clear: both;
+    background-color: #464646;
+    color: white; }
+    div#blog dt strong {
+      font-size: 16px;
+      line-height: 10px; }
+  div#blog dt, div#blog dd {
+    display: block;
+    float: left;
+    margin-bottom: 20px; }
+  div#blog dd p {
+    margin: 0; }
+  div#blog dd {
+    width: 490px;
+    margin-left: 20px; }
+  div#blog ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+  div#blog li p {
+    margin: 0; }
+  div#blog li {
+    padding: 5px;
+    margin-bottom: 5px; }
+  div#blog dd.odd {
+    background-color: #ebebeb; }

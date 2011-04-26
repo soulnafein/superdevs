@@ -14,12 +14,11 @@
     });
   })
 
-.in
+%section
   = render :partial => 'profile'
   = render :partial => 'contacts'
-.line
-= render :partial => 'bio'
-#public_communication.in
+%section
+  = render :partial => 'bio'
+%section#public_communication
   = render :partial => 'twitter_feed'
   = render :partial => 'blog_feed'
-  %div{:style=>"clear:both;"}
