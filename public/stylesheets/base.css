@@ -63,3 +63,9 @@ a:link, a:visited {
 
 a:hover {
   color: #f7941d; }
+
+.highlighter {
+  background-color: #ffff66;
+  display: inline-block;
+  margin: 2px;
+  padding: 2px; }
