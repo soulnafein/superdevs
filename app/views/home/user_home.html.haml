@@ -4,15 +4,21 @@
 #user_home
   .in
     #left_column
-      %h2
-        What's going on
-      %ul.updates
-        - @user_home_presenter.friends_activities.each do |ua|
-          %li
-            = render :partial => @user_home_presenter.template_for_activity(ua.activity),
-              :locals => {:user_activity => ua}
+      %section
+        %h2
+          What's going on
+        %ul.updates
+          - @user_home_presenter.friends_activities.each do |ua|
+            %li
+              = render :partial => @user_home_presenter.template_for_activity(ua.activity),
+                :locals => {:user_activity => ua}
 
     #right_column
+      - unless @user_home_presenter.attended_or_tracked_events.rows.empty?
+        %section.events
+          %h2.events Your events
+          = render :partial => 'shared/events',
+                   :locals => {:events => @user_home_presenter.attended_or_tracked_events}
       - unless current_user.following.empty?
         #following.relationships
           %h2.following Following
@@ -25,7 +31,4 @@
           - current_user.followers.each do |u|
             %a{:href=> user_path(u.username), :title=> u.full_name}
               != u.small_profile_picture.to_html
-      %h2.events Your events
-      = render :partial => 'shared/events',
-               :locals => {:events => @user_home_presenter.attended_or_tracked_events}
 

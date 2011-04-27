@@ -1,0 +1,140 @@
+div#user_home {
+  overflow: auto; }
+  div#user_home ul.updates {
+    list-style: none;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: normal; }
+    div#user_home ul.updates div.profile_picture_medium {
+      margin-right: 20px; }
+    div#user_home ul.updates div.update {
+      float: left;
+      max-width: 400px; }
+    div#user_home ul.updates li {
+      min-height: 50px;
+      overflow: auto;
+      border-bottom: 1px solid #dddddd;
+      margin-top: 10px;
+      padding: 10px 0; }
+      div#user_home ul.updates li p {
+        margin: 0; }
+    div#user_home ul.updates p.actions {
+      font-size: 12px; }
+      div#user_home ul.updates p.actions span.date {
+        font-size: 12px;
+        color: #888888; }
+    div#user_home ul.updates li.event {
+      background: url(/images/icons/date.png) no-repeat; }
+
+div#user_home h3 {
+  font-family: Lucida, sans-serif;
+  font-size: 16px;
+  line-height: 20px; }
+
+div#left_column {
+  width: 540px;
+  float: left;
+  margin-right: 20px; }
+
+div#right_column {
+  float: left;
+  width: 395px; }
+
+div#following {
+  margin: 0 0 20px 0; }
+
+div#followers {
+  margin: 0 0 20px 0; }
+
+div#events h5 {
+  font-size: 18px; }
+
+div#events h3 {
+  line-height: 70px;
+  margin-bottom: 0;
+  font-size: 24px; }
+
+div#events h6 {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: bold; }
+
+div#events dl {
+  margin-top: 0; }
+
+div#events dt {
+  background-color: #464646;
+  color: white;
+  font-size: 12px;
+  width: 40px;
+  padding: 5px;
+  text-align: center;
+  margin-bottom: 2px;
+  clear: both; }
+
+div#events dt, dd {
+  display: block;
+  float: left; }
+
+div#events dd {
+  width: 490px;
+  margin-left: 10px; }
+
+div#events dt strong {
+  font-size: 16px; }
+
+div#events ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+div#events li p {
+  margin: 0; }
+
+div#events li {
+  padding: 5px;
+  margin-bottom: 5px; }
+
+div#events li.odd {
+  background-color: #ebebeb; }
+
+div.information {
+  background-color: #464646;
+  width: 250px;
+  padding: 10px;
+  color: white; }
+
+div.information h4 {
+  font-size: 18px;
+  line-height: 18px;
+  color: #f7941d; }
+
+div.information p {
+  font-size: 14px;
+  line-height: 18px; }
+
+div.information strong {
+  color: #f7941d; }
+
+div.relationships {
+  margin: 10px 0; }
+
+div.relationships h3 {
+  display: block; }
+
+div#user_home div.events dd {
+  width: 240px; }
+
+div#user_home div.events dd h4 {
+  font-size: 16px;
+  line-height: 20px; }
+
+h2.followers, h2.following {
+  padding-left: 40px;
+  background: url(/images/icons/group.png) no-repeat center left;
+  margin-bottom: 10px; }
+
+h2.events {
+  padding-left: 40px;
+  background: url(/images/icons/date.png) no-repeat center left; }
