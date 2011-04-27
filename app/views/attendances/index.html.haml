@@ -1,16 +1,16 @@
 - current_tab("events")
-#users_list.in
+%section
   %h2 
     Subscription for 
     = @event.title
     (
     = @attendees.count
     )
-  %ul
+  %ul.simple
     #attendances_list
       - @attendees.each do |user|
         %li{:class => cycle('even', 'odd')}
-          .profile_picture_small
+          .profile_picture_small{:style => 'float:left'}
             != user.small_profile_picture.to_html
           %h3
             = user.full_name

@@ -1,10 +1,6 @@
 - current_tab('home')
-.in
+%section
   %h1 Change My Password
-
-.line
-
-.in.forms
   = form_for @user, :url => password_reset_path, :method => :put do |f|
     = f.error_messages
     %p

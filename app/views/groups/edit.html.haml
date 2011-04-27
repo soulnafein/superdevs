@@ -1,12 +1,11 @@
 - title("#{@group.name} at SuperDevs")
 - current_tab("groups")
-.in
+%section
   %h2= @group.name
-.line
-.in.forms
   = form_for @group do |f|
     %p
       = f.label :description, "Group's description in Markdown format"
+      %br
       = f.text_area :description
     %p= f.submit "Update"
 
