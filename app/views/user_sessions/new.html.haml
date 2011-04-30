@@ -1,26 +1,23 @@
 - current_tab('home')
-.in
-  %h2 Login
-.line
-.in.forms
+%section.forms
+  %h1 Login
   %iframe{:src=>"http://superdevs.rpxnow.com/openid/embed?token_url=#{user_sessions_url}",
           :scrolling=>"no", :frameBorder=>"no", :allowtransparency=>"true", :style=>"width:400px;height:240px"}
 
+%section.forms
   %p
     Or for
-    %span.highlighter existing users
+    %span.highlighter early adopters users
     use the traditional login form
 
   = form_for @user_session do |form|
     = form.error_messages
     %p
       = form.label :username, "Username or Email"
-      %br
       = form.text_field :username
 
     %p
       = form.label :password, "Password"
-      %br
       = form.password_field :password
 
     %p

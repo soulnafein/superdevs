@@ -1,3 +1,4 @@
 #footer {
   text-align: right;
-  padding-bottom: 42px; }
+  padding-bottom: 42px;
+  clear: both; }

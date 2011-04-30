@@ -11,7 +11,7 @@
       %pre{:class => "brush: #{code_snippet.language}"}= code_snippet.code
       %p= code_snippet.description
 .right_column
-  = link_to '+ Add a Code snippet', new_post_url, :class => 'super_button'
+  = link_to '+ Add a Code snippet', new_post_url, :class => 'button'
 :javascript
   SyntaxHighlighter.all()
 

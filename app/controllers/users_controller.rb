@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_no_user, :only => [:new, :create]
+  before_filter :require_no_user, :only => [:create]
   before_filter :require_user, :only => [:follow, :edit_mandatory_details, :edit_accounts, :complete_registration, :update]
 
   def index
@@ -43,10 +43,6 @@ class UsersController < ApplicationController
     end
   rescue ActiveRecord::RecordInvalid
     head 400
-  end
-
-  def new
-    @user = User.new
   end
 
   def create

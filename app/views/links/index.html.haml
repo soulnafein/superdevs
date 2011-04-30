@@ -1,7 +1,7 @@
 - current_tab("links")
 .left_column
   - @links.each do |link|
-    %div.rounded_content
+    %section.link
       %h3= link_to link.title, link.url
       %h4= link_to link.url, link.url
       .author
@@ -11,5 +11,5 @@
         %span.when= distance_of_time_in_words(link.created_at, Time.now.utc) + ' ago'
       %p= link.description
 .right_column
-  = link_to '+ Add a Link', new_post_url, :class => 'super_button'
+  = link_to '+ Add a Link', new_post_url, :class => 'button'
 

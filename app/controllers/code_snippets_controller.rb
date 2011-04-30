@@ -1,6 +1,5 @@
 class CodeSnippetsController < ApplicationController
   before_filter :require_user, :only => [:create]
-  layout 'new_application'
 
   def index
     @code_snippets = CodeSnippet.get_latest
@@ -14,6 +13,6 @@ class CodeSnippetsController < ApplicationController
     redirect_to code_snippets_url
   rescue ActiveRecord::RecordInvalid
     @link = Link.new
-    render :action => 'posts/new', :layout => 'application'
+    render :action => 'posts/new'
   end
 end

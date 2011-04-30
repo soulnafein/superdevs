@@ -21,9 +21,54 @@ a.button.alternative
   +linear_gradient($secondary_color, $secondary_color_dark)
   border-color: $secondary_color_dark
 
+.forms input
+  line-height: 2*$base_line_height
+
 .forms input[type=text], .forms input[type=password], .forms textarea
   border: 1px solid #bab9b9
   padding: 10px
   width: 600px
   color: #707070
-  font-size: 14px
+
+label.required
+  padding-left: 15px
+  background: url(/images/icons/asterisk_red.png) no-repeat center left
+
+label
+  margin: 5px 0 0 2px
+  font-weight: bold
+  display: block
+
+div.togglers h3
+  float: left
+  margin-right: 20px
+
+
+ul.tabs li
+  display: inline-block
+
+
+ul.tabs li a
+  font-size: 20px
+  color: #999
+  line-height: 20px
+  text-align: center
+  vertical-align: baseline
+  direction: ltr
+  -moz-border-radius: 4px 4px 4px 4px
+  height: 20px
+  padding: 10px 30px
+  display: inline-block
+
+
+ul.tabs li.selected a
+  background-color: #30A4B1
+  color: #FFFFFF
+
+
+ul.tabs a:hover
+  text-decoration: underline
+
+
+#new_code_snippet_form
+  display: none

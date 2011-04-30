@@ -1,14 +1,13 @@
 - current_tab('home')
-.in
+%section
   %h1 Forgot Password
-.line
-.in.forms
-  %p
-    Fill out the form below and instructions to reset your password will be emailed to you:
-  - form_tag password_resets_path do
-    %label Email:
-    %br
-    = text_field_tag "email", "", :class => "box"
-    %br
-    %br
-    = submit_tag "Reset my password", :class => "com_btn"
+  .forms
+    %p
+      Fill out the form below and instructions to reset your password will be emailed to you:
+    - form_tag password_resets_path do
+      %label Email:
+      %br
+      = text_field_tag "email", "", :class => "box"
+      %br
+      %br
+      = submit_tag "Reset my password", :class => "com_btn"
