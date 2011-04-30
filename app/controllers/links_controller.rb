@@ -5,6 +5,10 @@ class LinksController < ApplicationController
     @links = Link.get_latest
   end
 
+  def show
+    @link = Link.find(params[:id])
+  end
+
 
   def create
     @link = Link.new(params['link'])

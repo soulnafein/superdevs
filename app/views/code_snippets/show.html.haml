@@ -1,0 +1,16 @@
+- title("#{@code_snippet.title} - SuperDevs")
+- current_tab("code")
+%section.post
+  %h1= @code_snippet.title
+  .author
+    .profile_picture_small
+      != @code_snippet.author.small_profile_picture.to_html
+    %h5= link_to @code_snippet.author.full_name, user_url(1)
+    %span.when= distance_of_time_in_words(@code_snippet.created_at, Time.now.utc) + ' ago'
+
+  %pre{:class => "brush: #{@code_snippet.language}"}= @code_snippet.code
+  %p.description= @code_snippet.description
+
+  :javascript
+    SyntaxHighlighter.all()
+

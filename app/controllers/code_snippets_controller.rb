@@ -5,6 +5,9 @@ class CodeSnippetsController < ApplicationController
     @code_snippets = CodeSnippet.get_latest
   end
 
+  def show
+    @code_snippet = CodeSnippet.find(params[:id])
+  end
 
   def create
     @code_snippet = CodeSnippet.new(params['code_snippet'])

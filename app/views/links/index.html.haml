@@ -3,7 +3,7 @@
   .left_column
     - @links.each do |link|
       %section.post
-        %h3= link_to link.title, link.url
+        %h3= link_to link.title, link_url(link.id)
         %h4= link_to link.url, link.url
         .author
           .profile_picture_small

@@ -3,7 +3,7 @@
   .left_column
     - @code_snippets.each do |code_snippet|
       %section.post
-        %h3= code_snippet.title
+        %h3= link_to code_snippet.title, code_snippet_url(code_snippet.id)
         .author
           .profile_picture_small
             != code_snippet.author.small_profile_picture.to_html
