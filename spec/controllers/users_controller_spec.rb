@@ -60,37 +60,6 @@ describe UsersController do
     end
   end
 
-  describe "GET 'new" do
-    it "should provide an empty user to the page" do
-      get :new
-
-      response.should be_success
-      assigns(:user).should_not be_nil
-    end
-  end
-
-  describe "POST 'create'" do
-    it "should save user" do
-      User.stub(:new).and_return(mock_user)
-      mock_user.should_receive(:save!)
-      valid_signup = {:user => {:username => "soulnafein", :email => "soulnafe@gmail.com", :password => "test", :password_confirmation => 'test'}}
-
-      post :create, valid_signup 
-
-      response.should redirect_to("/invitation_requested")
-    end
-
-    it "should go back to form in case of errors" do
-      User.stub(:new).and_return(mock_user_with_errors)
-      mock_user.should_receive(:save!).and_raise(ActiveRecord::RecordInvalid.new(mock_user_with_errors))
-      invalid_signup = {:user => {:username => "soulnafein", :email => "soulnafe@gmail.com.", :password => "test", :password_confirmation => 'testsss'}}
-
-      post :create, invalid_signup
-
-      response.should render_template(:new)
-    end
-  end
-
   describe "GET 'index'" do
 
     before :each do

@@ -45,16 +45,6 @@ class UsersController < ApplicationController
     head 400
   end
 
-  def create
-    @user = User.new(params[:user])
-    @user.save!
-    @user.deliver_activation_instructions!
-    confirmation = url_for(:controller => :pages, :action => :invitation_requested)
-    redirect_to confirmation, :status => 303
-  rescue ActiveRecord::RecordInvalid
-    render :action => 'new'
-  end
-
   def addrpxauth
     @user = current_user
     @user.username = params[:user][:username]

@@ -8,6 +8,15 @@
   .profile_picture_medium img {
     margin: 0; }
 
+.profile_picture_small {
+  background: white;
+  padding: 3px;
+  border: 1px solid #cccccc;
+  width: 32px;
+  height: 32px; }
+  .profile_picture_small img {
+    margin: 0; }
+
 #users_list li {
   padding: 5px 10px; }
 #users_list h2 a {

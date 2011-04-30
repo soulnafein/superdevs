@@ -1,24 +1,21 @@
 - current_tab('people')
-.in.forms
-  %h2 Edit mandatory details
+%section.forms
+  %h1 Edit mandatory details
   = form_for(current_user, :url => complete_registration_url) do |f|
     = f.error_messages
     %p
-      %label{:for=>"username"}
+      %label.required{:for=>"username"}
         YOUR UNIQUE USERNAME (e.g. kentb)
-      %br
       = f.text_field :username
 
     %p
-      %label{:for=>"full_name"}
+      %label.required{:for=>"full_name"}
         YOUR FULL NAME (e.g. John Brown)
-      %br
       = f.text_field :full_name
 
     %p
-      %label{:for=>"email"}
+      %label.required{:for=>"email"}
         EMAIL (e.g. kentbeck@gmail.com)
-      %br
       = f.text_field :email
 
     %p
@@ -27,8 +24,9 @@
       and
       = link_to "Privacy Policy", privacy_policy_url, :target => '_blank'
       %br
-      = f.check_box :agreed_tc_and_pp
-      %label{:for=>"agreed_tc_and_pp"} I agree
+      %label.required{:for=>"agreed_tc_and_pp"}
+        I agree
+        = f.check_box :agreed_tc_and_pp
 
     %p
-      = f.submit "Submit"
+      = f.submit "Proceed"

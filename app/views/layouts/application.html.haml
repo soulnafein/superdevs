@@ -29,7 +29,23 @@
                              "lib/facebox/facebox.js",
     "ActiveAjax/Array", "ActiveAjax/String", "ActiveAjax/EventPublisher", "ActiveAjax/Ajax",
     "ActiveAjax/Model", "BindableTextbox", "BindableList", "BindableDropDown", "EditableField", "EditableArea", "EditableText","ProfilePage","blog_feed.js", "Tabs",
-    "lib/syntaxhighlighter/scripts/shCore.js", "lib/syntaxhighlighter/scripts/shBrushRuby.js"
+    "lib/syntaxhighlighter/scripts/shCore.js"
+
+    = javascript_include_tag "lib/syntaxhighlighter/scripts/shBrushBash.js",
+      "lib/syntaxhighlighter/scripts/shBrushCSharp.js",
+      "lib/syntaxhighlighter/scripts/shBrushCpp.js",
+      "lib/syntaxhighlighter/scripts/shBrushCss.js",
+      "lib/syntaxhighlighter/scripts/shBrushGroovy.js",
+      "lib/syntaxhighlighter/scripts/shBrushJScript.js",
+      "lib/syntaxhighlighter/scripts/shBrushJava.js",
+      "lib/syntaxhighlighter/scripts/shBrushPhp.js",
+      "lib/syntaxhighlighter/scripts/shBrushPlain.js",
+      "lib/syntaxhighlighter/scripts/shBrushPython.js",
+      "lib/syntaxhighlighter/scripts/shBrushRuby.js",
+      "lib/syntaxhighlighter/scripts/shBrushScala.js",
+      "lib/syntaxhighlighter/scripts/shBrushSql.js",
+      "lib/syntaxhighlighter/scripts/shBrushXml.js"
+
     = render :partial => "shared/google_analytics"
 
   %body
@@ -60,6 +76,7 @@
           = flash[:notice]
       = yield
 
-      = render :partial => "shared/footer"
+      #footer
+        = render :partial => "shared/footer"
 
     = render :partial => "shared/user_feedback"

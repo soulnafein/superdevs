@@ -1,6 +1,9 @@
 section.post div.author {
   overflow: auto;
   margin: 10px 0; }
+  section.post div.author div.profile_picture_small {
+    float: left;
+    margin-right: 10px; }
 section.post h4 a {
   color: #646464; }
 section.post h4, section.post h3 {
@@ -10,13 +13,19 @@ section.post h4 {
   font-size: 18px; }
 section.post p {
   font-size: 16px; }
+section.post p.description {
+  background-color: #ebebeb;
+  padding: 10px; }
 section.post span.when {
   font-size: 12px;
+  line-height: 21px;
   color: #999999; }
 
 div.left_column {
   float: left;
-  width: 680px; }
+  width: 665px; }
 
-div.right_columns {
-  float: right; }
+div.right_column {
+  float: left;
+  width: 294px;
+  text-align: center; }

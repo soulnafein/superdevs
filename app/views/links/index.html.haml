@@ -1,15 +1,16 @@
 - current_tab("links")
-.left_column
-  - @links.each do |link|
-    %section.link
-      %h3= link_to link.title, link.url
-      %h4= link_to link.url, link.url
-      .author
-        .profile_picture_small
-          != link.author.small_profile_picture.to_html
-        %h5= link_to link.author.full_name, user_url(1)
-        %span.when= distance_of_time_in_words(link.created_at, Time.now.utc) + ' ago'
-      %p= link.description
-.right_column
-  = link_to '+ Add a Link', new_post_url, :class => 'button'
+#links_list{:style => 'clear:both'}
+  .left_column
+    - @links.each do |link|
+      %section.post
+        %h3= link_to link.title, link.url
+        %h4= link_to link.url, link.url
+        .author
+          .profile_picture_small
+            != link.author.small_profile_picture.to_html
+          %h5= link_to link.author.full_name, user_url(1)
+          %span.when= distance_of_time_in_words(link.created_at, Time.now.utc) + ' ago'
+        %p.description= link.description
+  .right_column
+    = link_to '+ Add a Link', new_post_url, :class => 'button'
 
