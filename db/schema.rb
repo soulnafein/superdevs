@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110418202300) do
+ActiveRecord::Schema.define(:version => 20110430185026) do
 
   create_table "admins", :force => true do |t|
     t.integer  "user_id"
@@ -44,7 +44,17 @@ ActiveRecord::Schema.define(:version => 20110418202300) do
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "commentable_id",   :default => 0
+    t.string   "commentable_type", :default => ""
+    t.string   "title",            :default => ""
+    t.string   "subject",          :default => ""
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
   end
+
+  add_index "comments", ["author_id"], :name => "index_comments_on_author_id"
+  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0

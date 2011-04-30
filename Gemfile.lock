@@ -44,6 +44,10 @@ GEM
       activemodel (= 3.0.3)
       activesupport (= 3.0.3)
     activesupport (3.0.3)
+    acts_as_commentable_with_threading (1.1.1)
+      activerecord (~> 3.0)
+      activesupport (~> 3.0)
+      moretea-awesome_nested_set
     annotate (2.4.0)
     arel (2.0.4)
     authlogic_rpx (1.1.1)
@@ -102,6 +106,8 @@ GEM
     maruku (0.6.0)
       syntax (>= 1.0.0)
     mime-types (1.16)
+    moretea-awesome_nested_set (1.4.3.1)
+      activerecord (~> 3.0.0)
     nokogiri (1.4.3.1)
     pg (0.10.0)
     polyglot (0.3.1)
@@ -169,6 +175,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_commentable_with_threading
   annotate
   authlogic!
   authlogic_rpx

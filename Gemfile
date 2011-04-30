@@ -17,6 +17,7 @@ gem 'rack-force_domain'
 gem 'icalendar'
 gem 'delayed_job',  :git => 'git://github.com/collectiveidea/delayed_job.git'
 gem 'pg', :require => 'pg'
+gem 'acts_as_commentable_with_threading'
 
 group :test do
   gem 'rcov'

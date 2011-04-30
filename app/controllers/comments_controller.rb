@@ -3,10 +3,8 @@ class CommentsController < ApplicationController
 
   def create
     event_id = params[:event_id]
-    details = { :body => params[:comment][:body],
-                :event_id => event_id,
-                :author => current_user}
-    Comment.create!(details)
+    comment = Comment.build_from(event_id, Event.to_s, current_user, params[:comment][:body])
+    comment.save!
     redirect_to event_url(event_id)
   end
 end

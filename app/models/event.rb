@@ -19,7 +19,11 @@ class Event < ActiveRecord::Base
     group && group.organizer?(user)
   end
 
-  has_many :comments
+  acts_as_commentable
+
+  def comments
+    self.root_comments
+  end
 
   extend EventBehaviours::Queries
 
