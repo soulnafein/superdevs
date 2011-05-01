@@ -1,0 +1,20 @@
+%section.comments
+  - unless comments.empty?
+    %h4 Comments
+    = render :partial => 'shared/comments',
+              :locals => { :comments => comments }
+  - if current_user
+    .add_comment
+      %h4 Add a comment:
+      = form_for(Comment.new) do |f|
+        %p
+          = f.text_area :body
+          = f.hidden_field :commentable_id, {:value => commentable_id}
+          = f.hidden_field :commentable_type, {:value => commentable_type}
+        %p
+        = f.submit "Post Comment"
+  - else
+    .add_comment
+      %h4
+        = link_to "Sign in", login_url
+        to add a comment
