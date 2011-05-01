@@ -15,6 +15,10 @@ class CommentsController < ApplicationController
 
   private
   def calculate_destination(commentable_type, commentable_id)
-    destination = event_url(commentable_id) if commentable_type == Event.to_s
+    #don't blame this code, pragmatic choice considering that
+    #soon create will return json and adding comment will use ajax
+    return event_url(commentable_id) if commentable_type == Event.to_s
+    return link_url(commentable_id) if commentable_type == Link.to_s
+    return code_snippet_url(commentable_id) if commentable_type == CodeSnippet.to_s
   end
 end

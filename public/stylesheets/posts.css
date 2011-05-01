@@ -1,6 +1,7 @@
 section.post div.author {
   overflow: auto;
-  margin: 10px 0; }
+  float: left;
+  width: 350px; }
   section.post div.author div.profile_picture_small {
     float: left;
     margin-right: 10px; }
@@ -10,16 +11,20 @@ section.post h4, section.post h3 {
   font-family: Helvetica, Arial, sans-serif;
   font-style: normal; }
 section.post h4 {
-  font-size: 18px; }
+  font-size: 18px;
+  margin-bottom: 21px; }
 section.post p {
   font-size: 16px; }
 section.post p.description {
   background-color: #ebebeb;
-  padding: 10px; }
+  padding: 10px;
+  margin-top: 21px; }
 section.post span.when {
   font-size: 12px;
   line-height: 21px;
   color: #999999; }
+section.post div.info {
+  float: right; }
 
 div.left_column {
   float: left;

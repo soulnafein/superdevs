@@ -10,6 +10,9 @@
             != link.author.small_profile_picture.to_html
           %h5= link_to link.author.full_name, user_url(1)
           %span.when= distance_of_time_in_words(link.created_at, Time.now.utc) + ' ago'
+        .info
+          = link_to pluralize(link.root_comments.count, 'Comment'), link_url(link.id), {:class => 'comments'}
+        .clear
         %p.description= link.description
   .right_column
     = link_to '+ Add a Link', new_post_url, :class => 'button'

@@ -5,7 +5,9 @@ section.post
 
   div.author
     overflow: auto
-    margin: 10px 0
+    float: left
+    width: 350px
+
 
     div.profile_picture_small
       float: left
@@ -23,6 +25,7 @@ section.post
 
   h4
     font-size: 18px
+    margin-bottom: $base_line_height
 
 
   p
@@ -31,6 +34,7 @@ section.post
   p.description
     background-color: $bg_color
     padding: 10px
+    margin-top: $base_line_height
 
 
   span.when
@@ -38,10 +42,13 @@ section.post
     line-height: $base_line_height
     color: #999
 
+  div.info
+    float: right
 
 div.left_column
   float: left
   width: 665px
+
 
 
 div.right_column

@@ -123,3 +123,10 @@ a.delete {
 a.attendees_list {
   background: url(/images/icons/attendees_list.png) no-repeat center left;
   padding-left: 20px; }
+
+a.comments {
+  background: url(/images/icons/comments.png) no-repeat center left;
+  padding-left: 20px; }
+
+.clear {
+  clear: both; }

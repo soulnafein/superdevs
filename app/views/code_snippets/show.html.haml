@@ -1,5 +1,5 @@
 - title("#{@code_snippet.title} - SuperDevs")
-- current_tab("code")
+- current_tab("code_snippets")
 %section.post
   %h1= @code_snippet.title
   .author
@@ -7,10 +7,13 @@
       != @code_snippet.author.small_profile_picture.to_html
     %h5= link_to @code_snippet.author.full_name, user_url(1)
     %span.when= distance_of_time_in_words(@code_snippet.created_at, Time.now.utc) + ' ago'
-
+  .clear
   %pre{:class => "brush: #{@code_snippet.language}"}= @code_snippet.code
   %p.description= @code_snippet.description
+= render :partial => 'shared/comment_section',
+        :locals => { :comments => @code_snippet.root_comments,
+                    :commentable_type => CodeSnippet.to_s,
+                    :commentable_id => @code_snippet.id }
 
-  :javascript
-    SyntaxHighlighter.all()
-
+:javascript
+  SyntaxHighlighter.all()

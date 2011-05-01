@@ -9,6 +9,9 @@
             != code_snippet.author.small_profile_picture.to_html
           %h5= link_to code_snippet.author.full_name, user_url(1)
           %span.when= distance_of_time_in_words(code_snippet.created_at, Time.now.utc) + ' ago'
+        .info
+          = link_to pluralize(code_snippet.root_comments.count, 'Comment'), code_snippet_url(code_snippet.id), {:class => 'comments'}
+        .clear
         %pre{:class => "brush: #{code_snippet.language}"}= code_snippet.code
         %p.description= code_snippet.description
   .right_column

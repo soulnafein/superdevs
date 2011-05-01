@@ -7,6 +7,8 @@ class CodeSnippet < ActiveRecord::Base
     self.order('created_at DESC')
   end
 
+  acts_as_commentable
+
   def self.languages
     [
       ['Bash', 'bash'],

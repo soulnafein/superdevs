@@ -49,7 +49,7 @@
                  :locals => { :users => @event.trackers }
 
     = render :partial => 'shared/comment_section',
-              :locals => { :comments => @event.comments,
+              :locals => { :comments => @event.root_comments,
                           :commentable_type => Event.to_s,
                           :commentable_id => @event.id }
 

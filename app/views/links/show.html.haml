@@ -8,5 +8,11 @@
       != @link.author.small_profile_picture.to_html
     %h5= link_to @link.author.full_name, user_url(1)
     %span.when= distance_of_time_in_words(@link.created_at, Time.now.utc) + ' ago'
+  .clear
   %p.description= @link.description
+= render :partial => 'shared/comment_section',
+        :locals => { :comments => @link.root_comments,
+                    :commentable_type => Link.to_s,
+                    :commentable_id => @link.id }
+
 
