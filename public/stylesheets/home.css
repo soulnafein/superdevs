@@ -1,5 +1,4 @@
 #first_layer {
-  overflow: auto;
   margin: 0 auto;
   width: 960px; }
 
@@ -7,7 +6,8 @@
   margin: 0 auto;
   width: 960px;
   background: url(/images/superdev.png) top right no-repeat;
-  height: 300px; }
+  height: 300px;
+  clear: both; }
   #second_layer #introduction {
     width: 550px; }
     #second_layer #introduction h2 {
