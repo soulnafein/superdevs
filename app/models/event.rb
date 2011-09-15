@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
 
   belongs_to :group
   def is_organizer?(user)
-    group && group.organizer?(user)
+    Admin.user_admin?(user) || (group && group.organizer?(user))
   end
 
   acts_as_commentable
