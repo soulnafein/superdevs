@@ -10,7 +10,7 @@ class Gravatar
   end
 
   def initialize(email,size)
-    @hash = Digest::MD5.hexdigest(email.downcase)
+    @hash = Digest::MD5.hexdigest(email.to_s.downcase)
     @size = size
   end
 
